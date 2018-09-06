@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Employee Inbox</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<style>
+
+		body {
+			/* font-size: .875rem; */
+		}
+		.masthead {
+			padding-top: 3em;
+			padding-bottom: 3em;
+			background-color: #444;
+			color: #FFF;
+		}
+
+		label.required::after,
+		legend.required::after {
+		  content:"*";
+		  color:red;
+		}
+
+		.container {
+			max-width: 600px;
+		}
+
+		.additional-entry-toggle {padding: 1rem;}
+
+		.additional-entry-toggle.custom-control {padding-left: 2.25rem;}
+
+		.additional-entry.is-active .additional-entry-toggle {
+			border: 1px solid #CCC;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+			border-bottom: 0;
+		}
+
+		.additional-entry .additional-entry-content {
+			display: none;
+		}
+
+		.additional-entry.is-active .additional-entry-content {
+			display: block;
+			background-color: #EEE;
+			padding: 15px;
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
+		}
+
+
+
+	</style>
+</head>
+<body>
+	<!--This is a protype, code is not intended for production-->
+	<header class="masthead mb-5">
+		<div class="container">
+			<h1 class="h3">TCC Childcare Scholarship: New Enrollment</h1>
+		</div>
+	</header>
+	<main class="container">
+
+			<form action="">
+				<section class= "mb-5" id="you">
+					<h2 class="h4 mb-4">Your Information</h2>
+					<div>
+						<legend class="h6">I am</legend>
+						<fieldset>
+							<div class="form-check">
+								<label>
+									<input class="form-check-input" type="radio" name="maritalStatus" id="maritalStatus-1" value="married">
+									married
+								</label>
+							</div>
+							<div class="form-check">
+								<label>
+									<input class="form-check-input" type="radio"
+										name="maritalStatus"
+										id="maritalStatus-2"
+										value="partnership">
+									in a domestic partnership
+								</label>
+							</div>
+							<div class="form-check">
+								<label>
+									<input class="form-check-input" type="radio" name="maritalStatus" id="maritalStatus-2" value="divorced">
+									divorced
+								</label>
+							</div>
+							<div class="form-check">
+								<label>
+									<input class="form-check-input" type="radio" name="maritalStatus" id="maritalStatus-3" value="single">
+									single or widowed
+								</label>
+							</div>
+						</fieldset>
+					</div>
+				</section>
+				<section id="yourSpouse">
+					<h2 class="h4 mb-4">Spouse/Partner Information</h2>
+					<div>
+						<fieldset class="mb-1">
+								<div class="form-group">
+									<label for="spouseFirstName" class="required">First Name</label>
+	  							<input type="text" class="form-control" id="spouseFirstName" required>
+								</div>
+								<div class="form-group">
+									<label for="spouseMiddleInitial">Middle Initial</label>
+	  							<input type="text" class="form-control" id="spouseMiddleInitial">
+								</div>
+								<div class="form-group">
+									<label for="spouseLastName" class="required">Last Name</label>
+	  							<input type="text" class="form-control" id="spouseMiddleInitial" required>
+								</div>
+						</fieldset>
+						<div id="spouseMITInfo" class="additional-entry mb-4">
+							<div class="additional-entry-toggle custom-control custom-checkbox">
+								<input type="checkbox"
+								       class="custom-control-input"
+											 id="spouseMITAffiliate">
+							  <label class="custom-control-label" for="spouseMITAffiliate">My spouse/partner is currently affiliated with MIT</label>
+							</div>
+							<div class="additional-entry-content mb-5">
+								<div class="form-group mb-4">
+									<label for="spouseMITId" class="required">Spouse/Partner MIT ID Number</label>
+	  							<input type="number" class="form-control" id="spouseMITId" required>
+								</div>
+								<fieldset class="mb-4">
+									<legend class="h6 required">My partner/spouse is affiliated with MIT as</legend>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" name="spouseAffiliation" id="spouseAffiliation-1" value="faculty" checked>
+									  <label class="form-check-label" for="spouseAffiliation-1">
+									    Faculty
+									  </label>
+									</div>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" name="spouseAffiliation" id="spouseAffiliation-2" value="staff">
+									  <label class="form-check-label" for="spouseAffiliation-2">
+									    Staff
+									  </label>
+									</div>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" name="spouseAffiliation" id="spouseAffiliation-3" value="student">
+									  <label class="form-check-label" for="spouseAffiliation-3">
+									    Student
+									  </label>
+									</div>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" name="spouseAffiliation" id="spouseAffiliation-4" value="postdocAssociate">
+									  <label class="form-check-label" for="spouseAffiliation-4">
+									    a Postdoctoral Associate
+									  </label>
+									</div>
+									<div class="form-check">
+									  <input class="form-check-input" type="radio" name="spouseAffiliation" id="spouseAffiliation-5" value="postdocFellow">
+									  <label class="form-check-label" for="spouseAffiliation-5">
+									    a Postdoctoral Fellow
+									  </label>
+									</div>
+								</fieldset>
+							</div>
+						</div>
+
+						<fieldset class="mb-4 additional-entry">
+							<div class="additional-entry-toggle">
+								<legend class="h6 required">My partner/spouse is</legend>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-1" value="student">
+									<label class="form-check-label" for="spouseOccupation-1">
+										a full-time student
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-2" value="employed">
+									<label class="form-check-label" for="spouseOccupation-2">
+										employed for a minimum of 20 hours/week
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-3" value="disabled">
+									<label class="form-check-label" for="spouseOccupation-3">
+										disabled
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-4" value="other">
+									<label class="form-check-label" for="spouseOccupation-4">
+										other
+									</label>
+								</div>
+							</div>
+							<div class="additional-entry-content">
+
+								<div id="spouseOccupationStudentEntry">
+
+									<div class="form-group">
+								    <label class="required" for="spouseSchoolName">School Name</label>
+								    <input type="text" class="form-control" id="spouseSchoolName" required>
+								  </div>
+
+									<div class="form-group">
+								    <label class="required" for="spouseAdmissionDate">Admission Date</label>
+								    <input type="date" class="form-control" id="spouseAdmissionDate" required>
+								  </div>
+
+									<div class="form-group mb-4">
+								    <label class="required" for="spouseGraduationDate">Expected Graduation Date</label>
+								    <input type="date" class="form-control" id="spouseGraduationDate" required>
+								  </div>
+
+									<fieldset class="mb-4">
+										<legend class="h6 required">My partner/spouse is enrolled</legend>
+
+										<div class="form-check">
+										  <input class="form-check-input" type="radio" name="spouseEnrollment" id="spouseEnrollment-1" value="fulltime">
+										  <label class="form-check-label" for="spouseEnrollment-1">
+										    full-time
+										  </label>
+									 	</div>
+
+										<div class="form-check">
+										  <input class="form-check-input" type="radio" name="spouseEnrollment" id="spouseEnrollment-2" value="parttime">
+										  <label class="form-check-label" for="spouseEnrollment-2">
+										    part-time
+										  </label>
+									 	</div>
+									</fieldset>
+
+									<fieldset>
+										<legend class="h6 required">Type of Funding</legend>
+
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="spouseFunding" id="spouseFunding-1" value="TA">
+											<label class="form-check-label" for="spouseFunding-1">
+												Teaching Assistant
+											</label>
+										</div>
+
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="spouseFunding" id="spouseFunding-2" value="RA" checked>
+											<label class="form-check-label" for="spouseFunding-2">
+												Research Assistant
+											</label>
+										</div>
+
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="spouseFunding" id="spouseFunding-3" value="stipend" checked>
+											<label class="form-check-label" for="spouseFunding-3">
+												Stipend
+											</label>
+										</div>
+									</fieldset>
+
+
+
+								</div>
+
+								<div id="spouseOccupationEmployedEntry">
+									Employed
+								</div>
+
+								<div id="spouseOccupationDisabledEntry">
+									Disabled
+								</div>
+
+								<div id="spouseOccupationOtherEntry">
+									<div class="form-group">
+								    <label for="spouseOccupationOther">Please explain</label>
+								    <input type="text" class="form-control" id="spouseOccupationOther" aria-describedby="spouseOccupationOtherHelp">
+								    <small id="spouseOccupationOtherHelp" class="form-text text-muted">Please be aware that this may mean you are not eligible for this benefit.</small>
+								  </div>
+								</div>
+
+							</div>
+						</fieldset>
+
+					</div>
+				</section>
+			</form>
+
+	</main>
+	<footer>
+
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<!--<script src="node_modules/easy-toggle-state/dist/easy-toggle-state.js"></script>-->
+	<script>
+
+	//Toggle additional content on checkbox change
+	$('.additional-entry-toggle input').on('change', function(){
+		$(this).closest('.additional-entry').toggleClass('is-active');
+	});
+
+	// don't ask for information about spouse if non-existent
+	$('input[name=maritalStatus]').on('change',function(){
+		let $this = $(this);
+		if ($this.val() === 'married' || $this.val() === 'partnership') {
+			$('#yourSpouse').show();
+		} else {
+			$('#yourSpouse').hide();
+		}
+	});
+
+	// deal with spouse occupation selection
+	$('input[name=spouseOccupation]').on('change',function(){
+		let $this = $(this);
+		let val = $this.val();
+
+		// create ID selector for which container to show
+		let valueTarget = '#spouseOccupation' + val.charAt(0).toUpperCase() + val.substr(1) + 'Entry';
+
+		// make sure we're showing the .additional-entry UI
+		$this.closest('.additional-entry').addClass('is-active');
+
+		// make sure we hide the container that was showing
+		$(valueTarget).siblings().not('.d-none').addClass('d-none');
+
+		// show the container for the new radio button selection
+		$(valueTarget).removeClass('d-none');
+	});
+
+	</script>
+</body>
+</html>

@@ -60,7 +60,9 @@
 	</style>
 </head>
 <body>
-	<!--This is a protype, code is not intended for production-->
+	<!-- ************************************************************ -->
+	<!-- ** This is a protype! Code is NOT intended for production ** -->
+	<!-- ************************************************************ -->
 	<header class="masthead mb-5">
 		<div class="container">
 			<h1 class="h3">TCC Childcare Scholarship: New Enrollment</h1>
@@ -69,7 +71,7 @@
 	<main class="container">
 
 			<form action="">
-				<section class= "mb-5" id="you">
+				<section id="you" class="mb-5">
 					<h2 class="h4 mb-4">Your Information</h2>
 					<div>
 						<legend class="h6">I am</legend>
@@ -104,7 +106,7 @@
 						</fieldset>
 					</div>
 				</section>
-				<section id="yourSpouse">
+				<section id="yourSpouse" class="mb-5">
 					<h2 class="h4 mb-4">Spouse/Partner Information</h2>
 					<div>
 						<fieldset class="mb-1">
@@ -191,8 +193,14 @@
 									</label>
 								</div>
 								<div class="form-check">
-									<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-4" value="other">
+									<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-4" value="withhold">
 									<label class="form-check-label" for="spouseOccupation-4">
+										not financially contributing
+									</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-5" value="other">
+									<label class="form-check-label" for="spouseOccupation-5">
 										other
 									</label>
 								</div>
@@ -338,14 +346,31 @@
 								</div>
 
 								<div id="spouseOccupationDisabledEntry">
-									Disabled
+									Attach certification provided by a doctor or a clinic.
+									<div class="custom-file">
+									  <input type="file" class="custom-file-input" id="spouseDisabledCertificate" aria-describedby="spouseOccupationDisabledHelp" required>
+									  <label class="custom-file-label" for="spouseDisabledCertificate">Choose file</label>
+										<small id="spouseOccupationDisabledHelp" class="form-text text-muted">Accepted formats are PDF, JPEG, PNG, GIF. Filesize should be smaller than 2MB.</small>
+									</div>
 								</div>
+
+								<div id="spouseOccupationWithholdEntry">
+									<div class="form-group">
+										<label for="spouseOccupationOther">Attach proof that your spouse/partner is not financially contributing to the support of your child.</label>
+										<div class="custom-file">
+										  <input type="file" class="custom-file-input" id="spouseWithholdCertificate" aria-describedby="spouseOccupationWithholdHelp" required>
+										  <label class="custom-file-label" for="spouseWitholdCertificate">Choose file</label>
+											<small id="spouseOccupationWithholdHelp" class="form-text text-muted">Accepted formats are PDF, JPEG, PNG, GIF. Filesize should be smaller than 2MB.</small>
+										</div>
+								  </div>
+								</div>
+
 
 								<div id="spouseOccupationOtherEntry">
 									<div class="form-group">
-								    <label for="spouseOccupationOther">Please explain</label>
-								    <input type="text" class="form-control" id="spouseOccupationOther" aria-describedby="spouseOccupationOtherHelp">
-								    <small id="spouseOccupationOtherHelp" class="form-text text-muted">Please be aware that this may mean you are not eligible for this benefit.</small>
+										<label for="spouseOccupationOther">Please explain your spouse's/partner's situation</label>
+										<textarea class="form-control" id="spouseOccupationOther" rows="3" aria-describedby="spouseOccupationOtherHelp" placeholder="E.g. Spouse/partner is currently seeking employment"></textarea>
+								    <small id="spouseOccupationOtherHelp" class="form-text text-muted">Please be aware that this may affect your eligibily for this benefit.</small>
 								  </div>
 								</div>
 
@@ -354,7 +379,7 @@
 
 					</div>
 				</section>
-				 <button type="submit" class="btn btn-primary">Send Enrollment Form</button>
+				<button type="submit" class="btn btn-primary">Send Enrollment Form</button>
 			</form>
 
 	</main>

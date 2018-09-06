@@ -65,7 +65,7 @@
 	<!-- ************************************************************ -->
 	<header class="masthead mb-5">
 		<div class="container">
-			<h1 class="h3">TCC Childcare Scholarship: New Enrollment</h1>
+			<h1 class="h3">👶 TCC Childcare Scholarship: New Enrollment 🍼</h1>
 		</div>
 	</header>
 	<main class="container">
@@ -392,10 +392,10 @@
 										<option value="2">Two</option>
 										<option value="3">Three</option>
 										<option value="4">Four</option>
-									</select> of my children is/are accepted by a <abbr title="Technology Childcare Center">TCC</abbr>.</label>
+									</select> of my children is/are enrolled by a <abbr title="Technology Childcare Center">TCC</abbr>.</label>
 							</div>
 
-							<table class="table d-none" id="childrenList">
+							<table class="table table-sm table-borderless d-none" id="childrenList">
 								<thead class="thead-light">
 									<tr>
 										<th scope="col">First Name</th>
@@ -405,8 +405,8 @@
 										<th scope="col">Classroom</th>
 										<th scope="col">Days per Week</th>
 										<th scope="col" class="westgate-only">Hours</th>
-										<th scope="col">Enrollment Start</th>
-										<th scope="col">Enrollment End</th>
+										<!--<th scope="col">Enrollment Start</th>
+										<th scope="col">Enrollment End</th>-->
 									</tr>
 								</thead>
 								<tbody></tbody>
@@ -563,27 +563,27 @@
 		let childRow = `
 			<tr>
 			<td scope="row">
-				<div class="form-group">
+				<div>
 					<!-- <label for="childFirstName" class="required">First Name</label> -->
-					<input type="text" class="form-control" id="childFirstName" required="">
+					<input type="text" class="form-control form-control-sm" id="childFirstName" required="">
 				</div>
 			</td>
 			<td>
-				<div class="form-group">
+				<div>
 					<!-- <label for="childFirstName" class="required">First Name</label> -->
-					<input type="text" class="form-control" id="childLastName" required="">
+					<input type="text" class="form-control form-control-sm" id="childLastName" required="">
 				</div>
 			</td>
 			<td>
-				<div class="form-group">
+				<div>
 					<!-- <label for="childFirstName" class="required">First Name</label> -->
-					<input type="date" class="form-control" id="childBirthDate" required="">
+					<input type="date" class="form-control form-control-sm" id="childBirthDate" required="">
 				</div>
 			</td>
 			<td>
-				<div class="form-group">
+				<div>
 					<label class="d-none" for="childTCC"></label>
-						<select class="form-control" id="childTCC">
+						<select class="form-control form-control-sm" id="childTCC">
 							<option value="Eastgate">Eastgate</option>
 							<option value="Westgate">Westgate</option>
 							<option value="Koch">Koch</option>
@@ -593,9 +593,9 @@
 					</div>
 			</td>
 			<td>
-			<div class="form-group">
+			<div>
 				<label class="d-none" for="childClassroom"></label>
-					<select class="form-control" id="childClassroom">
+					<select class="form-control form-control-sm" id="childClassroom">
 						<option value="infant">Infant</option>
 						<option value="toddler">Toddler</option>
 						<option value="preschool">Preschool</option>
@@ -603,9 +603,9 @@
 				</div>
 			</td>
 			<td>
-				<div class="form-group">
+				<div>
 					<label class="d-none" for="childDays"></label>
-						<select class="form-control" id="childDays">
+						<select class="form-control form-control-sm" id="childDays">
 							<option value="2">2</option>
 							<option value="3">3</option>
 							<option value="5">5</option>
@@ -613,20 +613,20 @@
 					</div>
 			</td>
 			<td class="westgate-only">
-				<div class="form-group">
+				<div>
 					<label class="d-none" for="childHours"></label>
-					<select class="form-control" id="childHours">
+					<select class="form-control form-control-sm" id="childHours">
 						<option value="fulltime">full-time</option>
 						<option value="halftime">half-time</option>
 					</select>
 				</div>
 			</td>
-			<td>
-				<input type="date" class="form-control" id="childEnrollmentStart" required="">
+			<!--<td>
+				<input type="date" class="form-control form-control-sm" id="childEnrollmentStart" required="">
 			</td>
 			<td>
-				<input type="date" class="form-control" id="childEnrollmentEnd" required="">
-			</td>
+				<input type="date" class="form-control form-control-sm" id="childEnrollmentEnd" required="">
+			</td>-->
 			</tr>
 		`;
 		// Populate the table with the row from the template

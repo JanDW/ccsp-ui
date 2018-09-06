@@ -22,11 +22,11 @@
 		  content:"*";
 		  color:red;
 		}
-
+/*
 		.container {
 			max-width: 600px;
 		}
-
+*/
 		.additional-entry {
 			margin-left: -1rem;
 			margin-right: -1rem;
@@ -68,11 +68,11 @@
 			<h1 class="h3">TCC Childcare Scholarship: New Enrollment</h1>
 		</div>
 	</header>
-	<main class="container">
+	<main class="container-fluid">
 
 			<form action="">
 				<section id="you" class="mb-5">
-					<h2 class="h4 mb-4">Your Information</h2>
+					<h2 class="h4 mb-4">About Me</h2>
 					<div>
 						<legend class="h6">I am</legend>
 						<fieldset>
@@ -106,8 +106,8 @@
 						</fieldset>
 					</div>
 				</section>
-				<section id="yourSpouse" class="mb-5">
-					<h2 class="h4 mb-4">Spouse/Partner Information</h2>
+				<section id="spouse" class="mb-5">
+					<h2 class="h4 mb-4">About My Spouse/Partner</h2>
 					<div>
 						<fieldset class="mb-1">
 								<div class="form-group">
@@ -379,6 +379,52 @@
 
 					</div>
 				</section>
+				<section id="children" class="mb-5">
+					<h2 class="h4 mb-4">About My Children</h2>
+					<div>
+						<fieldset class="h6 required">
+
+							<div class="form-group">
+								<label class="d-inline-block" for="childrenCount">
+									<select class="form-control d-inline-block w-auto" id="childrenCount">
+										<option value="0">—please select–</option>
+										<option value="1">One</option>
+										<option value="2">Two</option>
+										<option value="3">Three</option>
+										<option value="4">Four</option>
+									</select> of my children is/are accepted by a <abbr title="Technology Childcare Center">TCC</abbr>.</label>
+							</div>
+
+							<table class="table d-none" id="childrenList">
+								<thead class="thead-light">
+									<tr>
+										<th scope="col">First Name</th>
+										<th scope="col">Last Name</th>
+										<th scope="col">Birth Date</th>
+										<th scope="col">TCC Center</th>
+										<th scope="col">Classroom</th>
+										<th scope="col">Days per Week</th>
+										<th scope="col" class="westgate-only">Hours</th>
+										<th scope="col">Enrollment Start</th>
+										<th scope="col">Enrollment End</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+
+						</fieldset>
+					</div>
+				</section>
+				<section id="financial" class="mb-5">
+					<h2 class="h4 mb-4">Financial Documentation</h2>
+					<div class="row">
+						<div class="col">parent 1</div>
+						<div class="col">parent 2</div>
+					</div>
+				</section>
+				<section id="statement" class="mb-5">
+
+				</section>
 				<button type="submit" class="btn btn-primary">Send Enrollment Form</button>
 			</form>
 
@@ -401,9 +447,9 @@
 	$('input[name=maritalStatus]').on('change',function(){
 		let $this = $(this);
 		if ($this.val() === 'married' || $this.val() === 'partnership') {
-			$('#yourSpouse').show();
+			$('#spouse').show();
 		} else {
-			$('#yourSpouse').hide();
+			$('#spouse').hide();
 		}
 	});
 
@@ -424,6 +470,99 @@
 		// show the container for the new radio button selection
 		$(valueTarget).removeClass('d-none');
 	});
+
+
+
+	// Render inputs for the selected number of children
+	let $childrenTable = $('#childrenList');
+	let $childrenTbody = $childrenTable.find('tbody')
+	$('#childrenCount').on('change', function(){
+		let $this = $(this);
+		let childrenCount = $this.val();
+    // @TODO don't empty when inputs contain values, validate instead
+		$childrenTbody.empty();
+		$childrenTable.removeClass('d-none');
+		let childRow = `
+			<tr>
+			<td scope="row">
+				<div class="form-group">
+					<!-- <label for="childFirstName" class="required">First Name</label> -->
+					<input type="text" class="form-control" id="childFirstName" required="">
+				</div>
+			</td>
+			<td>
+				<div class="form-group">
+					<!-- <label for="childFirstName" class="required">First Name</label> -->
+					<input type="text" class="form-control" id="childLastName" required="">
+				</div>
+			</td>
+			<td>
+				<div class="form-group">
+					<!-- <label for="childFirstName" class="required">First Name</label> -->
+					<input type="date" class="form-control" id="childBirthDate" required="">
+				</div>
+			</td>
+			<td>
+				<div class="form-group">
+					<label class="d-none" for="childTCC"></label>
+						<select class="form-control" id="childTCC">
+							<option value="Eastgate">Eastgate</option>
+							<option value="Westgate">Westgate</option>
+							<option value="Koch">Koch</option>
+							<option value="Linc">Linc</option>
+							<option value="Stata">Stata</option>
+						</select>
+					</div>
+			</td>
+			<td>
+			<div class="form-group">
+				<label class="d-none" for="childClassroom"></label>
+					<select class="form-control" id="childClassroom">
+						<option value="infant">Infant</option>
+						<option value="toddler">Toddler</option>
+						<option value="preschool">Preschool</option>
+					</select>
+				</div>
+			</td>
+			<td>
+				<div class="form-group">
+					<label class="d-none" for="childDays"></label>
+						<select class="form-control" id="childDays">
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="5">5</option>
+						</select>
+					</div>
+			</td>
+			<td class="westgate-only">
+				<div class="form-group">
+					<label class="d-none" for="childHours"></label>
+					<select class="form-control" id="childHours">
+						<option value="fulltime">full-time</option>
+						<option value="halftime">half-time</option>
+					</select>
+				</div>
+			</td>
+			<td>
+				<input type="date" class="form-control" id="childEnrollmentStart" required="">
+			</td>
+			<td>
+				<input type="date" class="form-control" id="childEnrollmentEnd" required="">
+			</td>
+			</tr>
+		`;
+		// Populate the table with the row from the template
+		for(let i = 0; i < childrenCount; i++) {
+			$childrenTbody.append(childRow);
+		}
+	});
+
+  // Needs to show as soon as there is one Westgate
+	// $('#childTCC').on('change',function(){
+	// 	if ( $(this.val()).toLowerCase() === 'westgate' ) {
+	// 		$('.westgate-only')
+	// 	}
+	// });
 
 	</script>
 </body>

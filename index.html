@@ -22,11 +22,11 @@
 		  content:"*";
 		  color:red;
 		}
-/*
+
 		.container {
-			max-width: 600px;
+			max-width: 1000px;
 		}
-*/
+
 		.additional-entry {
 			margin-left: -1rem;
 			margin-right: -1rem;
@@ -68,7 +68,7 @@
 			<h1 class="h3">TCC Childcare Scholarship: New Enrollment</h1>
 		</div>
 	</header>
-	<main class="container-fluid">
+	<main class="container">
 
 			<form action="">
 				<section id="you" class="mb-5">
@@ -387,7 +387,7 @@
 							<div class="form-group">
 								<label class="d-inline-block" for="childrenCount">
 									<select class="form-control d-inline-block w-auto" id="childrenCount">
-										<option value="0">—please select–</option>
+										<option value="0">please select</option>
 										<option value="1">One</option>
 										<option value="2">Two</option>
 										<option value="3">Three</option>
@@ -416,11 +416,89 @@
 					</div>
 				</section>
 				<section id="financial" class="mb-5">
-					<h2 class="h4 mb-4">Financial Documentation</h2>
+					<h2 class="h4 mb-5">Financial Documentation</h2>
 					<div class="row">
-						<div class="col">parent 1</div>
-						<div class="col">parent 2</div>
+						<div class="col">
+							<h3 class="h6">&nbsp;</h3>
+						</div>
+						<div class="col">
+							<h3 class="h6">My Financial Documentation</h3>
+						</div>
+						<div class="col">
+							<h3 class="h6">My Spouse's/Partner's Financial Documentation</h3>
+						</div>
 					</div>
+					<!-- @TODO fix for attributes and id attributes for file inputs-->
+					<div class="row border-top mt-1 pt-5">
+						<div class="col">
+								<p>A <b>completed</b> and <b>signed</b> copy of all pages of last year's <b>Federal Income Tax Form 1040 or 1040A</b> (if filed)</p>
+						</div>
+						<div class="col">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="tax1040">
+								<label class="custom-file-label" for="tax1040">Choose file</label>
+							</div>
+						</div>
+						<div class="col">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="spouseTax1040">
+								<label class="custom-file-label" for="tax1040">Choose file</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row border-top mt-4 pt-5">
+						<div class="col">
+								<p><b>Copies of two current pay stubs or similar information.</b> If your spouse/partner is self-employed, attach a copy of IRS schedule C and any other proof of self-employment available.</p>
+								<p class="text-center text-muted pt-2 pb-2">OR</p>
+								<p>If your spouse's/partner's <b>financial documentation originates in a country other than the United States</b>, please supply comparable documentation to demonstrate income.</p>
+						</div>
+						<div class="col">
+							<p class="text-muted text-center">N/A</p>
+						</div>
+						<div class="col">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="spouseTax1040">
+								<label class="custom-file-label" for="tax1040">Choose file</label>
+							</div>
+						</div>
+					</div>
+					<!--@TODO only show when student was selected under spouse-->
+					<div class="row border-top mt-4 pt-5">
+						<div class="col">
+								<p>Studying partner/spouse must include <b>proof of enrollment status</b> and a <b>copy of your appointment letter</b> (if applicable) documenting all sources of funding.</p>
+						</div>
+						<div class="col">
+							<p class="text-muted text-center">N/A</p>
+						</div>
+						<div class="col">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="spouseTax1040">
+								<label class="custom-file-label" for="tax1040">Choose file</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="row border-top mt-4 pt-5">
+						<div class="col">
+								<!-- @TODO put href in link, consider reversing sections, it's weird that it asks for documentation about something that hasn't yet been specified -->
+								<p><b>Additional financial information</b>, if necessary, to explain projected income as described in your <a href="#">estimate of gross, taxable income for the scholarship year</a>.</p>
+						</div>
+						<div class="col">
+							<p class="text-muted text-center">N/A</p>
+						</div>
+						<div class="col">
+							<div class="custom-file">
+								<input type="file" class="custom-file-input" id="spouseTax1040">
+								<label class="custom-file-label" for="tax1040">Choose file</label>
+							</div>
+						</div>
+					</div>
+
+
+				</section>
+				<section id="estimate" class="mb-5">
+					Please estimate your gross income... to be continued...
 				</section>
 				<section id="statement" class="mb-5">
 

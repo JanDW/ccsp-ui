@@ -244,14 +244,8 @@
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-4" value="withhold">
+										<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-4" value="other">
 										<label class="form-check-label" for="spouseOccupation-4">
-											not financially contributing
-										</label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-5" value="other">
-										<label class="form-check-label" for="spouseOccupation-5">
 											other
 										</label>
 									</div>
@@ -390,9 +384,15 @@
 
 									<div id="spouseOccupationOtherEntry">
 										<div class="form-group">
-											<label for="spouseOccupationOther">Please explain your spouse's/partner's situation</label>
-											<textarea class="form-control" id="spouseOccupationOther" rows="3" aria-describedby="spouseOccupationOtherHelp" placeholder="E.g. Spouse/partner is currently seeking employment"></textarea>
+											<label for="spouseOccupationOther" class="required">Please explain your spouse's/partner's situation</label>
+											<textarea class="form-control" id="spouseOccupationOther" rows="3" aria-describedby="spouseOccupationOtherHelp" placeholder="E.g. Spouse is currently seeking employment, ex-partner is not financially contributing, ..." required></textarea>
 									    <small id="spouseOccupationOtherHelp" class="form-text text-muted">Please be aware that this may affect your eligibily for this benefit.</small>
+											<br><br>
+											<div class="custom-file">
+												<input type="file" class="custom-file-input" id="otherFile">
+												<label class="custom-file-label" for="tax1040" aria-describedby="spouseOccupationOtherUploadHelp">Choose file</label>
+												<small id="spouseOccupationOtherUploadHelp" class="form-text text-muted">Provide any documents that you feel might help support your application.</small>
+											</div>
 									  </div>
 									</div>
 

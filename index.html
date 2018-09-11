@@ -404,13 +404,29 @@
 					<section id="children" class="mb-5">
 						<h2 class="h4 mb-4">About My Children</h2>
 						<div>
-							<fieldset class="required">
 
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="childEnrollmentStart" class="required">TCC Enrollment start date</label>
+										<input type="date" class="form-control" id="childEnrollmentStart" aria-describedby="spouseOccupationOtherHelp" required>
+										<small id="childEnrollmentStartHelp" class="form-text text-muted" >Validate to not backdate > two months</small>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="spouseLastName" class="required">TCC Enrollment end date</label>
+										<input type="date" class="form-control" id="childEnrollmentEnd">
+									</div>
+								</div>
+							</div>
+
+							<fieldset class="required">
 								<div class="form-group">
 									<label class="d-inline-block" for="childrenCount">
-										<select class="form-control d-inline-block w-auto" id="childrenCount">
-											<option value="0">please select</option>
-											<option value="1">One</option>
+										<select class="form-control form-control-sm d-inline-block w-auto" id="childrenCount">
+											<option value="1" selected="selected">One</option>
 											<option value="2">Two</option>
 											<option value="3">Three</option>
 											<option value="4">Four</option>
@@ -418,6 +434,7 @@
 									</label>
 								</div>
 							</fieldset>
+
 							<table class="table table-sm table-borderless d-none" id="childrenList">
 									<thead class="thead-light">
 										<tr>
@@ -428,6 +445,7 @@
 											<th scope="col">Classroom</th>
 											<th scope="col">Days per Week</th>
 											<th scope="col" class="westgate-only">Hours</th>
+											<th scope="col"><span class="sr-only">Actions</span></th>
 											<!--<th scope="col">Enrollment Start</th>
 											<th scope="col">Enrollment End</th>-->
 										</tr>
@@ -548,7 +566,7 @@
 	// don't ask for information about spouse if non-existent
 	$('input[name=maritalStatus]').on('change',function(){
 		let $this = $(this);
-		if ($this.val() === 'married' || $this.val() === 'partnership') {
+		if ($this.val() !== 'single') {
 			$('#spouse').show();
 		} else {
 			$('#spouse').hide();
@@ -645,6 +663,9 @@
 					</select>
 				</div>
 			</td>
+			<td>
+				<button type="button" class="btn btn-light btn-sm js-delete-row">⨉</button>
+			</td>
 			<!--<td>
 				<input type="date" class="form-control form-control-sm" id="childEnrollmentStart" required="">
 			</td>
@@ -657,6 +678,15 @@
 		for(let i = 0; i < childrenCount; i++) {
 			$childrenTbody.append(childRow);
 		}
+		$('.js-delete-row').on('click', function(){
+			$(this).closest('tr').remove();
+			$('#childrenCount option')
+				.filter(':selected')
+				.removeAttr('selected')
+				.prev()
+				.attr('selected','selected')
+				.trigger('click');
+		});
 	});
 
   // Needs to show as soon as there is one Westgate

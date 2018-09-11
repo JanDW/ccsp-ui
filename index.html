@@ -66,6 +66,23 @@
 			margin: 5px 0 0 5px;
 		}
 
+		.table-heading {
+			text-transform: uppercase;
+	    font-size: 0.7rem;
+	    letter-spacing: 1.2px;
+	    line-height: 1.5;
+		}
+
+		.table-row {
+			background-color: #f7f7f7;
+			padding-top: 3rem;
+			padding-bottom: 3rem;
+		}
+
+		.table-row:not(:first-child) {
+			border-top: 2px solid #FFF;
+		}
+
 
 
 		.additional-entry {
@@ -507,20 +524,22 @@
 						</div>
 					</section>
 					<section id="financial" class="mb-5">
-						<h2 class="h4 mb-5">Financial Documentation</h2>
-						<div class="row">
+						<h2 class="h4">Financial Documentation</h2>
+						<p class="mb-5">Please attach documents where appropriate. This copy needs to be adjusted for sure.<br><small class="text-muted">All documents provided must be supplied in either PDF, Word, PNG, or JPEG format and filesize must be under 3MB.</small></p>
+
+						<div class="row mt-5">
 							<div class="col">
 								<h3 class="h6">&nbsp;</h3>
 							</div>
 							<div class="col">
-								<h3 class="h6">My Financial Documentation</h3>
+								<h3 class="table-heading">My Financial Documentation</h3>
 							</div>
 							<div class="col">
-								<h3 class="h6">My Spouse's/Partner's Financial Documentation</h3>
+								<h3 class="table-heading">My Spouse's/Partner's Financial Documentation</h3>
 							</div>
 						</div>
 						<!-- @TODO fix for attributes and id attributes for file inputs-->
-						<div class="row border-top mt-1 pt-5">
+						<div class="row table-row">
 							<div class="col">
 									<p>A <b>completed</b> and <b>signed</b> copy of all pages of last year's <b>Federal Income Tax Form 1040 or 1040A</b> (if filed)</p>
 							</div>
@@ -536,26 +555,41 @@
 									<label class="custom-file-label" for="tax1040">Choose file</label>
 								</div>
 							</div>
+						</div><!-- TAXES -->
+						<div class="row table-row"><!-- FOREIGN -->
+							<div class="col">
+									<p>If your or your spouse's/partner's <b>financial documentation originates in a country other than the United States</b>, please supply comparable documentation to demonstrate income.</p>
+									<p class="alert alert-warning">All documentation must be translated into English.</p>
+							</div>
+							<div class="col">
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" id="selfForeignIncome">
+									<label class="custom-file-label" for="selfForeignIncome">Choose file</label>
+								</div>
+							</div>
+							<div class="col">
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" id="spouseForeignIncome">
+									<label class="custom-file-label" for="spouseForeignIncome">Choose file</label>
+								</div>
+							</div>
 						</div>
-
-						<div class="row border-top mt-4 pt-5">
+						<div class="row table-row">
 							<div class="col">
 									<p><b>Copies of two current pay stubs or similar information.</b> If your spouse/partner is self-employed, attach a copy of IRS schedule C and any other proof of self-employment available.</p>
-									<p class="text-center text-muted pt-2 pb-2">OR</p>
-									<p>If your spouse's/partner's <b>financial documentation originates in a country other than the United States</b>, please supply comparable documentation to demonstrate income.</p>
 							</div>
 							<div class="col">
 								<p class="text-muted text-center">N/A</p>
 							</div>
 							<div class="col">
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="spouseTax1040">
-									<label class="custom-file-label" for="tax1040">Choose file</label>
+									<input type="file" class="custom-file-input" id="spousePayStubs">
+									<label class="custom-file-label" for="spousePayStubs">Choose file</label>
 								</div>
 							</div>
 						</div>
 						<!--@TODO only show when student was selected under spouse-->
-						<div class="row border-top mt-4 pt-5">
+						<div class="row table-row d-none" id="spouseStudentFinancial">
 							<div class="col">
 									<p>Studying partner/spouse must include <b>proof of enrollment status</b> and a <b>copy of your appointment letter</b> (if applicable) documenting all sources of funding.</p>
 							</div>
@@ -564,24 +598,27 @@
 							</div>
 							<div class="col">
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="spouseTax1040">
-									<label class="custom-file-label" for="tax1040">Choose file</label>
+									<input type="file" class="custom-file-input" id="spouseStudent">
+									<label class="custom-file-label" for="spouseStudent">Choose file</label>
 								</div>
 							</div>
 						</div>
 
-						<div class="row border-top mt-4 pt-5">
+						<div class="row table-row">
 							<div class="col">
 									<!-- @TODO put href in link, consider reversing sections, it's weird that it asks for documentation about something that hasn't yet been specified -->
 									<p><b>Additional financial information</b>, if necessary, to explain projected income as described in your <a href="#">estimate of gross, taxable income for the scholarship year</a>.</p>
 							</div>
 							<div class="col">
-								<p class="text-muted text-center">N/A</p>
+								<div class="custom-file">
+									<input type="file" class="custom-file-input" id="spouseAdditonalIncome">
+									<label class="custom-file-label" for="spouseAdditonalIncome">Choose file</label>
+								</div>
 							</div>
 							<div class="col">
 								<div class="custom-file">
-									<input type="file" class="custom-file-input" id="spouseTax1040">
-									<label class="custom-file-label" for="tax1040">Choose file</label>
+									<input type="file" class="custom-file-input" id="spouseAdditonalIncome">
+									<label class="custom-file-label" for="spouseAdditonalIncome">Choose file</label>
 								</div>
 							</div>
 						</div>
@@ -629,6 +666,12 @@
 	$('input[name=spouseOccupation]').on('change',function(){
 		let $this = $(this);
 		let val = $this.val();
+
+		if (val.toLowerCase() === 'student') {
+			$('#spouseStudentFinancial').removeClass('d-none');
+		} else {
+			$('#spouseStudentFinancial').addClass('d-none');
+		}
 
 		// create ID selector for which container to show
 		let valueTarget = '#spouseOccupation' + val.charAt(0).toUpperCase() + val.substr(1) + 'Entry';

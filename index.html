@@ -238,14 +238,20 @@
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-3" value="disabled">
+										<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-3" value="self">
 										<label class="form-check-label" for="spouseOccupation-3">
+											self-employed
+										</label>
+									</div>
+									<div class="form-check">
+										<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-4" value="disabled">
+										<label class="form-check-label" for="spouseOccupation-4">
 											disabled
 										</label>
 									</div>
 									<div class="form-check">
-										<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-4" value="other">
-										<label class="form-check-label" for="spouseOccupation-4">
+										<input class="form-check-input" type="radio" name="spouseOccupation" id="spouseOccupation-5" value="other">
+										<label class="form-check-label" for="spouseOccupation-5">
 											other
 										</label>
 									</div>
@@ -311,6 +317,67 @@
 									    <label for="spouseAppointmentEndDate">Expected Appointment End Date</label>
 									    <input type="date" class="form-control" id="spouseAppointmentEndDate">
 									  </div>
+
+										<fieldset>
+											<legend class="h6 required">My spouse/partner is paid</legend>
+
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="spousePaymentSchedule" id="spousePaymentSchedule-1" value="monthly">
+												<label class="form-check-label" for="spousePaymentSchedule-1">
+													monthly
+												</label>
+											</div>
+
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="spousePaymentSchedule" id="spousePaymentSchedule-2" value="semimonthly" checked>
+												<label class="form-check-label" for="spousePaymentSchedule-2">
+													semi-monthly
+												</label>
+											</div>
+
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="spousePaymentSchedule" id="spousePaymentSchedule-3" value="biweekly" checked>
+												<label class="form-check-label" for="spousePaymentSchedule-3">
+													bi-weekly
+												</label>
+											</div>
+
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="spousePaymentSchedule" id="spousePaymentSchedule-4" value="weekly" checked>
+												<label class="form-check-label" for="spousePaymentSchedule-4">
+													weekly
+												</label>
+											</div>
+
+
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="spousePaymentSchedule" id="spousePaymentSchedule-5" value="perdiem" checked>
+												<label class="form-check-label" for="spousePaymentSchedule-5">
+													per diem
+												</label>
+											</div>
+
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="spousePaymentSchedule" id="spousePaymentSchedule-6" value="irregular" checked>
+												<label class="form-check-label" for="spousePaymentSchedule-6">
+													irregularly
+												</label>
+											</div>
+
+										</fieldset>
+									</div>
+
+									<div id="spouseOccupationSelfEntry">
+										<div class="form-group">
+											<label for="spouseCompanyName">Company Name (if applicable)</label>
+											<input type="text" class="form-control" id="spouseEmployerName">
+										</div>
+
+										<div class="form-group">
+											<label class="required" for="spouseStartCompanyDate">Self-Employment Start Date</label>
+											<input type="date" class="form-control" id="spouseStartCompanyDate" required>
+										</div>
+
 
 										<fieldset>
 											<legend class="h6 required">My spouse/partner is paid</legend>

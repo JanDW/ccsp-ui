@@ -331,7 +331,7 @@
 									  </div>
 
 										<div class="form-group mb-4">
-									    <label for="spouseAppointmentEndDate">Expected Appointment End Date</label>
+									    <label for="spouseAppointmentEndDate">Expected Appointment End Date <i>(if applicable)</i></label>
 									    <input type="date" class="form-control" id="spouseAppointmentEndDate">
 									  </div>
 
@@ -667,6 +667,7 @@
 		let $this = $(this);
 		let val = $this.val();
 
+		//Only ask for student enrollment financial documentation if the spouse is actually a student
 		if (val.toLowerCase() === 'student') {
 			$('#spouseStudentFinancial').removeClass('d-none');
 		} else {

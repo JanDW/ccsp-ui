@@ -422,20 +422,7 @@
 								</div>
 							</div>
 
-							<fieldset class="required">
-								<div class="form-group">
-									<label class="d-inline-block" for="childrenCount">
-										<select class="form-control form-control-sm d-inline-block w-auto" id="childrenCount">
-											<option value="1" selected="selected">One</option>
-											<option value="2">Two</option>
-											<option value="3">Three</option>
-											<option value="4">Four</option>
-										</select> of my children is/are enrolled at a <abbr title="Technology Childcare Center">TCC</abbr>.
-									</label>
-								</div>
-							</fieldset>
-
-							<table class="table table-sm table-borderless d-none" id="childrenList">
+							<table class="table table-sm table-borderless" id="childrenList">
 									<thead class="thead-light">
 										<tr>
 											<th scope="col">First Name</th>
@@ -451,6 +438,11 @@
 										</tr>
 									</thead>
 									<tbody></tbody>
+									<tfoot>
+										<tr>
+											<td colspan="999"><button type="button" class="btn btn-primary btn-sm float-right" id="addChild">+ Add a Child</button></td>
+										</tr>
+									</tfoot>
 								</table>
 						</div>
 					</section>
@@ -595,13 +587,9 @@
 
 	// Render inputs for the selected number of children
 	let $childrenTable = $('#childrenList');
-	let $childrenTbody = $childrenTable.find('tbody')
-	$('#childrenCount').on('change', function(){
-		let $this = $(this);
-		let childrenCount = $this.val();
-    // @TODO don't empty when inputs contain values, validate instead
-		$childrenTbody.empty();
-		$childrenTable.removeClass('d-none');
+	let $childrenTbody = $childrenTable.find('tbody');
+
+	function addChildRow($this) {
 		let childRow = `
 			<tr>
 			<td scope="row">
@@ -674,20 +662,21 @@
 			</td>-->
 			</tr>
 		`;
-		// Populate the table with the row from the template
-		for(let i = 0; i < childrenCount; i++) {
-			$childrenTbody.append(childRow);
-		}
+		$childrenTbody.append(childRow);
 		$('.js-delete-row').on('click', function(){
 			$(this).closest('tr').remove();
-			$('#childrenCount option')
-				.filter(':selected')
-				.removeAttr('selected')
-				.prev()
-				.attr('selected','selected')
-				.trigger('click');
 		});
+	}
+
+	addChildRow();
+
+	$('#addChild').on('click', function(){
+		addChildRow($(this));
 	});
+
+
+
+
 
   // Needs to show as soon as there is one Westgate
 	// $('#childTCC').on('change',function(){

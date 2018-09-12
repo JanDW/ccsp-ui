@@ -508,7 +508,7 @@
 											<th scope="col">TCC Center</th>
 											<th scope="col">Classroom</th>
 											<th scope="col">Days per Week</th>
-											<th scope="col" class="westgate-only">Hours</th>
+											<th scope="col" class="js-child-hours">Hours</th>
 											<th scope="col"><span class="sr-only">Actions</span></th>
 											<!--<th scope="col">Enrollment Start</th>
 											<th scope="col">Enrollment End</th>-->
@@ -717,7 +717,7 @@
 			<td>
 				<div>
 					<label class="d-none" for="childTCC"></label>
-						<select class="form-control form-control-sm" id="childTCC">
+						<select class="form-control form-control-sm childTCC" id="childTCC">
 							<option value="Eastgate">Eastgate</option>
 							<option value="Koch">Koch</option>
 							<option value="Linc">Linc</option>
@@ -746,7 +746,7 @@
 						</select>
 					</div>
 			</td>
-			<td class="westgate-only">
+			<td class="js-child-hours">
 				<div>
 					<label class="d-none" for="childHours"></label>
 					<select class="form-control form-control-sm" id="childHours">
@@ -770,6 +770,17 @@
 		$('.js-delete-row').on('click', function(){
 			$(this).closest('tr').remove();
 		});
+
+		//show/hide hours column based on Westgate selection (should also check when removing children)
+		$('.childTCC').on('change', function(){
+			let westgateCount = 0;
+			let $childTCCSelects = $('.childTCC');
+			$childTCCSelects.each(function(){
+				if ($(this).find('option').filter(':selected').val().toLowerCase() === 'westgate') { westgateCount++ }
+			});
+
+			(westgateCount === 0) ? $('.js-child-hours').addClass('d-none') : $('.js-child-hours').removeClass('d-none');
+		});
 	}
 
 	addChildRow();
@@ -777,17 +788,6 @@
 	$('#addChild').on('click', function(){
 		addChildRow($(this));
 	});
-
-
-
-
-
-  // Needs to show as soon as there is one Westgate
-	// $('#childTCC').on('change',function(){
-	// 	if ( $(this.val()).toLowerCase() === 'westgate' ) {
-	// 		$('.westgate-only')
-	// 	}
-	// });
 
 	</script>
 </body>

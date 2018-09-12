@@ -39,6 +39,7 @@
 		$(valueTarget).removeClass('d-none');
 	});
 
+	// insert a child row to the table
 	function addChildRow() {
 		let $childrenTable = $('#childrenList');
 		let $childrenTbody = $childrenTable.find('tbody');
@@ -120,7 +121,7 @@
 		});
 		checkWestgate();
 	};
-
+	//attach click handler for adding more children to button
 	$('#addChild').on('click', function(){ addChildRow() });
 
 	//show/hide hours column based on Westgate selection (should also check when removing children)
@@ -134,6 +135,7 @@
 		(westgateCount === 0) ? $('.js-child-hours').addClass('d-none') : $('.js-child-hours').removeClass('d-none');
 	};
 
+	// attach evemt handler to deal with Westgate logic
 	$('#childrenList').on('change', '.childTCC', function() {
 		let $this = $(this);
 		let $classRoom =  $this.closest('td').siblings('.js-child-classroom');
@@ -149,6 +151,21 @@
 
 		checkWestgate();
 	});
+
+	function incomeTotal () {
+		let incomeTotalValue = parseInt($('#youIncomeEstimate').val() || 0) + parseInt($('#spouseIncomeEstimate').val() || 0);
+		$('#incomeTotal').val(incomeTotalValue);
+	};
+
+	$('#youIncomeEstimate').on('keyup', function(){
+		incomeTotal();
+	});
+
+	$('#spouseIncomeEstimate').on('keyup', function(){
+		incomeTotal();
+	});
+
+
 
 	// init
 	addChildRow();

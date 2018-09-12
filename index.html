@@ -523,6 +523,51 @@
 								</table>
 						</div>
 					</section>
+
+					<section class="mb-5" id="grossIncome">
+						<h2 class="h4 mb-4">Estimation of Gross income for the Scholarship Year</h2>
+						<div class="row mb-3">
+							<div class="col-8">
+								<label for="youIncomeEstimate" class="required">Your estimated gross, taxable income for 9/1 - 8/31</label>
+							</div>
+							<div class="col-4">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">$</span>
+								  </div>
+								  <input type="number" class="form-control" name="income" aria-label="Amount (to the nearest dollar)" id="youIncomeEstimate" required>
+								</div>
+							</div>
+						</div>
+						<div class="row mb-5">
+							<div class="col-8">
+								<label for="spouseIncomeEstimate" class="required">Your spouse's/partner's estimated gross, taxable income for 9/1 - 8/31</label>
+							</div>
+							<div class="col-4">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">$</span>
+								  </div>
+								  <input type="number" class="form-control" name="income" id="spouseIncomeEstimate" required>
+								</div>
+							</div>
+						</div>
+						<div class="row mb-5">
+							<div class="col-8">
+								<p class="text-right">Total</p>
+							</div>
+							<div class="col-4">
+								<!-- <span id="incomeTotal"></span> -->
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">$</span>
+								  </div>
+								  <input type="text" class="form-control" name="incomeTotal"  id="incomeTotal" value="" readonly>
+								</div>
+							</div>
+						</div>
+					</section>
+
 					<section id="financial" class="mb-5">
 						<h2 class="h4">Financial Documentation</h2>
 						<p class="mb-5">Please attach documents where appropriate. This copy needs to be adjusted for sure.<br><small class="text-muted">All documents provided must be supplied in either PDF, Word, PNG, or JPEG format and filesize must be under 3MB.</small></p>
@@ -624,9 +669,6 @@
 						</div>
 
 
-					</section>
-					<section id="estimate" class="mb-5">
-						Please estimate your gross income... to be continued...
 					</section>
 					<section id="statement" class="mb-5">
 

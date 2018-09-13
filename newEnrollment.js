@@ -12,8 +12,10 @@
 		let $this = $(this);
 		if ($this.val() !== 'single') {
 			$('#spouse').show();
+			$('.js-spouse').show();
 		} else {
 			$('#spouse').hide();
+			$('.js-spouse').hide();
 		}
 	});
 
@@ -41,6 +43,21 @@
 		// show the container for the new radio button selection
 		$(valueTarget).removeClass('d-none');
 	});
+
+
+	$('input[name=address]').on('change',function (){
+		let $this = $(this);
+		let $spouseAddress = $('#spouseAddress');
+		let $employeeContact = $('#employeeContact')
+		if ($this.val() === 'spouse') {
+			$spouseAddress.removeClass('d-none');
+			$employeeContact.addClass('d-none');
+		} else {
+			$spouseAddress.addClass('d-none');
+			$employeeContact.removeClass('d-none');
+		}
+	});
+
 
 
 	// Show additional inputs when per diem or irregular options are selected in employment

@@ -10,7 +10,7 @@
 
 		body {
 			/* font-size: .875rem; */
-			min-height: 8000px;
+			padding-bottom: 100px;
 			background-color: #f3f3f3;
 			font-family: "adelle-sans", sans-serif;
 			font-size: 10pt; /* pt unit in use for Atlas, ... */
@@ -119,6 +119,24 @@
 			color: #DFDFDF;
 		}
 
+		section {
+			padding-top: .5rem;
+			margin-bottom: 3rem !important;
+		}
+
+		section:not(:first-child)::before {
+			content: " ";
+			display: block;
+			border-top: 3px solid #94acad;
+			margin-left: -5px;
+			margin-right: -5px;
+			margin-bottom: .5rem;
+		}
+
+		section h2.h4 {
+			margin-bottom: 3rem !important;
+		}
+
 
 
 	</style>
@@ -143,7 +161,7 @@
 					<form action="">
 					<section id="you" class="mb-5">
 						<h2 class="h4 mb-4">About Me</h2>
-						<div>
+						<div class="mb-4">
 							<fieldset>
 								<legend class="h6">I am</legend>
 								<div class="form-check">
@@ -171,11 +189,52 @@
 								</div>
 							</fieldset>
 						</div>
+						<div>
+							<fieldset>
+								<legend class="h6">I'd like correspondence to be sent to</legend>
+								<div class="form-check">
+										<input class="form-check-input" type="radio" name="address" id="address-1" value="work">
+										<label class="form-check-label" for="address-1">
+											my work address <i class="text-muted">(W92-267C)</i>
+										</label>
+								</div>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="address" id="address-2" value="home">
+									<label class="form-check-label" for="address-2">my home address <i class="text-muted">(49 Sunset Rd., Arlington MA, 02474)</i>
+									</label>
+								</div>
+								<div class="form-check js-spouse">
+									<input class="form-check-input" type="radio" name="address" id="address-3" value="spouse">
+									<label class="form-check-label" for="address-3">
+										my spouse's/partner's address
+									</label>
+								</div>
+							</fieldset>
+						</div>
+						<div>
+							<fieldset id="employeeContact" class="d-none mt-4">
+								<legend class="h6">Contact me at</legend>
+								<div class="form-row">
+									<div class="col-6">
+										<div class="form-group">
+											<label for="spouseEmail" class="required">Email address</label>
+											<input type="email" class="form-control" id="spouseEmail" required>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label for="spousePhone" class="required">Phone number</label>
+											<input type="tel" class="form-control" id="spousePhone" required>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
 					</section>
 					<section id="spouse" class="mb-5">
 						<h2 class="h4 mb-4">About My Spouse/Partner</h2>
 						<div>
-							<fieldset class="mb-1">
+							<fieldset class="mb-3">
 								<div class="form-row">
 									<div class="col-md-4">
 										<div class="form-group">
@@ -197,6 +256,50 @@
 									</div>
 								</div>
 							</fieldset>
+							<div id="spouseAddress" class="d-none">
+								<div class="form-row">
+									<div class="col-8">
+										<div class="form-group">
+											<label for="spouseStreetAddress" class="required">Street Address</label>
+											<input type="text" class="form-control" id="spouseStreetAddress" required>
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="form-group">
+											<label for="spouseCity" class="required">City / Town</label>
+			  							<input type="text" class="form-control" id="spouseCity" required>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-4">
+										<div class="form-group">
+											<label for="spouseZIP" class="required">ZIP Code</label>
+			  							<input type="text" class="form-control" id="spouseZIP" required>
+										</div>
+									</div>
+									<div class="col-4">
+										<div class="form-group">
+											<label for="spouseState" class="required">State</label>
+			  							<input type="text" class="form-control" id="spouseState" required>
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-6">
+										<div class="form-group">
+											<label for="spouseEmail" class="required">Email address</label>
+											<input type="email" class="form-control" id="spouseEmail" required>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											<label for="spousePhone" class="required">Phone number</label>
+											<input type="tel" class="form-control" id="spousePhone" required>
+										</div>
+									</div>
+								</div>
+							</div>
 							<div id="spouseMITInfo" class="additional-entry mb-4">
 								<div class="additional-entry-toggle custom-control custom-checkbox">
 									<input type="checkbox"
@@ -695,7 +798,10 @@
 					<section id="statement" class="mb-5">
 
 					</section>
+					<div>
 					<button type="submit" class="btn btn-primary">Send Enrollment Form</button>
+					<button type="button" class="btn btn-secondary">Save Form</button>
+					</div>
 				</form>
 				</div>
 

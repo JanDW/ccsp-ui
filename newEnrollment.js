@@ -1,4 +1,7 @@
 
+// Please do not read this code if you have pre-existing health conditions
+
+
 	//Toggle additional content on checkbox change
 	$('.additional-entry-toggle input').on('change', function(){
 		$(this).closest('.additional-entry').toggleClass('is-active');
@@ -37,6 +40,33 @@
 
 		// show the container for the new radio button selection
 		$(valueTarget).removeClass('d-none');
+	});
+
+
+	// Show additional inputs when per diem or irregular options are selected in employment
+	$('input[name=spousePaymentSchedule]').on('change',function(){
+		let $this = $(this);
+		let $spousePaymentSchedulePerDiemReasonGroup = $('#spousePaymentSchedulePerDiemReasonGroup').addClass('d-none');
+		let $spousePaymentScheduleIrregularReasonGroup = $('#spousePaymentScheduleIrregularReasonGroup').addClass('d-none');
+		if ($this.val() === 'perdiem') {
+		$spousePaymentSchedulePerDiemReasonGroup.removeClass('d-none');
+		} else if ($this.val() === 'irregular') {
+			console.log('yo');
+			$spousePaymentScheduleIrregularReasonGroup.removeClass('d-none');
+		}
+	});
+
+	// Show additional inputs when per diem or irregular options are selected in self employment
+	$('input[name=spouseSelfPaymentSchedule]').on('change',function(){
+		let $this = $(this);
+		let $spouseSelfPerDiemReasonGroup = $('#spouseSelfPerDiemReasonGroup').addClass('d-none');
+		let $spouseSelfIrregularReasonGroup = $('#spouseSelfIrregularReasonGroup').addClass('d-none');
+		console.log($this.val());
+		if ($this.val() === 'perdiem') {
+		$spouseSelfPerDiemReasonGroup.removeClass('d-none');
+		} else if ($this.val() === 'irregular') {
+			$spouseSelfIrregularReasonGroup.removeClass('d-none');
+		}
 	});
 
 	// insert a child row to the table

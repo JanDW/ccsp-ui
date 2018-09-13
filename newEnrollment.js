@@ -217,3 +217,15 @@
 	// init
 	addChildRow();
 	$('.js-child-hours').addClass('d-none');
+
+
+	//enable submission if statement of understanding is checked
+	//@TODO also depends on validation
+
+	$('#statementUnderstanding').on('click', function(){
+		if ($(this).checked) {
+			$('#submitApplication').removeAttr('disabled');
+		} else {
+			$('#submitApplication').attr('disabled');
+		}
+	})

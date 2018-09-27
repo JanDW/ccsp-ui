@@ -1,0 +1,84 @@
+{
+  "people" : [
+   {
+    "employeeName": "Autumn Jacobi",
+    "mitId": "4478785699",
+    "fundingSource": "Employee",
+    "submissionDate": "1539250458347",
+    "academicYear": "2018",
+    "status": "New"
+   },
+   {
+    "employeeName": "Keven Feil",
+    "mitId": "4266621454",
+    "fundingSource": "Employee",
+    "submissionDate": "1536793081715",
+    "academicYear": "2018",
+    "status": "Renewal"
+   },
+   {
+    "employeeName": "Madaline Gibson",
+    "mitId": "8221845535",
+    "fundingSource": "Employee",
+    "submissionDate": "1536126694016",
+    "academicYear": "2018",
+    "status": "Renewal"
+   },
+   {
+    "employeeName": "Dylan Moore",
+    "mitId": "6112331023",
+    "fundingSource": "Postdoc fellow",
+    "submissionDate": "1535434128969",
+    "academicYear": "2017",
+    "status": "New"
+   },
+   {
+    "employeeName": "Alejandra Pollich",
+    "mitId": "7501762546",
+    "fundingSource": "Employee",
+    "submissionDate": "1539265671697",
+    "academicYear": "2018",
+    "status": "Renewal"
+   },
+   {
+    "employeeName": "Eulalia Daugherty",
+    "mitId": "2422084851",
+    "fundingSource": "Employee",
+    "submissionDate": "1534828059737",
+    "academicYear": "2018",
+    "status": "Renewal"
+   },
+   {
+    "employeeName": "Rene Tromp",
+    "mitId": "5826227050",
+    "fundingSource": "Postdoc fellow",
+    "submissionDate": "1534683527653",
+    "academicYear": "2017",
+    "status": "New"
+   },
+   {
+    "employeeName": "Katlynn Pouros",
+    "mitId": "7905027069",
+    "fundingSource": "Employee",
+    "submissionDate": "1538078318554",
+    "academicYear": "2018",
+    "status": "Resubmission"
+   },
+   {
+    "employeeName": "Reta Schmidt",
+    "mitId": "1822509163",
+    "fundingSource": "Combined",
+    "submissionDate": "1538817167956",
+    "academicYear": "2018",
+    "status": "Renewal"
+   },
+   {
+    "employeeName": "Genoveva Leannon",
+    "mitId": "4656761839",
+    "fundingSource": "Employee",
+    "submissionDate": "1537686950618",
+    "academicYear": "2018",
+    "status": "Renewal"
+   }
+  ]
+}

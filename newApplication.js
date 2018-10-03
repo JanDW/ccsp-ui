@@ -1,6 +1,7 @@
 
 // Please do not read this code if you have pre-existing health conditions
 
+
 	//Tabula rasa
 	document.getElementById('newApplicationForm').reset();
 
@@ -27,7 +28,7 @@
 		} else {
 			$('#payStubsRow').show();
 		}
-	})
+	});
 
 	// deal with spouse occupation selection
 	$('input[name=spouseOccupation]').on('change',function(){
@@ -68,12 +69,11 @@
 		}
 	});
 
+
 	// Select input value on click, so user doesn't have to do it when (s)he wants to change it
 	$('#employeeEmail, #employeePhone').on('focus',function(){
 		$(this).select();
 	});
-
-
 
 	// Show additional inputs when per diem or irregular options are selected in employment
 	$('input[name=spousePaymentSchedule]').on('change',function(){
@@ -102,6 +102,7 @@
 	});
 
 	// insert a row for an additional child to the table
+
 	function addChildRow() {
 		let $childrenTable = $('#childrenList');
 		let $childrenTbody = $childrenTable.find('tbody');
@@ -243,4 +244,4 @@
 		} else {
 			$('#submitApplication').attr('disabled','disabled');
 		}
-	})
+	});

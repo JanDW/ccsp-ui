@@ -96,7 +96,7 @@
 		.additional-entry-toggle.custom-control {padding-left: 2.25rem;}
 
 		.additional-entry.is-active .additional-entry-toggle {
-			border: 1px solid #CCC;
+			border: 1px solid #EEE;
 			border-top-left-radius: 8px;
 			border-top-right-radius: 8px;
 			border-bottom: 0;
@@ -108,7 +108,7 @@
 
 		.additional-entry.is-active .additional-entry-content {
 			display: block;
-			background-color: #EEE;
+			background-color: #F6F6F6;
 			padding: 15px;
 			border-bottom-left-radius: 8px;
 			border-bottom-right-radius: 8px;
@@ -137,7 +137,23 @@
 			margin-bottom: 3rem !important;
 		}
 
+		[placeholder]:focus::-webkit-input-placeholder {
+  		opacity: 0;
+		}
 
+		[placeholder]:focus:-moz-placeholder {
+  /* Firefox 18- */
+  		opacity: 0;
+		}
+
+		[placeholder]:focus::-moz-placeholder {
+  /* Firefox 19+ */
+  		opacity: 0;
+		}
+
+		[placeholder]:focus:-ms-input-placeholder {
+		  opacity: 0;
+		}
 
 	</style>
 </head>
@@ -158,7 +174,7 @@
 					<header class="section-heading">
 						<h1 class="section-title">TCC Childcare Scholarship: New Enrollment 2018-2019</h1>
 					</header>
-					<form action="">
+					<form id="newApplicationForm" action="">
 					<section id="you" class="mb-5">
 						<h2 class="h4 mb-4">About Me</h2>
 						<div class="mb-4">
@@ -391,6 +407,13 @@
 													Stipend
 												</label>
 											</div>
+
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="spouseFunding" id="spouseFunding-4" value="na">
+												<label class="form-check-label" for="spouseFunding-4">
+													N/A
+												</label>
+											</div>
 										</fieldset>
 
 									</div>
@@ -620,7 +643,7 @@
 						<h2 class="h4 mb-4">Estimation of Gross income for the Scholarship Year</h2>
 						<div class="row mb-3">
 							<div class="col-8">
-								<label for="youIncomeEstimate" class="required">Your estimated gross, taxable income for 9/1 - 8/31</label>
+								<label for="youIncomeEstimate" class="required">Your estimated gross, taxable <b>salary</b> for 9/1 - 8/31</label>
 							</div>
 							<div class="col-4">
 								<div class="input-group">
@@ -633,7 +656,7 @@
 						</div>
 						<div class="row mb-5">
 							<div class="col-8">
-								<label for="spouseIncomeEstimate" class="required">Your spouse's/partner's estimated gross, taxable income for 9/1 - 8/31</label>
+								<label for="spouseIncomeEstimate" class="required">Your spouse's/partner's estimated gross, taxable <b>salary</b> for 9/1 - 8/31</label>
 							</div>
 							<div class="col-4">
 								<div class="input-group">
@@ -662,7 +685,10 @@
 
 					<section id="financial" class="mb-5">
 						<h2 class="h4">Financial Documentation</h2>
-						<p class="mb-5">Please attach documents where appropriate. This copy needs to be adjusted for sure.<br><small class="text-muted">All documents provided must be supplied in either PDF, Word, PNG, or JPEG format and filesize must be under 3MB.</small></p>
+
+						<p>Please attach documents where appropriate. This copy needs to be adjusted for sure. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse fugit ab labore maiores asperiores, quos ipsam, corrupti officia quam soluta possimus, cum maxime. Minima temporibus cumque soluta non aliquid.</p>
+						<p class="alert alert-warning"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;All documentation must be translated into English.</p>
+						<p><small class="text-muted"> Documents provided must be supplied in either PDF, Word, PNG, or JPEG format and filesize must be under 3MB.</small></p>
 
 						<div class="row mt-5">
 							<div class="col">
@@ -696,7 +722,6 @@
 						<div class="row table-row"><!-- FOREIGN -->
 							<div class="col">
 									<p>If your or your spouse's/partner's <b>financial documentation originates in a country other than the United States</b>, please supply comparable documentation to demonstrate income.</p>
-									<p class="alert alert-warning">All documentation must be translated into English.</p>
 							</div>
 							<div class="col">
 								<div class="custom-file">
@@ -711,7 +736,8 @@
 								</div>
 							</div>
 						</div>
-						<div class="row table-row">
+
+						<div class="row table-row" id="payStubsRow">
 							<div class="col">
 									<p><b>Copies of two current pay stubs or similar information.</b> If your spouse/partner is self-employed, attach a copy of IRS schedule C and any other proof of self-employment available.</p>
 							</div>

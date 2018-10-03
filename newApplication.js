@@ -2,6 +2,9 @@
 // Please do not read this code if you have pre-existing health conditions
 
 
+	//Tabula rasa
+	document.getElementById('newApplicationForm').reset();
+
 	//Toggle additional content on checkbox change
 	$('.additional-entry-toggle input').on('change', function(){
 		$(this).closest('.additional-entry').toggleClass('is-active');
@@ -16,6 +19,14 @@
 		} else {
 			$('#spouse').hide();
 			$('.js-spouse').hide();
+		}
+	});
+
+	$('#spouseMITAffiliate').on('click', function(){
+		if ($(this).is(':checked')){
+			$('#payStubsRow').hide();
+		} else {
+			$('#payStubsRow').show();
 		}
 	});
 
@@ -59,6 +70,10 @@
 	});
 
 
+	// Select input value on click, so user doesn't have to do it when (s)he wants to change it
+	$('#employeeEmail, #employeePhone').on('focus',function(){
+		$(this).select();
+	});
 
 	// Show additional inputs when per diem or irregular options are selected in employment
 	$('input[name=spousePaymentSchedule]').on('change',function(){
@@ -86,7 +101,8 @@
 		}
 	});
 
-	// insert a child row to the table
+	// insert a row for an additional child to the table
+
 	function addChildRow() {
 		let $childrenTable = $('#childrenList');
 		let $childrenTbody = $childrenTable.find('tbody');
@@ -222,10 +238,10 @@
 	//enable submission if statement of understanding is checked
 	//@TODO also depends on validation
 
-	$('#statementUnderstanding').on('click', function(){
-		if ($(this).checked) {
+	$('#statementUnderstanding').on('change', function(){
+		if ($(this).is(':checked')) {
 			$('#submitApplication').removeAttr('disabled');
 		} else {
-			$('#submitApplication').attr('disabled');
+			$('#submitApplication').attr('disabled','disabled');
 		}
-	})
+	});

@@ -1,0 +1,24 @@
+{
+  "name": "ccsp-experiment",
+  "version": "1.0.0",
+  "description": "Prototype for CSSP",
+  "main": "adminInbox.js",
+  "dependencies": {
+    "angular": "^1.7.5",
+    "angular-resource": "^1.7.5",
+    "angular-route": "^1.7.5",
+    "easy-toggle-state": "^1.8.0"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1"
+  },
+  "scripts": {
+    "start": "http-server ./app -a localhost -p 8000 -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.mit.edu:jandw/ccsp-experiment.git"
+  },
+  "author": "Jan De Wilde",
+  "license": ""
+}

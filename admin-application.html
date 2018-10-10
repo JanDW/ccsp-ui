@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>CSSP Admin :: Application Detail</title>
@@ -9,357 +10,394 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
 </head>
-<body style="background-color: #eee">
+
+<body>
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<a href="#" class="navbar-brand">CSSP Admin</a>
 	</nav>
 
-	<main class="container-fluid">
+	<main class="container-fluid pt-4">
+		<span class="badge badge-primary">Employee</span>
+		<span class="badge badge-warning"><i class="fas fa-gavel"></i> Pending approval</span>
+		<h1 class="mt-3">Madaline Gibson — New Application</h1>
+		<h2 class="h5">Jul 18, 2018</h2>
+
 		<div class="accordion" id="applicationAccordion">
 
 			<!-- APPLICATION -->
-			<div class="card mt-5">
+			<div class="card border-0 mt-3 d-none">
 
-			    <div class="card-header" id="applicationDetails">
-			    	<h2 class="h5 card-title"><button class="btn btn-link" type="button" data-toggle="collapse" data-target="#applicationDetailsContent" aria-expanded="collapsable application details">Application Details</button></h2>
-			    </div>
-			    <!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
-					<div class="card-body" id="applicationDetailsContent" aria-labelledby="applicationDetails" data-parent="#applicationAccordion">
-			    <div class="card-text mt-4">
-			    	<dl class="row">
-							<div class="col-3">
-				    		<dt>Date Submitted</dt>
-				    		<dd>Jul 18, 2018</dd>
-							</div>
-							<div class="col-3">
-				    		<dt>Academic Year</dt>
-				    		<dd>2018</dd>
-							</div>
-							<div class="col-3">
-				    		<dt>Fund</dt>
-				    		<dd>Employee</dd>
-							</div>
-							<div class="col-3">
-				    		<dt>Application Status</dt>
-				    		<dd class="text-warning"><i class="fas fa-gavel"></i> Pending approval</dd>
-							</div>
-			    	</dl>
-			    </div>
-			  </div>
-			</div>
-
-			<!-- EMPLOYEE -->
-			<div class="card mt-3">
-			  <div class="card-body">
-			    <h2 class="h5 card-title">Employee Details</h2>
-			    <!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
-			    <div class="card-text mt-4">
-			    	<dl class="row">
-							<div class="col-3">
-				    		<dt>First name</dt>
-				    		<dd>Madaline</dd>
-							</div>
-							<div class="col-3 text-muted">
-				    		<dt>Middle initial</dt>
-				    		<dd>—</dd>
-							</div>
-							<div class="col-3">
-				    		<dt>Last name</dt>
-				    		<dd>Gibson</dd>
-							</div>
-							<div class="col-3">
-				    		<dt>MIT ID #</dt>
-				    		<dd>8221845535</dd>
-							</div>
-			    	</dl>
+				<div class="card-header" id="applicationDetails">
+					<button class="btn btn-link p-0" type="button" data-toggle="collapse" data-target="#applicationDetailsContent" aria-expanded="collapsable application details">Application Details</button>
+				</div>
+				<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+				<div class="card-body" id="applicationDetailsContent" aria-labelledby="applicationDetails" data-parent="#applicationAccordion">
+					<div class="card-text">
 						<dl class="row">
 							<div class="col-3">
-				    		<dt>MIT affiliation</dt>
-				    		<dd>Staff</dd>
-							</div>
-							<div class="col-3 text-muted">
-				    		<dt>Email</dt>
-				    		<dd><a href="mailto:m.gibson@gmail.com"><del>m.gibson@gmail.com</del></a></dd>
-							</div>
-							<div class="col-3 text-muted">
-				    		<dt>Phone #</dt>
-				    		<dd><a href="tel:14014417272"><del>(401) 441-7272</a></del></dd>
+								<dt>Date Submitted</dt>
+								<dd>Jul 18, 2018</dd>
 							</div>
 							<div class="col-3">
-				    		<dt>Marital status</dt>
-				    		<dd>Married</dd>
+								<dt>Academic Year</dt>
+								<dd>2018 – 2019</dd>
 							</div>
-			    	</dl>
-			    </div>
-			  </div>
+							<div class="col-3">
+								<dt>Fund</dt>
+								<dd>Employee</dd>
+							</div>
+							<div class="col-3">
+								<dt>Application Status</dt>
+								<dd class="text-warning"><i class="fas fa-gavel"></i> Pending approval</dd>
+							</div>
+						</dl>
+					</div>
+				</div>
 			</div>
 
-			<!-- SPOUSE -->
-			<div class="card mt-3">
-			  <div class="card-body">
-			    <h2 class="h5 card-title">Spouse/Partner Details</h2>
-			    <!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
-			    <div class="card-text mt-4">
-			    	<dl class="row">
-							<div class="col-3">
-				    		<dt>First name</dt>
-				    		<dd>Bruce</dd>
-							</div>
-							<div class="col-3 text-muted">
-				    		<dt>Middle initial</dt>
-				    		<dd>—</dd>
-							</div>
-							<div class="col-3">
-				    		<dt>Last name</dt>
-				    		<dd>Laurie</dd>
-							</div>
-							<div class="col-3 text-muted">
-				    		<dt>MIT ID #</dt>
-				    		<dd>—</dd>
-							</div>
-			    	</dl>
-						<dl class="row">
-							<div class="col-3 text-muted">
-				    		<dt>MIT affiliation</dt>
-				    		<dd>—</dd>
-							</div>
-							<div class="col-3">
-				    		<dt>Email</dt>
-				    		<dd><a href="mailto:b.laurie@gmail.com">b.laurie@gmail.com</a></dd>
-							</div>
-							<div class="col-3">
-				    		<dt>Phone #</dt>
-				    		<dd><a href="tel:+14014316488">(401) 431-6488</a></dd>
-							</div>
-							<div class="col-3 d-none">
-								<dt>Occupation status</dt>
-								<dd>Employed</dd>
-							</div>
-			    	</dl>
-			    </div>
-					<div class="card bg-light mb-3">
+			<div>
+				<!-- EMPLOYEE -->
+				<div class="card-group w-100">
+					<div class="card border-0 mt-3">
 						<div class="card-header">
-							<i class="fas fa-check-circle text-success" aria-label="yes"></i> Employment Details
+							Employee Details
 						</div>
-						<!-- <h5 class="card-title">Secondary card title</h5> -->
 						<div class="card-body">
-							<dl>
-								<div class="row">
+							<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+							<div class="card-text">
+								<dl class="row">
 									<div class="col-3">
-										<dt>Employer name</dt>
-										<dd>Plan 3 Architects</dd>
-									</div>
-									<div class="col-3">
-										<dt>Hired on</dt>
-										<dd>May 23, 2009</dd>
+										<dt>First name</dt>
+										<dd>Madaline</dd>
 									</div>
 									<div class="col-3 text-muted">
-										<dt>Appointment end date <small class="text-muted">(if known)</small></dt>
+										<dt>Middle initial</dt>
 										<dd>—</dd>
 									</div>
-								</div>
-								<div class="row">
 									<div class="col-3">
-										<dt>Employment > 20h</dt>
-										<dd><i class="fas fa-check" aria-label="yes"></i></dd>
+										<dt>Last name</dt>
+										<dd>Gibson</dd>
 									</div>
 									<div class="col-3">
-										<dt>Payment Frequency</dt>
-										<dd>Weekly</dd>
+										<dt>MIT ID #</dt>
+										<dd>8221845535</dd>
 									</div>
-								</div>
-							</dl>
+								</dl>
+								<dl class="row">
+									<div class="col-3">
+										<dt>MIT affiliation</dt>
+										<dd>Staff</dd>
+									</div>
+									<div class="col-3 text-muted">
+										<dt>Email</dt>
+										<dd><a href="mailto:m.gibson@gmail.com"><del>m.gibson@gmail.com</del></a></dd>
+									</div>
+									<div class="col-3 text-muted">
+										<dt>Phone #</dt>
+										<dd><a href="tel:14014417272"><del>(401) 441-7272</a></del></dd>
+									</div>
+									<div class="col-3">
+										<dt>Marital status</dt>
+										<dd>Married</dd>
+									</div>
+								</dl>
+							</div>
 						</div>
 					</div>
-			  </div>
+				<!-- </div> -->
+
+				<!-- SPOUSE -->
+				<!-- <div class="col-xl-6"> -->
+					<div class="card border-0 mt-3">
+						<div class="card-header">Spouse/Partner Details</div>
+						<div class="card-body">
+							<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+							<div class="card-text">
+								<dl class="row">
+									<div class="col-3">
+										<dt>First name</dt>
+										<dd>Bruce</dd>
+									</div>
+									<div class="col-3 text-muted">
+										<dt>Middle initial</dt>
+										<dd>—</dd>
+									</div>
+									<div class="col-3">
+										<dt>Last name</dt>
+										<dd>Laurie</dd>
+									</div>
+									<div class="col-3 text-muted">
+										<dt>MIT ID #</dt>
+										<dd>—</dd>
+									</div>
+								</dl>
+								<dl class="row">
+									<div class="col-3 text-muted">
+										<dt>MIT affiliation</dt>
+										<dd>—</dd>
+									</div>
+									<div class="col-3">
+										<dt>Email</dt>
+										<dd><a href="mailto:b.laurie@gmail.com">b.laurie@gmail.com</a></dd>
+									</div>
+									<div class="col-3">
+										<dt>Phone #</dt>
+										<dd><a href="tel:+14014316488">(401) 431-6488</a></dd>
+									</div>
+									<div class="col-3 d-none">
+										<dt>Occupation status</dt>
+										<dd>Employed</dd>
+									</div>
+								</dl>
+							</div>
+							<div class="card border-0 bg-light mb-3">
+								<div class="card-header">
+									Employment Details&nbsp;<i class="fas fa-check-circle text-success" aria-label="yes"></i>
+								</div>
+								<!-- <h5 class="card-title">Secondary card title</h5> -->
+								<div class="card-body">
+									<dl>
+										<div class="row">
+											<div class="col-3">
+												<dt>Employer name</dt>
+												<dd>Plan 3 Architects</dd>
+											</div>
+											<div class="col-3">
+												<dt>Hired on</dt>
+												<dd>May 23, 2009</dd>
+											</div>
+											<div class="col-3 text-muted">
+												<dt>Appointment end date <small class="text-muted">(if known)</small></dt>
+												<dd>—</dd>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-3">
+												<dt>Employment > 20h</dt>
+												<dd><i class="fas fa-check" aria-label="yes"></i></dd>
+											</div>
+											<div class="col-3">
+												<dt>Payment Frequency</dt>
+												<dd>Weekly</dd>
+											</div>
+										</div>
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<!-- CHILDREN -->
-			<div class="card mt-3">
+			<div class="card border-0 mt-3">
+				<div class="card-header">Children</div>
 				<div class="card-body">
-					<h2 class="h5 card-title">Children</h2>
 					<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
-					<div class="card-text mt-4">
+					<div class="card-text mt-2">
 						<table class="table table-sm table-borderless" id="childrenList">
-									<thead class="thead-light">
-										<tr>
-											<th scope="col">First Name</th>
-											<th scope="col">Last Name</th>
-											<th scope="col">Birth Date</th>
-											<th scope="col">TCC Center</th>
-											<th scope="col">Classroom</th>
-											<th scope="col">Days per Week</th>
-											<th scope="col" class="js-child-hours d-none">Hours</th>
-											<th scope="col"><span class="sr-only">Actions</span></th>
-											<!--<th scope="col">Enrollment Start</th>
+							<thead class="thead-light-temp">
+								<tr>
+									<th scope="col">First Name</th>
+									<th scope="col">Last Name</th>
+									<th scope="col">Birth Date</th>
+									<th scope="col">TCC Center</th>
+									<th scope="col">Classroom</th>
+									<th scope="col">Days per Week</th>
+									<th scope="col" class="js-child-hours d-none">Hours</th>
+									<th scope="col"><span class="sr-only">Actions</span></th>
+									<!--<th scope="col">Enrollment Start</th>
 											<th scope="col">Enrollment End</th>-->
-										</tr>
-									</thead>
-									<tbody>
-			<tr>
-			<td scope="row">
-				<div>
-					<!-- <label for="childFirstName" class="required">First Name</label> -->
-					<input type="text" class="form-control form-control-sm" id="childFirstName" required="">
-				</div>
-			</td>
-			<td>
-				<div>
-					<!-- <label for="childFirstName" class="required">First Name</label> -->
-					<input type="text" class="form-control form-control-sm" id="childLastName" required="">
-				</div>
-			</td>
-			<td>
-				<div>
-					<!-- <label for="childFirstName" class="required">First Name</label> -->
-					<input type="date" class="form-control form-control-sm" id="childBirthDate" required="">
-				</div>
-			</td>
-			<td>
-				<div>
-					<label class="d-none" for="childTCC"></label>
-						<select class="form-control form-control-sm childTCC" id="childTCC">
-							<option value="Eastgate">Eastgate</option>
-							<option value="Koch">Koch</option>
-							<option value="Linc">Linc</option>
-							<option value="Stata">Stata</option>
-							<option value="Westgate">Westgate</option>
-						</select>
-					</div>
-			</td>
-			<td class="js-child-classroom">
-			<div>
-				<label class="d-none" for="childClassroom"></label>
-					<select class="form-control form-control-sm" id="childClassroom">
-						<option value="infant">Infant</option>
-						<option value="toddler">Toddler</option>
-						<option value="preschool">Preschool</option>
-					</select>
-				</div>
-			</td>
-			<td>
-				<div>
-					<label class="d-none" for="childDays"></label>
-						<select class="form-control form-control-sm" id="childDays">
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="5">5</option>
-						</select>
-					</div>
-			</td>
-			<td class="js-child-hours d-none">
-				<div>
-					<label class="d-none" for="childHours"></label>
-					<select class="form-control form-control-sm" id="childHours">
-						<option value="fulltime">full-time</option>
-						<option value="halftime">half-time</option>
-					</select>
-				</div>
-			</td>
-			<td>
-				<button type="button" class="btn btn-light btn-sm js-delete-row">⨉</button>
-			</td>
-			<!--<td>
-				<input type="date" class="form-control form-control-sm" id="childEnrollmentStart" required="">
-			</td>
-			<td>
-				<input type="date" class="form-control form-control-sm" id="childEnrollmentEnd" required="">
-			</td>-->
-			</tr>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<th scope="row">
+										<div>
+											<label for="childFirstName" class="required sr-only">First Name</label>
+											<input type="text" class="form-control form-control-sm" id="childFirstName" required="" />
+										</div>
+									</th>
+									<td>
+										<div>
+											<label for="childFirstName" class="required sr-only">First Name</label>
+											<input type="text" class="form-control form-control-sm" id="childLastName" required="" />
+										</div>
+									</td>
+									<td>
+										<div>
+											<label for="childFirstName" class="required sr-only">First Name</label>
+											<input type="date" class="form-control form-control-sm" id="childBirthDate" required="" />
+										</div>
+									</td>
+									<td>
+										<div>
+											<label class="d-none" for="childTCC"></label>
+											<select class="form-control form-control-sm childTCC" id="childTCC">
+												<option value="Eastgate">Eastgate</option>
+												<option value="Koch">Koch</option>
+												<option value="Linc">Linc</option>
+												<option value="Stata">Stata</option>
+												<option value="Westgate">Westgate</option>
+											</select>
+										</div>
+									</td>
+									<td class="js-child-classroom">
+										<div>
+											<label class="d-none" for="childClassroom"></label>
+											<select class="form-control form-control-sm" id="childClassroom">
+												<option value="infant">Infant</option>
+												<option value="toddler">Toddler</option>
+												<option value="preschool">Preschool</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<div>
+											<label class="d-none" for="childDays"></label>
+											<select class="form-control form-control-sm" id="childDays">
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="5">5</option>
+											</select>
+										</div>
+									</td>
+									<td class="js-child-hours d-none">
+										<div>
+											<label class="d-none" for="childHours"></label>
+											<select class="form-control form-control-sm" id="childHours">
+												<option value="fulltime">full-time</option>
+												<option value="halftime">half-time</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<button type="button" class="btn btn-light btn-sm js-delete-row">⨉</button>
+									</td>
+								</tr>
 
-			<tr>
-			<td scope="row">
-				<div>
-					<!-- <label for="childFirstName" class="required">First Name</label> -->
-					<input type="text" class="form-control form-control-sm" id="childFirstName" required="">
-				</div>
-			</td>
-			<td>
-				<div>
-					<!-- <label for="childFirstName" class="required">First Name</label> -->
-					<input type="text" class="form-control form-control-sm" id="childLastName" required="">
-				</div>
-			</td>
-			<td>
-				<div>
-					<!-- <label for="childFirstName" class="required">First Name</label> -->
-					<input type="date" class="form-control form-control-sm" id="childBirthDate" required="">
-				</div>
-			</td>
-			<td>
-				<div>
-					<label class="d-none" for="childTCC"></label>
-						<select class="form-control form-control-sm childTCC" id="childTCC">
-							<option value="Eastgate">Eastgate</option>
-							<option value="Koch">Koch</option>
-							<option value="Linc">Linc</option>
-							<option value="Stata">Stata</option>
-							<option value="Westgate">Westgate</option>
-						</select>
+								<tr>
+									<td scope="row">
+										<div>
+											<label for="childFirstName" class="required sr-only">First Name</label>
+											<input type="text" class="form-control form-control-sm" id="childFirstName" required="" />
+										</div>
+									</td>
+									<td>
+										<div>
+											<label for="childFirstName" class="required sr-only">First Name</label>
+											<input type="text" class="form-control form-control-sm" id="childLastName" required="" />
+										</div>
+									</td>
+									<td>
+										<div>
+											<label for="childFirstName" class="required sr-only">First Name</label>
+											<input type="date" class="form-control form-control-sm" id="childBirthDate" required="" />
+										</div>
+									</td>
+									<td>
+										<div>
+											<label class="d-none" for="childTCC"></label>
+											<select class="form-control form-control-sm childTCC" id="childTCC">
+												<option value="Eastgate">Eastgate</option>
+												<option value="Koch">Koch</option>
+												<option value="Linc">Linc</option>
+												<option value="Stata">Stata</option>
+												<option value="Westgate">Westgate</option>
+											</select>
+										</div>
+									</td>
+									<td class="js-child-classroom">
+										<div>
+											<label class="d-none" for="childClassroom"></label>
+											<select class="form-control form-control-sm" id="childClassroom">
+												<option value="infant">Infant</option>
+												<option value="toddler">Toddler</option>
+												<option value="preschool">Preschool</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<div>
+											<label class="d-none" for="childDays"></label>
+											<select class="form-control form-control-sm" id="childDays">
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="5">5</option>
+											</select>
+										</div>
+									</td>
+									<td class="js-child-hours d-none">
+										<div>
+											<label class="d-none" for="childHours"></label>
+											<select class="form-control form-control-sm" id="childHours">
+												<option value="fulltime">full-time</option>
+												<option value="halftime">half-time</option>
+											</select>
+										</div>
+									</td>
+									<td>
+										<button type="button" class="btn btn-light btn-sm js-delete-row">⨉</button>
+									</td>
+								</tr>
+							</tbody>
+							<tfoot>
+								<tr>
+									<td colspan="999"><button type="button" class="btn btn-primary btn-sm float-right" id="addChild">+ Add a Child</button></td>
+								</tr>
+							</tfoot>
+						</table>
 					</div>
-			</td>
-			<td class="js-child-classroom">
-			<div>
-				<label class="d-none" for="childClassroom"></label>
-					<select class="form-control form-control-sm" id="childClassroom">
-						<option value="infant">Infant</option>
-						<option value="toddler">Toddler</option>
-						<option value="preschool">Preschool</option>
-					</select>
 				</div>
-			</td>
-			<td>
-				<div>
-					<label class="d-none" for="childDays"></label>
-						<select class="form-control form-control-sm" id="childDays">
-							<option value="2">2</option>
-							<option value="3">3</option>
-							<option value="5">5</option>
-						</select>
-					</div>
-			</td>
-			<td class="js-child-hours d-none">
-				<div>
-					<label class="d-none" for="childHours"></label>
-					<select class="form-control form-control-sm" id="childHours">
-						<option value="fulltime">full-time</option>
-						<option value="halftime">half-time</option>
-					</select>
+			</div>
+
+			<!-- GROSS ESTIMATED INCOME -->
+			<div class="card border-0 mt-3">
+				<div class="card-header">
+					<i class="fas fa-check-circle text-success" aria-label="Income qualifies"></i>&nbsp;Gross Estimated Income for AY 2018-2019: <span class="text-muted">&nbsp;$112,963</span>
 				</div>
-			</td>
-			<td>
-				<button type="button" class="btn btn-light btn-sm js-delete-row">⨉</button>
-			</td>
-			<!--<td>
-				<input type="date" class="form-control form-control-sm" id="childEnrollmentStart" required="">
-			</td>
-			<td>
-				<input type="date" class="form-control form-control-sm" id="childEnrollmentEnd" required="">
-			</td>-->
-			</tr>
-		</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="999"><button type="button" class="btn btn-primary btn-sm float-right" id="addChild">+ Add a Child</button></td>
-										</tr>
-									</tfoot>
-								</table>
+				<div class="card-body">
+					<div class="card-text mt-4">
+						<dl class="row">
+							<div class="col-3">
+								<dt>Employee salary</dt>
+								<dd>$89.625</dd>
+							</div>
+							<div class="col-3">
+								<dt>Employee additional income</dt>
+								<dd>$5,979</dd>
+							</div>
+							<div class="col-3">
+								<dt>Spouse salary</dt>
+								<dd>$17,359</dd>
+							</div>
+							<div class="col-3">
+								<dt>Spouse additional income</dt>
+								<dd>—</dd>
+							</div>
+						</dl>
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<div class="card border-0 mt-3">
+			<div class="card-body">
+				<h2 class="h5 card-title"></h2>
+				<div class="card-text mt-4"></div>
+			</div>
+		</div>
+
 	</main>
 
 	<!-- SCRIPTS -->
-	<script
-	src="https://code.jquery.com/jquery-3.3.1.min.js"
-	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-	crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
+
 </html>

@@ -1,6 +1,6 @@
-{
-  "people" : [
+ [
    {
+		"employeeId": "autumn-jacobi",
     "employeeName": "Autumn Jacobi",
     "mitId": "4478785699",
     "fundingSource": "Employee",
@@ -9,6 +9,7 @@
     "status": "New"
    },
    {
+		"employeeId": "keven-feil",
     "employeeName": "Keven Feil",
     "mitId": "4266621454",
     "fundingSource": "Employee",
@@ -17,6 +18,7 @@
     "status": "Renewal"
    },
    {
+		"employeeId": "madaline-gibson",
     "employeeName": "Madaline Gibson",
     "mitId": "8221845535",
     "fundingSource": "Employee",
@@ -25,6 +27,7 @@
     "status": "Renewal"
    },
    {
+		"employeeId": "dylan-moore",
     "employeeName": "Dylan Moore",
     "mitId": "6112331023",
     "fundingSource": "Postdoc fellow",
@@ -33,6 +36,7 @@
     "status": "New"
    },
    {
+		"employeeId": "alejandra-pollich",
     "employeeName": "Alejandra Pollich",
     "mitId": "7501762546",
     "fundingSource": "Employee",
@@ -41,6 +45,7 @@
     "status": "Renewal"
    },
    {
+		"employeeId": "eulalia-daugherty",
     "employeeName": "Eulalia Daugherty",
     "mitId": "2422084851",
     "fundingSource": "Employee",
@@ -49,6 +54,7 @@
     "status": "Renewal"
    },
    {
+		"employeeId": "rene-tromp",
     "employeeName": "Rene Tromp",
     "mitId": "5826227050",
     "fundingSource": "Postdoc fellow",
@@ -57,6 +63,7 @@
     "status": "New"
    },
    {
+		"employeeId": "katlynn-pouros",
     "employeeName": "Katlynn Pouros",
     "mitId": "7905027069",
     "fundingSource": "Employee",
@@ -65,6 +72,7 @@
     "status": "Resubmission"
    },
    {
+		"employeeId": "reta-schmidt",
     "employeeName": "Reta Schmidt",
     "mitId": "1822509163",
     "fundingSource": "Combined",
@@ -73,6 +81,7 @@
     "status": "Renewal"
    },
    {
+		"employeeId": "genoveva-leannon",
     "employeeName": "Genoveva Leannon",
     "mitId": "4656761839",
     "fundingSource": "Employee",
@@ -81,4 +90,3 @@
     "status": "Renewal"
    }
   ]
-}

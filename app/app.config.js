@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('phonecatApp').config([
+angular.module('ccspApp').config([
 	'$locationProvider',
 	'$routeProvider',
 	function config($locationProvider, $routeProvider){

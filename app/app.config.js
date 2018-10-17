@@ -1,5 +1,5 @@
 'use strict';
-
+// $ROUTES
 angular.module('ccspApp').config([
 	'$locationProvider',
 	'$routeProvider',

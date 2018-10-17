@@ -214,7 +214,6 @@ const writeObjectToJsonFile = (obj, jsonFileName) => {
 		const randomEmployeesArrayIndex = faker.random.number({ min: 0, max: api.employees.length - 1});
 
 		const employee = api.employees[randomEmployeesArrayIndex];
-		console.log(employee);
 
 		api.applications.push(Application(employee));
 		// Create an ID array element on the employee referencing the application

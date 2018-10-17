@@ -1,1 +1,1 @@
-angular.module('applicationList',[]);
+angular.module('applicationList',['datatables']);

@@ -129,8 +129,8 @@ const Application = (employee) => {
  // @TODO Since the application can be returned and resubmitted, does it make sense to store this in an array on this property? Should research best practices
  application.submissionDates = [faker.date.between('2018-08-01','2018-09-15')];
  application.academicYear = (Math.random() > 0.2) ?
- 															'2018-19' :
-															'2017-18'; //How would you store AY in an API? academicYearStart and academicYearEnd with two date objects maybe?
+ 															'2018\u2009–\u200919' :
+															'2017\u2009–\u200918'; //How would you store AY in an API? academicYearStart and academicYearEnd with two udate objects maybe?
  application.statusCode = 0;
  application.statusMessage = 'Pending Approval'; // Corresponding to statusCode, should create a map for all the statusCodes/statusMessages
  application.employeeId = employee.id;
@@ -210,7 +210,7 @@ const writeObjectToJsonFile = (obj, jsonFileName) => {
 	});
 
 	// Add n applications to random employees
-	_.times(25, (index) => {
+	_.times(50, (index) => {
 		const randomEmployeesArrayIndex = faker.random.number({ min: 0, max: api.employees.length - 1});
 
 		const employee = api.employees[randomEmployeesArrayIndex];

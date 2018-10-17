@@ -2,5 +2,6 @@ angular.module('ccspApp', [
 	'ngRoute',
 	'core',
 	'applicationDetail',
-	'applicationList'
+	'applicationList',
+  'datatables'
 ]);

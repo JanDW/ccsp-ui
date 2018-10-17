@@ -12,9 +12,9 @@ angular.
 				// 	self.mainImageUrl = imageUrl;
 				// }
 
-				$http.get('/phones/' + $routeParams.phoneId + '.json').then(function(response){
+				$http.get('http://localhost:3000/employees/' + $routeParams.applicationId).then(function(response){
 					self.application = response.data;
-					self.setImage(self.phone.images[0]);
+					console.log(self.application);
 				});
 
         // this.phoneId = $routeParams.phoneId;

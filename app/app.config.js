@@ -13,6 +13,9 @@ angular.module('ccspApp').config([
 			when('/applications/:applicationId', {
 				template: '<application-detail></application-detail>'
 			}).
+			//when('/employees/:employeeId', {
+			//	template: ''
+			//})
 			otherwise('/applications');
 	}
 ]);

@@ -5,10 +5,10 @@ angular.
 		controller: ['$http',
 			function ApplicationListController($http) {
 				var self = this;
-				self.orderProp = 'age';
+				// self.orderProp = 'age';
 
-				$http.get('people.json').then(function(response){
-					self.employees = response.data;
+				$http.get('http://localhost:3000/applications?_expand=employee').then(function(response){
+					self.applications = response.data;
 				});
 			}
 		]

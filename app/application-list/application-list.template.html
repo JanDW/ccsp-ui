@@ -1,0 +1,25 @@
+<div class="mt-4">
+	<dl class="dl-horizontal" ng-repeat="application in $ctrl.applications">
+		<dt>Name</dt>
+		<dd>
+			<span>{{application.employee.firstName}}</span>
+			<span>{{application.employee.middleInitial}}</span>
+			<span>{{application.employee.lastName}}</span>
+		</dd>
+		<dt>MIT ID</dt>
+		<dd>
+			<span>{{application.employee.mitId}}</span>
+		</dd>
+		<dt>Status</dt>
+		<dd>
+			<span>{{application.statusMessage}}</span>
+		</dd>
+		<dt>Submission date</dt>
+		<dd>
+			<span ng-repeat="submissionDate in application.submissionDates" ng-if="$last">{{submissionDate | date : 'mediumDate'}}</span>
+		</dd>
+		<dt>Academic year</dt>
+		<dd class="border-bottom pb-3">{{application.academicYear}}</dd>
+
+	</dl>
+</div>

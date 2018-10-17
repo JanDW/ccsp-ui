@@ -1,6 +1,6 @@
 'use strict';
-
-angular.module('phonecatApp').config([
+// $ROUTES
+angular.module('ccspApp').config([
 	'$locationProvider',
 	'$routeProvider',
 	function config($locationProvider, $routeProvider){
@@ -13,6 +13,9 @@ angular.module('phonecatApp').config([
 			when('/applications/:applicationId', {
 				template: '<application-detail></application-detail>'
 			}).
+			//when('/employees/:employeeId', {
+			//	template: ''
+			//})
 			otherwise('/applications');
 	}
 ]);

@@ -1,6 +1,7 @@
 {
   "employees" : [
    {
+		"id": 1,
     "employeeName": "Autumn Jacobi",
     "mitId": 4478785699,
     "fundingSource": "Employee",
@@ -25,10 +26,11 @@
 				"classRoom": "Infant",
 				"daysPerWeek": 5,
 				"schedule": ""
-			},
-		],
+			}
+		]
    },
    {
+		"id": 2,
     "employeeName": "Keven Feil",
     "mitId": 4266621454,
     "fundingSource": "Employee",
@@ -37,6 +39,7 @@
     "status": "Renewal"
    },
    {
+		"id": 3,
     "employeeName": "Madaline Gibson",
     "mitId": 8221845535,
     "fundingSource": "Employee",
@@ -45,6 +48,7 @@
     "status": "Renewal"
    },
    {
+		"id": 4,
     "employeeName": "Dylan Moore",
     "mitId": 6112331023,
     "fundingSource": "Postdoc fellow",
@@ -53,6 +57,7 @@
     "status": "New"
    },
    {
+		"id": 5,
     "employeeName": "Alejandra Pollich",
     "mitId": 7501762546,
     "fundingSource": "Employee",
@@ -61,6 +66,7 @@
     "status": "Renewal"
    },
    {
+		"id": 6,
     "employeeName": "Eulalia Daugherty",
     "mitId": 2422084851,
     "fundingSource": "Employee",
@@ -69,6 +75,7 @@
     "status": "Renewal"
    },
    {
+		"id": 7,
     "employeeName": "Rene Tromp",
     "mitId": 5826227050,
     "fundingSource": "Postdoc fellow",
@@ -77,6 +84,7 @@
     "status": "New"
    },
    {
+		"id": 8,
     "employeeName": "Katlynn Pouros",
     "mitId": 7905027069,
     "fundingSource": "Employee",
@@ -85,6 +93,7 @@
     "status": "Resubmission"
    },
    {
+		"id": 9,
     "employeeName": "Reta Schmidt",
     "mitId": 1822509163,
     "fundingSource": "Combined",
@@ -93,6 +102,7 @@
     "status": "Renewal"
    },
    {
+		"id": 10,
     "employeeName": "Genoveva Leannon",
     "mitId": 4656761839,
     "fundingSource": "Employee",

@@ -25,13 +25,13 @@ npm run-script make-api
 To start the mock JSON API server consuming the `api.json` file
 
 ```bash
- npm run-script serve-api
+npm run-script serve-api
 ```
 
 Or live life to the fullest and combine `make-api` and `serve-api` by running
 
 ```bash
-	npm run-script api
+npm run-script api
 ```
 
 

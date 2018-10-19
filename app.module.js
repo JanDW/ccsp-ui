@@ -3,5 +3,10 @@ angular.module('ccspApp', [
 	'core',
 	'applicationDetail',
 	'applicationList',
-  'datatables'
+  'employeeDetail',
+  'spouseDetail',
+  'childrenList',
+  'incomeDetail',
+  'datatables',
+  'ui.bootstrap'
 ]);

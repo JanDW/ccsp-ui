@@ -1,0 +1,18 @@
+
+body {
+	background-color: #f6f6f6;
+}
+
+.dl-reversed > div > dt {font-weight: 400; color: var(--gray);}
+.dl-reversed > div > dd {font-weight: 500;}
+
+.card-ccsp {
+	border-color: #cde9f9;
+}
+
+.card-header-ccsp {
+	/* background-color: var(--gray-dark) !important; */
+	background-color: #e2f3ff !important;
+	font-weight: 700;
+	color: #115175;
+}

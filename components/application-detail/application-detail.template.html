@@ -1,0 +1,70 @@
+<main class="pt-4">
+
+	<!-- APLICATION DETAILS -->
+	<div class="clearfix">
+		<p class="text-muted float-left">
+			<span class="badge badge-warning align-middle">
+			 {{$ctrl.application.statusMessage}}
+		 </span> &middot;
+			<span class="align-middle">
+				AY {{$ctrl.application.academicYear}}
+			</span> &middot;
+			<span class="align-middle">
+		 		Submitted on
+				 <span ng-repeat="submissionDate in $ctrl.application.submissionDates" ng-if="$last">
+						{{submissionDate | date : 'mediumDate'}}
+					</span> &middot;
+			</span>
+			<span class="align-middle">
+				ID {{$ctrl.application.id}}
+			</span>
+		</p>
+
+		<div class="float-right">
+			<button ng-click="prev()" type="button" class="btn btn-white text-primary btn-sm align-middle">
+				Prev
+			</button>
+			<button ng-click="next()" type="button" class="btn btn-white text-primary btn-sm align-middle">
+				Next
+			</button>
+		</div>
+	</div>
+
+
+	<div class="card-deck mt-4">
+		<!-- ugh, need to put the .card classes on the custom element as .card-deck expects them as children -->
+
+		<!-- EMPLOYEE -->
+		<employee-detail class="card card-ccsp" employee="$ctrl.application.employee"></employee-detail>
+
+		<!-- SPOUSE -->
+		<spouse-detail class="card card-ccsp" spouse="$ctrl.spouse" employee="$ctrl.application.employee" ng-if="$ctrl.application.employee.maritalStatus !== 'singleOrWidowed'"></spouse-detail>
+	</div>
+
+	<!-- CHILDREN -->
+	<children-list children="$ctrl.children"></children-list>
+
+	<!-- GROSS ESTIMATED INCOME -->
+  <income-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee"></income-detail>
+</main>
+
+<div class="bg-dark border-top w-100 position-fixed fixed-bottom">
+	<footer class="container clearfix p-3">
+		<div class="float-left">
+			<button type="button" class="btn btn-warning font-weight-bold">
+				<i class="fas fa-reply" aria-hidden></i> Return
+			</button>
+			<button type="button" class="btn btn-danger font-weight-bold">
+				<i class="fas fa-ban" aria-hidden></i> Deny
+			</button>
+		</div>
+		<div class="float-right">
+			<!-- <button type="button" class="btn btn-light">
+				<i class="fas fa-save" aria-hidden></i> Save
+			</button> -->
+			<button type="button" class="btn btn-success font-weight-bold">
+				<i class="fas fa-thumbs-up" aria-hidden></i> Approve
+			</button>
+		</div>
+	</footer>
+</div>

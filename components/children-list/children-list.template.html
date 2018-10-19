@@ -1,0 +1,51 @@
+<div class="card card-ccsp mt-4">
+	<div class="card-header card-header-ccsp  border-0 bg-white">Children</div>
+	<div class="card-body p-0">
+		<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+		<div class="card-text">
+			<table class="table mb-0" id="childrenList">
+				<thead class="bg-light">
+					<tr>
+						<th scope="col" class="pt-4">&nbsp;</th>
+						<th scope="col" class="pt-4">First Name</th>
+						<th scope="col" class="pt-4">Last Name</th>
+						<th scope="col" class="pt-4">Birth Date</th>
+						<th scope="col" class="pt-4">TCC Center</th>
+						<th scope="col" class="pt-4">Classroom</th>
+						<th scope="col" class="pt-4">Days per Week</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="child in $ctrl.children">
+						<th scope="row">
+							{{ $index + 1 }}
+						</th>
+						<td>
+							{{ child.firstName }}
+						</td>
+						<td>
+							{{ child.lastName }}
+						</td>
+						<td>
+							{{ child.dateOfBirth | date : 'mediumDate' }}
+						</td>
+						<td>
+							{{ child.tccCenter }}
+						</td>
+						<td>
+							{{ child.classRoom}}
+						</td>
+						<td>
+							{{ child.daysPerWeek }}
+						</td>
+					</tr>
+				</tbody>
+				<!-- <tfoot>
+					<tr>
+						<td colspan="999"><button type="button" class="btn btn-primary btn-sm float-right" id="addChild">+ Add a Child</button></td>
+					</tr>
+				</tfoot> -->
+			</table>
+		</div>
+	</div>
+</div>

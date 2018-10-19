@@ -1,0 +1,50 @@
+<div class-disabled="card card-ccsp">
+	<div class="card-header card-header-ccsp border-0 bg-white">
+		<span class="align-middle">
+			{{ $ctrl.employee.lastName }},
+			{{ $ctrl.employee.firstName }}
+			{{ $ctrl.employee.middleInitial }}
+		</span>
+		&nbsp;
+		<span class="text-muted align-middle">
+			( Employee
+			<span ng-if="$ctrl.employee.isPrimaryContact"> / Primary Contact</span>
+		)
+		</span>
+
+		<div class="ml-2 d-inline-block">
+			<a href="mailto:{{ $ctrl.employee.email }}" title="{{ $ctrl.employee.email }}" uib-tooltip="{{ $ctrl.employee.email }}" tooltip-placement="top">
+					<i class="fas fa-envelope align-middle" aria-hidden></i>
+					<span class="sr-only">email</span>
+				</a>
+			&nbsp;
+			<a href="tel:{{ $ctrl.employee.phone }}" title="{{ $ctrl.employee.phone }}" uib-tooltip="{{ $ctrl.employee.phone }}" tooltip-placement="top">
+				<i class="fas fa-phone align-middle" aria-hidden></i>
+				<span class="sr-only">phone</span>
+			</a>
+		</div>
+		<button type="button" class="btn btn-link align-middle py-0 float-right" data-toggle="modal" data-target="#employeeEdit">
+					<i class="fas fa-pencil-alt text-primary" aria-hidden></i>
+					<span class="sr-only">edit</span>
+				</button>
+	</div>
+	<div class="card-body">
+		<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+		<div class="card-text">
+			<dl class="row dl-reversed mb-0">
+				<div class="col-4">
+					<dt>MIT affiliation</dt>
+					<dd>{{ $ctrl.employee.affiliation  | createLabelFromKey }}</dd>
+				</div>
+				<div class="col-4">
+					<dt>Marital status</dt>
+					<dd>{{ $ctrl.employee.maritalStatus | createLabelFromKey }}</dd>
+				</div>
+				<div class="col-4">
+					<dt>MIT ID #</dt>
+					<dd>{{ $ctrl.employee.mitId }}</dd>
+				</div>
+			</dl>
+		</div>
+	</div>
+</div>

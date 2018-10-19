@@ -10,7 +10,8 @@
     "angular-route": "^1.7.5",
     "faker": "^4.1.0",
     "lodash": "^4.17.11",
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "ui-bootstrap4": "^3.0.5"
   },
   "devDependencies": {
     "http-server": "^0.11.1",
@@ -20,9 +21,9 @@
   },
   "scripts": {
     "start": "http-server . -a localhost -p 8000 -c-1",
-    "api": "node make-api.js && node api-server.js",
-    "serve-api": "node api-server.js",
-    "make-api": "node api-make.js"
+    "api": "node make-api.js && node serve-api.js",
+    "serve-api": "node serve-api.js",
+    "make-api": "node make-api.js"
   },
   "repository": {
     "type": "git",

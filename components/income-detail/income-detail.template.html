@@ -5,19 +5,19 @@
 	<div class="card-body">
 		<div class="card-text">
 			<dl class="row dl-reversed">
-				<div class="col-3" ng-if="$ctrl.employee.salary">
+				<div class="col-{{ $ctrl.numberOfColumnsSpan }}" ng-if="$ctrl.employee.salary">
 					<dt>Employee salary</dt>
 					<dd>{{ $ctrl.employee.salary | currency : '$' : 0  }}</dd>
 				</div>
-				<div class="col-3" ng-if="$ctrl.employee.additionalIncome">
+				<div class="col-{{ $ctrl.numberOfColumnsSpan }}" ng-if="$ctrl.employee.additionalIncome">
 					<dt>Employee additional income</dt>
 					<dd>{{ $ctrl.employee.additionalIncome | currency : '$' : 0  }}</dd>
 				</div>
-				<div class="col-3" ng-if="$ctrl.spouse.salary">
+				<div class="col-{{ $ctrl.numberOfColumnsSpan }}" ng-if="$ctrl.spouse.salary">
 					<dt>Spouse salary</dt>
 					<dd>{{ $ctrl.spouse.salary | currency : '$' : 0  }}</dd>
 				</div>
-				<div class="col-3" ng-if="$ctrl.spouse.additionalIncome">
+				<div class="col-{{ $ctrl.numberOfColumnsSpan }}" ng-if="$ctrl.spouse.additionalIncome">
 					<dt>Spouse additional income</dt>
 					<dd>{{ $ctrl.spouse.additionalIncome | currency : '$' : 0  }}</dd>
 				</div>

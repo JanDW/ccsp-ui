@@ -11,15 +11,23 @@ component('incomeDetail', {
 
       let self = this;
 
+
       //Make sure the data has been passed via the bindings
       self.$onChanges = function(changes) {
-        // if employee and spouse are no longer undefined, data is here
-        if(typeof this.employee === 'object' && typeof this.spouse === 'object') {
-          // if undefined add 0
-          self.totalIncome = (self.employee.salary || 0) +
-                             (self.employee.additionalIncome || 0) +
-                             (self.spouse.salary || 0) +
-                             (self.spouse.additionalIncome || 0);
+        const incomes = [];
+
+        // if employee is no longer undefined, data is here
+        if(typeof this.employee === 'object') {
+          // add property values to array if not undefined
+          if (self.employee.salary) { incomes.push(self.employee.salary); }
+          if (self.employee.additionalIncome) { incomes.push(self.employee.additionalIncome); }
+          if (self.spouse && self.spouse.salary) { incomes.push(self.spouse.salary); } // check if spouse exists first, checking property on undefined obj would throw err
+          if (self.spouse && self.spouse.additionalIncome) { incomes.push(self.spouse.additionalIncome); }
+
+          // add array elements together
+          self.totalIncome = incomes.reduce((a, b) => a + b, 0);
+
+          self.numberOfColumnsSpan = 12 / incomes.length;
         }
       };
     }

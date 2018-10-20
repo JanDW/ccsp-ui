@@ -3,5 +3,6 @@
 }());
 
 angular.module('spouseDetail', [
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngAnimate'
 ]);

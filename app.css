@@ -1,6 +1,7 @@
 
 body {
 	background-color: #f6f6f6;
+	padding-bottom: 100px;
 }
 
 .dl-reversed > div > dt {font-weight: 400; color: var(--gray);}

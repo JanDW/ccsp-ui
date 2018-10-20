@@ -1,5 +1,6 @@
 angular.module('ccspApp', [
 	'ngRoute',
+  'ngAnimate',
 	'core',
 	'applicationDetail',
 	'applicationList',

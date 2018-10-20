@@ -33,11 +33,11 @@
 		<div class="card-text">
 		</div>
 		<div class="card bg-light m-0 border-0">
-			<div class="card-header border-0 bg-white pl-4 pr-4 border-0" data-toggle="collapse" data-target="#employmentDetails">
-				<i class="fas fa-check-circle text-success" aria-label="yes"></i>&nbsp;<a href="#">Employment Details</a>
+			<div class="card-header border-0 bg-white pl-4 pr-4 border-0" ng-click="isCollapsed = !isCollapsed">
+				<i class="fas fa-check-circle text-success" aria-label="yes"></i>&nbsp;Employment Details
 			</div>
 			<!-- <h5 class="card-title">Secondary card title</h5> -->
-			<div class="card-body collapse" id="employmentDetails">
+			<div class="card-body" uib-collapse="isCollapsed">
 				<dl class="dl-reversed dl-horizontal">
 					<dt>Employer name</dt>
 					<dd>Plan 3 Architects</dd>

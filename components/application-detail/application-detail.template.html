@@ -3,7 +3,7 @@
 	<!-- APLICATION DETAILS -->
 	<div class="clearfix">
 		<p class="text-muted float-left">
-			<span class="badge badge-warning align-middle">
+			<span ng-class="$ctrl.application.badgeClass" class="badge align-middle">
 			 {{$ctrl.application.statusMessage}}
 		 </span> &middot;
 			<span class="align-middle">
@@ -21,10 +21,10 @@
 		</p>
 
 		<div class="float-right">
-			<button ng-click="prev()" type="button" class="btn btn-white text-primary btn-sm align-middle">
+			<button ng-click="$ctrl.prev()" type="button" class="btn btn-white text-primary btn-sm align-middle">
 				Prev
 			</button>
-			<button ng-click="next()" type="button" class="btn btn-white text-primary btn-sm align-middle">
+			<button ng-click="$ctrl.next()" type="button" class="btn btn-white text-primary btn-sm align-middle">
 				Next
 			</button>
 		</div>

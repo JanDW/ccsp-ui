@@ -12,7 +12,8 @@ component('incomeDetail', {
       let self = this;
 
 
-      //Make sure the data has been passed via the bindings
+      // Make sure the data has been passed via the bindings
+      // https://medium.com/front-end-hacking/angularjs-onchanges-component-hook-as-solution-for-not-ready-bindings-cb78335c3f5e
       self.$onChanges = function(changes) {
         const incomes = [];
 

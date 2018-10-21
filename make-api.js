@@ -151,7 +151,8 @@ const Application = (employee) => {
  const application = {};
  application.id = api.applications.length;
  // @TODO Since the application can be returned and resubmitted, does it make sense to store this in an array on this property? Should research best practices
- application.submissionDates = [faker.date.between('2018-08-01','2018-09-15')];
+ application.lastSubmissionDate = faker.date.between('2018-08-01','2018-09-15');
+ application.submissionDates = [].concat([application.lastSubmissionDate]);
  application.academicYear = (Math.random() > 0.2) ?
                                '2018\u2009–\u200919' :
                               '2017\u2009–\u200918'; //How would you store AY in an API? academicYearStart and academicYearEnd with two udate objects maybe?
@@ -208,7 +209,7 @@ const writeObjectToJsonFile = (obj, jsonFileName) => {
         if (employee.maritalStatus !== 'singleOrWidowed') {
           api.spouses.push(Spouse(employee));
           // Create an ID reference on the employee to the spouse
-          employee.spouseId = api.spouses.length;
+          employee.spouseId = api.spouses.length - 1;
           // Determine who is primary contact
           employee.isPrimaryContact = faker.random.boolean();
         }
@@ -253,6 +254,21 @@ const writeObjectToJsonFile = (obj, jsonFileName) => {
     // Create an ID array element on the employee referencing the application
     employee.applicationIds.push(index);
   });
+
+  // Order applications
+  api.applications = _.sortBy(api.applications, function(application) {
+    return new Date(application.lastSubmissionDate);
+  });
+
+  // add ordinal index to property
+  (function(){
+    let index = 0;
+    api.applications.forEach(function(application){
+      if (application.statusCode === 0)
+      application.orderIndex = index++;
+    });
+  }());
+
 
 removeKeysWithEmptyProperties(api);
 writeObjectToJsonFile(api,'api');

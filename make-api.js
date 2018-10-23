@@ -108,13 +108,13 @@ const Spouse = (employee) => {
 function Child(employee, tccCenter) {
 
     var child = {};
-    child.id = api.children.length; // Is it too brittle to rely on .length? Should be fine for prototype, but there must be best practice on generating them.
+    child.id = api.children.length;
     child.firstName = faker.name.firstName();
     child.lastName = employee.lastName;
     child.tccCenter = tccCenter;
     child.classRoom = faker.random.arrayElement(['Infant', 'Toddler', 'Preschool']);
     child.daysPerWeek = faker.random.arrayElement([2,3,5]);
-    child.employeeId = employee.id; //Hmmm... what would be a good name for these references to the Employee that pop up on all objects
+    child.employeeId = employee.id;
     if (tccCenter.toLowerCase() === 'westgate') {
       child.schedule = faker.random.arrayElement(['fulltime', 'halftime']);
     }
@@ -260,7 +260,7 @@ const writeObjectToJsonFile = (obj, jsonFileName) => {
     return new Date(application.lastSubmissionDate);
   });
 
-  // add ordinal index to property
+  // add ordinal orderIndex property for pending Approval applications
   (function(){
     let index = 0;
     api.applications.forEach(function(application){

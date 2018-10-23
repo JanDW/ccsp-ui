@@ -5,6 +5,7 @@ angular.module('ccspApp', [
 	'applicationDetail',
 	'applicationList',
   'employeeDetail',
+  'employeeDetailEdit',
   'spouseDetail',
   'childrenList',
   'incomeDetail',

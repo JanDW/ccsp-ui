@@ -13,9 +13,9 @@
 		 		Submitted on
 				 <span ng-repeat="submissionDate in $ctrl.application.submissionDates" ng-if="$last">
 						{{submissionDate | date : 'mediumDate'}}
-					</span> &middot;
+					</span>
 			</span>
-			<span class="align-middle">
+			<span class="align-middle d-none">
 				ID {{$ctrl.application.id}}
 			</span>
 		</p>

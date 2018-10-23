@@ -3,5 +3,6 @@
 }());
 
 angular.module('employeeDetail', [
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngAnimate'
 ]);

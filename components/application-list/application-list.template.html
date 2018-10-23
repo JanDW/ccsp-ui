@@ -29,7 +29,7 @@
 						<!-- <td>
 							{{application.statusMessage}}
 						</td> -->
-						<td>
+						<td data-sort="{{application.lastSubmissionDate}}">
 							<span ng-repeat="submissionDate in application.submissionDates" ng-if="$last">
 								{{submissionDate | date : 'mediumDate'}}
 							</span>

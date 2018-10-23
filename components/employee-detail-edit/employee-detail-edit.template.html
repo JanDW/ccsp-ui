@@ -4,56 +4,31 @@
 <div class="modal-content">
 	<div class="modal-header">
 		<h5 class="modal-title">Employee</h5>
-		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<button type="button" class="close" ng-click="$ctrl.handleDismiss()" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
 	<div class="modal-body">
 		<form action="#">
 			<fieldset id="employeeContact">
-				<div class="form-row">
-					<div class="form-group col-5">
-						<label for="employeeFirstName" class="required">First Name</label>
-						<input type="text" class="form-control" id="employeeFirstName" ng-model="$ctrl.employee.firstName" required>
-					</div>
-					<div class="form-group col-2">
-						<label for="employeeMiddleInitial" class="required">Middle</label>
-						<input type="text" class="form-control" id="employeeMiddleInitial" value="M" maxlength="1" required>
-					</div>
-					<div class="form-group col-5">
-						<label for="employeeLastName" class="required">Last Name</label>
-						<input type="text" class="form-control" id="employeeLastName" value="Gibson" maxlength="1" required>
-					</div>
-				</div>
 				<div class="form-group">
-					<label for="employeeMitId" class="required">MIT ID</label>
-					<input type="number" class="form-control" id="employeeMitId" value="jandw@mit.edu" maxlength="10" required>
-				</div>
-				<div class="form-group">
-					<label for="employeeMitAffiliation" class="required">MIT Affiliation</label>
-					<select id="employeeMitAffiliation" class="custom-select">
-						<option value="faculty">Faculty</option>
-						<option value="staff">Staff</option>
-						<option value="student">Student</option>
-						<option value="postdoc associate">Postdoc Associate</option>
-						<option value="postdoc fellow">Postdoc Fellow</option>
-						<option value="postdoc combined">Postdoc Associate and Fellow</option>
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="spouseEmail" class="required">Email address</label>
-					<input type="email" class="form-control" id="employeeEmail" value="jandw@mit.edu" required>
+					<label for="employeeEmail" class="required">Email address</label>
+					<input type="email" class="form-control" id="employeeEmail" ng-model="$ctrl.employee.email" required>
 				</div>
 				<div class="form-group">
 						<label for="spousePhone" class="required">Phone number</label>
-						<input type="tel" class="form-control" id="employeePhone" value="617-324-6046" required>
+						<input type="tel" class="form-control" id="employeePhone" ng-model="$ctrl.employee.phone" required>
+				</div>
+				<div class="form-group">
+						<input type="checkbox" name="" id="primaryContact" ng-model="$ctrl.employee.isPrimaryContact">
+						<label for="primaryContact">Primary Contact</label>
 				</div>
 			</fieldset>
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-		<button type="button" class="btn btn-primary">Save changes</button>
+		<button type="button" class="btn btn-secondary" ng-click="$ctrl.handleDismiss()">Cancel</button>
+		<button type="button" class="btn btn-primary" ng-click="$ctrl.handleClose()">Save changes</button>
 	</div>
 </div>
 <!-- </div>

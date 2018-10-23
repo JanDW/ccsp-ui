@@ -4,27 +4,32 @@ module('employeeDetail').
 component('employeeDetail', {
   templateUrl: 'components/employee-detail/employee-detail.template.html',
   bindings: {
-    employee: '<' //data gets passed in as an input on an employee attribute on the custom element
+    employee: '=' //data gets passed in as an input on an employee attribute on the custom element
   },
   controller: ['$uibModal',
     function EmployeeDetailController($uibModal) {
       $ctrl = this;
-      console.log($ctrl);
 
       $ctrl.editEmployee = function(){
        $uibModal.open({
-        template: '<employee-detail-edit employee="$ctrl.employee"></employee-detail-edit>',
+        template: '<employee-detail-edit employee="$ctrl.employee" $close="$close(result)" $dismiss="$dismiss(reason)"></employee-detail-edit>',
         controller: ['employee', function(employee) {
           let $ctrl = this;
           $ctrl.employee = employee;
-          //$ctrl.employee = employee;
         }],
         controllerAs: '$ctrl',
         resolve: {
           employee: function(){
-           return  $ctrl.employee;
+           return angular.copy($ctrl.employee); //return a copy so changes don't get pushed up
           }
         }
+      }).result.then(function(result){
+        // modal saved - update $ctrl.employee with returned object
+        console.info("saved ->"+ result);
+        $ctrl.employee = result;
+        // modal dismissed
+      }, function(reason) {
+        console.info("dismissed ->"+ reason);
       });
     };
   }]

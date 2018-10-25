@@ -42,4 +42,9 @@ input, select, textarea {
 	background-color: #3b3b3b;
 	margin: 0 -1px -1px -1px;
 	border-top: 0;
+	justify-content: left;
+}
+
+.modal-footer .btn-secondary {
+	margin-right: auto;
 }

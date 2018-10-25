@@ -50,11 +50,11 @@
 					</div>
 					<div class="col-6">
 						<dt>Appointment start date</dt>
-						<dd>{{$ctrl.spouse.appointmentStartDate | date : 'mediumDate'}}</dd>
+						<dd>{{$ctrl.spouse._appointmentStartDate || $ctrl.spouse.appointmentStartDate | date : 'mediumDate'}}</dd>
 					</div>
 					<div class="col-6" ng-if="$ctrl.spouse.appointmentEndDate">
 						<dt>Appointment end date <small class="text-muted">(if known)</small></dt>
-						<dd>{{$ctrl.spouse.appointmentEndDate | date : 'mediumDate'}}</dd>
+						<dd>{{$ctrl.spouse._appointmentEndDate || $ctrl.spouse.appointmentEndDate | date : 'mediumDate'}}</dd>
 					</div>
 					<div class="col-6">
 						<dt>Employment &gt; 20h</dt>
@@ -74,11 +74,11 @@
 					</div>
 					<div class="col-6">
 						<dt>Admission date</dt>
-						<dd>{{$ctrl.spouse.schoolAdmissionDate | date : 'mediumDate'}}</dd>
+						<dd>{{$ctrl.spouse._schoolAdmissionDate || $ctrl.spouse.schoolAdmissionDate | date : 'mediumDate'}}</dd>
 					</div>
 					<div class="col-6" ng-if="$ctrl.spouse.schoolExpectedGraduationDate">
 						<dt>Expected graduation date</dt>
-						<dd>{{$ctrl.spouse.schoolExpectedGraduationDate | date : 'mediumDate'}}</dd>
+						<dd>{{$ctrl.spouse._schoolExpectedGraduationDate || $ctrl.spouse.schoolExpectedGraduationDate | date : 'mediumDate'}}</dd>
 					</div>
 					<div class="col-6">
 						<dt>Type of funding</dt>
@@ -94,7 +94,7 @@
 					</div>
 					<div class="col-6">
 						<dt>Self-employment start date</dt>
-						<dd>{{$ctrl.spouse.selfEmploymentStartDate | date : 'mediumDate'}}</dd>
+						<dd>{{$ctrl.spouse._selfEmploymentStartDate || $ctrl.spouse.selfEmploymentStartDate | date : 'mediumDate'}}</dd>
 					</div>
 					<div class="col-6">
 						<dt>Payment frequency</dt>

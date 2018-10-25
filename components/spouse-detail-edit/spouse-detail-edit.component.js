@@ -5,8 +5,8 @@ component('spouseDetailEdit', {
   bindings: {
     $close: '&',
     $dismiss: '&',
-    spouse: '<', //data gets passed in as an input on an spouse attribute on the custom element
-    employee: '<'
+    spouse: '=', //data gets passed in as an input on an spouse attribute on the custom element
+    employee: '='
   },
   controller: [ function SpouseDetailEditController() {
       let $ctrl = this;

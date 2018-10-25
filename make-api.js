@@ -31,6 +31,8 @@ const mitId = function() {
   return faker.random.number({ min: 1000000000, max: 9999999999 });
 };
 
+const schools = ['College of the Holy Cross','University of California\, Davis','United States Coast Guard Academy','California Institute of Technology','Washington University in Saint Louis','Wheaton College','University of Texas\, Austin','Boston University','University of Pennsylvania','Trinity College','Northwestern University','Williams College','Santa Clara University','University of Southern California','University of California\, Berkeley','Case Western Reserve University','University of Maryland\, College Park','Harvard University','Southern Methodist University','University of Rochester','Davidson College','University of North Carolina\, Chapel Hill','Vassar College','Boston College','Sewanee—University of the South','Stanford University','Union College','University of California\, Los Angeles','Columbia University','Carleton College','Reed College','Kenyon College','University of Illinois\, Urbana-Champaign','Brandeis University','Tufts University','Rice University','Colgate University','Pepperdine University','University of California\, Santa Barbara','United States Air Force Academy','University of Washington','Villanova University','United States Naval Academy','Pennsylvania State University\, University Park','Washington and Lee University','Dartmouth College','Wellesley College','Oberlin College','George Washington University','Hamilton College','University of Michigan\, Ann Arbor','Grinnell College','Lehigh University','Duke University','United States Military Academy','Mount Holyoke College','University of Chicago','Princeton University','Wesleyan University','Georgetown University','University of Richmond','Bryn Mawr College','Lafayette College','Brown University','Vanderbilt University','Scripps College','DePauw University','Whitman College','Georgia Institute of Technology','Smith College','University of Notre Dame','Middlebury College','Harvey Mudd College','Amherst College','Barnard College','Virginia Military Institute','Yale University','New York University','Wake Forest University','Bowdoin College','University of Virginia','Johns Hopkins University','Haverford College','College of William and Mary','Swarthmore College','Cooper Union','University of Wisconsin\, Madison','Colby College','Cornell University','Brigham Young University','Carnegie Mellon University','Pomona College','Colorado College','University of Florida','Indiana University\, Bloomington','Centre College','Franklin and Marshall College','Macalester College','University of Georgia','Massachusetts Institute of Technology'];
+
 
 // Employee Constructor
 const Employee = (index) => {
@@ -76,6 +78,9 @@ const Spouse = (employee) => {
   const spouse = {};
   spouse.id = api.spouses.length;
   spouse.firstName = faker.name.firstName();
+  spouse.middleInitial = faker.random.boolean() ?
+                            faker.name.firstName().substr(0,1) :
+                            null;
   spouse.lastName = faker.name.lastName();
 
   spouse.email = spouse.firstName.substr(0,1).toLowerCase() +
@@ -85,7 +90,7 @@ const Spouse = (employee) => {
                    faker.internet.domainName();
   spouse.phone = faker.phone.phoneNumberFormat();
   // Lets say 80% of spouses are employed
-  spouse.occupation = (Math.random() < 0.8) ?
+  spouse.occupation = (Math.random() < 0.2) ?
                         'employed' :
                         faker.random.arrayElement([
                           'student',
@@ -93,6 +98,66 @@ const Spouse = (employee) => {
                           'disabled',
                           'other'
                         ]);
+
+  switch(spouse.occupation) {
+    // EMPLOYED
+    case 'employed':
+      spouse.employer = faker.company.companyName();
+      spouse.appointmentStartDate = faker.date.between(
+        moment().subtract(8,'weeks'),
+        moment().subtract(15,'years')
+      );
+      if ( Math.random() < 0.2 ) {
+        spouse.appointmentEndDate = faker.date.between(
+          moment().add(8, 'weeks'),
+          moment().add(3, 'years')
+        );
+      }
+      spouse.isEmployedOverMinimum = (Math.random() < 0.2) ? false : true;
+      spouse.spousePaymentSchedule = faker.random.arrayElement(['monthly','semi-monthly','bi-weekly','weekly','per diem','irregularly']);
+    break;
+
+    // STUDENT
+    case 'student':
+      spouse.school = faker.random.arrayElement(schools);
+
+      function generateSchoolAdmissionDate() {
+        const year = faker.random.arrayElement(2015,2016,2017,2018);
+        return moment().set({'year': year,'month':8,'date':1}).valueOf();
+      }
+
+      spouse.schoolAdmissionDate = generateSchoolAdmissionDate();
+
+      spouse.schoolExpectedGraduationDate =
+      moment(spouse.schoolAdmissionDate).add(4,'years').valueOf();
+
+      spouse.schoolFundingType = faker.random.arrayElement(['teaching assistant','research assistant','stipend','N/A']);
+
+    break;
+
+    // SELF EMPLOYED
+    case 'self-employed':
+      spouse.selfEmploymentCompanyName = faker.company.companyName();
+      spouse.selfEmploymentStartDate = faker.date.between(
+        moment().subtract(8,'weeks'),
+        moment().subtract(15,'years')
+      );
+      spouse.selfEmploymentPaymentSchedule = faker.random.arrayElement(['monthly','semi-monthly','bi-weekly','weekly','per diem','irregularly']);
+
+      if (spouse.selfEmploymentPaymentSchedule === 'per diem' || spouse.selfEmploymentPaymentSchedule === 'irregularly') {
+        spouse.selfEmploymentPaymentScheduleReason = 'I have my reasons';
+      }
+
+    break;
+    case 'disabled':
+    spouse.disabledCertification = "certification.pdf"
+    break;
+    case 'other':
+    spouse.otherEmployeeNote = 'My partner has been seeking employment, but is currently unemployed.';
+    spouse.otherAttachedFile = faker.random.boolean() ? 'attachedfile.pdf' : null;
+    break;
+  }
+
   spouse.salary = faker.random.number({min: 15000, max: 45000});
   spouse.additionalIncome = faker.random.boolean() ? faker.random.number({min: 0, max: 10000}) : null;
   // return an MIT ID ~20% of times when employed

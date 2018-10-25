@@ -7,6 +7,7 @@ angular.module('ccspApp', [
   'employeeDetail',
   'employeeDetailEdit',
   'spouseDetail',
+  'spouseDetailEdit',
   'childrenList',
   'incomeDetail',
   'datatables',

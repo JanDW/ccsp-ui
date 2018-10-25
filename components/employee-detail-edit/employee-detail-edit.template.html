@@ -21,15 +21,15 @@
 				</div>
 				<div class="form-group">
 					<label for="maritalStatus">Marital status</label>
-					<select name="" id="maritalStatus" ng-model="$ctrl.employee.maritalStatus" class="d-block">
+					<select class="custom-select" name="" id="maritalStatus" ng-model="$ctrl.employee.maritalStatus" ng-change="$ctrl.updateSpouseMaritalTitle()" class="d-block">
 						<option value="married">married</option>
 						<option value="partnership">partnership</option>
 						<option value="divorced">divorced</option>
 						<option value="singleOrWidowed">single or widowed</option>
 					</select>
 				</div>
-				<div class="form-group">
-					<input type="checkbox" name="" id="primaryContact" ng-model="$ctrl.employee.isPrimaryContact">
+				<div class="form-group" ng-if="$ctrl.employee.maritalStatus !== 'singleOrWidowed'">
+					<input type="checkbox" name="" id="primaryContact"  ng-model="$ctrl.employee.isPrimaryContact">
 					<label for="primaryContact">Primary Contact</label>
 				</div>
 			</fieldset>

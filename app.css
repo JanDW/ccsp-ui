@@ -19,3 +19,27 @@ body {
 }
 
 .c-pointer {cursor: pointer;}
+
+.border-gray {
+	border-color: var(--gray);
+}
+
+label {
+	margin-bottom: .15rem;
+	color: var(--gray);
+}
+
+input, select, textarea {
+	color:#444;
+	font-weight: 500;
+}
+
+.form-group {
+	margin-bottom: .65rem;
+}
+
+.modal-footer {
+	background-color: #3b3b3b;
+	margin: 0 -1px -1px -1px;
+	border-top: 0;
+}

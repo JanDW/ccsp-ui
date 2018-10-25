@@ -6,26 +6,29 @@
 				{{ $ctrl.spouse.firstName }}
 				{{ $ctrl.spouse.middleInitial }}
 			</span>
-			&nbsp;
+			<!-- &nbsp; -->
 			<span class="text-muted align-middle">
-				(
-				<span>{{ $ctrl.employee.spouseMaritalTitle | createLabelFromKey }}</span>
-			<span ng-if="$ctrl.employee.isPrimaryContact === false"> / Primary Contact</span>
-			)
+				(<span>{{ $ctrl.employee.spouseMaritalTitle | createLabelFromKey }}</span>)
 			</span>
 
 		</div>
 		<div class="float-right">
-
-			<a href="mailto:{{ $ctrl.spouse.email }}" title="{{ $ctrl.spouse.email }}" data-toggle="tooltip" data-placement="top">
+			<span class="align-middle" ng-if="$ctrl.employee.isPrimaryContact === false">Primary Contact&nbsp;</span>
+			<a href="mailto:{{ $ctrl.spouse.email }}" uib-tooltip="{{ $ctrl.spouse.email }}" tooltip-placement="top" class="align-middle">
 					<i class="fas fa-envelope" aria-hidden></i>
 					<span class="sr-only">email</span>
 				</a>
 			&nbsp;
-			<a href="tel:{{ $ctrl.spouse.phone }}" title="{{ $ctrl.spouse.phone }}" data-toggle="tooltip" data-placement="top">
+			<a href="tel:{{ $ctrl.spouse.phone }}"  uib-tooltip="{{ $ctrl.spouse.phone }}" tooltip-placement="top" class="align-middle">
 					<i class="fas fa-phone" aria-hidden></i>
 					<span class="sr-only">phone</span>
 				</a>
+				&nbsp;&nbsp;
+
+			<button type="button" class="btn btn-link align-middle py-0 float-right pr-0" ng-click="$ctrl.editSpouse()">
+				<i class="fas fa-pencil-alt text-primary" aria-hidden></i>
+				<span class="sr-only">edit</span>
+			</button>
 		</div>
 	</div>
 	<div class="card-body p-0">
@@ -33,33 +36,96 @@
 		<div class="card-text">
 		</div>
 		<div class="card bg-light m-0 border-0">
-			<div class="card-header border-0 bg-white pl-4 pr-4 border-0 c-pointer" ng-click="isCollapsed = !isCollapsed">
-				<i class="fas fa-check-circle text-success" aria-label="yes"></i>&nbsp;Employment Details
+			<div class="card-header border-0 bg-white pl-4 pr-4 pt-3 border-0 c-pointer" ng-click="isCollapsed = !isCollapsed">
+				<i class="fas fa-check-circle text-success" aria-label="yes"></i>&nbsp;{{$ctrl.spouse.occupation | createLabelFromKey}}
 			</div>
 			<!-- <h5 class="card-title">Secondary card title</h5> -->
 			<div class="card-body" uib-collapse="isCollapsed">
-				<dl class="dl-reversed dl-horizontal">
-					<div>
+
+				<!-- EMPLOYED -->
+				<dl class="dl-reversed dl-horizontal row" ng-if="$ctrl.spouse.occupation === 'employed'">
+					<div class="col-6">
 						<dt>Employer name</dt>
-						<dd>Plan 3 Architects</dd>
+						<dd>{{$ctrl.spouse.employer}}</dd>
 					</div>
-					<div>
-						<dt>Hired on</dt>
-						<dd>May 23, 2009</dd>
+					<div class="col-6">
+						<dt>Appointment start date</dt>
+						<dd>{{$ctrl.spouse.appointmentStartDate | date : 'mediumDate'}}</dd>
 					</div>
-					<div>
+					<div class="col-6" ng-if="$ctrl.spouse.appointmentEndDate">
 						<dt>Appointment end date <small class="text-muted">(if known)</small></dt>
-						<dd>—</dd>
+						<dd>{{$ctrl.spouse.appointmentEndDate | date : 'mediumDate'}}</dd>
 					</div>
-					<div>
+					<div class="col-6">
 						<dt>Employment &gt; 20h</dt>
-						<dd><i class="fas fa-check" aria-label="yes"></i></dd>
+						<dd><i class="fas" aria-label="yes" ng-class="$ctrl.spouse.isEmployedOverMinimum ? 'fa-check' : 'fa-times'"></i></dd>
 					</div>
-					<div>
+					<div class="col-6">
 						<dt>Payment Frequency</dt>
-						<dd>Weekly</dd>
+						<dd>{{$ctrl.spouse.spousePaymentSchedule | createLabelFromKey}}</dd>
 					</div>
 				</dl>
+
+				<!-- STUDENT -->
+				<dl class="dl-reversed dl-horizontal row" ng-if="$ctrl.spouse.occupation === 'student'">
+					<div class="col-6">
+						<dt>School</dt>
+						<dd>{{$ctrl.spouse.school}}</dd>
+					</div>
+					<div class="col-6">
+						<dt>Admission date</dt>
+						<dd>{{$ctrl.spouse.schoolAdmissionDate | date : 'mediumDate'}}</dd>
+					</div>
+					<div class="col-6" ng-if="$ctrl.spouse.schoolExpectedGraduationDate">
+						<dt>Expected graduation date</dt>
+						<dd>{{$ctrl.spouse.schoolExpectedGraduationDate | date : 'mediumDate'}}</dd>
+					</div>
+					<div class="col-6">
+						<dt>Type of funding</dt>
+						<dd>{{$ctrl.spouse.schoolFundingType | createLabelFromKey}}</dd>
+					</div>
+				</dl>
+
+				<!-- SELF-EMPLOYED -->
+				<dl class="dl-reversed dl-horizontal row" ng-if="$ctrl.spouse.occupation === 'self-employed'">
+					<div class="col-6">
+						<dt>Company name</dt>
+						<dd>{{$ctrl.spouse.selfEmploymentCompanyName}}</dd>
+					</div>
+					<div class="col-6">
+						<dt>Self-employment start date</dt>
+						<dd>{{$ctrl.spouse.selfEmploymentStartDate | date : 'mediumDate'}}</dd>
+					</div>
+					<div class="col-6">
+						<dt>Payment frequency</dt>
+						<dd>{{$ctrl.spouse.selfEmploymentPaymentSchedule | createLabelFromKey}}</dd>
+					</div>
+					<div class="col-6" ng-if="$ctrl.spouse.selfEmploymentPaymentScheduleReason">
+						<dt>Payment frequency reason</dt>
+						<dd>{{$ctrl.spouse.selfEmploymentPaymentScheduleReason | createLabelFromKey}}</dd>
+					</div>
+				</dl>
+
+				<!-- DISABLED -->
+				<dl class="dl-reversed dl-horizontal row" ng-if="$ctrl.spouse.occupation === 'disabled'">
+					<div class="col-12">
+						<dt>Certification</dt>
+						<dd><a href="#"><i class="far fa-file-pdf" aria-hidden></i>&nbsp;{{$ctrl.spouse.disabledCertification}}</a></dd>
+					</div>
+				</dl>
+
+				<!-- OTHER -->
+				<dl class="dl-reversed dl-horizontal row" ng-if="$ctrl.spouse.occupation === 'other'">
+					<div ng-class="$ctrl.spouse.otherAttachedFile ? 'col-6' : 'col-12'">
+						<dt>Note</dt>
+						<dd>{{$ctrl.spouse.otherEmployeeNote}}</dd>
+					</div>
+					<div class="col-6" ng-if="$ctrl.spouse.otherAttachedFile">
+						<dt>Attached file</dt>
+						<dd><a href="#"><i class="far fa-file-pdf" aria-hidden></i>&nbsp;{{$ctrl.spouse.otherAttachedFile}}</a></dd>
+					</div>
+				</dl>
+
 			</div>
 		</div>
 	</div>

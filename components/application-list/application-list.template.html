@@ -7,15 +7,20 @@
 			<table id="inboxTable" class="table" datatable="ng">
 				<thead>
 					<tr>
+						<th scope="col" class="list-table-head">Submitted on</th>
 						<th scope="col" class="table-heading">Employee Name</th>
 						<th scope="col" class="list-table-head">MIT ID</th>
 						<!-- <th scope="col" class="list-table-head">Status</th> -->
-						<th scope="col" class="list-table-head">Submitted on</th>
 						<th scope="col" class="list-table-head">Academic Year</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="application in $ctrl.applications">
+						<td data-sort="{{application.lastSubmissionDate}}">
+							<span ng-repeat="submissionDate in application.submissionDates" ng-if="$last">
+								{{submissionDate | date : 'mediumDate'}}
+							</span>
+						</td>
 						<td>
 							<a href="#!/applications/{{application.id}}">
 								{{application.employee.lastName}},
@@ -29,11 +34,6 @@
 						<!-- <td>
 							{{application.statusMessage}}
 						</td> -->
-						<td data-sort="{{application.lastSubmissionDate}}">
-							<span ng-repeat="submissionDate in application.submissionDates" ng-if="$last">
-								{{submissionDate | date : 'mediumDate'}}
-							</span>
-						</td>
 						<td>{{application.academicYear}}</td>
 					</tr>
 				</tbody>

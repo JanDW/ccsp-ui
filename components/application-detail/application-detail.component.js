@@ -1,4 +1,3 @@
-/* jshint esversion:6 */
 angular.
 module('applicationDetail').
 component('applicationDetail', {
@@ -44,7 +43,7 @@ component('applicationDetail', {
 
 
         // Get the spouse
-        if (self.application.employee.spouseId) {
+        if (typeof self.application.employee.spouseId !== 'undefined') {
           $http.
           get('http://localhost:3000/spouses/' + self.application.employee.spouseId).
           then(function(response) {
@@ -68,7 +67,7 @@ component('applicationDetail', {
 
       /* METHODS */
 
-
+      // Navigate to previous 'pending approval' application
       self.prev = function() {
         // only decrease when not first in array
         const previousOrderIndex = self.application.orderIndex > 0 ? self.application.orderIndex - 1 : 0;
@@ -81,6 +80,8 @@ component('applicationDetail', {
 
 
       };
+
+      // Navigate to next 'pending approval' application
       self.next = function() {
         $http.
           get('http://localhost:3000/applications?statusCode=0').

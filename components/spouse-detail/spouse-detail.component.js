@@ -11,6 +11,8 @@ component('spouseDetail', {
     function SpouseDetailController($uibModal) {
       var $ctrl = this;
 
+      $ctrl.isOccupationCollapsed = true;
+
       $ctrl.editSpouse = function(){
        $uibModal.open({
         template: '<spouse-detail-edit employee="$ctrl.employee" spouse="$ctrl.spouse" $close="$close(result)" $dismiss="$dismiss(reason)"></spouse-detail-edit>',

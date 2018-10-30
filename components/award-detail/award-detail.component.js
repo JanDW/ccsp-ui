@@ -19,6 +19,8 @@ component('awardDetail', {
 
       // Note: $onChanges is for one-way bindings
 
+      $ctrl.isCalculationCollapsed = true;
+
       $ctrl.$onChanges = function(changes) {
         let isDataLoaded = false;
 
@@ -81,14 +83,16 @@ component('awardDetail', {
           if ($ctrl.eligible) {
 
             /* INCOME */
+
+            //@TODO account for incomeOverIncomeMin being negative (income is lower than $ctrl.INCOME_LOWEST_STEP = 40000; )
             $ctrl.incomeOverIncomeMin = $ctrl.totalIncome - $ctrl.INCOME_LOWEST_STEP; // How much more income than minimum threshold is there?
 
             /* Expected 5-day family contribution percentage adjusted for income*/
-            $ctrl.calculatedIncomeContributionPercentage = $ctrl.INCOME_LOWEST_STEP_CONTRIBUTION_PERCENTAGE  + Math.floor($ctrl.incomeOverIncomeMin / $ctrl.INCOME_INCREASE_STEP_AMOUNT) * $ctrl.INCOME_INCREASE_STEP_PERCENTAGE; // Raise the INCOME_LOWEST_STEP_CONTRIBUTION_PERCENTAGE by exceeded income step amount %
+            $ctrl.calculatedFiveDayIncomeContributionPercentage = $ctrl.INCOME_LOWEST_STEP_CONTRIBUTION_PERCENTAGE  + Math.floor($ctrl.incomeOverIncomeMin / $ctrl.INCOME_INCREASE_STEP_AMOUNT) * $ctrl.INCOME_INCREASE_STEP_PERCENTAGE; // Raise the INCOME_LOWEST_STEP_CONTRIBUTION_PERCENTAGE by exceeded income step amount %
 
             /* CHILDREN */
             // For each additional child, contribution percentage reduces to 85% of its original value
-            $ctrl.calculatedIncomeContributionPercentage = $ctrl.calculatedIncomeContributionPercentage * Math.pow($ctrl.CONTRIBUTION_FACTOR_MULTIPLE_CHILDREN, ($ctrl.numberOfChildren - 1));
+            $ctrl.calculatedIncomeContributionPercentage = $ctrl.calculatedFiveDayIncomeContributionPercentage * Math.pow($ctrl.CONTRIBUTION_FACTOR_MULTIPLE_CHILDREN, ($ctrl.numberOfChildren - 1));
 
 
 
@@ -124,6 +128,9 @@ component('awardDetail', {
               $ctrl.monthlyAwardLimited = $ctrl.monthlyAward;
             }
 
+
+            //@TODO check where to round and were not to round up values!
+            // Also in template
 
           }
         }

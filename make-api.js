@@ -25,6 +25,7 @@ api.employees = [];
 api.spouses = [];
 api.children = [];
 api.applications = [];
+api.documents = [];
 api.awards = [];
 api.tccTuition = {
   'default': {
@@ -141,6 +142,7 @@ const Spouse = (employee) => {
                           'other'
                         ]);
 
+
   switch(spouse.occupation) {
     // EMPLOYED
     case 'employed':
@@ -192,7 +194,7 @@ const Spouse = (employee) => {
 
     break;
     case 'disabled':
-    spouse.disabledCertification = "certification.pdf"
+    spouse.disabledCertification = "certification.pdf";
     break;
     case 'other':
     spouse.otherEmployeeNote = 'My partner has been seeking employment, but is currently unemployed.';

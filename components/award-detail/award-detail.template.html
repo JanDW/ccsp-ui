@@ -1,4 +1,4 @@
-<div class="card card-ccsp mt-4">
+<div class="card card-ccsp mt-4" id="awardCard">
 	<div class="card-header card-header-ccsp border-0 d-flex">
 		<div>
 			<span class="align-middle">
@@ -172,13 +172,15 @@
 								<dd class="col-9 text-muted">monthly award</dd>
 								<dt class="col-3 text-right text-monospace font-weight-normal border-bottom">?&nbsp;&lt;&nbsp;{{$ctrl.monthlyTuitionTotal | currency : '$' : 2}} &times; {{$ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION}}</dt>
 								<dd class="col-9 text-muted">award is limited to maximum of total tuition &times; {{$ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION * 100}}% </dd>
-								<dt class="col-3 text-right text-monospace font-weight-normal">{{( $ctrl.monthlyAward < $ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION) ? 'yes' : 'no'}} ({{$ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION | floor | currency : $ : 0}}.00)</dt>
+								<dt class="col-3 text-right text-monospace font-weight-normal">{{( $ctrl.monthlyAward < $ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION) ? 'yes ( <' : 'no ( >'}} {{$ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION | floor | currency : $ : 0}}.00)</dt>
 								<dd class="col-9 text-muted">is award is smaller than award limit?</dd>
 								<dt class="col-3 text-right text-monospace font-weight-normal"><mark class="px-2">{{$ctrl.monthlyAwardLimited | floor | currency : $ : 0}}.00</mark></dt>
 								<dd class="col-9 text-muted">final rounded monthly award amount</dd>
 							</dl>
 						</div>
 					</div>
+
+					<a href="#" class="mt-3 d-block"><small><i class="fas fa-arrow-up" aria-hidden></i> To top of card</small></a>
 
 
 

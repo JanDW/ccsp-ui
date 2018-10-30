@@ -1,0 +1,52 @@
+<div class="card card-ccsp mt-4">
+	<div class="card-header card-header-ccsp border-0 clearfix">
+		<div class="float-left">
+			<span class="align-middle">
+				Financial Documentation
+			</span>
+		</div>
+		<div class="float-right">
+			<button type="button" class="btn btn-link align-middle py-0 float-right pr-0" ng-click="$ctrl.editFinancialDocuments()">
+				<i class="fas fa-pencil-alt text-primary" aria-hidden></i>
+				<span class="sr-only">edit</span>
+			</button>
+		</div>
+	</div>
+	<div class="card-body p-0">
+		<table class="table">
+			<thead class="bg-light">
+				<tr>
+					<th scope="column"><span class="sr-only">Document type</span></th>
+					<th scope="column">Employee</th>
+					<th scope="column">Spouse</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">Federal income tax form 1040(A)</th>
+					<td><span class="text-muted">—</span></td>
+					<td><i class="far fa-file-pdf" aria-hidden></i> <a href="#" target="_blank">spouse-taxes-2017.pdf</a></td>
+				</tr>
+				<tr>
+					<th scope="row">Financial documentation outside US</th>
+					<td><i class="far fa-file-pdf" aria-hidden></i> <a href="#" target="_blank">employee-income-abroad-2017.pdf</a></td>
+					<td><i class="far fa-file-pdf" aria-hidden></i> <a href="#" target="_blank">spouse-income-abroad-2017.pdf</a></td>
+				</tr>
+				<tr>
+					<th scope="row">Current paystubs</th>
+					<td><i class="far fa-file-pdf" aria-hidden></i> <a href="#" target="_blank">employee-current-paystubs.pdf</a></td>
+					<td><span class="text-muted">—</span></td>
+				</tr>
+				<tr>
+					<th scope="row">Proof of enrollment status</th>
+					<td><span class="text-muted text-center">—</span></td>
+					<td><i class="far fa-file-pdf" aria-hidden></i> <a href="#" target="_blank">spouse-current-paystubs.pdf</a></td>
+				</tr>
+				<tr>
+					<th scope="row">Additional financial information</th>
+					<td>—</td>
+					<td><i class="far fa-file-image" aria-hidden></i> <a href="#" target="_blank">spouse-additional-info.png</a></td>
+				</tr>
+			</tbody>
+		</table>
+</div>

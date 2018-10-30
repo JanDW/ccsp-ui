@@ -26,6 +26,48 @@ api.spouses = [];
 api.children = [];
 api.applications = [];
 api.awards = [];
+api.tccTuition = {
+  'default': {
+    'infant': {
+      'twoDay': 1381,
+      'threeDay': 1934,
+      'fiveDay': 2760
+    },
+    'toddler': {
+      'twoDay': 1160,
+      'threeDay': 1617,
+      'fiveDay': 2313
+    },
+    'preschool': {
+      'twoDay': 979,
+      'threeDay': 1368,
+      'fiveDay': 1958
+    }
+  },
+  'westgate': {
+    'preschool': {
+      'fiveDayMornings': 798,
+      'fiveDay': 1595
+    }
+  },
+  'linc': {
+    'infant': {
+      'twoDay': 1221,
+      'threeDay': 1765,
+      'fiveDay': 2524
+    },
+    'toddler': {
+      'twoDay': 1092,
+      'threeDay': 1584,
+      'fiveDay': 2262
+    },
+    'preschool': {
+      'twoDay': 921,
+      'threeDay': 1353,
+      'fiveDay': 1929
+    }
+  }
+};
 
 const mitId = function() {
   return faker.random.number({ min: 1000000000, max: 9999999999 });
@@ -182,6 +224,7 @@ function Child(employee, tccCenter) {
     child.employeeId = employee.id;
     if (tccCenter.toLowerCase() === 'westgate') {
       child.schedule = faker.random.arrayElement(['fulltime', 'halftime']);
+      child.classRoom = 'Preschool';
     }
 
     switch(child.classRoom.toLowerCase()) {
@@ -207,6 +250,83 @@ function Child(employee, tccCenter) {
         console.log('No valid classroom has been selected. The value must match \'infant\',\'toddler\', or \'preschool\'');
     }
 
+      if (child.tccCenter.toLowerCase() === 'westgate') {
+        if (child.schedule.toLowerCase() === 'halftime') {
+         child.monthlyTuition = api.tccTuition.westgate.preschool.fiveDayMornings;
+        } else {
+         child.monthlyTuition = api.tccTuition.westgate.preschool.fiveDay;
+       }
+     } else if (child.tccCenter.toLowerCase() === 'linc') {
+       if (child.classRoom.toLowerCase() === 'infant') {
+         if (child.daysPerWeek === 2) {
+           child.monthlyTuition = api.tccTuition.linc.infant.twoDay;
+         }
+         if (child.daysPerWeek === 3) {
+           child.monthlyTuition = api.tccTuition.linc.infant.threeDay;
+         }
+         if (child.daysPerWeek === 5) {
+           child.monthlyTuition = api.tccTuition.linc.infant.fiveDay;
+         }
+       }
+       if (child.classRoom.toLowerCase() === 'toddler') {
+         if (child.daysPerWeek === 2) {
+           child.monthlyTuition = api.tccTuition.linc.toddler.twoDay;
+         }
+         if (child.daysPerWeek === 3) {
+           child.monthlyTuition = api.tccTuition.linc.toddler.threeDay;
+         }
+         if (child.daysPerWeek === 5) {
+           child.monthlyTuition = api.tccTuition.linc.toddler.fiveDay;
+         }
+       }
+       if (child.classRoom.toLowerCase() === 'preschool') {
+         if (child.daysPerWeek === 2) {
+           child.monthlyTuition = api.tccTuition.linc.preschool.twoDay;
+         }
+         if (child.daysPerWeek === 3) {
+           child.monthlyTuition = api.tccTuition.linc.preschool.threeDay;
+         }
+         if (child.daysPerWeek === 5) {
+           child.monthlyTuition = api.tccTuition.linc.preschool.fiveDay;
+         }
+       }
+     } else {
+       // default: stata, eastgate, koch
+       if (child.classRoom.toLowerCase() === 'infant') {
+         if (child.daysPerWeek === 2) {
+           child.monthlyTuition = api.tccTuition.default.infant.twoDay;
+         }
+         if (child.daysPerWeek === 3) {
+           child.monthlyTuition = api.tccTuition.default.infant.threeDay;
+         }
+         if (child.daysPerWeek === 5) {
+           child.monthlyTuition = api.tccTuition.default.infant.fiveDay;
+         }
+       }
+       if (child.classRoom.toLowerCase() === 'toddler') {
+         if (child.daysPerWeek === 2) {
+           child.monthlyTuition = api.tccTuition.default.toddler.twoDay;
+         }
+         if (child.daysPerWeek === 3) {
+           child.monthlyTuition = api.tccTuition.default.toddler.threeDay;
+         }
+         if (child.daysPerWeek === 5) {
+           child.monthlyTuition = api.tccTuition.default.toddler.fiveDay;
+         }
+       }
+       if (child.classRoom.toLowerCase() === 'preschool') {
+         if (child.daysPerWeek === 2) {
+           child.monthlyTuition = api.tccTuition.default.preschool.twoDay;
+         }
+         if (child.daysPerWeek === 3) {
+           child.monthlyTuition = api.tccTuition.default.preschool.threeDay;
+         }
+         if (child.daysPerWeek === 5) {
+           child.monthlyTuition = api.tccTuition.default.preschool.fiveDay;
+         }
+       }
+     }
+
       return child;
 
 }
@@ -219,8 +339,8 @@ const Application = (employee) => {
  application.lastSubmissionDate = faker.date.between('2018-08-01','2018-09-15');
  application.submissionDates = [].concat([application.lastSubmissionDate]);
  application.academicYear = (Math.random() > 0.2) ?
-                               '2018\u2009–\u200919' :
-                              '2017\u2009–\u200918'; //How would you store AY in an API? academicYearStart and academicYearEnd with two udate objects maybe?
+                               '2018-19' :
+                              '2017-18'; //How would you store AY in an API? academicYearStart and academicYearEnd with two udate objects maybe?
  application.statusCode = faker.random.number({ min: 0, max: 5 });
 
  application.statusMessage = ['Pending Approval','Approved','Returned','Denied','Confirmed','Declined'][application.statusCode]; // Corresponds to statusCode

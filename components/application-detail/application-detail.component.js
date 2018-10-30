@@ -17,6 +17,8 @@ component('applicationDetail', {
       then(function(response) {
         self.application = response.data;
 
+        // putting CSS classes in a controller is not the best idea
+        // this is a prototype
         switch (self.application.statusCode) {
           case 0:
               self.application.badgeClass = 'badge-primary';
@@ -62,6 +64,13 @@ component('applicationDetail', {
         then(function(response) {
           self.children = response.data;
         });
+      });
+
+      // Get TCC tuition costs
+      $http.
+      get('http://localhost:3000/tccTuition/').
+      then(function(response) {
+        self.tccTuition = response.data;
       });
 
 

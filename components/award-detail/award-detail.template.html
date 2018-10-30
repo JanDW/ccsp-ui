@@ -1,0 +1,45 @@
+<div class="card card-ccsp mt-4">
+	<div class="card-header card-header-ccsp border-0 clearfix">
+		<div class="float-left">
+			<span class="align-middle">
+				<i class="fas fa-check-circle text-success" ng-if="$ctrl.eligible" aria-label="eligible"></i>
+				<i class="fas fa-times-circle text-danger" ng-if="!$ctrl.eligible" aria-label="not eligible"></i>
+					Award Calculation
+			</span>
+		</div>
+		<div class="float-right">
+			<button type="button" class="btn btn-link align-middle py-0 float-right pr-0" ng-click="$ctrl.editSpouse()">
+				<i class="fas fa-pencil-alt text-primary" aria-hidden></i>
+				<span class="sr-only">edit</span>
+			</button>
+		</div>
+	</div>
+	<div class="card-body">
+		<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+		<div class="card-text">
+
+			<!-- NOT ELIGIBLE-->
+			<div ng-if="!$ctrl.eligible">
+				<p>
+					 <b>The Gross Estimated Income exceeds the allowable maximum by {{ $ctrl.totalIncome - $ctrl.incomeMaxAdjusted | currency : '$' : 0 }}.</b>
+				</p>
+
+				<ul class="pl-0 list-unstyled">
+					<li class="">gross income&nbsp;&nbsp;&lt;&nbsp;&nbsp; income limit + ( number of additional children &times; income limit increase )</li>
+					<li class="">{{ $ctrl.totalIncome | currency : '$' : 0 }} &nbsp;&nbsp;&lt;&nbsp;&nbsp; {{ $ctrl.INCOME_MAX | currency : '$' : 0 }} + ( {{ $ctrl.numberOfChildren - 1 }} &times; {{ $ctrl.INCOME_MAX_CAP_INCREASE_PER_CHILD | currency : '$' : 0 }} )</li>
+					<li class="">{{ $ctrl.totalIncome | currency : '$' : 0 }}  &nbsp;&nbsp;&lt;&nbsp;&nbsp; {{ $ctrl.incomeMaxAdjusted | currency : '$' : 0 }}</li>
+				</ul>
+			</div>
+
+			<!-- ELIGIBLE -->
+			<div ng-if="$ctrl.eligible">
+				Total tuition: {{$ctrl.monthlyTuitionTotal | currency : '$' : 2 }}<br>
+				Employee contribution: {{$ctrl.employeeTuitionContributionTotal | currency : '$' : 2 }}<br>
+				Monthly award: {{$ctrl.monthlyAward | currency : '$' : 2 }}<br>
+				Monthly award Limited: {{$ctrl.monthlyAwardLimited | currency : '$' : 2 }}<br>
+			</div>
+
+
+		</div>
+	</div>
+</div>

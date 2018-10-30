@@ -10,6 +10,8 @@ angular.module('ccspApp', [
   'spouseDetailEdit',
   'childrenList',
   'incomeDetail',
+  'awardDetail',
+  'awardDetailEdit',
   'datatables',
   'ui.bootstrap'
 ]);

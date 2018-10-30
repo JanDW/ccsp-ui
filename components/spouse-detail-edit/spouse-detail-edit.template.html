@@ -153,7 +153,7 @@
 					<div ng-if="$ctrl.spouse.occupation === 'other'">
 						<div class="form-group">
 							<label for="spouseOtherEmployeeNote">Note</label>
-							<textarea id="spouseOtherEmployeeNote" name="name" class="form-control" rows="3" cols="80">{{$ctrl.spouse.otherEmployeeNote}}</textarea>
+							<textarea id="spouseOtherEmployeeNote" ng-model="$ctrl.spouse.otherEmployeeNote" name="name" class="form-control" rows="3" cols="80"></textarea>
 						</div>
 						<div class="custom-file">
 							<input type="file" class="custom-file-input" id="spouseOtherAttachedFile">

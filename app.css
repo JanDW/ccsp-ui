@@ -1,4 +1,4 @@
-
+/* A messy collection  of CSS Bootstrap overrides and extensions */
 body {
 	background-color: #f6f6f6;
 	padding-bottom: 100px;
@@ -22,10 +22,24 @@ body {
 	color: #115175;
 }
 
+.table thead th {
+	border-bottom: 0;
+	color: var(--gray);
+	font-weight: 400;
+}
+
+.table tbody td {
+	font-weight: 500;
+}
+
 .c-pointer {cursor: pointer;}
 
 .border-gray {
 	border-color: var(--gray);
+}
+
+.font-weight-semibold {
+	font-weight: 500;
 }
 
 label {

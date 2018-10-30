@@ -9,8 +9,8 @@
 		</div>
 		<div class="ml-auto">
 			<button type="button" class="btn btn-link align-middle py-0" ng-click="$ctrl.isCalculationCollapsed = !$ctrl.isCalculationCollapsed" ng-if="$ctrl.eligible">
-				<span ng-if="$ctrl.isCalculationCollapsed" class="align-middle"><i class="fas fa-eye align-middle" aria-hidden></i>&nbsp;Show award calculation</span>
-				<span ng-if="!$ctrl.isCalculationCollapsed" class="align-middle"><i class="fas fa-eye-slash align-middle" aria-hidden></i>&nbsp;Hide award calculation</span>
+				<span ng-if="$ctrl.isCalculationCollapsed" class="align-middle"><i class="fas fa-eye align-middle" aria-hidden></i>&nbsp;<span class="font-weight-bold">Show award calculation</span></span>
+				<span ng-if="!$ctrl.isCalculationCollapsed" class="align-middle"><i class="fas fa-eye-slash align-middle" aria-hidden></i>&nbsp;<span class="font-weight-bold">Hide award calculation</span></span>
 			</button>
 			<button type="button" class="btn btn-link align-middle py-0 pr-0" ng-click="$ctrl.editAward()">
 				<i class="fas fa-pencil-alt text-primary" aria-hidden></i>

@@ -42,6 +42,16 @@ body {
 	font-weight: 500;
 }
 
+/* a,
+.btn-link {
+	color: #0056b3;
+}
+
+a:hover,
+.btn-link:hover {
+	color: #007bff;
+} */
+
 label {
 	margin-bottom: .15rem;
 	color: var(--gray);

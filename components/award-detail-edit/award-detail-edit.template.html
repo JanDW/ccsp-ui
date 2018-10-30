@@ -1,0 +1,171 @@
+<!-- SPOUSE MODAL-->
+<div class="modal-content">
+	<div class="modal-header">
+		<h5 class="modal-title">Spouse</h5>
+		<button type="button" class="close" ng-click="$ctrl.handleDismiss()" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<form action="#">
+			<fieldset id="spouseContact">
+				<div class="form-row">
+					<div class="form-group col-4">
+						<label for="spouseFirstName" class="required">First Name</label>
+						<input type="text" class="form-control" id="spouseFirstName" ng-model="$ctrl.spouse.firstName" required>
+					</div>
+					<div class="form-group col-2">
+						<label for="spouseMiddleInitial" class="required">Middle</label>
+						<input type="text" class="form-control" id="spouseMiddleInitial" ng-model="$ctrl.spouse.middleInitial" maxlength="1" required>
+					</div>
+					<div class="form-group col-6">
+						<label for="spouseLastName" class="required">Last Name</label>
+						<input type="text" class="form-control" id="spouseLastName" ng-model="$ctrl.spouse.lastName" required>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-6">
+						<label for="spouseEmail" class="required">Email address</label>
+						<input type="email" class="form-control" id="spouseEmail" ng-model="$ctrl.spouse.email" required>
+					</div>
+					<div class="form-group col-6">
+						<label for="spousePhone" class="required">Phone number</label>
+						<input type="tel" class="form-control" id="spousePhone" ng-model="$ctrl.spouse.phone" required>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-6">
+						<input type="checkbox" name="" id="primaryContact" ng-model="$ctrl.employee.isPrimaryContact" ng-true-value="false" ng-false-value="true">
+						<label for="primaryContact">Primary Contact</label>
+					</div>
+					<div class="form-group col-6">
+						<input type="checkbox" ng-model="$ctrl.spouse.isMitIdPresent" />
+						<label for="spouseMitId" class="required">MIT ID</label>
+						<input type="number" class="form-control" id="spouseMitId" ng-model="$ctrl.spouse.mitId"  ng-if="$ctrl.spouse.isMitIdPresent" 	maxlength="10" required>
+					</div>
+				</div>
+
+
+
+				<div class="card bg-light p-2 border-light">
+					<div class="form-group">
+						<label for="spouseOccupation">Occupation</label>
+						<select name="" id="spouseOccupation" class="custom-select" ng-model="$ctrl.spouse.occupation">
+							<option value="employed">employed</option>
+							<option value="self-employed">self-employed</option>
+							<option value="student">student</option>
+							<option value="disabled">disabled</option>
+							<option value="other">other</option>
+						</select>
+					</div>
+
+					<!-- EMPLOYED -->
+					<div ng-if="$ctrl.spouse.occupation === 'employed'">
+						<div class="form-group">
+							<label for="spouseEmployer" class="required">Employer</label>
+							<input type="text" class="form-control" id="spouseEmployer" ng-model="$ctrl.spouse.employer" required>
+						</div>
+						<div class="form-row">
+							<div class="form-group" ng-class="$ctrl.spouse._appointmentEndDate ? 'col-6' : 'col-12'">
+								<label for="spouseAppointmentStartDate" class="required">Appointment start date</label>
+								<input type="date" class="form-control" id="spouseAppointmentStartDate" ng-model="$ctrl.spouse._appointmentStartDate" required>
+							</div>
+							<div class="form-group col-6" ng-if="$ctrl.spouse._appointmentEndDate">
+								<label for="spouseAppointmentEndDate" class="required">Appointment end date</label>
+								<input type="date" class="form-control" id="spouseAppointmentEndDate" ng-model="$ctrl.spouse._appointmentEndDate" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="spousePaymentSchedule">Payment schedule</label>
+							<select name="" id="spousePaymentSchedule" class="custom-select" ng-model="$ctrl.spouse.spousePaymentSchedule">
+								<option value="monthly">monthly</option>
+								<option value="semi-monthly">semi-monthly</option>
+								<option value="bi-weekly">bi-weekly</option>
+								<option value="weekly">weekly</option>
+								<option value="per diem">per diem</option>
+								<option value="irregularly">irregularly</option>
+							</select></div>
+					</div>
+
+					<!-- SELF-EMPLOYED -->
+					<div ng-if="$ctrl.spouse.occupation === 'self-employed'">
+						<div class="form-group">
+							<label for="spouseEmploymentCompanyName" class="required">Company name</label>
+							<input type="text" class="form-control" id="spouseEmploymentCompanyName" ng-model="$ctrl.spouse.selfEmploymentCompanyName" required>
+						</div>
+						<div class="form-group">
+							<label for="spouseSelfEmploymentStartDate" class="required">Self-employment  start date</label>
+							<input type="date" class="form-control" id="spouseSelfEmploymentStartDate" ng-model="$ctrl.spouse._selfEmploymentStartDate" required>
+						</div>
+						<div class="form-group">
+							<label for="spouseSelfEmploymentPaymentSchedule">Payment schedule</label>
+							<select name="" id="spouseSelfEmploymentPaymentSchedule" class="custom-select" ng-model="$ctrl.spouse.selfEmploymentPaymentSchedule">
+								<option value="monthly">monthly</option>
+								<option value="semi-monthly">semi-monthly</option>
+								<option value="bi-weekly">bi-weekly</option>
+								<option value="weekly">weekly</option>
+								<option value="per diem">per diem</option>
+								<option value="irregularly">irregularly</option>
+							</select>
+						</div>
+						<div class="form-group" ng-if="$ctrl.spouse.selfEmploymentPaymentSchedule === 'per diem' || $ctrl.spouse.selfEmploymentPaymentSchedule === 'irregularly'">
+							<label for="spouseSelfEmploymentPaymentScheduleReason">Payment schedule note</label>
+							<textarea class="form-control" rows="3" name="" id="spouseSelfEmploymentPaymentScheduleReason" ng-model="$ctrl.spouse.selfEmploymentPaymentScheduleReason"></textarea>
+						</div>
+					</div>
+
+					<!-- STUDENT -->
+					<div ng-if="$ctrl.spouse.occupation === 'student'">
+						<div class="form-group">
+							<label for="spouseSchool" class="required">School</label>
+							<input type="text" class="form-control" id="spouseSchool" ng-model="$ctrl.spouse.school" required>
+						</div>
+						<div class="form-row">
+							<div class="form-group" ng-class="$ctrl.spouse._schoolExpectedGraduationDate ? 'col-6' : 'col-12'">
+								<label for="spouseSchoolAdmissionDate" class="required">Admission date</label>
+								<input type="date" class="form-control" id="spouseSchoolAdmissionDate" ng-model="$ctrl.spouse._schoolAdmissionDate" required>
+							</div>
+							<div class="form-group col-6" ng-if="$ctrl.spouse._schoolExpectedGraduationDate">
+								<label for="spouseSchoolExpectedGraduationDate" class="required">Expected graduation  date</label>
+								<input type="date" class="form-control" id="spouseSchoolExpectedGraduationDate" ng-model="$ctrl.spouse._schoolExpectedGraduationDate" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="spouseSchoolFundingType">Payment schedule</label>
+							<select name="" id="spouseSchoolFundingType" class="custom-select" ng-model="$ctrl.spouse.schoolFundingType">
+								<option value="teaching assistant">teaching assistant</option>
+								<option value="research assistant">research assistant</option>
+								<option value="stipend">stipend</option>
+								<option value="N/A">N/A</option>
+							</select>
+						</div>
+
+					</div>
+
+					<div ng-if="$ctrl.spouse.occupation === 'disabled'">
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="spouseDisabledCertification">
+							<label class="custom-file-label" for="spouseDisabledCertification">{{$ctrl.spouse.disabledCertification || 'Browse files &hellip;'}}</label>
+						</div>
+					</div>
+
+					<div ng-if="$ctrl.spouse.occupation === 'other'">
+						<div class="form-group">
+							<label for="spouseOtherEmployeeNote">Note</label>
+							<textarea id="spouseOtherEmployeeNote" name="name" class="form-control" rows="3" cols="80">{{$ctrl.spouse.otherEmployeeNote}}</textarea>
+						</div>
+						<div class="custom-file">
+							<input type="file" class="custom-file-input" id="spouseOtherAttachedFile">
+							<label class="custom-file-label" for="spouseOtherAttachedFile">{{$ctrl.spouse.otherAttachedFile || 'Browse files &hellip;'}}</label>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" ng-click="$ctrl.handleDismiss()">Cancel</button>
+		<button type="button" class="btn btn-primary" ng-click="$ctrl.handleClose()">Save changes</button>
+	</div>
+</div>

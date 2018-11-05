@@ -33,8 +33,6 @@
 		</div>
 	</div>
 
-	<!-- AWARD -->
-	<award-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" children="$ctrl.children" tcc-tuition="$ctrl.tccTuition"></award-detail>
 
 	<div class="card-deck mt-4">
 		<!-- ugh, need to put the .card classes on the custom element as .card-deck expects them as children -->
@@ -45,6 +43,9 @@
 		<!-- SPOUSE -->
 		<spouse-detail class="card card-ccsp" spouse="$ctrl.spouse" employee="$ctrl.application.employee" ng-if="$ctrl.application.employee.maritalStatus !== 'singleOrWidowed'"></spouse-detail>
 	</div>
+
+	<!-- AWARD -->
+	<award-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" children="$ctrl.children" tcc-tuition="$ctrl.tccTuition"></award-detail>
 
 	<!-- CHILDREN -->
 	<children-list children="$ctrl.children"></children-list>

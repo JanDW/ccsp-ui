@@ -225,8 +225,9 @@ function Child(employee, tccCenter) {
     child.daysPerWeek = faker.random.arrayElement([2,3,5]);
     child.employeeId = employee.id;
     if (tccCenter.toLowerCase() === 'westgate') {
-      child.schedule = faker.random.arrayElement(['fulltime', 'halftime']);
+      child.schedule = faker.random.arrayElement(['full-time', 'half-time']);
       child.classRoom = 'Preschool';
+      child.daysPerWeek = 5;
     }
 
     switch(child.classRoom.toLowerCase()) {
@@ -253,7 +254,7 @@ function Child(employee, tccCenter) {
     }
 
       if (child.tccCenter.toLowerCase() === 'westgate') {
-        if (child.schedule.toLowerCase() === 'halftime') {
+        if (child.schedule.toLowerCase() === 'half-time') {
          child.monthlyTuition = api.tccTuition.westgate.preschool.fiveDayMornings;
         } else {
          child.monthlyTuition = api.tccTuition.westgate.preschool.fiveDay;

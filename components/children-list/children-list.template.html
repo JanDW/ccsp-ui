@@ -13,6 +13,8 @@
 						<th scope="col" class="pt-4">TCC Center</th>
 						<th scope="col" class="pt-4">Classroom</th>
 						<th scope="col" class="pt-4">Days per Week</th>
+						<th scope="col" class="pt-4" ng-if="$ctrl.children[0].tccCenter.toLowerCase() === 'westgate'">Schedule</th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -37,6 +39,9 @@
 						</td>
 						<td>
 							{{ child.daysPerWeek }}
+						</td>
+						<td ng-if="$ctrl.children[0].tccCenter.toLowerCase() === 'westgate'">
+							{{ child.schedule | createLabelFromKey }}
 						</td>
 					</tr>
 				</tbody>

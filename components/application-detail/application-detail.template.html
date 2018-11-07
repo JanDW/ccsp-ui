@@ -24,7 +24,7 @@
 		<!-- @TODO move to component -->
 		<!-- @TODO disable buttons when at end of range -->
 		<div class="float-right">
-			<button ng-click="$ctrl.prev()" type="button" class="btn btn-white text-primary btn-sm align-middle">
+			<button ng-click="$ctrl.prev()" ng-disabled="$ctrl.application.orderIndex === 0" type="button" class="btn btn-white text-primary btn-sm align-middle">
 				Prev
 			</button>
 			<button ng-click="$ctrl.next()" type="button" class="btn btn-white text-primary btn-sm align-middle">

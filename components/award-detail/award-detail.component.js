@@ -87,6 +87,8 @@ component('awardDetail', {
             //@TODO account for incomeOverIncomeMin being negative (income is lower than $ctrl.INCOME_LOWEST_STEP = 40000; )
             $ctrl.incomeOverIncomeMin = $ctrl.totalIncome - $ctrl.INCOME_LOWEST_STEP; // How much more income than minimum threshold is there?
 
+            if ($ctrl.incomeOverIncomeMin < 0) {$ctrl.incomeOverIncomeMin = 0;}
+
             /* Expected 5-day family contribution percentage adjusted for income*/
             $ctrl.calculatedFiveDayIncomeContributionPercentage = $ctrl.INCOME_LOWEST_STEP_CONTRIBUTION_PERCENTAGE  + Math.floor($ctrl.incomeOverIncomeMin / $ctrl.INCOME_INCREASE_STEP_AMOUNT) * $ctrl.INCOME_INCREASE_STEP_PERCENTAGE; // Raise the INCOME_LOWEST_STEP_CONTRIBUTION_PERCENTAGE by exceeded income step amount %
 
@@ -108,7 +110,7 @@ component('awardDetail', {
               if (child.daysPerWeek === 5) {
                 child.employeeTuitionContributionPercentage = $ctrl.calculatedIncomeContributionPercentage;
               }
-              child.employeeTuitionContribution = child.monthlyTuition * child.employeeTuitionContributionPercentage;
+              child.employeeTuitionContribution = ($ctrl.totalIncome/12) * child.employeeTuitionContributionPercentage;
 
               /* add monthly tuition for child to total */
               $ctrl.monthlyTuitionTotal += child.monthlyTuition;

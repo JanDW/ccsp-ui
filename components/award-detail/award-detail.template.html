@@ -2,9 +2,10 @@
 	<div class="card-header card-header-ccsp border-0 d-flex">
 		<div>
 			<span class="align-middle">
-				<i class="fas fa-check-circle text-success align-middle" ng-if="$ctrl.eligible" aria-label="eligible"></i>
-				<i class="fas fa-times-circle text-danger align-middle" ng-if="!$ctrl.eligible" aria-label="not eligible"></i>
+				<i class="fas fa-check-circle text-success align-middle" ng-if="$ctrl.eligible && $ctrl.monthlyAward > 0" aria-label="eligible"></i>
+				<i class="fas fa-times-circle text-danger align-middle" ng-if="!$ctrl.eligible || $ctrl.monthlyAward <= 0" aria-label="not eligible"></i>
 					Award
+					<span class="text-muted" ng-if="$ctrl.monthlyAward <= 0"> employee contribution exceeds tuition</span>
 			</span>
 		</div>
 		<div class="ml-auto">
@@ -83,7 +84,7 @@
 									<dt class="col-5 text-right text-monospace font-weight-normal border-bottom">&minus; {{$ctrl.INCOME_LOWEST_STEP | currency : '$' : 0 }}</dt>
 									<dd class="col-7 text-muted">lowest income step threshold</dd>
 									<dt class="col-5 text-right text-monospace font-weight-normal">{{$ctrl.incomeOverIncomeMin | currency : '$' : 0 }}</dt>
-									<dd class="col-7 text-muted">income over lowest step threshold</dd>
+									<dd class="col-7 text-muted">income over lowest step threshold (or $0)</dd>
 									<dt class="col-5 text-right text-monospace font-weight-normal border-bottom">÷ {{$ctrl.INCOME_INCREASE_STEP_AMOUNT | currency : '$' : 0 }}</dt>
 									<dd class="col-7 text-muted">income step amount</dd>
 									<dt class="col-5 text-right text-monospace font-weight-normal mt-1"><mark class="px-2">{{$ctrl.incomeOverIncomeMin / $ctrl.INCOME_INCREASE_STEP_AMOUNT | floor }}</mark></dt>
@@ -125,7 +126,7 @@
 										<th scope="column" class="border-top-0">TCC</th>
 										<th scope="column" class="text-right border-top-0">Adjusted EE contribution percentage<sup>1</sup></th>
 										<th scope="column" class="text-right border-top-0">Monthly tuition cost</th>
-										<th scope="column" class="text-right border-top-0">Employee tuition contribution</th>
+										<th scope="column" class="text-right border-top-0">Monthly employee contribution</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -134,7 +135,8 @@
 										<td>
 											{{child.tccCenter}}<br>
 											{{child.classRoom}}<br>
-											{{child.daysPerWeek}}&nbsp;days/week
+											{{child.daysPerWeek}}&nbsp;days/week<br>
+											{{child.schedule | createLabelFromKey }}
 										</td>
 										<td class="text-right text-monospace">{{child.employeeTuitionContributionPercentage * 100 | number : 3}} %</td>
 										<td class="text-right text-monospace">{{child.monthlyTuition | currency : $ : 2 }}</td>
@@ -150,7 +152,7 @@
 									<tr>
 										<td colspan="5" class="pt-3">
 											<small>
-											<sup>1</sup>Number is derived by multiplying the <i>Employee contribution percentage ({{$ctrl.calculatedIncomeContributionPercentage * 100 | number : 3}} %)</i> by the corresponding adjustment percentage for <i>2 days ({{$ctrl.TWO_DAY_SLOT_ADJUSTMENT * 100 | number : 0}}%)</i> or <i>3 days ({{$ctrl.THREE_DAY_SLOT_ADJUSTMENT * 100 | number : 0}}%)</i>. <i>5 days</i> schedule does not get adjusted.
+											<sup>1</sup>Number is derived by multiplying the <i>Employee contribution percentage ({{$ctrl.calculatedIncomeContributionPercentage * 100 | number : 3}} %)</i> by the corresponding adjustment percentage for <i>2 days ({{$ctrl.TWO_DAY_SLOT_ADJUSTMENT * 100 | number : 0}}%)</i> or <i>3 days ({{$ctrl.THREE_DAY_SLOT_ADJUSTMENT * 100 | number : 0}}%)</i>.<br><i>5 days</i> or <i>half-time (Westgate)</i> schedules do not get adjusted.
 											</small>
 
 										</td>
@@ -164,18 +166,16 @@
 						<div class="card-body">
 							<h4 class="card-title h6 mb-4">4. Award calculation and limit </h4>
 							<dl class="row mx-0">
-									<dt class="col-3 text-right text-monospace font-weight-normal"> {{$ctrl.monthlyTuitionTotal | currency : '$' : 2 }}</dt>
-								<dd class="col-9 text-muted">total monthly tuition</dd>
-								<dt class="col-3 text-right text-monospace font-weight-normal border-bottom">&minus; {{$ctrl.employeeTuitionContributionTotal | currency : '$' : 2 }}</dt>
-								<dd class="col-9 text-muted">monthly employee contribution</dd>
-								<dt class="col-3 text-right text-monospace font-weight-normal border-bottom">{{$ctrl.monthlyAward | currency : '$' : 2 }}</dt>
-								<dd class="col-9 text-muted">monthly award</dd>
-								<dt class="col-3 text-right text-monospace font-weight-normal border-bottom">?&nbsp;&lt;&nbsp;{{$ctrl.monthlyTuitionTotal | currency : '$' : 2}} &times; {{$ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION}}</dt>
-								<dd class="col-9 text-muted">award is limited to maximum of total tuition &times; {{$ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION * 100}}% </dd>
-								<dt class="col-3 text-right text-monospace font-weight-normal">{{( $ctrl.monthlyAward < $ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION) ? 'yes ( <' : 'no ( >'}} {{$ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION | floor | currency : $ : 0}}.00)</dt>
-								<dd class="col-9 text-muted">is award is smaller than award limit?</dd>
-								<dt class="col-3 text-right text-monospace font-weight-normal"><mark class="px-2">{{$ctrl.monthlyAwardLimited | floor | currency : $ : 0}}.00</mark></dt>
-								<dd class="col-9 text-muted">final rounded monthly award amount</dd>
+									<dt class="col-4 text-right text-monospace font-weight-normal"> {{$ctrl.monthlyTuitionTotal | currency : '$' : 2 }}</dt>
+								<dd class="col-8 text-muted">total monthly tuition</dd>
+								<dt class="col-4 text-right text-monospace font-weight-normal border-bottom">&minus; {{$ctrl.employeeTuitionContributionTotal | currency : '$' : 2 }}</dt>
+								<dd class="col-8 text-muted">monthly employee contribution</dd>
+								<dt class="col-4 text-right text-monospace font-weight-normal border-bottom">{{$ctrl.monthlyAward | currency : '$' : 2 }}</dt>
+								<dd class="col-8 text-muted">monthly award</dd>
+								<dt class="col-4 text-right text-monospace font-weight-normal border-bottom">is {{$ctrl.monthlyAward | currency : '$' : 2 }}&nbsp;&lt;&nbsp;{{$ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION | floor | currency : $ : 0}}.00?</dt>
+								<dd class="col-8 text-muted">award is limited to maximum of total tuition &times; {{$ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION * 100}}% </dd>
+								<dt class="col-4 text-right text-monospace font-weight-normal"><mark class="px-2">{{$ctrl.monthlyAwardLimited | floor | currency : $ : 0}}.00</mark></dt>
+								<dd class="col-8 text-muted">final rounded monthly award amount</dd>
 							</dl>
 						</div>
 					</div>

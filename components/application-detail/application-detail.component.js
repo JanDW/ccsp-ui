@@ -6,8 +6,9 @@ component('applicationDetail', {
     '$http',
     '$routeParams',
     '$location',
-    function ApplicationDetailController($http, $routeParams, $location) {
-      var self = this;
+    '$window',
+    function ApplicationDetailController($http, $routeParams, $location, $window) {
+      var $ctrl = this;
       let childrenQueryParameter = '?';
 
       /* API CALLS */
@@ -15,28 +16,32 @@ component('applicationDetail', {
       $http.
       get('http://localhost:3000/applications/' + $routeParams.applicationId + '?_expand=employee').
       then(function(response) {
-        self.application = response.data;
+        $ctrl.application = response.data;
+
+        // Set page <title>
+        $window.document.title = 'Application for ' + $ctrl.application.employee.lastName + ', ' + $ctrl.application.employee.firstName + ' ' +
+        ($ctrl.application.employee.middleInitial || '') + ' – MIT Childcare Center Scholarship';
 
         // putting CSS classes in a controller is not the best idea
         // this is a prototype
-        switch (self.application.statusCode) {
+        switch ($ctrl.application.statusCode) {
           case 0:
-              self.application.badgeClass = 'badge-primary';
+              $ctrl.application.badgeClass = 'badge-primary';
             break;
           case 1:
-              self.application.badgeClass = 'badge-info';
+              $ctrl.application.badgeClass = 'badge-info';
             break;
           case 2:
-              self.application.badgeClass ='badge-warning';
+              $ctrl.application.badgeClass ='badge-warning';
             break;
           case 3:
-              self.application.badgeClass ='badge-danger';
+              $ctrl.application.badgeClass ='badge-danger';
             break;
           case 4:
-              self.application.badgeClass = 'badge-success';
+              $ctrl.application.badgeClass = 'badge-success';
             break;
           case 5:
-              self.application.badgeClass = 'badge-danger';
+              $ctrl.application.badgeClass = 'badge-danger';
             break;
           default:
             console.log('Wasn\'t able to select a badge based on statusCode');
@@ -45,24 +50,24 @@ component('applicationDetail', {
 
 
         // Get the spouse
-        if (typeof self.application.employee.spouseId !== 'undefined') {
+        if (typeof $ctrl.application.employee.spouseId !== 'undefined') {
           $http.
-          get('http://localhost:3000/spouses/' + self.application.employee.spouseId).
+          get('http://localhost:3000/spouses/' + $ctrl.application.employee.spouseId).
           then(function(response) {
-            self.spouse = response.data;
+            $ctrl.spouse = response.data;
           });
         }
 
 
         // Get the children (construct query parameter for API first)
-        self.application.employee.childIds.forEach(function(childId){
+        $ctrl.application.employee.childIds.forEach(function(childId){
           childrenQueryParameter += 'id=' + childId + '&';
         });
 
         $http.
         get('http://localhost:3000/children/' + childrenQueryParameter ).
         then(function(response) {
-          self.children = response.data;
+          $ctrl.children = response.data;
         });
       });
 
@@ -70,36 +75,31 @@ component('applicationDetail', {
       $http.
       get('http://localhost:3000/tccTuition/').
       then(function(response) {
-        self.tccTuition = response.data;
+        $ctrl.tccTuition = response.data;
       });
-
 
       /* METHODS */
 
       // Navigate to previous 'pending approval' application
-      self.prev = function() {
+      $ctrl.prev = function() {
         // only decrease when not first in array
-        const previousOrderIndex = self.application.orderIndex > 0 ? self.application.orderIndex - 1 : 0;
+        const previousOrderIndex = $ctrl.application.orderIndex > 0 ? $ctrl.application.orderIndex - 1 : 0;
         // request id match to previousOrderIndex and go there
         $http.
         get('http://localhost:3000/applications?orderIndex=' + previousOrderIndex).
         then(function(response){
           $location.path('applications/' + response.data[0].id);
         });
-
-
       };
 
       // Navigate to next 'pending approval' application
-      self.next = function() {
+      $ctrl.next = function() {
         $http.
           get('http://localhost:3000/applications?statusCode=0').
           then(function(response){
-            // only increase when not last in array
-            const totalApplicationsPendingApproval = response.data.length;
-            const nextOrderIndex = (self.application.orderIndex + 1  < totalApplicationsPendingApproval ) ?
-              self.application.orderIndex + 1 :
-              self.application.orderIndex;
+            const nextOrderIndex = ($ctrl.application.orderIndex + 1  < totalApplicationsPendingApproval ) ?
+              $ctrl.application.orderIndex + 1 :
+              $ctrl.application.orderIndex;
             // request id match to nextOrderIndex and go there
             $http.
               get('http://localhost:3000/applications?orderIndex=' + nextOrderIndex).

@@ -138,28 +138,29 @@ component('awardDetail', {
         }
       };
 
+      $ctrl.award = {};
+
+      //@TODO hardcoded dates
+      $ctrl.award.awardStartDate = new Date('2018-09-01T00:00:00');
+      $ctrl.award.awardEndDate = new Date('2019-08-31T00:00:00');
+
       $ctrl.editAward = function(){
        $uibModal.open({
-        template: '<award-detail-edit employee="$ctrl.employee" spouse="$ctrl.spouse" $close="$close(result)" $dismiss="$dismiss(reason)"></award-detail-edit>',
-        controller: ['employee','spouse', function(employee, spouse) {
+        template: '<award-detail-edit award="$ctrl.award" $close="$close(result)" $dismiss="$dismiss(reason)"></award-detail-edit>',
+        controller: ['award', function(award) {
           let $ctrl = this;
-          $ctrl.employee = employee;
-          $ctrl.spouse = spouse;
+          $ctrl.award = award;
         }],
         controllerAs: '$ctrl',
         resolve: {
-          employee: function(){
-           return angular.copy($ctrl.employee);
-           },
-          spouse: function(){
-            return angular.copy($ctrl.spouse);
-          }
+          award: function(){
+           return angular.copy($ctrl.award);
+           }
         }
       }).result.then(function(result){
         // modal saved - update $ctrl.employee $ctrl.spouse with returned object
         console.info("saved ->"+ result);
-        $ctrl.employee = result.employee;
-        $ctrl.spouse = result.spouse;
+        $ctrl.award = result.award;
 
         // modal dismissed
       }, function(reason) {

@@ -97,9 +97,7 @@ component('applicationDetail', {
         $http.
           get('http://localhost:3000/applications?statusCode=0').
           then(function(response){
-            const nextOrderIndex = ($ctrl.application.orderIndex + 1  < totalApplicationsPendingApproval ) ?
-              $ctrl.application.orderIndex + 1 :
-              $ctrl.application.orderIndex;
+            const nextOrderIndex = $ctrl.application.orderIndex + 1;
             // request id match to nextOrderIndex and go there
             $http.
               get('http://localhost:3000/applications?orderIndex=' + nextOrderIndex).

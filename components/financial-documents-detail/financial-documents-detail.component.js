@@ -10,30 +10,25 @@ component('financialDocumentsDetail', {
   controller: ['$uibModal',
     function FinancialDocumentsDetailController($uibModal) {
       var $ctrl = this;
+      $ctrl.documents = {};
 
       $ctrl.editFinancialDocuments = function(){
        $uibModal.open({
-        template: '<financial-documents-detail-edit employee="$ctrl.employee" spouse="$ctrl.spouse" $close="$close(result)" $dismiss="$dismiss(reason)"></financial-documents-detail-edit>',
-        controller: ['employee','spouse', function(employee, spouse) {
+        template: '<financial-documents-edit documents="$ctrl.documents" $close="$close(result)" $dismiss="$dismiss(reason)"></financial-documents-edit>',
+        controller: ['documents', function(documents) {
           let $ctrl = this;
-          $ctrl.employee = employee;
-          $ctrl.spouse = spouse;
+          $ctrl.documents = documents;
         }],
         controllerAs: '$ctrl',
         resolve: {
-          employee: function(){
-           return angular.copy($ctrl.employee);
-           },
-          spouse: function(){
-            return angular.copy($ctrl.spouse);
-          }
+          documents: function(){
+           return angular.copy($ctrl.documents);
+           }
         }
       }).result.then(function(result){
-        // modal saved - update $ctrl.employee $ctrl.spouse with returned object
+        // modal saved - update $ctrl.documents with returned object
         console.info("saved ->"+ result);
-        $ctrl.employee = result.employee;
-        $ctrl.spouse = result.spouse;
-
+        $ctrl.documents = result.documents;
         // modal dismissed
       }, function(reason) {
         console.info("dismissed ->"+ reason);

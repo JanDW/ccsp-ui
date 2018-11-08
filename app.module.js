@@ -13,7 +13,7 @@ angular.module('ccspApp', [
   'awardDetail',
   'awardDetailEdit',
   'financialDocumentsDetail',
-  // 'financialDocumentsDetailEdit',
+  'financialDocumentsEdit',
   'datatables',
   'ui.bootstrap'
 ]);

@@ -11,8 +11,19 @@ component('childrenListEdit', {
       let $ctrl = this;
 
       $ctrl.$onChanges = function(changes) {
-
+        // Make sure the data is available:
+        // Check objects are there.
+        // Note: $onChanges works for one-way databinding only
+        // @TODO There has to be a better solution that this kludgy mess
+        if ( typeof $ctrl.children  === 'object' ) {
+          // Create date objects for children-list-edit
+          angular.forEach($ctrl.children, function(child){
+              child._dateOfBirth = new Date(child.dateOfBirth);
+          });
+        }
       };
+
+
 
       $ctrl.addChild = function() {
         // add a new object to the children array

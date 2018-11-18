@@ -37,8 +37,8 @@
 							<input type="text" class="form-control" ng-model="child.lastName" />
 						</td>
 						<td>
-							<label for="childDateOfBirth" class="sr-only required">Date of birth</label>
-							<input type="date" class="form-control" id="childDateOfBirth" ng-model="child._dateOfBirth" required>
+							<label for="childDateOfBirth-{{ $index + 1 }}" class="sr-only required">Date of birth</label>
+							<input type="date" class="form-control" id="childDateOfBirth-{{ $index + 1 }}" ng-model="child._dateOfBirth" required>
 						</td>
 						<td>
 							<label for="tccCenter-{{ $index + 1 }}" class="sr-only">TCC center</label>
@@ -53,7 +53,7 @@
 						<td>
 							<label for="classRoom-{{ $index + 1 }}" class="sr-only">Classroom</label>
 							<select name="" id="classRoom-{{ $index + 1 }}" class="custom-select" ng-model="child.classRoom">
-								<option value="Infant">Eastgate</option>
+								<option value="Infant">Infant</option>
 								<option value="Toddler">Toddler</option>
 								<option value="Preschool">Preschool</option>
 							</select>

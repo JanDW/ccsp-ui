@@ -224,6 +224,7 @@ function Child(employee, tccCenter) {
     child.classRoom = faker.random.arrayElement(['Infant', 'Toddler', 'Preschool']);
     child.daysPerWeek = faker.random.arrayElement([2,3,5]);
     child.employeeId = employee.id;
+
     if (tccCenter.toLowerCase() === 'westgate') {
       child.schedule = faker.random.arrayElement(['full-time', 'half-time']);
       child.classRoom = 'Preschool';
@@ -358,7 +359,11 @@ const Application = (employee) => {
  return application;
 };
 
-const GenerateAwards = () => {};
+const GenerateAwards = () => {
+  const award = {};
+  // award.startDate = faker.date.between('','2018-08-31');
+  // award.EndDate = faker.date.between('','2018-08-31');
+};
 
 const removeKeysWithEmptyProperties = (obj) => {
   Object.keys(obj).forEach(key => {

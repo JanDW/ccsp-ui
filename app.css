@@ -42,15 +42,15 @@ body {
 	font-weight: 500;
 }
 
-/* a,
+a,
 .btn-link {
-	color: #0056b3;
+	color: #0e70d8;
 }
 
 a:hover,
 .btn-link:hover {
 	color: #007bff;
-} */
+}
 
 a[target="_blank"]::after {
 	display: inline-block;

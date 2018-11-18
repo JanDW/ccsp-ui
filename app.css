@@ -91,6 +91,14 @@ mark {
 	margin-bottom: .65rem;
 }
 
+.modal-xl .modal-dialog {
+	max-width: 1200px;
+}
+
+.modal-xl .modal-body {
+	padding: 0;
+}
+
 .modal-footer {
 	background-color: #3b3b3b;
 	margin: 0 -1px -1px -1px;

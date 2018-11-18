@@ -1,0 +1,107 @@
+<!-- CHILDREN LIST EDIT MODAL-->
+<div class="modal-content">
+	<div class="modal-header">
+		<h5 class="modal-title">Children</h5>
+		<button type="button" class="btn btn-link btn-sm mr-4 ml-auto" ng-click="$ctrl.addChild()"><i class="fas fa-plus" aria-hidden></i> Add a child</button>
+		<button type="button" class="close ml-0" ng-click="$ctrl.handleDismiss()" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+
+		<table class="table table-borderless mb-0" id="childrenList">
+			<thead class="bg-light">
+				<tr>
+					<th scope="col" class="pt-4 border-bottom">&nbsp;</th>
+					<th scope="col" class="pt-4 border-bottom">First Name</th>
+					<th scope="col" class="pt-4 border-bottom">Last Name</th>
+					<th scope="col" class="pt-4 border-bottom">Birth Date</th>
+					<th scope="col" class="pt-4 border-bottom">TCC Center</th>
+					<th scope="col" class="pt-4 border-bottom">Classroom</th>
+					<th scope="col" class="pt-4 border-bottom">Days per Week</th>
+					<th scope="col" class="pt-4 border-bottom" ng-if="$ctrl.children[0].tccCenter.toLowerCase() === 'westgate'">Schedule</th>
+					<th scope="col" class="pt-4 border-bottom"><span class="sr-only">Remove Child</span></th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<form>
+					<tr ng-repeat="child in $ctrl.children">
+						<th scope="row" class="align-middle">
+							{{ $index + 1 }}
+						</th>
+						<td>
+							<input type="text" class="form-control" ng-model="child.firstName" />
+						</td>
+						<td>
+							<input type="text" class="form-control" ng-model="child.lastName" />
+						</td>
+						<td>
+							<label for="childDateOfBirth" class="sr-only required">Date of birth</label>
+							<input type="date" class="form-control" id="childDateOfBirth" ng-model="child._dateOfBirth" required>
+						</td>
+						<td>
+							<label for="tccCenter-{{ $index + 1 }}" class="sr-only">TCC center</label>
+							<select name="" id="tccCenter-{{ $index + 1 }}" class="custom-select" ng-model="child.tccCenter">
+								<option value="Eastgate">Eastgate</option>
+								<option value="Koch">Koch</option>
+								<option value="Linc">Linc</option>
+								<option value="Stata">Stata</option>
+								<option value="Westgate">Westgate</option>
+							</select>
+						</td>
+						<td>
+							<label for="classRoom-{{ $index + 1 }}" class="sr-only">Classroom</label>
+							<select name="" id="classRoom-{{ $index + 1 }}" class="custom-select" ng-model="child.classRoom">
+								<option value="Infant">Eastgate</option>
+								<option value="Toddler">Toddler</option>
+								<option value="Preschool">Preschool</option>
+							</select>
+						</td>
+						<td>
+							<label for="daysPerWeek-{{ $index + 1 }}" class="sr-only">Days per week</label>
+							<select name="" id="daysPerWeek-{{ $index + 1 }}" class="custom-select" ng-model="child.daysPerWeek">
+								<!-- using ng-value since model is using integers instead of strings -->
+								<option ng-value="2">2</option>
+								<option ng-value="3">3</option>
+								<option ng-value="5">5</option>
+							</select>
+						</td>
+						<td ng-if="$ctrl.children[0].tccCenter.toLowerCase() === 'westgate'">
+							{{ child.schedule | createLabelFromKey }}
+						</td>
+						<td class="align-middle">
+							<i class="far fa-trash-alt text-danger" aria-hidden></i>
+							<span class="sr-only">Remove child</span>
+						</td>
+					</tr>
+				</form>
+
+			</tbody>
+			<!-- <tfoot>
+				<tr>
+					<td colspan="999"><button type="button" class="btn btn-primary btn-sm float-right" id="addChild">+ Add a Child</button></td>
+				</tr>
+			</tfoot> -->
+		</table>
+
+		<form action="#">
+			<fieldset id="childrenListEdit">
+				<div class="form-row">
+					<!-- <div class="form-group col-6">
+						<label for="" class="required"></label>
+						<input type="date" class="form-control" id="" ng-model="$ctrl" required>
+					</div>
+					<div class="form-group col-6">
+						<label for="" class="required"></label>
+						<input type="date" class="form-control" id="" ng-model="$ctrl" required>
+					</div> -->
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" ng-click="$ctrl.handleDismiss()">Cancel</button>
+		<button type="button" class="btn btn-primary" ng-click="$ctrl.handleClose()">Save Child</button>
+	</div>
+</div>

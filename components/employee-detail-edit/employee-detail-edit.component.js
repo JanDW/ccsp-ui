@@ -7,7 +7,7 @@ component('employeeDetailEdit', {
     $dismiss: '&',
     employee: '<' //data gets passed in as an input on an employee attribute on the custom element
   },
-  controller: [function EmployeeDetailEditController($scope) {
+  controller: [function EmployeeDetailEditController() {
       let $ctrl = this;
 
       // Update marital title based upon marital status

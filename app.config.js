@@ -7,15 +7,21 @@ angular.module('ccspApp').config([
 		$locationProvider.hashPrefix('!');
 
 		$routeProvider.
-			when('/applications', {
+			when('/applications-inbox', {
 				template: '<application-list></application-list>'
 			}).
-			when('/applications/:applicationId', {
+			when('/applications-inbox/:applicationId', {
+				template: '<application-detail></application-detail>'
+			}).
+      when('/applications', {
+				template: '<application-list-all></application-list-all>'
+			}).
+      when('/applications/:applicationId', {
 				template: '<application-detail></application-detail>'
 			}).
 			//when('/employees/:employeeId', {
 			//	template: ''
 			//})
-			otherwise('/applications');
+			otherwise('/applications-inbox');
 	}
 ]);

@@ -2,8 +2,7 @@
 <html lang="en" ng-app="ccspApp">
 <head>
 	<meta charset="UTF-8">
-	<title></title> <!-- Set with $window.document.title -->
-
+	<title>Loading&hellip;</title> <!-- is being set with $window.document.title -->
 
 	<!-- STYLES -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -37,41 +36,56 @@
 	<script src="core/utilities/floor.filter.js"></script>
 	<script src="core/utilities/pow.filter.js"></script>
 
+	<!-- APPLICATION LIST -->
 	<script src="components/application-list/application-list.module.js"></script>
 	<script src="components/application-list/application-list.component.js"></script>
 
+	<!-- APPLICATION DETAIL -->
 	<script src="components/application-detail/application-detail.module.js"></script>
 	<script src="components/application-detail/application-detail.component.js"></script>
 
+	<!-- EMPLOYEE DETAIL -->
 	<script src="components/employee-detail/employee-detail.module.js"></script>
 	<script src="components/employee-detail/employee-detail.component.js"></script>
 
 	<script src="components/employee-detail-edit/employee-detail-edit.module.js"></script>
 	<script src="components/employee-detail-edit/employee-detail-edit.component.js"></script>
 
+	<!-- SPOUSE DETAIL -->
 	<script src="components/spouse-detail/spouse-detail.module.js"></script>
 	<script src="components/spouse-detail/spouse-detail.component.js"></script>
 
 	<script src="components/spouse-detail-edit/spouse-detail-edit.module.js"></script>
 	<script src="components/spouse-detail-edit/spouse-detail-edit.component.js"></script>
 
+	<!-- CHILDREN LIST -->
 	<script src="components/children-list/children-list.module.js"></script>
 	<script src="components/children-list/children-list.component.js"></script>
 
+	<script src="components/children-list-edit/children-list-edit.module.js"></script>
+	<script src="components/children-list-edit/children-list-edit.component.js"></script>
+
+	<!-- INCOME DETAIL -->
 	<script src="components/income-detail/income-detail.module.js"></script>
 	<script src="components/income-detail/income-detail.component.js"></script>
 
+	<!-- AWARD DETAIL -->
 	<script src="components/award-detail/award-detail.module.js"></script>
 	<script src="components/award-detail/award-detail.component.js"></script>
 
 	<script src="components/award-detail-edit/award-detail-edit.module.js"></script>
 	<script src="components/award-detail-edit/award-detail-edit.component.js"></script>
 
+	<!-- FINANCIAL DOCUMENTS DETAIL -->
 	<script src="components/financial-documents-detail/financial-documents-detail.module.js"></script>
 	<script src="components/financial-documents-detail/financial-documents-detail.component.js"></script>
 
 	<script src="components/financial-documents-edit/financial-documents-edit.module.js"></script>
 	<script src="components/financial-documents-edit/financial-documents-edit.component.js"></script>
+
+	<!-- APPLICATION LIST ALL -->
+	<script src="components/application-list-all/application-list-all.module.js"></script>
+	<script src="components/application-list-all/application-list-all.component.js"></script>
 
 	<!-- <script src="components/financial-documents-detail-edit/financial-documents-detail-edit.module.js"></script>
 	<script src="components/financial-documents-detail-edit/financial-documents-detail-edit.component.js"></script> -->
@@ -80,9 +94,25 @@
 
 	<div class="bg-white border-bottom">
 		<div class="container">
-			<nav class="navbar navbar-expand-lg bg-white px-0 font-weight-bold">
-				<a href="#" class="navbar-brand text-dark align-middle">MIT Childcare Center Scholarship</a>
-				<span class="navbar-text ml-auto">Kathy Kasabula (Admin)</span>
+			<nav class="navbar navbar-expand-lg bg-white px-0 ">
+				<a href="#" class="navbar-brand text-dark align-middle font-weight-bold">MIT Childcare Center Scholarship</a>
+
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				    <span class="navbar-toggler-icon"></span>
+				  </button>
+
+					  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					    <ul class="navbar-nav mr-auto">
+					      <li class="nav-item">
+					        <a class="nav-link" href="/#!/applications-inbox">Inbox</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="/#!/applications">All Applications</a>
+					      </li>
+							</ul>
+							<span class="navbar-text ml-auto">Kathy Kasabula (Admin)</span>
+						</div>
+
 			</nav>
 		</div>
 	</div>

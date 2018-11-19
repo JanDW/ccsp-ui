@@ -391,7 +391,7 @@ const writeObjectToJsonFile = (obj, jsonFileName) => {
 /*** MAIN ROUTINE ***/
 (() => {
   // Generate n employees
-  _.times(50, function(index){
+  _.times(200, function(index){
       api.employees.push(Employee(index));
   });
 
@@ -438,7 +438,7 @@ const writeObjectToJsonFile = (obj, jsonFileName) => {
   });
 
   // Add n applications to random employees
-  _.times(200, (index) => {
+  _.times(50, (index) => {
     const randomEmployeesArrayIndex = faker.random.number({ min: 0, max: api.employees.length - 1});
 
     const employee = api.employees[randomEmployeesArrayIndex];

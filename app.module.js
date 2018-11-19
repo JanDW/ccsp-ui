@@ -12,6 +12,7 @@ angular.module('ccspApp', [
   'childrenList',
   'childrenListEdit',
   'incomeDetail',
+  'incomeDetailEdit',
   'awardDetail',
   'awardDetailEdit',
   'financialDocumentsDetail',

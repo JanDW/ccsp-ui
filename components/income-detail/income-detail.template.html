@@ -1,6 +1,13 @@
 <div class="card card-ccsp mt-4">
-	<div class="card-header card-header-ccsp  border-0 bg-white">
-		<i class="fas fa-check-circle text-success d-none" aria-label="Income qualifies"></i>&nbsp;Gross Estimated Income for AY 2018-2019: <span class="text-muted">&nbsp;Total: {{ $ctrl.totalIncome | currency : '$' : 0 }}</span>
+	<div class="card-header card-header-ccsp  border-0 bg-white d-flex">
+		<div>
+			<i class="fas fa-check-circle text-success d-none" aria-label="Income qualifies"></i>&nbsp;Gross Estimated Income for AY 2018-2019:
+			<span class="text-muted">&nbsp;Total: {{ $ctrl.totalIncome | currency : '$' : 0 }}</span>
+		</div>
+		<button type="button" class="btn btn-link align-middle py-0 pr-0 ml-auto" ng-click="$ctrl.editIncome()">
+			<i class="fas fa-pencil-alt text-primary" aria-hidden></i>
+			<span class="sr-only">Edit gross adjusted income</span>
+		</button>
 	</div>
 	<div class="card-body">
 		<div class="card-text">

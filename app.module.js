@@ -18,5 +18,6 @@ angular.module('ccspApp', [
   'financialDocumentsDetail',
   'financialDocumentsEdit',
   'datatables',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  // 'angularMoment'
 ]);

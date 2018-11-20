@@ -32,6 +32,8 @@ body {
 	font-weight: 500;
 }
 
+.dataTable thead > th {border-top: 0 !important;}
+
 .c-pointer {cursor: pointer;}
 
 .border-gray {

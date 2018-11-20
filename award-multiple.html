@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ccspApp" class="ng-scope"><head><style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style><style type="text/css">.uib-time input{width:50px !important;}</style><style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow,[uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow,[uib-popover-popup].popover.top-left > .arrow,[uib-popover-popup].popover.top-right > .arrow,[uib-popover-popup].popover.bottom-left > .arrow,[uib-popover-popup].popover.bottom-right > .arrow,[uib-popover-popup].popover.left-top > .arrow,[uib-popover-popup].popover.left-bottom > .arrow,[uib-popover-popup].popover.right-top > .arrow,[uib-popover-popup].popover.right-bottom > .arrow,[uib-popover-html-popup].popover.top-left > .arrow,[uib-popover-html-popup].popover.top-right > .arrow,[uib-popover-html-popup].popover.bottom-left > .arrow,[uib-popover-html-popup].popover.bottom-right > .arrow,[uib-popover-html-popup].popover.left-top > .arrow,[uib-popover-html-popup].popover.left-bottom > .arrow,[uib-popover-html-popup].popover.right-top > .arrow,[uib-popover-html-popup].popover.right-bottom > .arrow,[uib-popover-template-popup].popover.top-left > .arrow,[uib-popover-template-popup].popover.top-right > .arrow,[uib-popover-template-popup].popover.bottom-left > .arrow,[uib-popover-template-popup].popover.bottom-right > .arrow,[uib-popover-template-popup].popover.left-top > .arrow,[uib-popover-template-popup].popover.left-bottom > .arrow,[uib-popover-template-popup].popover.right-top > .arrow,[uib-popover-template-popup].popover.right-bottom > .arrow{top:auto;bottom:auto;left:auto;right:auto;margin:0;}[uib-popover-popup].popover,[uib-popover-html-popup].popover,[uib-popover-template-popup].popover{display:block !important;}</style><style type="text/css">.uib-datepicker-popup.dropdown-menu{display:block;float:none;margin:0;}.uib-button-bar{padding:10px;}</style><style type="text/css">.uib-position-measure{display:block !important;visibility:hidden !important;position:absolute !important;top:-9999px !important;left:-9999px !important;}.uib-position-scrollbar-measure{position:absolute !important;top:-9999px !important;width:50px !important;height:50px !important;overflow:scroll !important;}.uib-position-body-scrollbar-measure{overflow:scroll !important;}</style><style type="text/css">.uib-datepicker .uib-title{width:100%;}.uib-day button,.uib-month button,.uib-year button{min-width:100%;}.uib-left,.uib-right{width:100%}</style><style type="text/css">.fa-svg-icon{display:inline-block;vertical-align:middle;min-width:1em;min-height:1em;height:100%;position:relative;top:-1px;}.fa-svg-icon svg{position:absolute;top:0;left:0;width:100%;height:100%;}.fa-svg-icon svg g,.fa-svg-icon svg path{fill:currentColor;}</style><style type="text/css">.ng-animate.item:not(.left):not(.right){-webkit-transition:0s ease-in-out left;transition:0s ease-in-out left}</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+	<meta charset="UTF-8">
+	<title>Application for Boehm, Corene  – MIT Childcare Center Scholarship</title> <!-- is being set with $window.document.title -->
+
+	<!-- STYLES -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="node_modules/datatables.net-dt/css/jquery.dataTables.min.css">
+
+	<link rel="stylesheet" href="node_modules/angular-datatables/dist/css/angular-datatables.min.css">
+
+	<link rel="stylesheet" href="/app.css">
+
+	<!-- JQUERY AND JQUERY PLUGINS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+	<script src="node_modules/datatables.net/js/jquery.dataTables.min.js" charset="utf-8"></script>
+
+	<!-- ANGULAR AND ANGULAR DEPENDENCIES -->
+	<!-- <script src="node_modules/angular/angular.js"></script> -->
+
+	<script src="node_modules/angular-route/angular-route.js"></script>
+	<script src="node_modules/angular-datatables/dist/angular-datatables.min.js"></script>
+	<script src="node_modules/angular-animate/angular-animate.min.js"></script>
+
+	<!-- (ANGULAR) MOMENTJS -->
+	<script src="node_modules/moment/moment.js"></script>
+	<script src="node_modules/angular-moment/angular-moment.js"></script>
+
+	<!-- ANGULAR APP -->
+	<script src="app.module.js"></script>
+	<script src="app.config.js"></script>
+
+	<script src="core/core.module.js"></script>
+	<script src="core/utilities/create-label-from-key.filter.js"></script>
+	<script src="core/utilities/floor.filter.js"></script>
+	<script src="core/utilities/pow.filter.js"></script>
+
+	<!-- APPLICATION LIST -->
+	<script src="components/application-list/application-list.module.js"></script>
+	<script src="components/application-list/application-list.component.js"></script>
+
+	<!-- APPLICATION DETAIL -->
+	<script src="components/application-detail/application-detail.module.js"></script>
+	<script src="components/application-detail/application-detail.component.js"></script>
+
+	<!-- EMPLOYEE DETAIL -->
+	<script src="components/employee-detail/employee-detail.module.js"></script>
+	<script src="components/employee-detail/employee-detail.component.js"></script>
+
+	<script src="components/employee-detail-edit/employee-detail-edit.module.js"></script>
+	<script src="components/employee-detail-edit/employee-detail-edit.component.js"></script>
+
+	<!-- SPOUSE DETAIL -->
+	<script src="components/spouse-detail/spouse-detail.module.js"></script>
+	<script src="components/spouse-detail/spouse-detail.component.js"></script>
+
+	<script src="components/spouse-detail-edit/spouse-detail-edit.module.js"></script>
+	<script src="components/spouse-detail-edit/spouse-detail-edit.component.js"></script>
+
+	<!-- CHILDREN LIST -->
+	<script src="components/children-list/children-list.module.js"></script>
+	<script src="components/children-list/children-list.component.js"></script>
+
+	<script src="components/children-list-edit/children-list-edit.module.js"></script>
+	<script src="components/children-list-edit/children-list-edit.component.js"></script>
+
+	<!-- INCOME DETAIL -->
+	<script src="components/income-detail/income-detail.module.js"></script>
+	<script src="components/income-detail/income-detail.component.js"></script>
+
+	<script src="components/income-detail-edit/income-detail-edit.module.js"></script>
+	<script src="components/income-detail-edit/income-detail-edit.component.js"></script>
+
+	<!-- AWARD DETAIL -->
+	<script src="components/award-detail/award-detail.module.js"></script>
+	<script src="components/award-detail/award-detail.component.js"></script>
+
+	<script src="components/award-detail-edit/award-detail-edit.module.js"></script>
+	<script src="components/award-detail-edit/award-detail-edit.component.js"></script>
+
+	<!-- FINANCIAL DOCUMENTS DETAIL -->
+	<script src="components/financial-documents-detail/financial-documents-detail.module.js"></script>
+	<script src="components/financial-documents-detail/financial-documents-detail.component.js"></script>
+
+	<script src="components/financial-documents-edit/financial-documents-edit.module.js"></script>
+	<script src="components/financial-documents-edit/financial-documents-edit.component.js"></script>
+
+	<!-- APPLICATION LIST ALL -->
+	<script src="components/application-list-all/application-list-all.module.js"></script>
+	<script src="components/application-list-all/application-list-all.component.js"></script>
+
+	<!-- <script src="components/financial-documents-detail-edit/financial-documents-detail-edit.module.js"></script>
+	<script src="components/financial-documents-detail-edit/financial-documents-detail-edit.component.js"></script> -->
+</head>
+<body>
+
+	<div class="bg-white border-bottom">
+		<div class="container">
+			<nav class="navbar navbar-expand-lg bg-white px-0 ">
+				<a href="#" class="navbar-brand text-dark align-middle font-weight-bold">MIT Childcare Center Scholarship</a>
+
+				  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				    <span class="navbar-toggler-icon"></span>
+				  </button>
+
+					  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+					    <ul class="navbar-nav mr-auto">
+					      <li class="nav-item">
+					        <a class="nav-link" href="/#!/applications-inbox">Inbox</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="/#!/applications">All Applications</a>
+					      </li>
+							</ul>
+							<span class="navbar-text ml-auto">Kathy Kasabula (Admin)</span>
+						</div>
+
+			</nav>
+		</div>
+	</div>
+
+	<!-- ngView: --><div ng-view="" class="container ng-scope"><application-detail class="ng-scope ng-isolate-scope"><main class="pt-4">
+
+	<!-- APLICATION DETAILS -->
+	<!-- @TODO move app details to component -->
+	<div class="clearfix">
+		<p class="text-muted float-left">
+			<span ng-class="$ctrl.application.badgeClass" class="badge align-middle ng-binding badge-primary" style="">
+			 Pending Approval
+		 </span> ·
+			<span class="align-middle ng-binding">
+				Academic Year 2017-18
+			</span> ·
+			<span class="align-middle">
+		 		Submitted on
+				 <!-- ngRepeat: submissionDate in $ctrl.application.submissionDates --><!-- ngIf: $last --><span ng-repeat="submissionDate in $ctrl.application.submissionDates" ng-if="$last" class="ng-binding ng-scope" style="">
+						Aug 3, 2018
+					</span><!-- end ngIf: $last --><!-- end ngRepeat: submissionDate in $ctrl.application.submissionDates -->
+			</span>
+			<span class="align-middle d-none ng-binding">
+				ID 31
+			</span>
+		</p>
+
+		<!-- @TODO move to component -->
+		<!-- @TODO disable buttons when at end of range -->
+		<div class="float-right">
+			<button ng-click="$ctrl.prev()" ng-disabled="$ctrl.application.orderIndex === 0" type="button" class="btn btn-white text-primary btn-sm align-middle" disabled="disabled">
+				Prev
+			</button>
+			<button ng-click="$ctrl.next()" type="button" class="btn btn-white text-primary btn-sm align-middle">
+				Next
+			</button>
+		</div>
+	</div>
+
+
+	<div class="border-top border-bottom pb-3 pt-3 pl-1 pr-1">
+		<h2 class="h6">
+			Notes<i class="ml-2 fas fa-pencil-alt text-primary"></i>
+		</h2>
+		<p class="mb-0">* EE called on Aug 15,2018 and is waiting on financial documentation to be sent from his previous country of residence… <a href="#">Show all</a></p>
+	</div>
+
+
+
+<div class="card-deck mt-4">
+		<!-- ugh, need to put the .card classes on the custom element as .card-deck expects them as children -->
+
+		<!-- EMPLOYEE -->
+		<employee-detail class="card card-ccsp ng-isolate-scope" employee="$ctrl.application.employee"><div class-disabled="card card-ccsp">
+	<div class="card-header card-header-ccsp border-0 bg-white">
+		<span class="align-middle ng-binding">
+			Boehm,
+			Corene
+
+		</span>
+		<!-- &nbsp; -->
+		<span class="text-muted align-middle">(Employee)</span>
+
+		<div class="float-right">
+			<!-- ngIf: $ctrl.employee.isPrimaryContact --><span class="align-middle ng-scope" ng-if="$ctrl.employee.isPrimaryContact" style="">Primary Contact&nbsp;</span><!-- end ngIf: $ctrl.employee.isPrimaryContact -->
+			<a href="mailto:c.boehm@audreanne.info" title="c.boehm@audreanne.info" uib-tooltip="c.boehm@audreanne.info" tooltip-placement="top">
+					<i class="fas fa-envelope align-middle" aria-hidden=""></i>
+					<span class="sr-only">email</span>
+				</a>
+			&nbsp;
+			<a href="tel:019-594-0249" title="019-594-0249" uib-tooltip="019-594-0249" tooltip-placement="top">
+				<i class="fas fa-phone align-middle" aria-hidden=""></i>
+				<span class="sr-only">phone</span>
+			</a>
+			&nbsp;&nbsp;
+			<button type="button" class="btn btn-link align-middle py-0 pr-0 float-right" ng-click="$ctrl.editEmployee()">
+				<i class="fas fa-pencil-alt text-primary" aria-hidden=""></i>
+				<span class="sr-only">edit</span>
+			</button>
+		</div>
+	</div>
+	<div class="card-body">
+		<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+		<div class="card-text">
+			<dl class="row dl-reversed mb-0">
+				<div class="col-4">
+					<dt>MIT affiliation</dt>
+					<dd class="ng-binding">Faculty</dd>
+				</div>
+				<div class="col-4">
+					<dt>Marital status</dt>
+					<dd class="ng-binding">Married</dd>
+				</div>
+				<div class="col-4">
+					<dt>MIT ID #</dt>
+					<dd class="ng-binding">5324525322</dd>
+				</div>
+			</dl>
+		</div>
+	</div>
+</div>
+</employee-detail>
+
+		<!-- SPOUSE -->
+		<!-- ngIf: $ctrl.application.employee.maritalStatus !== 'singleOrWidowed' --><spouse-detail class="card card-ccsp ng-scope ng-isolate-scope" spouse="$ctrl.spouse" employee="$ctrl.application.employee" ng-if="$ctrl.application.employee.maritalStatus !== 'singleOrWidowed'"><div class-disabled="card card-ccsp">
+	<div class="card-header card-header-ccsp border-0 clearfix">
+		<div class="float-left">
+			<span class="align-middle ng-binding">
+				Bosco,
+				Cale
+				A
+			</span>
+			<!-- &nbsp; -->
+			<span class="text-muted align-middle">
+				(<span class="ng-binding">Spouse</span>)
+			</span>
+
+		</div>
+		<div class="float-right">
+			<!-- ngIf: $ctrl.employee.isPrimaryContact === false -->
+			<a href="mailto:c.bosco@jeffery.info" uib-tooltip="c.bosco@jeffery.info" tooltip-placement="top" class="align-middle">
+					<i class="fas fa-envelope" aria-hidden=""></i>
+					<span class="sr-only">email</span>
+				</a>
+			&nbsp;
+			<a href="tel:048-112-9389" uib-tooltip="048-112-9389" tooltip-placement="top" class="align-middle">
+					<i class="fas fa-phone" aria-hidden=""></i>
+					<span class="sr-only">phone</span>
+				</a>
+				&nbsp;&nbsp;
+
+			<button type="button" class="btn btn-link align-middle py-0 float-right pr-0" ng-click="$ctrl.editSpouse()">
+				<i class="fas fa-pencil-alt text-primary" aria-hidden=""></i>
+				<span class="sr-only">edit</span>
+			</button>
+		</div>
+	</div>
+	<div class="card-body p-0">
+		<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+		<div class="card-text">
+		</div>
+		<div class="card bg-light m-0 border-0">
+			<div class="card-header border-0 bg-white mx-0 pt-3 border-0 ">
+				<dl class="row dl-reversed mb-0">
+					<div class="col-6">
+						<dt>
+							Occupation
+						</dt>
+						<dd>
+							<i class="fas fa-check-circle text-success" aria-label="yes"></i><span class="align-middle font-weight-semibold ng-binding">&nbsp;Disabled
+								&nbsp;</span>
+								<button type="button" class="btn btn-link align-middle p-0" ng-click="$ctrl.isOccupationCollapsed = !$ctrl.isOccupationCollapsed">
+									<!-- ngIf: $ctrl.isOccupationCollapsed --><span class="btn btn-link align-middle p-0 ng-scope" ng-if="$ctrl.isOccupationCollapsed" aria-label="Show details" style=""><i class="fas fa-eye p-0" aria-hidden=""></i></span><!-- end ngIf: $ctrl.isOccupationCollapsed -->
+									<!-- ngIf: !$ctrl.isOccupationCollapsed -->
+								</button>
+						</dd>
+					</div>
+					<!-- ngIf: $ctrl.spouse.isMitIdPresent -->
+				</dl>
+			</div>
+			<!-- <h5 class="card-title">Secondary card title</h5> -->
+			<div class="card-body collapse" uib-collapse="$ctrl.isOccupationCollapsed" style="height: 0px;">
+
+				<!-- EMPLOYED -->
+				<!-- ngIf: $ctrl.spouse.occupation === 'employed' -->
+
+				<!-- STUDENT -->
+				<!-- ngIf: $ctrl.spouse.occupation === 'student' -->
+
+				<!-- SELF-EMPLOYED -->
+				<!-- ngIf: $ctrl.spouse.occupation === 'self-employed' -->
+
+				<!-- DISABLED -->
+				<!-- ngIf: $ctrl.spouse.occupation === 'disabled' --><dl class="dl-reversed dl-horizontal row ng-scope" ng-if="$ctrl.spouse.occupation === 'disabled'" style="">
+					<div class="col-12">
+						<dt>Certification</dt>
+						<dd><a href="#" class="ng-binding"><i class="far fa-file-pdf" aria-hidden=""></i>&nbsp;certification.pdf</a></dd>
+					</div>
+				</dl><!-- end ngIf: $ctrl.spouse.occupation === 'disabled' -->
+
+				<!-- OTHER -->
+				<!-- ngIf: $ctrl.spouse.occupation === 'other' -->
+
+			</div>
+		</div>
+	</div>
+</div>
+</spouse-detail><!-- end ngIf: $ctrl.application.employee.maritalStatus !== 'singleOrWidowed' -->
+	</div>
+
+	<!-- AWARD -->
+	<award-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" children="$ctrl.children" tcc-tuition="$ctrl.tccTuition" class="ng-isolate-scope"><div class="card card-ccsp mt-4" id="awardCard">
+	<div class="card-header card-header-ccsp border-0 d-flex">
+		<div class="align-middle">
+			<span class="align-middle">
+				<!-- ngIf: $ctrl.eligible && $ctrl.monthlyAward > 0 --><i class="fas fa-check-circle text-success align-middle ng-scope" ng-if="$ctrl.eligible &amp;&amp; $ctrl.monthlyAward > 0" aria-label="eligible" style=""></i><!-- end ngIf: $ctrl.eligible && $ctrl.monthlyAward > 0 -->
+				<!-- ngIf: !$ctrl.eligible || $ctrl.monthlyAward <= 0 -->Award (2)<!-- ngIf: $ctrl.monthlyAward <= 0 -->
+			</span>
+		</div>
+		<div class="ml-3">
+			<button ng-click="$ctrl.prev()" ng-disabled="$ctrl.application.orderIndex === 0" type="button" class="btn btn-white text-primary btn-sm align-middle" disabled="disabled">
+				Prev
+			</button>
+			<button ng-click="$ctrl.next()" type="button" class="btn btn-white text-primary btn-sm align-middle">
+				Next
+			</button>
+		</div><div class="ml-auto">
+    <span ng-if="$ctrl.isCalculationCollapsed" class="align-middle ng-scope"><i class="fas fa-eye align-middle" aria-hidden=""></i>&nbsp;<span class="font-weight-bold align-middle">Show award calculation</span></span><!-- end ngIf: $ctrl.eligible -->
+			<button type="button" class="btn btn-link align-middle py-0 pr-0" ng-click="$ctrl.editAward()">
+				<i class="fas fa-pencil-alt text-primary" aria-hidden=""></i>
+				<span class="sr-only">edit</span>
+			</button>
+		</div>
+	</div>
+	<div class="card-body">
+		<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+		<div class="card-text">
+
+			<!-- NOT ELIGIBLE-->
+			<!-- ngIf: !$ctrl.eligible -->
+
+			<!-- ELIGIBLE -->
+			<!-- ngIf: $ctrl.eligible --><div ng-if="$ctrl.eligible" class="ng-scope" style="">
+
+				<dl class="row dl-reversed">
+					<div class="col-2">
+						<!-- @TODO Hook up to API values -->
+						<dt>Award total duration (9 months)</dt>
+						<dd class="ng-binding">$13,468.68</dd>
+					</div>
+					<div class="col-2">
+						<dt>Monthly award</dt>
+						<dd class="ng-binding">$1,496.52</dd>
+					</div>
+					<div class="col-2">
+						<!-- @TODO Hook up to API values -->
+						<dt>Award start date</dt>
+						<dd class="ng-binding">Sep 1, 2018</dd>
+					</div>
+					<div class="col-2">
+						<!-- @TODO Hook up to API values -->
+						<dt>Award end date</dt>
+						<dd class="ng-binding">Aug 31, 2019</dd>
+					</div>
+					<div class="col-2">
+						<dt>Monthly tuition</dt>
+						<dd class="ng-binding">$2,760.00</dd>
+					</div>
+					<div class="col-2">
+						<dt>Monthly employee contribution</dt>
+						<dd class="ng-binding">$1,263.48</dd>
+					</div>
+				</dl>
+
+				<div class="mt-3 p-4 bg-light border-top collapse" style="margin-left: -1.25rem; margin-right: -1.25rem; margin-bottom: -1.25rem; height: 0px;" uib-collapse="$ctrl.isCalculationCollapsed">
+					<h3 class="h5 mb-3 pb-2 mt-2">Award Calculation</h3>
+
+					<p class="text-muted"><i class="fas fa-exclamation-triangle" aria-hidden=""></i>&nbsp;The presentation of the calculation shows some intermediate rounding. However, the actual calculation only rounds the final results.</p>
+
+					<div class="card-deck mb-4">
+						<div class="card card-shadow">
+							<div class="card-body">
+								<h4 class="card-title h6 mb-4">1. Steps over lowest income</h4>
+								<dl class="row mx-0">
+									<dt class="col-5 text-right text-monospace font-weight-normal ng-binding">$84,232</dt>
+									<dd class="col-7 text-muted">gross estimated income</dd>
+									<dt class="col-5 text-right text-monospace font-weight-normal border-bottom ng-binding">− $40,000</dt>
+									<dd class="col-7 text-muted">lowest income step threshold</dd>
+									<dt class="col-5 text-right text-monospace font-weight-normal ng-binding">$44,232</dt>
+									<dd class="col-7 text-muted">income over lowest step threshold (or $0)</dd>
+									<dt class="col-5 text-right text-monospace font-weight-normal border-bottom ng-binding">÷ $5,000</dt>
+									<dd class="col-7 text-muted">income step amount</dd>
+									<dt class="col-5 text-right text-monospace font-weight-normal mt-1"><mark class="px-2 ng-binding">8</mark></dt>
+									<dd class="col-7 text-muted mt-1">income steps (rounded down)</dd>
+								</dl>
+							</div>
+						</div>
+
+
+					<div class="card card-shadow">
+						<div class="card-body">
+							<h4 class="card-title h6 mb-4">2. Employee contribution percentage</h4>
+							<dl class="row mx-0">
+								<dt class="col-5 text-right text-monospace font-weight-normal ng-binding"> 17 %</dt>
+								<dd class="col-7 text-muted">lowest income step %</dd>
+								<dt class="col-5 text-right text-monospace font-weight-normal border-bottom ng-binding">+ 8 × 0.125 %</dt>
+								<dd class="col-7 text-muted">income steps × step increase %</dd>
+								<dt class="col-5 text-right text-monospace font-weight-normal ng-binding">18.000 %</dt>
+								<dd class="col-7 text-muted"></dd>
+								<dt class="col-5 text-right text-monospace font-weight-normal border-bottom ng-binding">× 0.85 ^ 0</dt>
+								<dd class="col-7 text-muted ng-binding">reduce to 85 % / additional child</dd>
+								<dt class="col-5 text-right text-monospace font-weight-normal mt-1"><mark class="px-2 ng-binding">18.000 %</mark></dt>
+								<dd class="col-7 text-muted mt-1"></dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+
+					<div class="card card-shadow mb-4">
+						<div class="card-header bg-white border-bottom-0">
+							<h4 class="card-title h6 my-2">3. Monthly tuition per child</h4>
+						</div>
+						<div class="card-body p-0">
+
+							<table class="table">
+								<thead>
+									<tr class="bg-light">
+										<th scope="column" class="border-top-0">First name</th>
+										<th scope="column" class="border-top-0">TCC</th>
+										<th scope="column" class="text-right border-top-0">Adjusted EE contribution percentage<sup>1</sup></th>
+										<th scope="column" class="text-right border-top-0">Monthly tuition cost</th>
+										<th scope="column" class="text-right border-top-0">Monthly employee contribution</th>
+									</tr>
+								</thead>
+								<tbody>
+									<!-- ngRepeat: child in $ctrl.children --><tr ng-repeat="child in $ctrl.children" class="ng-scope">
+										<td class="ng-binding">Aracely</td>
+										<td class="ng-binding">
+											Eastgate<br>
+											Infant<br>
+											5&nbsp;days/week<br>
+
+										</td>
+										<td class="text-right text-monospace ng-binding">18.000 %</td>
+										<td class="text-right text-monospace ng-binding">$2,760.00</td>
+										<td class="text-right text-monospace ng-binding">$1,263.48</td>
+									</tr><!-- end ngRepeat: child in $ctrl.children -->
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="3" class="text-right"><b>Totals:</b></td>
+										<td class="text-right text-monospace"><mark class="px-2 ng-binding">$2,760.00</mark></td>
+										<td class="text-right text-monospace"><mark class="px-2 ng-binding">$1,263.48</mark></td>
+									</tr>
+									<tr>
+										<td colspan="5" class="pt-3">
+											<small>
+											<sup>1</sup>Number is derived by multiplying the <i class="ng-binding">Employee contribution percentage (18.000 %)</i> by the corresponding adjustment percentage for <i class="ng-binding">2 days (51%)</i> or <i class="ng-binding">3 days (73%)</i>.<br><i>5 days</i> or <i>half-time (Westgate)</i> schedules do not get adjusted.
+											</small>
+
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+
+					<div class="card card-shadow">
+						<div class="card-body">
+							<h4 class="card-title h6 mb-4">4. Award calculation and limit </h4>
+							<dl class="row mx-0">
+									<dt class="col-4 text-right text-monospace font-weight-normal ng-binding"> $2,760.00</dt>
+								<dd class="col-8 text-muted">total monthly tuition</dd>
+								<dt class="col-4 text-right text-monospace font-weight-normal border-bottom ng-binding">− $1,263.48</dt>
+								<dd class="col-8 text-muted">monthly employee contribution</dd>
+								<dt class="col-4 text-right text-monospace font-weight-normal border-bottom ng-binding">$1,496.52</dt>
+								<dd class="col-8 text-muted">monthly award</dd>
+								<dt class="col-4 text-right text-monospace font-weight-normal border-bottom ng-binding">is $1,496.52&nbsp;&lt;&nbsp;$2,014.00?</dt>
+								<dd class="col-8 text-muted ng-binding">award is limited to maximum of total tuition × 73% </dd>
+								<dt class="col-4 text-right text-monospace font-weight-normal"><mark class="px-2 ng-binding">$1,496.00</mark></dt>
+								<dd class="col-8 text-muted">final rounded monthly award amount</dd>
+							</dl>
+						</div>
+					</div>
+
+					<a href="#" class="mt-3 d-block"><small><i class="fas fa-arrow-up" aria-hidden=""></i> To top of card</small></a>
+
+
+
+
+				</div>
+			</div><!-- end ngIf: $ctrl.eligible -->
+
+
+		</div>
+	</div>
+</div>
+</award-detail>
+
+	<!-- CHILDREN -->
+	<children-list children="$ctrl.children" class="ng-isolate-scope"><div class="card card-ccsp mt-4">
+	<div class="card-header card-header-ccsp  border-0 bg-white">
+		<div class="float-left">Children</div>
+		<div class="float-right">
+			<button type="button" class="btn btn-link align-middle py-0 float-right pr-0" ng-click="$ctrl.editChildrenList()">
+				<i class="fas fa-pencil-alt text-primary" aria-hidden=""></i>
+				<span class="sr-only">edit</span>
+			</button>
+		</div>
+	</div>
+	<div class="card-body p-0">
+		<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+		<div class="card-text">
+			<table class="table mb-0" id="childrenList">
+				<thead class="bg-light">
+					<tr>
+						<th scope="col" class="pt-4">&nbsp;</th>
+						<th scope="col" class="pt-4">First Name</th>
+						<th scope="col" class="pt-4">Last Name</th>
+						<th scope="col" class="pt-4">Birth Date</th>
+						<th scope="col" class="pt-4">TCC Center</th>
+						<th scope="col" class="pt-4">Classroom</th>
+						<th scope="col" class="pt-4">Days per Week</th>
+						<!-- ngIf: $ctrl.children[0].tccCenter.toLowerCase() === 'westgate' -->
+
+					</tr>
+				</thead>
+				<tbody>
+					<!-- ngRepeat: child in $ctrl.children --><tr ng-repeat="child in $ctrl.children" class="ng-scope" style="">
+						<th scope="row" class="ng-binding">
+							1
+						</th>
+						<td class="ng-binding">
+							Aracely
+						</td>
+						<td class="ng-binding">
+							Boehm
+						</td>
+						<td class="ng-binding">
+							Oct 4, 2017
+						</td>
+						<td class="ng-binding">
+							Eastgate
+						</td>
+						<td class="ng-binding">
+							Infant
+						</td>
+						<td class="ng-binding">
+							5
+						</td>
+						<!-- ngIf: $ctrl.children[0].tccCenter.toLowerCase() === 'westgate' -->
+					</tr><!-- end ngRepeat: child in $ctrl.children -->
+				</tbody>
+				<!-- <tfoot>
+					<tr>
+						<td colspan="999"><button type="button" class="btn btn-primary btn-sm float-right" id="addChild">+ Add a Child</button></td>
+					</tr>
+				</tfoot> -->
+			</table>
+		</div>
+	</div>
+</div>
+</children-list>
+
+	<!-- GROSS ESTIMATED INCOME -->
+  <income-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" class="ng-isolate-scope"><div class="card card-ccsp mt-4">
+	<div class="card-header card-header-ccsp  border-0 bg-white d-flex">
+		<div>
+			<i class="fas fa-check-circle text-success d-none" aria-label="Income qualifies"></i>&nbsp;Gross Estimated Income for AY 2018-2019:
+			<span class="text-muted ng-binding">&nbsp;Total: $84,232</span>
+		</div>
+		<button type="button" class="btn btn-link align-middle py-0 pr-0 ml-auto" ng-click="$ctrl.editIncome()">
+			<i class="fas fa-pencil-alt text-primary" aria-hidden=""></i>
+			<span class="sr-only">Edit gross adjusted income</span>
+		</button>
+	</div>
+	<div class="card-body">
+		<div class="card-text">
+			<dl class="row dl-reversed">
+				<!-- ngIf: $ctrl.employee.salary --><div class="col-4" ng-if="$ctrl.employee.salary" style="">
+					<dt>Employee salary</dt>
+					<dd class="ng-binding">$60,365</dd>
+				</div><!-- end ngIf: $ctrl.employee.salary -->
+				<!-- ngIf: $ctrl.employee.additionalIncome --><div class="col-4" ng-if="$ctrl.employee.additionalIncome">
+					<dt>Employee additional income</dt>
+					<dd class="ng-binding">$7,423</dd>
+				</div><!-- end ngIf: $ctrl.employee.additionalIncome -->
+				<!-- ngIf: $ctrl.spouse.salary --><div class="col-4" ng-if="$ctrl.spouse.salary" style="">
+					<dt>Spouse salary</dt>
+					<dd class="ng-binding">$16,444</dd>
+				</div><!-- end ngIf: $ctrl.spouse.salary -->
+				<!-- ngIf: $ctrl.spouse.additionalIncome -->
+			</dl>
+		</div>
+	</div>
+</div>
+</income-detail>
+
+
+	<!-- FINANCIAL DOCUMENTS -->
+	<financial-documents-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" class="ng-isolate-scope"><!-- @TODO make dynamic -->
+<div class="card card-ccsp mt-4">
+	<div class="card-header card-header-ccsp border-0 clearfix">
+		<div class="float-left">
+			<span class="align-middle">
+				Financial Documentation
+			</span>
+		</div>
+		<div class="float-right">
+			<button type="button" class="btn btn-link align-middle py-0 float-right pr-0" ng-click="$ctrl.editFinancialDocuments()">
+				<i class="fas fa-pencil-alt text-primary" aria-hidden=""></i>
+				<span class="sr-only">edit</span>
+			</button>
+		</div>
+	</div>
+	<div class="card-body p-0">
+		<table class="table">
+			<thead class="bg-light">
+				<tr>
+					<th scope="column"><span class="sr-only">Document type</span></th>
+					<th scope="column">Employee</th>
+					<th scope="column">Spouse</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">Federal income tax form 1040(A)</th>
+					<td><span class="text-muted">—</span></td>
+					<td><i class="far fa-file-pdf" aria-hidden=""></i> <a href="#" target="_blank">spouse-taxes-2017.pdf</a></td>
+				</tr>
+				<tr>
+					<th scope="row">Financial documentation outside US</th>
+					<td>
+						<div class="pb-2">
+							<i class="far fa-file-pdf" aria-hidden=""></i> <a href="#" target="_blank">employee-income-abroad-2017.pdf</a>
+						</div>
+						<div>
+							<i class="far fa-file-pdf" aria-hidden=""></i> <a href="#" target="_blank">employee-income-abroad-2017-additional.pdf</a>
+						</div>
+					</td>
+					<td><i class="far fa-file-pdf" aria-hidden=""></i> <a href="#" target="_blank">spouse-income-abroad-2017.pdf</a></td>
+				</tr>
+				<tr>
+					<th scope="row">Current paystubs</th>
+					<td><i class="far fa-file-pdf" aria-hidden=""></i> <a href="#" target="_blank">employee-current-paystubs.pdf</a></td>
+					<td><span class="text-muted">—</span></td>
+				</tr>
+				<tr>
+					<th scope="row">Proof of enrollment status</th>
+					<td><span class="text-muted text-center">—</span></td>
+					<td><i class="far fa-file-pdf" aria-hidden=""></i> <a href="#" target="_blank">spouse-enrollment-status.pdf</a></td>
+				</tr>
+				<tr>
+					<th scope="row">Additional financial information</th>
+					<td>—</td>
+					<td><i class="far fa-file-image" aria-hidden=""></i> <a href="#" target="_blank">spouse-additional-info.png</a></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+</div></financial-documents-detail>
+
+</main>
+
+<!-- @TODO move footer to component -->
+<div class="bg-dark-transparent border-top w-100 position-fixed fixed-bottom">
+	<footer class="container clearfix p-3">
+		<div class="float-left">
+			<button type="button" class="btn btn-warning font-weight-bold">
+				<i class="fas fa-reply" aria-hidden=""></i> Return
+			</button>
+			<button type="button" class="btn btn-danger font-weight-bold">
+				<i class="fas fa-ban" aria-hidden=""></i> Deny
+			</button>
+		</div>
+		<div class="float-right">
+			<!-- <button type="button" class="btn btn-light">
+				<i class="fas fa-save" aria-hidden></i> Save
+			</button> -->
+			<button type="button" class="btn btn-success font-weight-bold">
+				<i class="fas fa-thumbs-up" aria-hidden=""></i> Approve
+			</button>
+		</div>
+	</footer>
+</div>
+</application-detail></div>
+
+	<!-- SCRIPTS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+	<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
+
+	<script src="node_modules/ui-bootstrap4/dist/ui-bootstrap-tpls-3.0.5.min.js"></script>
+
+
+
+
+</body></html>

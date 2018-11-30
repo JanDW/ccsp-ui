@@ -2,13 +2,14 @@
 	<div class="card-header card-header-ccsp border-0">
 		<h2 class="h5 card-title mt-3">Application Inbox – Pending approval</h2>
 	</div>
-	<div class="card-body">
+	<div class="card-body px-0">
 		<div class="card-text">
-			<table id="inboxTable" class="table" datatable="ng">
+			<table id="inboxTable" class="table table-striped" datatable="ng" dt-options="$ctrl.dtOptions">
 				<thead>
 					<tr>
 						<th scope="col" class="list-table-head">Submitted on</th>
 						<th scope="col" class="table-heading">Employee Name</th>
+						<th scope="col" class="table-heading">Source</th>
 						<th scope="col" class="list-table-head">MIT ID</th>
 						<!-- <th scope="col" class="list-table-head">Status</th> -->
 						<th scope="col" class="list-table-head">Academic Year</th>
@@ -16,25 +17,30 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="application in $ctrl.applications">
-						<td data-sort="{{application.lastSubmissionDate}}">
+						<td data-sort="{{application.lastSubmissionDate}}" class="align-middle">
 							<span ng-repeat="submissionDate in application.submissionDates" ng-if="$last">
 								{{submissionDate | date : 'mediumDate'}}
 							</span>
 						</td>
-						<td>
+						<td class="align-middle">
 							<a href="#!/applications/{{application.id}}">
 								{{application.employee.lastName}},
 								{{application.employee.firstName}}&nbsp;
 								{{application.employee.middleInitial}}
 							</a>
 						</td>
-						<td>
+						<td class="align-middle">
+							{{application.employee.fundingSource}}
+						</td>
+						<td class="align-middle">
 							{{application.employee.mitId}}
 						</td>
 						<!-- <td>
 							{{application.statusMessage}}
 						</td> -->
-						<td>{{application.academicYear}}</td>
+						<td class="align-middle">
+							{{application.academicYear}}
+						</td>
 					</tr>
 				</tbody>
 			</table>

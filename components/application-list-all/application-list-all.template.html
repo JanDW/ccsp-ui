@@ -1,38 +1,60 @@
 <div class="card card-ccsp mt-4">
 	<div class="card-header card-header-ccsp border-0">
-		<h2 class="h5 card-title mt-3">All Applications</h2>
+		<h2 class="h5 card-title mt-3 d-inline-block align-middle float-left">All Applications</h2>
+		<a href="/to-sort/new-application.html" target="_blank" class="btn btn-link align-middle float-right mt-2">
+			<i class="fas fa-plus"></i> Create new application
+		</a>
 	</div>
-	<div class="card-body">
+	<div class="card-body px-0">
 		<div class="card-text">
-			<table id="inboxTable" class="table" datatable="ng">
+			<table id="applicationsTable" dt-options="$ctrl.dtOptions" class="table table-striped" datatable="ng">
 				<thead>
 					<tr>
 						<th scope="col" class="table-heading">Employee Name</th>
-						<th scope="col" class="list-table-head">MIT ID</th>
 						<!-- <th scope="col" class="list-table-head">Status</th> -->
-						<th scope="col" class="list-table-head">Academic Year</th>
+						<th scope="col" class="table-heading">Source</th>
+						<th scope="col" class="list-table-head">AY</th>
 						<th scope="col" class="list-table-head">Award Start Date</th>
 						<th scope="col" class="list-table-head">Award End Date</th>
+						<th scope="col" class="list-table-head text-right">Award Monthly Amount</th>
 						<th scope="col" class="list-table-head">Status</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-repeat="application in $ctrl.applications">
 						<td>
-							<a href="#!/applications/{{application.id}}">
+							<i class="badge badge-chiclet align-middle" ng-class="application.badgeClass">&nbsp;</i>&nbsp;
+							<a href="#!/applications/{{application.id}}" class="align-middle">
 								{{application.employee.lastName}},
-								{{application.employee.firstName}}&nbsp;
-								{{application.employee.middleInitial}}
+								{{application.employee.firstName}}&nbsp;{{application.employee.middleInitial}}
 							</a>
 						</td>
-						<td>
-							{{application.employee.mitId}}
+						<td class="align-middle">{{application.employee.fundingSource}}</td>
+						<td class="align-middle">
+							<span class="text-nowrap">
+								{{application.academicYear}}
+							</span>
 						</td>
-						<td>{{application.academicYear}}</td>
-						<td>{{application.awardStartDate}}</td>
-						<td>{{application.awardEndDate}}</td>
 						<td>
-								{{application.statusMessage}}
+							<span ng-if="application.awards.length === 0" class="text-medium">—</span>
+							<!-- Show as muted if award hasn't been confirmed, or it's not the first award -->
+							<p class="m-0" ng-repeat="award in application.awards" ng-class="application.statusCode === 1 || !$first ? 'text-muted' : ''">{{award.startDate | date}}</p>
+						</td>
+						<td>
+							<span ng-if="application.awards.length === 0" class="text-medium">—</span>
+							<!-- Show as muted if award hasn't been confirmed, or it's not the first award -->
+							<p class="m-0" ng-repeat="award in application.awards" ng-class="application.statusCode === 1 || !$first ? 'text-muted' : ''">
+								{{award.endDate | date }}
+							</p>
+						</td>
+						<td class="align-middle text-right">
+							<span ng-if="application.awards.length === 0" class="text-medium">—</span>
+							<p class="m-0" ng-repeat="award in application.awards" ng-class="application.statusCode === 1 || !$first ? 'text-muted' : ''">
+								{{award.amount | currency : $}}
+							</p>
+						</td>
+						<td>
+								<span class="align-middle" ng-class-disabled="application.textClass">{{application.statusMessage}}</span>
 						</td>
 					</tr>
 				</tbody>

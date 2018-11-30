@@ -114,11 +114,11 @@
 				<div class="form-row">
 					<div class="form-group col-6">
 						<label for="awardStartDate" class="required">New award start date</label>
-						<input type="date" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" id="awardStartDate" ng-model="$ctrl.award.awardStartDate" required="">
+						<input type="date" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" id="awardStartDate" ng-model="$ctrl.award.awardStartDate" required="" readonly>
 					</div>
 					<div class="form-group col-6">
 						<label for="awardEndDate" class="required">New award end date</label>
-						<input type="date" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" id="awardEndDate" ng-model="$ctrl.award.awardEndDate" required="">
+						<input type="date" class="form-control ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-required" id="awardEndDate" ng-model="$ctrl.award.awardEndDate" required="" readonly>
 					</div>
 				</div>
 			</fieldset>
@@ -126,7 +126,7 @@
 	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-danger" ng-click="$ctrl.handleDismiss()">Revert</button>
-		<button type="button" class="btn btn-success ml-auto" ng-click="$ctrl.handleClose()">Create new award</button>
+		<button type="button" class="btn btn-success ml-auto" ng-click="$ctrl.handleClose()">Save new award</button>
 	</div>
 </div>
 </award-detail-edit></div></div>

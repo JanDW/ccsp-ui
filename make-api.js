@@ -109,7 +109,8 @@ const Employee = (index) => {
     employee.affiliation = faker.random.arrayElement(['faculty','staff','student','postdoc associate','postdoc fellow']);
     employee.mitId = mitId();
     employee.childIds = [];
-    employee.fundingSource = faker.random.arrayElement(['employee', 'fellow', 'combined']); // Determines which funds get used and which admin applications get sent to
+    // funding source: employee, fellow, combined
+    employee.fundingSource = faker.random.arrayElement(['Employee', 'Fellow', 'Combined']); // Determines which funds get used and which admin applications get sent to
     employee.applicationIds = [];
 
     return employee;
@@ -335,6 +336,10 @@ function Child(employee, tccCenter) {
 
 }
 
+
+// @TODO remove
+var generateSecondAwardTest = true;
+
 /* APPLICATION CONSTRUCTOR */
 const Application = (employee) => {
  const application = {};
@@ -349,6 +354,22 @@ const Application = (employee) => {
 
  application.statusMessage = ['Pending Approval','Approved','Returned','Denied','Confirmed','Declined'][application.statusCode]; // Corresponds to statusCode
  application.employeeId = employee.id;
+ application.awards = [];
+
+ // Generate award if application.statusCode demands it
+ if (application.statusCode === 1 || application.statusCode === 4) {
+   api.awards.push(Award(employee, application));
+   // Add award ID to the application.awards array
+   application.awards.push(api.awards.length - 1);
+
+   // @TODO remove
+   if (generateSecondAwardTest && application.statusCode === 4) {
+     api.awards.push(Award(employee, application));
+     // Add award ID to the application.awards array
+     application.awards.push(api.awards.length - 1);
+     generateSecondAwardTest = false;
+   }
+ }
 
  // application.financialDocumentation = [];
  //
@@ -359,10 +380,15 @@ const Application = (employee) => {
  return application;
 };
 
-const GenerateAwards = () => {
-  const award = {};
-  // award.startDate = faker.date.between('','2018-08-31');
-  // award.EndDate = faker.date.between('','2018-08-31');
+/* AWARD CONSTRUCTOR */
+const Award = (employee, application) => {
+    const award = {};
+    award.id = api.awards.length;
+    award.applicationId = application.id;
+    award.startDate = faker.date.between(application.lastSubmissionDate, moment(application.lastSubmissionDate).add(1,'months'));
+    award.endDate = '2019-08-31T23:59:59.244Z';
+    award.amount = faker.random.number({'min': 500, 'max': 2500});
+    return award;
 };
 
 const removeKeysWithEmptyProperties = (obj) => {
@@ -438,7 +464,7 @@ const writeObjectToJsonFile = (obj, jsonFileName) => {
   });
 
   // Add n applications to random employees
-  _.times(50, (index) => {
+  _.times(100, (index) => {
     const randomEmployeesArrayIndex = faker.random.number({ min: 0, max: api.employees.length - 1});
 
     const employee = api.employees[randomEmployeesArrayIndex];

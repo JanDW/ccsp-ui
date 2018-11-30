@@ -8,31 +8,107 @@ body {
 .dl-reversed > div > dd {font-weight: 500;}
 
 .card-ccsp {
-	border-color: #cde9f9;
+	border: 0;
 }
 
 .card-shadow {
 	box-shadow: 0px 0px 5px 1px rgba(0,0,0,.05);
+	border: 0;
 }
 
 .card-header-ccsp {
 	/* background-color: var(--gray-dark) !important; */
-	background-color: #eff8ff !important;
+	background-color: #fff !important;
 	font-weight: 700;
-	color: #115175;
+	color: #000;
+	/* border: 1px solid #cae4f2 !important; */
 }
+
+/* .card-ccsp > .card-body {
+	border-top: 1px solid #DFDFDC;
+} */
 
 .table thead th {
 	border-bottom: 0;
 	color: var(--gray);
 	font-weight: 400;
+	border-top: 0;
 }
 
-.table tbody td {
+.table tbody td,
+.table tbody th {
 	font-weight: 500;
+	border-color: #f1f1f1;
 }
 
-.dataTable thead > th {border-top: 0 !important;}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,.02);
+}
+
+.dataTable thead > tr > th {
+	border-top: 0 !important;
+	font-weight: 400 !important;
+	/* font-size: .9rem !important; */
+}
+
+#inboxTable,
+#applicationsTable {
+	border-top: 0;
+	margin-top: 40px;
+}
+
+#inboxTable_length,
+#applicationsTable_length {
+	display: none;
+}
+
+#inboxTable td,
+#applicationsTable td {
+	border-color: #f1f1f1;
+}
+
+#inboxTable a,
+#applicationsTable a {
+	color: #212529;
+}
+
+#inboxTable_filter,
+#applicationsTable_filter {
+	float: none;
+	display: inline-block;
+	width: 64%;
+	margin-left: 5px;
+}
+#inboxTable_filter label,
+#applicationsTable_filter label {
+	width: 100%;
+	text-align: left;
+	text-indent: 10px;
+}
+
+#inboxTable_filter input,
+#applicationsTable_filter input {
+	width: 100%;
+	height: calc(2.25rem + 2px);
+  padding: .375rem 1.75rem .375rem .75rem;
+  line-height: 1.5;
+  color: #495057;
+  vertical-align: middle;
+	border: 1px solid #ced4da;
+  border-radius: .25rem;
+}
+
+#applicationsTable {max-width: 1400px;}
+
+#applicationsTable_timeFilter {
+	display: inline-flex;
+}
+
+@media (min-width: 1200px) {
+	.applications-container {
+	    max-width: 1400px;
+	}
+}
 
 .c-pointer {cursor: pointer;}
 
@@ -46,7 +122,8 @@ body {
 
 a,
 .btn-link {
-	color: #0e70d8;
+	/* color: #0e70d8; */
+	color: #498ed8;
 }
 
 a:hover,
@@ -87,6 +164,20 @@ mark {
 
 .bg-dark-transparent {
 	background-color: rgba(0,0,0,.8);
+}
+
+.badge-chiclet {
+	height: .65rem;
+	width: .65rem;
+	padding: 0;
+}
+
+.text-muted {
+	color: #999 !important;
+}
+
+.text-medium {
+	color: #D9D9D9;
 }
 
 .form-group {

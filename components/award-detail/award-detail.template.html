@@ -10,7 +10,7 @@
 		</div>
 		<div class="ml-auto">
 			<button type="button" class="btn btn-link align-middle py-0" ng-click="$ctrl.isCalculationCollapsed = !$ctrl.isCalculationCollapsed" ng-if="$ctrl.eligible">
-				<span ng-if="$ctrl.isCalculationCollapsed" class="align-middle"><i class="fas fa-eye align-middle" aria-hidden></i>&nbsp;<span class="font-weight-bold">Show award calculation</span></span>
+				<span ng-if="$ctrl.isCalculationCollapsed" class="align-middle"><i class="fas fa-eye align-middle" aria-hidden></i>&nbsp;<span>Show award calculation</span></span>
 				<span ng-if="!$ctrl.isCalculationCollapsed" class="align-middle"><i class="fas fa-eye-slash align-middle" aria-hidden></i>&nbsp;<span class="font-weight-bold">Hide award calculation</span></span>
 			</button>
 			<button type="button" class="btn btn-link align-middle py-0 pr-0" ng-click="$ctrl.editAward()">
@@ -39,7 +39,7 @@
 			<!-- ELIGIBLE -->
 			<div ng-if="$ctrl.eligible">
 
-				<dl class="row dl-reversed bg-light py-3 border-top border-bottom" style="margin-left:-20px; margin-right:-20px; margin-top:-20px;">
+				<dl class="row dl-reversed bg-light py-3" style="margin-left:-20px; margin-right:-20px; margin-top:-20px;">
 					<div class="col-6">
 						<dt>Funding Source</dt>
 						<div class="row">

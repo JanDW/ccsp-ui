@@ -15,6 +15,8 @@ component('financialDocumentsEdit', {
 
       };
 
+      $ctrl.documentTypeSelection = null;
+
       $ctrl.handleClose = function() {
         $ctrl.$close({
           result: $ctrl

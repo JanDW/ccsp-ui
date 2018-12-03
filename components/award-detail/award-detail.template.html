@@ -70,17 +70,17 @@
 					<div class="col-3">
 						<!-- @TODO Hook up to API values -->
 						<dt>Award total duration (9 months)</dt>
-						<dd ng-if="$ctrl.monthlyAwardTotal > 0">{{$ctrl.monthlyAwardTotal * 9 | currency : '$' : 2 }}</dd>
-						<dd ng-if="$ctrl.monthlyAwardTotal <= 0">$0</dd>
-						<dd ng-if="$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount">{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount * 9 | currency : '$' : 2 }} (E)</dd>
+						<dd ng-if="$ctrl.monthlyAwardTotal > 0" class="mb-0">{{$ctrl.monthlyAwardTotal * 9 | currency : '$' : 2 }}</dd>
+						<dd ng-if="$ctrl.monthlyAwardTotal <= 0" class="mb-0">$0</dd>
+						<dd ng-if="$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount" class="mb-0">{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount * 9 | currency : '$' : 2 }} (E)</dd>
 						<dd ng-if="$ctrl.employee.fundingSourceFellowAwardMonthlyAmount">{{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount * 9 | currency : '$' : 2 }} (F)</dd>
 					</div>
 					<div class="col-3">
 						<dt>Monthly award</dt>
-						<dd ng-if="$ctrl.monthlyAwardTotal > 0">{{$ctrl.monthlyAwardTotal | currency : '$' : 2 }}</dd>
-						<dd ng-if="$ctrl.monthlyAwardTotal <= 0">$0</dd>
-						<dd ng-if="$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount">{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount | currency : '$' : 2 }} (E)</dd>
-						<dd ng-if="$ctrl.employee.fundingSourceFellowAwardMonthlyAmount">{{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount | currency : '$' : 2 }} (F)</dd>
+						<dd ng-if="$ctrl.monthlyAwardTotal > 0" class="mb-0">{{$ctrl.monthlyAwardTotal | currency : '$' : 2 }}</dd>
+						<dd ng-if="$ctrl.monthlyAwardTotal <= 0" class="mb-0">$0</dd>
+						<dd ng-if="$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount" class="mb-0">{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount | currency : '$' : 2 }} (E)</dd>
+						<dd ng-if="$ctrl.employee.fundingSourceFellowAwardMonthlyAmount" class="mb-0">{{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount | currency : '$' : 2 }} (F)</dd>
 					</div>
 					</div>
 					<div class="col-2 d-none">

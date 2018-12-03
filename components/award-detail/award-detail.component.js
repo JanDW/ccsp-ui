@@ -9,8 +9,8 @@ component('awardDetail', {
     children: '<',
     tccTuition: '<'
   },
-  controller: ['$uibModal',
-    function AwardDetailController($uibModal) {
+  controller: ['$uibModal', '$rootScope',
+    function AwardDetailController($uibModal, $rootScope) {
       var $ctrl = this;
 
       // @TODO break this up in small functions
@@ -101,6 +101,88 @@ component('awardDetail', {
 
 
             $ctrl.children.forEach(function(child){
+
+              // Lookup tuition if child was added in UI
+              if (!child.monthlyTuition) {
+                if (child.tccCenter.toLowerCase() === 'westgate') {
+                  if (child.schedule.toLowerCase() === 'half-time') {
+                   child.monthlyTuition = $ctrl.tccTuition.westgate.preschool.fiveDayMornings;
+                  } else {
+                   child.monthlyTuition = $ctrl.tccTuition.westgate.preschool.fiveDay;
+                 }
+                } else if (child.tccCenter.toLowerCase() === 'linc') {
+                 if (child.classRoom.toLowerCase() === 'infant') {
+                   if (child.daysPerWeek === 2) {
+                     child.monthlyTuition = $ctrl.tccTuition.linc.infant.twoDay;
+                   }
+                   if (child.daysPerWeek === 3) {
+                     child.monthlyTuition = $ctrl.tccTuition.linc.infant.threeDay;
+                   }
+                   if (child.daysPerWeek === 5) {
+                     child.monthlyTuition = $ctrl.tccTuition.linc.infant.fiveDay;
+                   }
+                 }
+                 if (child.classRoom.toLowerCase() === 'toddler') {
+                   if (child.daysPerWeek === 2) {
+                     child.monthlyTuition = $ctrl.tccTuition.linc.toddler.twoDay;
+                   }
+                   if (child.daysPerWeek === 3) {
+                     child.monthlyTuition = $ctrl.tccTuition.linc.toddler.threeDay;
+                   }
+                   if (child.daysPerWeek === 5) {
+                     child.monthlyTuition = $ctrl.tccTuition.linc.toddler.fiveDay;
+                   }
+                 }
+                 if (child.classRoom.toLowerCase() === 'preschool') {
+                   if (child.daysPerWeek === 2) {
+                     child.monthlyTuition = $ctrl.tccTuition.linc.preschool.twoDay;
+                   }
+                   if (child.daysPerWeek === 3) {
+                     child.monthlyTuition = $ctrl.tccTuition.linc.preschool.threeDay;
+                   }
+                   if (child.daysPerWeek === 5) {
+                     child.monthlyTuition = $ctrl.tccTuition.linc.preschool.fiveDay;
+                   }
+                 }
+                } else {
+                 // default: stata, eastgate, koch
+                 if (child.classRoom.toLowerCase() === 'infant') {
+                   if (child.daysPerWeek === 2) {
+                     child.monthlyTuition = $ctrl.tccTuition.default.infant.twoDay;
+                   }
+                   if (child.daysPerWeek === 3) {
+                     child.monthlyTuition = $ctrl.tccTuition.default.infant.threeDay;
+                   }
+                   if (child.daysPerWeek === 5) {
+                     child.monthlyTuition = $ctrl.tccTuition.default.infant.fiveDay;
+                   }
+                 }
+                 if (child.classRoom.toLowerCase() === 'toddler') {
+                   if (child.daysPerWeek === 2) {
+                     child.monthlyTuition = $ctrl.tccTuition.default.toddler.twoDay;
+                   }
+                   if (child.daysPerWeek === 3) {
+                     child.monthlyTuition = $ctrl.tccTuition.default.toddler.threeDay;
+                   }
+                   if (child.daysPerWeek === 5) {
+                     child.monthlyTuition = $ctrl.tccTuition.default.toddler.fiveDay;
+                   }
+                 }
+                 if (child.classRoom.toLowerCase() === 'preschool') {
+                   if (child.daysPerWeek === 2) {
+                     child.monthlyTuition = $ctrl.tccTuition.default.preschool.twoDay;
+                   }
+                   if (child.daysPerWeek === 3) {
+                     child.monthlyTuition = $ctrl.tccTuition.default.preschool.threeDay;
+                   }
+                   if (child.daysPerWeek === 5) {
+                     child.monthlyTuition = $ctrl.tccTuition.default.preschool.fiveDay;
+                   }
+                 }
+                }
+              }
+
+
               /* adjust expected contribution per child based on schedule */
               if (child.daysPerWeek === 2) {
                 child.employeeTuitionContributionPercentage = $ctrl.calculatedIncomeContributionPercentage * $ctrl.TWO_DAY_SLOT_ADJUSTMENT;
@@ -128,8 +210,6 @@ component('awardDetail', {
                 child.monthlyAwardLimited = child.monthlyAward;
               }
 
-
-
               /* add monthly tuition for child to total */
               $ctrl.monthlyTuitionTotal += child.monthlyTuition;
 
@@ -140,16 +220,11 @@ component('awardDetail', {
               $ctrl.monthlyAwardTotal += child.monthlyAwardLimited;
             });
 
-            /* Calculate monthly award */
-            // $ctrl.monthlyAward = $ctrl.monthlyTuitionTotal - $ctrl.employeeTuitionContributionTotal;
-
-
-            // Make sure award doesn't exceed maximum allowable percentage of tuition
-            // if ($ctrl.monthlyAward > $ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION) {
-            //   $ctrl.monthlyAwardLimited = $ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION;
-            // } else {
-            //   $ctrl.monthlyAwardLimited = $ctrl.monthlyAward;
-            // }
+            // $injector.invoke(['$rootScope', function($rootScope){
+              // $rootScope.$watch('$ctrl.monthlyAwardTotal', function(newValue, oldValue) {
+              //   $parent.$ctrl.isAwardChanged = true;
+              // });
+            // }]);
 
 
             //@TODO check where to round and were not to round up values!

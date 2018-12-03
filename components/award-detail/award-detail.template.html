@@ -41,17 +41,17 @@
 
 				<dl class="row dl-reversed py-3 bg-light" style="margin-left:-20px; margin-right:-20px; margin-top:-20px;">
 					<div class="col-6">
-						<dt>Funding Source</dt>
-						<div class="row">
-							<dd ng-if="$ctrl.employee.fundingSource === 'Employee' || $ctrl.employee.fundingSource === 'Combined'" class="col-6 mb-0">Employee: {{ $ctrl.employee.fundingSourceEmployeePercentage || '100' }}%</dd>
-							<dd ng-if="$ctrl.employee.fundingSource === 'Fellow' || $ctrl.employee.fundingSource === 'Combined'" class="col-6 mb-0">Fellow: {{ $ctrl.employee.fundingSourceFellowPercentage || '100' }}%</dd>
-						</div>
-					</div>
-					<div class="col-6">
 						<dt>Remaining budget</dt>
 						<div class="row">
 							<dd ng-if="$ctrl.employee.fundingSource === 'Employee' || $ctrl.employee.fundingSource === 'Combined'" class="col-6 mb-0">Employee: $115,283</dd>
 							<dd ng-if="$ctrl.employee.fundingSource === 'Fellow' || $ctrl.employee.fundingSource === 'Combined'" class="col-6 mb-0">Fellow: $24,689</dd>
+						</div>
+					</div>
+					<div class="col-6">
+						<dt>Funding Source</dt>
+						<div class="row">
+							<dd ng-if="$ctrl.employee.fundingSource === 'Employee' || $ctrl.employee.fundingSource === 'Combined'" class="col-6 mb-0">Employee: {{ $ctrl.employee.fundingSourceEmployeePercentage || '100' }}%</dd>
+							<dd ng-if="$ctrl.employee.fundingSource === 'Fellow' || $ctrl.employee.fundingSource === 'Combined'" class="col-6 mb-0">Fellow: {{ $ctrl.employee.fundingSourceFellowPercentage || '100' }}%</dd>
 						</div>
 					</div>
 				</dl>
@@ -72,11 +72,16 @@
 						<dt>Award total duration (9 months)</dt>
 						<dd ng-if="$ctrl.monthlyAwardTotal > 0">{{$ctrl.monthlyAwardTotal * 9 | currency : '$' : 2 }}</dd>
 						<dd ng-if="$ctrl.monthlyAwardTotal <= 0">$0</dd>
+						<dd ng-if="$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount">{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount * 9 | currency : '$' : 2 }} (E)</dd>
+						<dd ng-if="$ctrl.employee.fundingSourceFellowAwardMonthlyAmount">{{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount * 9 | currency : '$' : 2 }} (F)</dd>
 					</div>
 					<div class="col-3">
 						<dt>Monthly award</dt>
 						<dd ng-if="$ctrl.monthlyAwardTotal > 0">{{$ctrl.monthlyAwardTotal | currency : '$' : 2 }}</dd>
 						<dd ng-if="$ctrl.monthlyAwardTotal <= 0">$0</dd>
+						<dd ng-if="$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount">{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount | currency : '$' : 2 }} (E)</dd>
+						<dd ng-if="$ctrl.employee.fundingSourceFellowAwardMonthlyAmount">{{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount | currency : '$' : 2 }} (F)</dd>
+					</div>
 					</div>
 					<div class="col-2 d-none">
 						<dt>Monthly tuition</dt>

@@ -1,7 +1,8 @@
 <!-- AWARD DETAIL EDIT MODAL-->
 <div class="modal-content">
-	<div class="modal-header">
-		<h5 class="modal-title">Award</h5>
+	<div class="modal-header align-middle">
+		<h5 class="modal-title align-middle">Award</h5>
+		<button type="button" class="btn btn-link text-danger align-middle p-1" ng-click=""><i class="far fa-trash-alt text-danger" aria-hidden></i><span class="sr-only">Delete Award</span></button>
 		<button type="button" class="close" ng-click="$ctrl.handleDismiss()" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 		</button>
@@ -23,8 +24,7 @@
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-secondary mr-2" ng-click="$ctrl.handleDismiss()">Cancel</button>
-		<button type="button" class="btn btn-danger mr-auto" ng-click="">Delete Award</button>
+		<button type="button" class="btn btn-secondary" ng-click="$ctrl.handleDismiss()">Cancel</button>
 		<button type="button" class="btn btn-primary" ng-click="$ctrl.handleClose()">Save Award</button>
 	</div>
 </div>

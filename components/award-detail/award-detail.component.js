@@ -75,6 +75,7 @@ component('awardDetail', {
 
           $ctrl.monthlyTuitionTotal = 0;
           $ctrl.employeeTuitionContributionTotal = 0;
+          $ctrl.monthlyAwardTotal = 0;
 
           // Is employee eligible based on income?
           // Does income exceed the maximum (adjusted for addtl. children)
@@ -112,27 +113,55 @@ component('awardDetail', {
               }
               child.employeeTuitionContribution = ($ctrl.totalIncome/12) * child.employeeTuitionContributionPercentage;
 
+              child.monthlyAward = child.monthlyTuition - child.employeeTuitionContribution;
+
+              // Employee pays full tuition
+              if (child.monthlyAward <= 0) {
+                child.monthlyAward = 0;
+                child.employeeTuitionContribution = child.monthlyTuition;
+              }
+
+              // Make sure award doesn't exceed 73% of tuition
+              if (child.monthlyAward > child.monthlyTuition * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION) {
+                child.monthlyAwardLimited = child.monthlyTuition * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION;
+              } else {
+                child.monthlyAwardLimited = child.monthlyAward;
+              }
+
+
+
               /* add monthly tuition for child to total */
               $ctrl.monthlyTuitionTotal += child.monthlyTuition;
 
               /* add monthly calculated employee contribution to total */
               $ctrl.employeeTuitionContributionTotal += child.employeeTuitionContribution;
+
+              /* add monthly limited award to total */
+              $ctrl.monthlyAwardTotal += child.monthlyAwardLimited;
             });
 
             /* Calculate monthly award */
-            $ctrl.monthlyAward = $ctrl.monthlyTuitionTotal - $ctrl.employeeTuitionContributionTotal;
+            // $ctrl.monthlyAward = $ctrl.monthlyTuitionTotal - $ctrl.employeeTuitionContributionTotal;
 
 
             // Make sure award doesn't exceed maximum allowable percentage of tuition
-            if ($ctrl.monthlyAward > $ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION) {
-              $ctrl.monthlyAwardLimited = $ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION;
-            } else {
-              $ctrl.monthlyAwardLimited = $ctrl.monthlyAward;
-            }
+            // if ($ctrl.monthlyAward > $ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION) {
+            //   $ctrl.monthlyAwardLimited = $ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION;
+            // } else {
+            //   $ctrl.monthlyAwardLimited = $ctrl.monthlyAward;
+            // }
 
 
             //@TODO check where to round and were not to round up values!
             // Also in template
+
+            if ($ctrl.employee.fundingSource === 'Combined') {
+              $ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount =
+              $ctrl.monthlyAwardTotal * ($ctrl.employee.fundingSourceEmployeePercentage / 100);
+
+              $ctrl.employee.fundingSourceFellowAwardMonthlyAmount =
+              $ctrl.monthlyAwardTotal * ($ctrl.employee.fundingSourceFellowPercentage / 100);
+            }
 
           }
         }

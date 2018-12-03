@@ -29,16 +29,31 @@
 	<div class="card-body">
 		<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
 		<div class="card-text">
-			<dl class="row dl-reversed mb-0">
-				<div class="col-4">
+			<dl class="row dl-reversed">
+				<div class="col-6">
 					<dt>MIT affiliation</dt>
 					<dd>{{ $ctrl.employee.affiliation  | createLabelFromKey }}</dd>
 				</div>
-				<div class="col-4">
+				<div class="col-6">
+					<dt>Appointments</dt>
+					<dd class="mb-0">Job Title 1</dd>
+					<dd>Job Title 2</dd>
+				</div>
+				<div class="col-4 d-none">
 					<dt>Marital status</dt>
 					<dd>{{ $ctrl.employee.maritalStatus | createLabelFromKey }}</dd>
 				</div>
-				<div class="col-4">
+			</dl>
+			<dl class="row dl-reversed mb-0">
+				<div class="col-6">
+					<dt>Appointment Start Date</dt>
+					<dd>{{ $ctrl.employee.appointmentStartDate | date }}</dd>
+				</div>
+				<div class="col-6">
+					<dt>Appointment End Date</dt>
+					<dd>{{ $ctrl.employee.appointmentEndDate | date }}</dd>
+				</div>
+				<div class="col-4 d-none">
 					<dt>MIT ID #</dt>
 					<dd>{{ $ctrl.employee.mitId }}</dd>
 				</div>

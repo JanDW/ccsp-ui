@@ -37,6 +37,12 @@ angular.
 
           $ctrl.applicationTimeFilter = [''];
 
+          $ctrl.randomStatusActive = () => {
+            if (Math.random() < 0.15) {
+              return 'status-cell-active';
+            }
+          };
+
           angular.forEach($ctrl.applications, function(application){
             switch (application.statusCode) {
               case 0:

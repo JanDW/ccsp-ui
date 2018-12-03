@@ -102,15 +102,33 @@ const Employee = (index) => {
                      employee.lastName.toLowerCase() +
                      '@' +
                      faker.internet.domainName();
+
+    employee.appointmentStartDate = faker.date.between(
+      moment().subtract(8,'weeks'),
+      moment().subtract(15,'years')
+    );
+
+    employee.appointmentEndDate = faker.date.between(
+      moment().add(8, 'weeks'),
+      moment().add(3, 'years')
+    );
+
     employee.phone = faker.phone.phoneNumberFormat();
     employee.isPrimaryContact = true; //spouse might override
     employee.salary = faker.random.number({min: 30000, max: 120000});
     employee.additionalIncome = faker.random.boolean() ? faker.random.number({min: 0, max: 20000}) : null;
     employee.affiliation = faker.random.arrayElement(['faculty','staff','student','postdoc associate','postdoc fellow']);
+
     employee.mitId = mitId();
     employee.childIds = [];
     // funding source: employee, fellow, combined
     employee.fundingSource = faker.random.arrayElement(['Employee', 'Fellow', 'Combined']); // Determines which funds get used and which admin applications get sent to
+
+    if (employee.fundingSource === 'Combined') {
+      employee.fundingSourceEmployeePercentage = faker.random.arrayElement([60,70,80]);
+      employee.fundingSourceFellowPercentage = 100 - employee.fundingSourceEmployeePercentage;
+    }
+
     employee.applicationIds = [];
 
     return employee;

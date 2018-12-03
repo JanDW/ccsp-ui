@@ -2,8 +2,8 @@
 	<div class="card-header card-header-ccsp border-0 d-flex">
 		<div>
 			<span class="align-middle">
-				<i class="fas fa-check-circle text-success align-middle" ng-if="$ctrl.eligible && $ctrl.monthlyAward > 0" aria-label="eligible"></i>
-				<i class="fas fa-times-circle text-danger align-middle" ng-if="!$ctrl.eligible || $ctrl.monthlyAward <= 0" aria-label="not eligible"></i>
+				<i class="fas fa-check-circle text-success align-middle" ng-if="$ctrl.eligible && $ctrl.monthlyAwardTotal > 0" aria-label="eligible"></i>
+				<i class="fas fa-times-circle text-danger align-middle" ng-if="!$ctrl.eligible || $ctrl.monthlyAwardTotal <= 0" aria-label="not eligible"></i>
 					Award
 					<span class="text-muted" ng-if="$ctrl.monthlyAward <= 0"> employee contribution exceeds tuition</span>
 			</span>
@@ -11,7 +11,7 @@
 		<div class="ml-auto">
 			<button type="button" class="btn btn-link align-middle py-0" ng-click="$ctrl.isCalculationCollapsed = !$ctrl.isCalculationCollapsed" ng-if="$ctrl.eligible">
 				<span ng-if="$ctrl.isCalculationCollapsed" class="align-middle"><i class="fas fa-eye align-middle" aria-hidden></i>&nbsp;<span>Show award calculation</span></span>
-				<span ng-if="!$ctrl.isCalculationCollapsed" class="align-middle"><i class="fas fa-eye-slash align-middle" aria-hidden></i>&nbsp;<span class="font-weight-bold">Hide award calculation</span></span>
+				<span ng-if="!$ctrl.isCalculationCollapsed" class="align-middle"><i class="fas fa-eye-slash align-middle" aria-hidden></i>&nbsp;<span>Hide award calculation</span></span>
 			</button>
 			<button type="button" class="btn btn-link align-middle py-0 pr-0" ng-click="$ctrl.editAward()">
 				<i class="fas fa-pencil-alt text-primary" aria-hidden></i>
@@ -39,48 +39,50 @@
 			<!-- ELIGIBLE -->
 			<div ng-if="$ctrl.eligible">
 
-				<dl class="row dl-reversed bg-light py-3" style="margin-left:-20px; margin-right:-20px; margin-top:-20px;">
+				<dl class="row dl-reversed py-3 bg-light" style="margin-left:-20px; margin-right:-20px; margin-top:-20px;">
 					<div class="col-6">
 						<dt>Funding Source</dt>
 						<div class="row">
-							<dd class="col-6 mb-0">Employee: 80%</dd>
-							<dd class="col-6 mb-0">Fellow: 20%</dd>
+							<dd ng-if="$ctrl.employee.fundingSource === 'Employee' || $ctrl.employee.fundingSource === 'Combined'" class="col-6 mb-0">Employee: {{ $ctrl.employee.fundingSourceEmployeePercentage || '100' }}%</dd>
+							<dd ng-if="$ctrl.employee.fundingSource === 'Fellow' || $ctrl.employee.fundingSource === 'Combined'" class="col-6 mb-0">Fellow: {{ $ctrl.employee.fundingSourceFellowPercentage || '100' }}%</dd>
 						</div>
 					</div>
 					<div class="col-6">
 						<dt>Remaining budget</dt>
 						<div class="row">
-							<dd class="col-6 mb-0">Employee: $115,283</dd>
-							<dd class="col-6 mb-0">Fellow: $24,689</dd>
+							<dd ng-if="$ctrl.employee.fundingSource === 'Employee' || $ctrl.employee.fundingSource === 'Combined'" class="col-6 mb-0">Employee: $115,283</dd>
+							<dd ng-if="$ctrl.employee.fundingSource === 'Fellow' || $ctrl.employee.fundingSource === 'Combined'" class="col-6 mb-0">Fellow: $24,689</dd>
 						</div>
 					</div>
 				</dl>
 
 				<dl class="row dl-reversed">
-					<div class="col-2">
-						<!-- @TODO Hook up to API values -->
-						<dt>Award total duration (9 months)</dt>
-						<dd>{{$ctrl.monthlyAwardLimited * 9 | currency : '$' : 2 }}</dd>
-					</div>
-					<div class="col-2">
-						<dt>Monthly award</dt>
-						<dd>{{$ctrl.monthlyAwardLimited | currency : '$' : 2 }}</dd>
-					</div>
-					<div class="col-2">
+					<div class="col-3">
 						<!-- @TODO Hook up to API values -->
 						<dt>Award start date</dt>
 						<dd>{{$ctrl.award.awardStartDate | date}}</dd>
 					</div>
-					<div class="col-2">
+					<div class="col-3">
 						<!-- @TODO Hook up to API values -->
 						<dt>Award end date</dt>
 						<dd>{{$ctrl.award.awardEndDate | date}}</dd>
 					</div>
-					<div class="col-2">
+					<div class="col-3">
+						<!-- @TODO Hook up to API values -->
+						<dt>Award total duration (9 months)</dt>
+						<dd ng-if="$ctrl.monthlyAwardTotal > 0">{{$ctrl.monthlyAwardTotal * 9 | currency : '$' : 2 }}</dd>
+						<dd ng-if="$ctrl.monthlyAwardTotal <= 0">$0</dd>
+					</div>
+					<div class="col-3">
+						<dt>Monthly award</dt>
+						<dd ng-if="$ctrl.monthlyAwardTotal > 0">{{$ctrl.monthlyAwardTotal | currency : '$' : 2 }}</dd>
+						<dd ng-if="$ctrl.monthlyAwardTotal <= 0">$0</dd>
+					</div>
+					<div class="col-2 d-none">
 						<dt>Monthly tuition</dt>
 						<dd>{{$ctrl.monthlyTuitionTotal | currency : '$' : 2 }}</dd>
 					</div>
-					<div class="col-2">
+					<div class="col-2 d-none">
 						<dt>Monthly employee contribution</dt>
 						<dd>{{$ctrl.employeeTuitionContributionTotal | currency : '$' : 2 }}</dd>
 					</div>
@@ -142,8 +144,10 @@
 										<th scope="column" class="border-top-0">First name</th>
 										<th scope="column" class="border-top-0">TCC</th>
 										<th scope="column" class="text-right border-top-0">Adjusted EE contribution percentage<sup>1</sup></th>
-										<th scope="column" class="text-right border-top-0">Monthly tuition cost</th>
-										<th scope="column" class="text-right border-top-0">Monthly employee contribution</th>
+										<th scope="column" class="text-right border-top-0">Tuition cost</th>
+										<th scope="column" class="text-right border-top-0">EE contribution</th>
+										<th scope="column" class="text-right border-top-0">Award</th>
+										<th scope="column" class="text-right border-top-0">Award&nbsp;<=&nbsp;{{ $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION * 100 | number : 0 }}%</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -158,16 +162,26 @@
 										<td class="text-right text-monospace">{{child.employeeTuitionContributionPercentage * 100 | number : 3}} %</td>
 										<td class="text-right text-monospace">{{child.monthlyTuition | currency : $ : 2 }}</td>
 										<td class="text-right text-monospace">{{child.employeeTuitionContribution | currency : $ : 2}}</td>
+										<td class="text-right text-monospace">{{child.monthlyAward | currency : $ : 2}}</td>
+										<td class="text-right text-monospace">{{child.monthlyAwardLimited | currency : $ : 2}}</td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
 										<td colspan="3" class="text-right"><b>Totals:</b></td>
-										<td class="text-right text-monospace"><mark class="px-2">{{$ctrl.monthlyTuitionTotal | currency : $ : 2 }}</mark></td>
-										<td class="text-right text-monospace"><mark class="px-2">{{$ctrl.employeeTuitionContributionTotal | currency : $ : 2 }}</mark></td>
+										<td class="text-right text-monospace">
+											{{$ctrl.monthlyTuitionTotal | currency : $ : 2 }}
+										</td>
+										<td class="text-right text-monospace">
+											{{$ctrl.employeeTuitionContributionTotal | currency : $ : 2 }}
+										</td>
+										<td></td>
+										<td class="text-right text-monospace">
+											<mark class="px-2">{{$ctrl.monthlyAwardTotal | currency : $ : 2 }}</mark>
+										</td>
 									</tr>
 									<tr>
-										<td colspan="5" class="pt-3">
+										<td colspan="7" class="pt-3">
 											<small>
 											<sup>1</sup>Number is derived by multiplying the <i>Employee contribution percentage ({{$ctrl.calculatedIncomeContributionPercentage * 100 | number : 3}} %)</i> by the corresponding adjustment percentage for <i>2 days ({{$ctrl.TWO_DAY_SLOT_ADJUSTMENT * 100 | number : 0}}%)</i> or <i>3 days ({{$ctrl.THREE_DAY_SLOT_ADJUSTMENT * 100 | number : 0}}%)</i>.<br><i>5 days</i> or <i>half-time (Westgate)</i> schedules do not get adjusted.
 											</small>
@@ -181,19 +195,27 @@
 
 					<div class="card card-shadow">
 						<div class="card-body">
-							<h4 class="card-title h6 mb-4">4. Award calculation and limit </h4>
-							<dl class="row mx-0">
-									<dt class="col-4 text-right text-monospace font-weight-normal"> {{$ctrl.monthlyTuitionTotal | currency : '$' : 2 }}</dt>
-								<dd class="col-8 text-muted">total monthly tuition</dd>
-								<dt class="col-4 text-right text-monospace font-weight-normal border-bottom">&minus; {{$ctrl.employeeTuitionContributionTotal | currency : '$' : 2 }}</dt>
-								<dd class="col-8 text-muted">monthly employee contribution</dd>
-								<dt class="col-4 text-right text-monospace font-weight-normal border-bottom">{{$ctrl.monthlyAward | currency : '$' : 2 }}</dt>
-								<dd class="col-8 text-muted">monthly award</dd>
-								<dt class="col-4 text-right text-monospace font-weight-normal border-bottom">is {{$ctrl.monthlyAward | currency : '$' : 2 }}&nbsp;&lt;&nbsp;{{$ctrl.monthlyTuitionTotal * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION | floor | currency : $ : 0}}.00?</dt>
-								<dd class="col-8 text-muted">award is limited to maximum of total tuition &times; {{$ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION * 100}}% </dd>
-								<dt class="col-4 text-right text-monospace font-weight-normal"><mark class="px-2">{{$ctrl.monthlyAwardLimited | floor | currency : $ : 0}}.00</mark></dt>
-								<dd class="col-8 text-muted">final rounded monthly award amount</dd>
+							<h4 class="card-title h6 mb-4">4. Funding Source Split</h4>
+
+							<dl ng-if="$ctrl.employee.fundingSource !== 'Combined'" class="row mx-0">
+								<dt class="col-2 text-right text-monospace font-weight-normal">{{$ctrl.monthlyAwardTotal | currency : '$' : 2 }}</dt>
+								<dd class="col-10 text-muted">total monthly award (funding source: 100% {{ $ctrl.employee.fundingSource }})
+								</dd>
 							</dl>
+
+							<dl ng-if="$ctrl.employee.fundingSource === 'Combined'" class="row mx-0">
+
+								<dt class="col-2 text-right text-monospace font-weight-normal">{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount | currency : '$' : 2 }}</dt>
+								<dd class="col-10 text-muted">{{ $ctrl.employee.fundingSourceEmployeePercentage }}% employee monthly award</dd>
+
+								<dt class="col-2 text-right text-monospace font-weight-normal border-bottom mb-2 pb-2">+  {{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount | currency : '$' : 2 }}</dt>
+								<dd class="col-10 text-muted border-bottom mb-2 pb-2">{{ $ctrl.employee.fundingSourceFellowPercentage }}% fellow monthly award </dd>
+
+								<dt class="col-2 text-right text-monospace font-weight-normal">{{$ctrl.monthlyAwardTotal | currency : '$' : 2 }}</dt>
+								<dd class="col-10 text-muted">total monthly award</dd>
+
+							</dl>
+
 						</div>
 					</div>
 

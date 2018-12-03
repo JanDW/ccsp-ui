@@ -3,11 +3,12 @@ module('applicationDetail').
 component('applicationDetail', {
   templateUrl: 'components/application-detail/application-detail.template.html',
   controller: [
+    '$scope',
     '$http',
     '$routeParams',
     '$location',
     '$window',
-    function ApplicationDetailController($http, $routeParams, $location, $window) {
+    function ApplicationDetailController($scope, $http, $routeParams, $location, $window) {
       var $ctrl = this;
       let childrenQueryParameter = '?';
 
@@ -76,6 +77,14 @@ component('applicationDetail', {
       get('http://localhost:3000/tccTuition/').
       then(function(response) {
         $ctrl.tccTuition = response.data;
+      });
+
+      $ctrl.isAwardChanged = false;
+
+      $scope.$watch('$ctrl.application.monthlyAwardLimited', function(newValue, oldValue, scope){
+        if (newValue !== oldValue) {
+          $ctrl.isAwardChanged = true;
+        }
       });
 
       /* METHODS */

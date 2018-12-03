@@ -10,6 +10,9 @@
 			<table id="applicationsTable" dt-options="$ctrl.dtOptions" class="table table-striped" datatable="ng">
 				<thead>
 					<tr>
+						<th scope="col" class="table-heading status-cell">
+							<span class="sr-only">Change occured</span>
+						</th>
 						<th scope="col" class="table-heading">Employee Name</th>
 						<!-- <th scope="col" class="list-table-head">Status</th> -->
 						<th scope="col" class="table-heading">Source</th>
@@ -22,6 +25,7 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="application in $ctrl.applications">
+						<td class="status-cell" ng-class="$ctrl.randomStatusActive()"></td>
 						<td>
 							<i class="badge badge-chiclet align-middle" ng-class="application.badgeClass">&nbsp;</i>&nbsp;
 							<a href="#!/applications/{{application.id}}" class="align-middle">

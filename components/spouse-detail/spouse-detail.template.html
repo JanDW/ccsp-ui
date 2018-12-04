@@ -14,6 +14,12 @@
 		</div>
 		<div class="float-right">
 			<span class="align-middle" ng-if="$ctrl.employee.isPrimaryContact === false">Primary Contact&nbsp;</span>
+
+			<span ng-if="$ctrl.spouse.mitId">
+				<i class="fas fa-id-card text-primary mr-2" aria-hidden uib-tooltip="MIT ID # {{ $ctrl.spouse.mitId }}" tooltip-placement="top"></i>
+				<span class="sr-only">MIT ID #</span>
+			</span>
+
 			<a href="mailto:{{ $ctrl.spouse.email }}" uib-tooltip="{{ $ctrl.spouse.email }}" tooltip-placement="top" class="align-middle">
 					<i class="fas fa-envelope" aria-hidden></i>
 					<span class="sr-only">email</span>
@@ -51,7 +57,7 @@
 								</button>
 						</dd>
 					</div>
-					<div class="col-6" ng-if="$ctrl.spouse.isMitIdPresent">
+					<div class="col-6 d-none" ng-if="$ctrl.spouse.isMitIdPresent">
 						<dt>MIT ID #</dt>
 						<dd>{{$ctrl.spouse.mitId}}</dd>
 					</div>

@@ -102,8 +102,7 @@ component('awardDetail', {
 
             $ctrl.children.forEach(function(child){
 
-              // Lookup tuition if child was added in UI
-              if (!child.monthlyTuition) {
+              // Lookup tuition if child was added in UI or changes were made
                 if (child.tccCenter.toLowerCase() === 'westgate') {
                   if (child.schedule.toLowerCase() === 'half-time') {
                    child.monthlyTuition = $ctrl.tccTuition.westgate.preschool.fiveDayMornings;
@@ -180,7 +179,6 @@ component('awardDetail', {
                    }
                  }
                 }
-              }
 
 
               /* adjust expected contribution per child based on schedule */

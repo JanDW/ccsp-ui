@@ -6,10 +6,16 @@
 			{{ $ctrl.employee.middleInitial }}
 		</span>
 		<!-- &nbsp; -->
-		<span class="text-muted align-middle">(Employee)</span>
+		<span class="text-muted align-middle">(EE)</span>
 
 		<div class="float-right">
 			<span class="align-middle" ng-if="$ctrl.employee.isPrimaryContact">Primary Contact&nbsp;</span>
+
+			<span ng-if="$ctrl.employee.mitId">
+				<i class="fas fa-id-card text-primary mr-2" aria-hidden uib-tooltip="MIT ID # {{ $ctrl.employee.mitId }}" tooltip-placement="top"></i>
+				<span class="sr-only">MIT ID #</span>
+			</span>
+
 			<a href="mailto:{{ $ctrl.employee.email }}" title="{{ $ctrl.employee.email }}" uib-tooltip="{{ $ctrl.employee.email }}" tooltip-placement="top">
 					<i class="fas fa-envelope align-middle" aria-hidden></i>
 					<span class="sr-only">email</span>

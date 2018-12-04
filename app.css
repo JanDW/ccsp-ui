@@ -121,6 +121,11 @@ body {
 	display: inline-flex;
 }
 
+.popover-xl .popover-body {
+ max-width: 500px !important;
+ width: 100% !important;
+}
+
 .status-cell {
 	width: 3px !important;
 	padding: 0 !important;

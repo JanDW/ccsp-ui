@@ -4,8 +4,15 @@
 	<!-- @TODO move app details to component -->
 	<div class="clearfix">
 		<p class="text-muted float-left">
-			<span ng-class="$ctrl.application.badgeClass" class="badge align-middle">
-			 {{$ctrl.application.statusMessage}}
+			<span ng-class="$ctrl.application.badgeClass"
+			      class="badge align-middle"
+			      uib-popover-template="'popover.html'"
+			      popover-placement="bottom-left"
+			      popover-trigger="click"
+			      popover-class="popover-xl"
+						popover-title="Application status">
+			{{$ctrl.application.statusMessage}}
+			<i class="fas fa-pencil-alt text-white" aria-hidden=""></i>&nbsp;
 		 </span> &middot;
 			<span class="align-middle">
 				Academic Year {{$ctrl.application.academicYear}}
@@ -98,3 +105,31 @@
 		</div>
 	</footer>
 </div>
+
+<script type="text/ng-template" id="popover.html">
+  <div>
+  <dl class="dl-reversed small text-nowrap mb-0">
+  	<div class="row">
+  		<dt class="col-4 text-right align-middle">Aug 1, 2018</dt>
+			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-primary" ng-class="application.badgeClass">&nbsp;</i> Pending approval</dd>
+  	</div>
+  	<div class="row">
+  		<dt class="col-4 text-right align-middle">Aug 3, 2018</dt>
+			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-warning" ng-class="application.badgeClass">&nbsp;</i> Returned</dd>
+  	</div>
+  	<div class="row">
+  		<dt class="col-4 text-right align-middle">Aug 6, 2018</dt>
+			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-primary" ng-class="application.badgeClass">&nbsp;</i> Pending approval</dd>
+  	</div>
+  	<div class="row">
+  		<dt class="col-4 text-right align-middle">Aug 7, 2018</dt>
+			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-info" ng-class="application.badgeClass">&nbsp;</i> Approved</dd>
+  	</div>
+  	<div class="row">
+  		<dt class="col-4 text-right align-middle">Aug 7, 2018</dt>
+			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-success" ng-class="application.badgeClass">&nbsp;</i> Confirmed</dd>
+  	</div>
+  </dl>
+	<button type="button" class="btn btn-sm btn-danger w-100 mt-4 small">Change status to Denied</button>
+  </div>
+</script>

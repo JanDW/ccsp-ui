@@ -1,0 +1,90 @@
+<div class="card card-ccsp mt-4">
+	<div class="card-header card-header-ccsp border-0 bg-white clearfix d-flex">
+
+		<div>
+			<span class="align-middle">
+				Active appointments
+			</span>
+			<!-- &nbsp; -->
+			<span class="text-muted align-middle">(EE)</span>
+		</div>
+
+		<div class="ml-auto">
+			<button type="button" class="btn btn-link align-middle py-0" ng-click="$ctrl.isAppointmentsCollapsed = !$ctrl.isAppointmentsCollapsed">
+				<span ng-if="$ctrl.isAppointmentsCollapsed" class="align-middle"><i class="fas fa-eye align-middle" aria-hidden></i>&nbsp;<span>Show appointments</span></span>
+				<span ng-if="!$ctrl.isAppointmentsCollapsed" class="align-middle"><i class="fas fa-eye-slash align-middle" aria-hidden></i>&nbsp;<span>Hide appointments</span></span>
+			</button>
+		</div>
+	</div>
+	<div class="card-body p-0" ng-if="!$ctrl.isAppointmentsCollapsed">
+		<!-- <h3 class="h6 card-subtitle mb-2 text-muted">Card subtitle</h3> -->
+		<div class="card-text">
+			<table class="table mb-0">
+				<thead>
+					<tr>
+						<th scope="col">Job title</th>
+						<th scope="col">Start date</th>
+						<th scope="col">End date</th>
+						<th scope="col">Department</th>
+						<th scope="col">Effort %</th>
+						<th scope="col">Hours/week</th>
+						<th scope="col">Salary</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Assistant Professor</td>
+						<td>Sep 1, 2017</td>
+						<td>Jun 30, 2020</td>
+						<td>Chemistry</td>
+						<td>70%</td>
+						<td>—</td>
+						<td>$83,746.00</td>
+					</tr>
+					<tr>
+						<td>Assistant Professor</td>
+						<td>Sep 1, 2017</td>
+						<td>Jun 30, 2020</td>
+						<td>Physics</td>
+						<td>30%</td>
+						<td>—</td>
+						<td>$37,128.00</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+			<!-- <dl class="row dl-reversed">
+				<div class="col-6">
+					<dt>Appointments</dt>
+					<dd>Postdoc Associate</dd>
+					<dd></dd>
+				</div>
+				<div class="col-6">
+					<dt>Appointments</dt>
+					<dd class="mb-0">Job Title 1</dd>
+					<dd>Job Title 2</dd>
+				</div>
+				<div class="col-4 d-none">
+					<dt>Marital status</dt>
+					<dd>{{ $ctrl.employee.maritalStatus | createLabelFromKey }}</dd>
+				</div>
+			</dl>
+			<dl class="row dl-reversed mb-0">
+				<div class="col-6">
+					<dt>Appointment Start Date</dt>
+					<dd>{{ $ctrl.employee.appointmentStartDate | date }}</dd>
+				</div>
+				<div class="col-6">
+					<dt>Appointment End Date</dt>
+					<dd>{{ $ctrl.employee.appointmentEndDate | date }}</dd>
+				</div>
+				<div class="col-4 d-none">
+					<dt>MIT ID #</dt>
+					<dd>{{ $ctrl.employee.mitId }}</dd>
+				</div>
+			</dl> -->
+		</div>
+	</div>
+</div>

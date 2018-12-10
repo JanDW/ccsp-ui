@@ -9,6 +9,7 @@ angular.module('ccspApp', [
   'employeeDetailEdit',
   'spouseDetail',
   'spouseDetailEdit',
+  'appointmentDetail',
   'childrenList',
   'childrenListEdit',
   'incomeDetail',

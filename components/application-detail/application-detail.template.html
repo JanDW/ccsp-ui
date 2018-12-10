@@ -9,10 +9,9 @@
 			      uib-popover-template="'popover.html'"
 			      popover-placement="bottom-left"
 			      popover-trigger="click"
-			      popover-class="popover-xl"
-						popover-title="Application status">
-			{{$ctrl.application.statusMessage}}
-			<i class="fas fa-pencil-alt text-white" aria-hidden=""></i>&nbsp;
+			      popover-class="popover-xl">
+			{{$ctrl.application.statusMessage}}&nbsp;
+			<i class="fas fa-pencil-alt text-white" aria-hidden=""></i>
 		 </span> &middot;
 			<span class="align-middle">
 				Academic Year {{$ctrl.application.academicYear}}
@@ -40,6 +39,10 @@
 		</div>
 	</div>
 
+	<h1 class="h4" style="font-weight: 300">{{$ctrl.application.employee.lastName}}, {{$ctrl.application.employee.firstName}} {{$ctrl.application.employee.middleInitial}}</h1>
+
+	<!-- AWARD -->
+	<award-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" children="$ctrl.children" tcc-tuition="$ctrl.tccTuition"></award-detail>
 
 	<div class="card-deck mt-4">
 		<!-- ugh, need to put the .card classes on the custom element as .card-deck expects them as children -->
@@ -51,8 +54,9 @@
 		<spouse-detail class="card card-ccsp" spouse="$ctrl.spouse" employee="$ctrl.application.employee" ng-if="$ctrl.application.employee.maritalStatus !== 'singleOrWidowed'"></spouse-detail>
 	</div>
 
-	<!-- AWARD -->
-	<award-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" children="$ctrl.children" tcc-tuition="$ctrl.tccTuition"></award-detail>
+	<!-- APPOINTMENT DETAIL -->
+	<appointment-detail employee="$ctrl.application.employee"></appointment-detail>
+
 
 	<!-- CHILDREN -->
 	<children-list children="$ctrl.children"></children-list>

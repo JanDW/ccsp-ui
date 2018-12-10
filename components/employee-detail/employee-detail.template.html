@@ -1,16 +1,17 @@
 <div class-disabled="card card-ccsp">
-	<div class="card-header card-header-ccsp border-0 bg-white">
-		<span class="align-middle">
-			{{ $ctrl.employee.lastName }},
-			{{ $ctrl.employee.firstName }}
-			{{ $ctrl.employee.middleInitial }}
-		</span>
-		<!-- &nbsp; -->
-		<span class="text-muted align-middle">(EE)</span>
+	<div class="card-header card-header-ccsp border-0 bg-white clearfix">
+		<div class="float-left">
+			<span class="align-middle">
+				{{ $ctrl.employee.lastName }},
+				 {{ $ctrl.employee.firstName }}
+				{{ $ctrl.employee.middleInitial }}
+			</span>
+			<!-- &nbsp; -->
+			<span class="text-muted align-middle">(EE)</span>
+			<p class="align-middle mb-0" ng-if="$ctrl.employee.isPrimaryContact">Primary Contact&nbsp;</p>
+		</div>
 
-		<div class="float-right">
-			<span class="align-middle" ng-if="$ctrl.employee.isPrimaryContact">Primary Contact&nbsp;</span>
-
+		<div class="float-right text-nowrap">
 			<span ng-if="$ctrl.employee.mitId">
 				<i class="fas fa-id-card text-primary mr-2" aria-hidden uib-tooltip="MIT ID # {{ $ctrl.employee.mitId }}" tooltip-placement="top"></i>
 				<span class="sr-only">MIT ID #</span>
@@ -40,7 +41,7 @@
 					<dt>MIT affiliation</dt>
 					<dd>{{ $ctrl.employee.affiliation  | createLabelFromKey }}</dd>
 				</div>
-				<div class="col-6">
+				<div class="col-6 d-none">
 					<dt>Appointments</dt>
 					<dd class="mb-0">Job Title 1</dd>
 					<dd>Job Title 2</dd>
@@ -51,11 +52,11 @@
 				</div>
 			</dl>
 			<dl class="row dl-reversed mb-0">
-				<div class="col-6">
+				<div class="col-6 d-none">
 					<dt>Appointment Start Date</dt>
 					<dd>{{ $ctrl.employee.appointmentStartDate | date }}</dd>
 				</div>
-				<div class="col-6">
+				<div class="col-6 d-none">
 					<dt>Appointment End Date</dt>
 					<dd>{{ $ctrl.employee.appointmentEndDate | date }}</dd>
 				</div>

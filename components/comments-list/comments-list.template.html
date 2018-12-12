@@ -21,7 +21,7 @@
 		<div ng-repeat="comment in $ctrl.application.comments | orderBy : '-_timestamp'">
 			<article class="mb-2 row" ng-class="{'flex-row-reverse' : comment.author.includes($ctrl.application.employee.lastName), 'd-none' : (!$first && $ctrl.isExternalCommentCollapsed)}">
 				<p class="align-self-center mb-0 col-2" ng-class="{'text-right' : !comment.author.includes($ctrl.application.employee.lastName)}">
-					<span class="text-nowrap d-block">{{ comment.author }}</span>
+					<span class="text-nowrap d-block line-height-1">{{ comment.author }}</span>
 					<span class="text-nowrap d-inline text-muted small">{{ comment.timestamp | date }}</span> &middot;
 					<span class="text-nowrap text-muted small">{{ comment.timestamp | date : 'shortTime' }}</span>
 				</p>

@@ -1,5 +1,17 @@
 <main class="pt-4">
 
+<div class="d-none">
+	<div class="alert alert-warning d-flex " role="alert" aria-label="Warning">
+		<span class="align-middle">
+		<i class="fas fa-exclamation-triangle d-inline-block mr-2" aria-hidden="true"></i>&nbsp;
+		Employee's salary has changed.
+		</span>
+		<button type="button" class="btn btn-warning btn-sm font-weight-bold ml-auto align-middle">
+			Create new award
+		</button>
+	</div>
+</div>
+
 	<!-- APLICATION DETAILS -->
 	<!-- @TODO move app details to component -->
 	<div class="clearfix">
@@ -39,19 +51,24 @@
 		</div>
 	</div>
 
-	<h1 class="h4" style="font-weight: 300">{{$ctrl.application.employee.lastName}}, {{$ctrl.application.employee.firstName}} {{$ctrl.application.employee.middleInitial}}</h1>
+	<h1 class="h4 mb-4" style="font-weight: 300">
+		{{$ctrl.application.employee.lastName}}, {{$ctrl.application.employee.firstName}} {{$ctrl.application.employee.middleInitial}}
+	</h1>
 
 	<!-- AWARD -->
 	<award-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" children="$ctrl.children" tcc-tuition="$ctrl.tccTuition"></award-detail>
 
-	<div class="card-deck mt-4">
+	<!-- COMMENTS -->
+	<comments-list application="$ctrl.application"></comments-list>
+
+	<div class="card-deck mt-2">
 		<!-- ugh, need to put the .card classes on the custom element as .card-deck expects them as children -->
 
 		<!-- EMPLOYEE -->
-		<employee-detail class="card card-ccsp" employee="$ctrl.application.employee"></employee-detail>
+		<employee-detail class="card card-ccsp" employee="$ctrl.application.employee" ng-class="{ 'mr-1' : $ctrl.application.employee.spouseId }"></employee-detail>
 
 		<!-- SPOUSE -->
-		<spouse-detail class="card card-ccsp" spouse="$ctrl.spouse" employee="$ctrl.application.employee" ng-if="$ctrl.application.employee.maritalStatus !== 'singleOrWidowed'"></spouse-detail>
+		<spouse-detail class="card card-ccsp ml-1" spouse="$ctrl.spouse" employee="$ctrl.application.employee" ng-if="$ctrl.application.employee.maritalStatus !== 'singleOrWidowed'"></spouse-detail>
 	</div>
 
 	<!-- APPOINTMENT DETAIL -->
@@ -134,6 +151,7 @@
 			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-success" ng-class="application.badgeClass">&nbsp;</i> Confirmed</dd>
   	</div>
   </dl>
-	<button type="button" class="btn btn-sm btn-danger w-100 mt-4 small">Change status to Denied</button>
+	<button type="button" class="btn btn-sm btn-danger w-100 mt-2 small" ng-if="$ctrl.application.statusCode !== 3 && $ctrl.application.statusCode !== 5">Change status to Denied</button>
+	<button type="button" class="btn btn-sm btn-primary w-100 mt-2 small" ng-if="$ctrl.application.statusCode === 3 || $ctrl.application.statusCode === 5">Change status to Pending Approval</button>
   </div>
 </script>

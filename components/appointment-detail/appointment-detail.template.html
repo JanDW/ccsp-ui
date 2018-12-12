@@ -1,4 +1,4 @@
-<div class="card card-ccsp mt-4">
+<div class="card card-ccsp mt-2">
 	<div class="card-header card-header-ccsp border-0 bg-white clearfix d-flex">
 
 		<div>
@@ -34,8 +34,8 @@
 				<tbody>
 					<tr>
 						<td>Assistant Professor</td>
-						<td>Sep 1, 2017</td>
-						<td>Jun 30, 2020</td>
+						<td>{{ $ctrl.employee.appointmentStartDate | date }}</td>
+						<td>{{ $ctrl.employee.appointmentEndDate | date }}</td>
 						<td>Chemistry</td>
 						<td>70%</td>
 						<td>—</td>
@@ -43,8 +43,8 @@
 					</tr>
 					<tr>
 						<td>Assistant Professor</td>
-						<td>Sep 1, 2017</td>
-						<td>Jun 30, 2020</td>
+						<td>{{ $ctrl.employee.appointmentStartDate | date }}</td>
+						<td>{{ $ctrl.employee.appointmentEndDate | date }}</td>
 						<td>Physics</td>
 						<td>30%</td>
 						<td>—</td>

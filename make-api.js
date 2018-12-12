@@ -374,17 +374,17 @@ const Application = (employee) => {
  application.employeeId = employee.id;
  application.comments = [
    {
-     message : 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid ad placeat velit vel aut quos, dolorum ipsa eum perferendis aspernatur repellat itaque minima nemo blanditiis, quasi nobis reprehenderit iusto quae. Explicabo quae, ut quam voluptate unde excepturi facilis consectetur vero repellat et consequatur exercitationem sunt. Officia vitae molestias expedita minus numquam maxime ducimus nemo perferendis inventore iure? Doloremque, dolorum, deserunt. Laboriosam aut ipsa neque itaque ratione ex expedita nostrum, ad sequi inventore maiores quia sed dolorum consequatur. Similique asperiores quis iure magnam ducimus voluptatibus aut doloremque optio! Deserunt, cum, voluptates? Cum, vel! Molestias asperiores perspiciatis vitae dolor illum consequuntur cumque fugiat porro optio accusamus, enim provident doloremque deserunt voluptatum maxime harum officia totam reiciendis expedita soluta cupiditate. Ipsa, ex atque!',
+     message : 'Employee has provided corrected documents. Proceeding to approve.',
      author : 'Kathy Kasabula',
      timestamp: '2018-08-17T09:55:00.553Z',
      type: 'internal'
    },{
-     message : 'Est unde, aliquam quas magnam atque, quaerat rerum error alias odit autem et voluptas vero, sint. Aliquam nobis voluptatibus odit pariatur atque consequuntur eligendi maxime accusantium, reiciendis, perspiciatis laudantium doloribus.',
+     message : 'Apologies, I accidentally uploaded the wrong files, everything should be okay now.',
      author : employee.lastName + ' ' + employee.firstName + (employee.middleInitial ? ', ' : '') + (employee.middleInitial || ''),
      timestamp: '2018-08-16T14:20:00.553Z',
      type: 'external'
    },{
-     message : 'Facilis laboriosam saepe illum distinctio, non quasi, eius totam eveniet nisi ratione, excepturi optio perspiciatis doloribus nihil nostrum a reiciendis rem enim fuga, fugit sapiente facere repudiandae ipsam quidem! Dignissimos.',
+     message : 'Hi, in order to for us to proceed with your application, please supply versions of your financial documentation translated into English.',
      author : 'Kathy Kasabula',
      timestamp: '2018-08-14T10:11:15.553Z',
      type: 'external'

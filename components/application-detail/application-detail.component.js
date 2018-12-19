@@ -125,6 +125,10 @@ component('applicationDetail', {
         });
       };
 
+      $ctrl.isApplicationsInbox = function(){
+        return /inbox/.test(window.location.hash);
+      };
+
 
       // Navigate to previous 'pending approval' application
       $ctrl.prev = function() {
@@ -134,7 +138,7 @@ component('applicationDetail', {
         $http.
         get('http://localhost:3000/applications?orderIndex=' + previousOrderIndex).
         then(function(response){
-          $location.path('applications/' + response.data[0].id);
+          $location.path('applications-inbox/' + response.data[0].id);
         });
       };
 
@@ -148,7 +152,7 @@ component('applicationDetail', {
             $http.
               get('http://localhost:3000/applications?orderIndex=' + nextOrderIndex).
               then(function(response){
-                $location.path('applications/' + response.data[0].id);
+                $location.path('applications-inbox/' + response.data[0].id);
             });
           });
       };

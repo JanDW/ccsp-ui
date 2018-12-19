@@ -14,7 +14,7 @@
 					<div class="form-group col-6">
 						<label for="awardStartDate" class="required">Award start date</label>
 						<input type="date" class="form-control" id="awardStartDate" ng-model="$ctrl.newAwardStartDate" required>
-						<small>Defaults to salary change start date</small>
+						<small class="line-height-13 d-inline-block pt-2 text-muted">Defaults to salary change start date. Terminates the currently active award on the day before this date upon save.</small>
 					</div>
 					<!-- <pre>test {{$ctrl.application.employee.salaryHistory[0].startDate}}
 					–
@@ -23,7 +23,7 @@
 					<div class="form-group col-6">
 						<label for="awardEndDate" class="required">Award end date</label>
 						<input type="date" class="form-control" id="awardEndDate" ng-model="$ctrl.newAwardEndDate" required>
-						<small>Defaults to end of academic year</small>
+						<small class="line-height-13 d-inline-block pt-2 text-muted">Defaults to appointment end date or end of academic year </small>
 					</div>
 				</div>
 			</fieldset>

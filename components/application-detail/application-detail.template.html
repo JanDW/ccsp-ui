@@ -27,6 +27,7 @@
 			</span>
 		</p>
 
+		<!-- PREVIOUS / NEXT APPLICATION NAVIGATION CONTROLS  -->
 		<!-- @TODO move to component -->
 		<!-- @TODO disable buttons when at end of range -->
 		<div class="float-right" ng-if="$ctrl.isApplicationsInbox()">
@@ -38,18 +39,19 @@
 			</button>
 		</div>
 	</div>
-
 	<div class="d-flex mt-3">
+		<!-- EMPLOYEE NAME TITLE -->
 		<h1 class="h4 mb-4" style="font-weight: 300">
 			{{$ctrl.application.employee.lastName}}, {{$ctrl.application.employee.firstName}} {{$ctrl.application.employee.middleInitial}}
 		</h1>
-
+		<!-- PREVIOUS / NEXT AWARD NAVIGATION CONTROLS -->
 		<div ng-if="$ctrl.application.awards.length > 1" class="ml-auto">
+			{{ $ctrl.application.awards[0].status }}
 			<button ng-click="$ctrl.prev()" ng-disabled="$ctrl.application.orderIndex === 0" type="button" class="btn btn-white text-primary btn-sm align-middle">
-				Prev
+				Previous Award
 			</button>
 			<button ng-click="$ctrl.next()" type="button" class="btn btn-white text-primary btn-sm align-middle">
-				Next
+				Next Award
 			</button>
 		</div>
 	</div>

@@ -2,6 +2,6 @@
    'use strict';
 }());
 
-angular.module('employeeDetailEdit', [
+angular.module('applicationCreate', [
   'ui.bootstrap'
 ]);

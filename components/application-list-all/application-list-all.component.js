@@ -2,8 +2,8 @@ angular.
 	module('applicationListAll').
 	component('applicationListAll', {
 		templateUrl: 'components/application-list-all/application-list-all.template.html',
-		controller: ['$http', '$window', '$timeout', 'DTOptionsBuilder', 'DTColumnDefBuilder',
-			function ApplicationListAllController($http, $window, $timeout, DTOptionsBuilder, DTColumnDefBuilder) {
+		controller: ['$http', '$window', '$timeout', 'DTOptionsBuilder', 'DTColumnDefBuilder', '$uibModal',
+			function ApplicationListAllController($http, $window, $timeout, DTOptionsBuilder, DTColumnDefBuilder, $uibModal) {
 				var $ctrl = this;
 
         //Insert this filter after datatables has rendered the table
@@ -37,11 +37,32 @@ angular.
 
           $ctrl.applicationTimeFilter = [''];
 
-          $ctrl.randomStatusActive = () => {
-            if (Math.random() < 0.15) {
-              return 'status-cell-active';
+          $ctrl.createApplication = function(){
+           $uibModal.open({
+            template: '<application-create $close="$close(result)" $dismiss="$dismiss(reason)"></application-create>',
+            controller: [function() {
+              let $ctrl = this;
+            }],
+            controllerAs: '$ctrl',
+            resolve: {
             }
-          };
+          }).result.then(function(result){
+            // modal saved - update $ctrl.employee with returned object
+            console.info("saved ->"+ result);
+            $ctrl.employee = result;
+            // modal dismissed
+          }, function(reason) {
+            console.info("dismissed ->"+ reason);
+          });
+        };
+
+
+
+          // $ctrl.randomStatusActive = () => {
+          //   if (Math.random() < 0.15) {
+          //     return 'status-cell-active';
+          //   }
+          // };
 
           angular.forEach($ctrl.applications, function(application){
             switch (application.statusCode) {

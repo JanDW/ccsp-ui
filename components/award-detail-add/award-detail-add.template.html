@@ -1,0 +1,36 @@
+<!-- AWARD DETAIL EDIT MODAL-->
+<div class="modal-content">
+	<div class="modal-header align-middle">
+		<h5 class="modal-title align-middle">Draft Award Dates</h5>
+		<button type="button" class="close" ng-click="$ctrl.handleDismiss()" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<p>Enter the date range to see how the award will be affected.</p>
+		<form action="#">
+			<fieldset id="awardDetailEdit">
+				<div class="form-row">
+					<div class="form-group col-6">
+						<label for="awardStartDate" class="required">Award start date</label>
+						<input type="date" class="form-control" id="awardStartDate" ng-model="$ctrl.newAwardStartDate" required>
+						<small>Defaults to salary change start date</small>
+					</div>
+					<!-- <pre>test {{$ctrl.application.employee.salaryHistory[0].startDate}}
+					–
+					{{$ctrl.application.awards[0]._startDate | date }}
+					</pre> -->
+					<div class="form-group col-6">
+						<label for="awardEndDate" class="required">Award end date</label>
+						<input type="date" class="form-control" id="awardEndDate" ng-model="$ctrl.newAwardEndDate" required>
+						<small>Defaults to end of academic year</small>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" ng-click="$ctrl.handleDismiss()">Cancel</button>
+		<button type="button" class="btn btn-primary" ng-click="$ctrl.handleClose()">Draft Award</button>
+	</div>
+</div>

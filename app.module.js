@@ -18,6 +18,7 @@ angular.module('ccspApp', [
   'incomeDetailEdit',
   'awardDetail',
   'awardDetailEdit',
+  'awardDetailAdd',
   'financialDocumentsDetail',
   'financialDocumentsEdit',
   'datatables',

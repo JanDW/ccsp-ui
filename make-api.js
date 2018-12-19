@@ -116,6 +116,7 @@ const Employee = (index) => {
     employee.phone = faker.phone.phoneNumberFormat();
     employee.isPrimaryContact = true; //spouse might override
     employee.salary = faker.random.number({min: 30000, max: 120000});
+    employee.salaryHistory = [];
     employee.additionalIncome = faker.random.boolean() ? faker.random.number({min: 0, max: 20000}) : null;
     employee.affiliation = faker.random.arrayElement(['faculty','staff','student','postdoc associate','postdoc fellow']);
 
@@ -359,7 +360,7 @@ function Child(employee, tccCenter) {
 var generateSecondAwardTest = true;
 
 /* APPLICATION CONSTRUCTOR */
-const Application = (employee) => {
+const Application = (employee, spouse) => {
  const application = {};
  application.id = api.applications.length;
  // @TODO Since the application can be returned and resubmitted, does it make sense to store this in an array on this property? Should research best practices
@@ -391,19 +392,40 @@ const Application = (employee) => {
    }
  ];
 
+ if (typeof spouse === 'undefined') {
+   var spouse = {};
+   spouse.salary = 0;
+   spouse.additionalIncome = 0;
+ }
 
+ application.totalIncome = employee.salary + employee.additionalIncome + spouse.salary + spouse.additionalIncome;
+
+ application.hasSalaryChanged = application.statusCode === 4 && Math.random() < 0.3 ? true : false;
+
+ if (application.hasSalaryChanged) {
+   employee.salaryHistory.push(
+     {
+       amount: employee.salary + 3386,
+       startDate: moment().add(1, 'month').add(2, 'days')
+     },{
+       amount: employee.salary,
+       endDate: moment().add(1, 'month').subtract(1, 'day'),
+       startDate: moment().subtract(4, 'years').subtract(1 , 'months').subtract(9, 'days')
+     }
+   );
+ }
 
  application.awards = [];
 
  // Generate award if application.statusCode demands it
  if (application.statusCode === 1 || application.statusCode === 4) {
-   api.awards.push(Award(employee, application));
+   api.awards.push(Award(employee, application, false));
    // Add award ID to the application.awards array
    application.awards.push(api.awards.length - 1);
 
    // @TODO remove
    if (generateSecondAwardTest && application.statusCode === 4) {
-     api.awards.push(Award(employee, application));
+     api.awards.push(Award(employee, application, true));
      // Add award ID to the application.awards array
      application.awards.push(api.awards.length - 1);
      generateSecondAwardTest = false;
@@ -420,13 +442,14 @@ const Application = (employee) => {
 };
 
 /* AWARD CONSTRUCTOR */
-const Award = (employee, application) => {
+const Award = (employee, application, isSecondAward) => {
     const award = {};
     award.id = api.awards.length;
     award.applicationId = application.id;
     award.startDate = faker.date.between(application.lastSubmissionDate, moment(application.lastSubmissionDate).add(1,'months'));
     award.endDate = '2019-08-31T23:59:59.244Z';
     award.amount = faker.random.number({'min': 500, 'max': 2500});
+    award.status = isSecondAward ? 'archived' : 'active';
     return award;
 };
 
@@ -507,16 +530,17 @@ const writeObjectToJsonFile = (obj, jsonFileName) => {
     const randomEmployeesArrayIndex = faker.random.number({ min: 0, max: api.employees.length - 1});
 
     const employee = api.employees[randomEmployeesArrayIndex];
+    const spouse = api.spouses[employee.spouseId];
 
-    api.applications.push(Application(employee));
+    api.applications.push(Application(employee, spouse));
     // Create an ID array element on the employee referencing the application
     employee.applicationIds.push(index);
   });
 
   // Order applications
-  api.applications = _.sortBy(api.applications, function(application) {
-    return new Date(application.lastSubmissionDate);
-  });
+  // api.applications = _.sortBy(api.applications, function(application) {
+  //   return new Date(application.lastSubmissionDate);
+  // });
 
   // add ordinal orderIndex property for pending Approval applications
   (function(){

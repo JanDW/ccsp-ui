@@ -10,6 +10,14 @@
 
 		<form action="#">
 			<fieldset id="incomeDetailEdit">
+				<div class="form-group" ng-if="$ctrl.employee.salaryHistory[0].amount !== $ctrl.employee.salary">
+					<label for="salaryChange" class="required">Salary change</label>
+					<div ng-repeat="salary in $ctrl.employee.salaryHistory">
+						{{salary.amount}}
+					</div>
+
+				</div>
+
 				<div class="form-group">
 					<label for="employeeAdditionalIncome" class="required">Employee additional income</label>
 
@@ -23,7 +31,7 @@
 					  </div> -->
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" ng-if="$ctrl.spouse">
 					<label for="spouseSalary" class="required">Spouse salary</label>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
@@ -35,7 +43,7 @@
 						</div> -->
 					</div>
 				</div>
-				<div class="form-group">
+				<div class="form-group" ng-if="$ctrl.spouse">
 					<label for="spouseAdditionalIncome" class="required">Spouse additional income</label>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">

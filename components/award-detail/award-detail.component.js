@@ -7,7 +7,8 @@ component('awardDetail', {
     employee: '<', //data gets passed in as an input on an employee attribute on the custom element
     spouse: '<',
     children: '<',
-    tccTuition: '<'
+    tccTuition: '<',
+    awards: '='
   },
   controller: ['$uibModal', '$rootScope',
     function AwardDetailController($uibModal, $rootScope) {
@@ -31,7 +32,8 @@ component('awardDetail', {
         // @TODO There has to be a better solution that this kludgy mess
         if ( typeof $ctrl.employee   === 'object' &&
              typeof $ctrl.children   === 'object' &&
-             typeof $ctrl.tccTuition === 'object') {
+             typeof $ctrl.tccTuition === 'object' &&
+             typeof $ctrl.awards     === 'object') {
           if (typeof $ctrl.employee.spouseId === 'undefined') {
             $ctrl.spouse = {}; // checking properties on this object later on, so it needs to exist
             isDataLoaded = true;
@@ -240,11 +242,11 @@ component('awardDetail', {
         }
       };
 
-      $ctrl.award = {};
-
-      //@TODO hardcoded dates
-      $ctrl.award.awardStartDate = new Date('2018-09-01T00:00:00');
-      $ctrl.award.awardEndDate = new Date('2019-08-31T00:00:00');
+      // $ctrl.award = {};
+      //
+      // //@TODO hardcoded dates
+      // $ctrl.award.awardStartDate = new Date('2018-09-01T00:00:00');
+      // $ctrl.award.awardEndDate = new Date('2019-08-31T00:00:00');
 
       $ctrl.editAward = function(){
        $uibModal.open({

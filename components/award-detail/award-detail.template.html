@@ -60,12 +60,12 @@
 					<div class="col-3">
 						<!-- @TODO Hook up to API values -->
 						<dt>Award start date</dt>
-						<dd>{{$ctrl.award.awardStartDate | date}}</dd>
+						<dd>{{$ctrl.awards[$ctrl.awards.length - 1]._startDate | date}}</dd>
 					</div>
 					<div class="col-3">
 						<!-- @TODO Hook up to API values -->
 						<dt>Award end date</dt>
-						<dd>{{$ctrl.award.awardEndDate | date}}</dd>
+						<dd>{{$ctrl.awards[$ctrl.awards.length - 1]._endDate | date}}</dd>
 					</div>
 					<div class="col-3">
 						<!-- @TODO Hook up to API values -->

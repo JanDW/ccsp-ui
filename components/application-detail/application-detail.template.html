@@ -1,17 +1,5 @@
 <main class="pt-4">
 
-<div class="d-none">
-	<div class="alert alert-warning d-flex " role="alert" aria-label="Warning">
-		<span class="align-middle">
-		<i class="fas fa-exclamation-triangle d-inline-block mr-2" aria-hidden="true"></i>&nbsp;
-		Employee's salary has changed.
-		</span>
-		<button type="button" class="btn btn-warning btn-sm font-weight-bold ml-auto align-middle">
-			Create new award
-		</button>
-	</div>
-</div>
-
 	<!-- APLICATION DETAILS -->
 	<!-- @TODO move app details to component -->
 	<div class="clearfix">
@@ -56,7 +44,7 @@
 	</h1>
 
 	<!-- AWARD -->
-	<award-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" children="$ctrl.children" tcc-tuition="$ctrl.tccTuition"></award-detail>
+	<award-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" children="$ctrl.children" tcc-tuition="$ctrl.tccTuition" awards="$ctrl.application.awards"></award-detail>
 
 	<!-- COMMENTS -->
 	<comments-list application="$ctrl.application"></comments-list>
@@ -79,7 +67,7 @@
 	<children-list children="$ctrl.children"></children-list>
 
 	<!-- GROSS ESTIMATED INCOME -->
-  <income-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee"></income-detail>
+  <income-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" total-income="$ctrl.application.totalIncome"></income-detail>
 
 
 	<!-- FINANCIAL DOCUMENTS -->
@@ -88,6 +76,9 @@
 </main>
 
 <!-- @TODO move footer to component -->
+
+
+<!-- PENDING APPROVAL FOOTER-->
 <div class="bg-dark-transparent border-top w-100 position-fixed fixed-bottom" ng-if="$ctrl.application.statusCode === 0">
 	<footer class="container clearfix p-3">
 		<div class="float-left">
@@ -109,16 +100,16 @@
 	</footer>
 </div>
 
-
-<div class="bg-dark-transparent border-top w-100 position-fixed fixed-bottom" ng-if="$ctrl.isAwardChanged === true">
+<!-- SAP DATA CHANGE FOOTER-->
+<div class="bg-warning w-100 position-fixed fixed-bottom" ng-if="$ctrl.application.hasSalaryChanged && !($ctrl.application.awards[$ctrl.application.awards.length -1].status === 'draft')">
 	<footer class="container clearfix p-3">
 		<div class="float-right">
-	    <span class="text-light d-inline-block">
-				<i class="fas fa-exclamation-triangle text-light d-inline-block mr-2"></i>
-				Award calculation has changed. New award creation is required.
+	    <span class="d-inline-block">
+				<i class="fas fa-exclamation-triangle d-inline-block mr-2"></i>
+				Employee salary change on {{ $ctrl.application.employee.salaryHistory[0].startDate | date }}. Please draft an Award and edit the Gross Estimated Income.
 			</span>
-			<button type="button" class="btn btn-warning font-weight-bold align-middle ml-3">
-				<i class="fas fa-plus" aria-hidden=""></i> Create new award
+			<button type="button" class="btn btn-warning font-weight-bold align-middle ml-3 border-dark" ng-click="$ctrl.reviewAward()">
+				<i class="fas fa-plus" aria-hidden=""></i> Draft new award
 			</button>
 			<!-- <button type="button" class="btn btn-light">
 				<i class="fas fa-save" aria-hidden></i> Save
@@ -126,6 +117,33 @@
 		</div>
 	</footer>
 </div>
+
+
+<!-- SAVE AWARD FOOTER-->
+<div class="bg-dark-transparent border-top w-100 position-fixed fixed-bottom" ng-if="$ctrl.application.awards[$ctrl.application.awards.length -1].status === 'draft'">
+	<footer class="container clearfix p-3">
+		<div class="float-left">
+			<button type="button" class="btn btn-danger font-weight-bold">
+				<i class="fas fa-ban" aria-hidden></i> Close application
+			</button>
+		</div>
+		<div class="float-right">
+			<!-- <button type="button" class="btn btn-light">
+				<i class="fas fa-save" aria-hidden></i> Save
+			</button> -->
+			<button type="button" class="btn btn-success font-weight-bold">
+				<i class="fas fa-plus" aria-hidden></i>
+				Create award
+			</button>
+		</div>
+	</footer>
+</div>
+
+
+
+
+
+
 
 <script type="text/ng-template" id="popover.html">
   <div>

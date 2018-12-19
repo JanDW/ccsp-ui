@@ -25,7 +25,7 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="application in $ctrl.applications">
-						<td class="status-cell" ng-class="$ctrl.randomStatusActive()"></td>
+						<td class="status-cell" ng-class="application.hasSalaryChanged ? 'status-cell-active' : ''"></td>
 						<td>
 							<i class="badge badge-chiclet align-middle" ng-class="application.badgeClass">&nbsp;</i>&nbsp;
 							<a href="#!/applications/{{application.id}}" class="align-middle">

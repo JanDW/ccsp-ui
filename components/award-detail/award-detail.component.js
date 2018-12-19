@@ -8,7 +8,8 @@ component('awardDetail', {
     spouse: '<',
     children: '<',
     tccTuition: '<',
-    awards: '='
+    awards: '=',
+    totalIncome: '<' //One-way binding required for $onChanges to trigger when totalIncome has updated
   },
   controller: ['$uibModal', '$rootScope',
     function AwardDetailController($uibModal, $rootScope) {
@@ -33,7 +34,9 @@ component('awardDetail', {
         if ( typeof $ctrl.employee   === 'object' &&
              typeof $ctrl.children   === 'object' &&
              typeof $ctrl.tccTuition === 'object' &&
-             typeof $ctrl.awards     === 'object') {
+             typeof $ctrl.awards     === 'object' &&
+             typeof $ctrl.totalIncome === 'number'
+           ) {
           if (typeof $ctrl.employee.spouseId === 'undefined') {
             $ctrl.spouse = {}; // checking properties on this object later on, so it needs to exist
             isDataLoaded = true;
@@ -46,9 +49,9 @@ component('awardDetail', {
           // Award calculation
 
           // calculate income, not all properties might be present
-          $ctrl.totalIncome = ($ctrl.employee.salary || 0) +
-                         ($ctrl.employee.additionalIncome || 0) + ($ctrl.spouse.salary || 0) +
-                         ($ctrl.spouse.additionalIncome || 0);
+          // $ctrl.totalIncome = ($ctrl.employee.salary || 0) +
+          //                ($ctrl.employee.additionalIncome || 0) + ($ctrl.spouse.salary || 0) +
+          //                ($ctrl.spouse.additionalIncome || 0);
 
 
           $ctrl.numberOfChildren = $ctrl.children.length;

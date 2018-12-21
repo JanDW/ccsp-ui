@@ -16,7 +16,7 @@ component('applicationDetail', {
       /* API CALLS */
       // Get application and embed the employee
       $http.
-      get('http://localhost:3000/applications/' + $routeParams.applicationId + '?_expand=employee&_embed=awards').
+      get('https://ccsp-api.herokuapp.com/applications/' + $routeParams.applicationId + '?_expand=employee&_embed=awards').
       then(function(response) {
         $ctrl.application = response.data;
 
@@ -65,7 +65,7 @@ component('applicationDetail', {
         // Get the spouse
         if (typeof $ctrl.application.employee.spouseId !== 'undefined') {
           $http.
-          get('http://localhost:3000/spouses/' + $ctrl.application.employee.spouseId).
+          get('https://ccsp-api.herokuapp.com/spouses/' + $ctrl.application.employee.spouseId).
           then(function(response) {
             $ctrl.spouse = response.data;
           });
@@ -77,7 +77,7 @@ component('applicationDetail', {
         });
 
         $http.
-        get('http://localhost:3000/children/' + childrenQueryParameter ).
+        get('https://ccsp-api.herokuapp.com/children/' + childrenQueryParameter ).
         then(function(response) {
           $ctrl.children = response.data;
         });
@@ -85,7 +85,7 @@ component('applicationDetail', {
 
       // Get TCC tuition costs
       $http.
-      get('http://localhost:3000/tccTuition/').
+      get('https://ccsp-api.herokuapp.com/tccTuition/').
       then(function(response) {
         $ctrl.tccTuition = response.data;
       });
@@ -136,7 +136,7 @@ component('applicationDetail', {
         const previousOrderIndex = $ctrl.application.orderIndex > 0 ? $ctrl.application.orderIndex - 1 : 0;
         // request id match to previousOrderIndex and go there
         $http.
-        get('http://localhost:3000/applications?orderIndex=' + previousOrderIndex).
+        get('https://ccsp-api.herokuapp.com/applications?orderIndex=' + previousOrderIndex).
         then(function(response){
           $location.path('applications-inbox/' + response.data[0].id);
         });
@@ -145,12 +145,12 @@ component('applicationDetail', {
       // Navigate to next 'pending approval' application
       $ctrl.next = function() {
         $http.
-          get('http://localhost:3000/applications?statusCode=0').
+          get('https://ccsp-api.herokuapp.com/applications?statusCode=0').
           then(function(response){
             const nextOrderIndex = $ctrl.application.orderIndex + 1;
             // request id match to nextOrderIndex and go there
             $http.
-              get('http://localhost:3000/applications?orderIndex=' + nextOrderIndex).
+              get('https://ccsp-api.herokuapp.com/applications?orderIndex=' + nextOrderIndex).
               then(function(response){
                 $location.path('applications-inbox/' + response.data[0].id);
             });

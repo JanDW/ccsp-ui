@@ -12,9 +12,9 @@ component('applicationCreate', {
 
       // close modal, return changes
       $ctrl.handleClose = function() {
-        // $ctrl.$close({
+        $ctrl.$close({
         //   result: $ctrl.employee
-        // });
+        });
       };
 
       // dismiss modal

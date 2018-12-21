@@ -12,7 +12,7 @@ angular.
           .withDisplayLength(100);
 
 				// Get all applications with statusCode 0 corresponds to (statusMessage:'Pending approval')
-				$http.get('http://localhost:3000/applications?_expand=employee&statusCode=0&_sort=lastSubmissionDate&_order=desc').then(function(response){
+				$http.get('https://ccsp-api.herokuapp.com/applications?_expand=employee&statusCode=0&_sort=lastSubmissionDate&_order=desc').then(function(response){
 					$ctrl.applications = response.data;
 				});
 			}

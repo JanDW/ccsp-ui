@@ -21,10 +21,7 @@
     "opn": "^5.4.0"
   },
   "scripts": {
-    "start": "http-server . -a localhost -p 8000 -c-1",
-    "api": "node make-api.js && node serve-api.js",
-    "serve-api": "node serve-api.js",
-    "make-api": "node make-api.js"
+    "start": "http-server . -a localhost -p 8000 -c-1"
   },
   "repository": {
     "type": "git",

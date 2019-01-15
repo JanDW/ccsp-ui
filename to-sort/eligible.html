@@ -211,7 +211,7 @@
 			<main class="col-sm-9">
 				<div class="panel pb-5">
 					<header class="section-heading">
-						<h1 class="section-title">TCC Childcare Scholarship: New Enrollment 2018-2019</h1>
+						<h1 class="section-title">TCC Childcare Scholarship: New Enrollment</h1>
 					</header>
 					<article class="content-container" id="canApply">
 						<div>
@@ -606,11 +606,12 @@
 			// and show the targetted .content-container
 			$contentContainers.filter('#'+ target).removeClass('d-none');
 
-			if (target === 'reApply') {
-				$('.section-title').text('TCC Childcare Scholarship: New Enrollment 2019-2020')
-			} else {
-				$('.section-title').text('TCC Childcare Scholarship: New Enrollment 2018-2019')
-			}
+			// No longer showing year or reApply
+			// if (target === 'reApply') {
+			// 	$('.section-title').text('TCC Childcare Scholarship: New Enrollment 2019-2020')
+			// } else {
+			// 	$('.section-title').text('TCC Childcare Scholarship: New Enrollment 2018-2019')
+			// }
 		})
 
 	</script>

@@ -200,8 +200,8 @@
 						<li class="nav-item">
 							<a href="#" class="nav-link" data-target="isDenied">denied award</a>
 						</li>
-						<li class="nav-item d-none">
-							<a href="#" class="nav-link" data-target="reApply">apply next year</a>
+						<li class="nav-item">
+							<a href="#" class="nav-link" data-target="isCurrent">current award</a>
 						</li>
 					</ul>
 					<small class="text-muted mt-2 d-block"><b>Note</b> This is not the actual sidebar navigation for Atlas. It is merely a convience to navigate different states of the CSSP employee view in this prototype.<br><br>Similarly the <i>home</i> link top left serves for navigating the prototype.</small>
@@ -211,7 +211,7 @@
 			<main class="col-sm-9">
 				<div class="panel pb-5">
 					<header class="section-heading">
-						<h1 class="section-title">TCC Childcare Scholarship: New Enrollment</h1>
+						<h1 class="section-title">TCC Childcare Scholarship</h1>
 					</header>
 					<article class="content-container" id="canApply">
 						<div>
@@ -355,6 +355,26 @@
 
 						<p class="mb-0">MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
 
+						<h2 class="h6 mt-4">Current Award (Pending Your Confirmation)</h2>
+
+						<p>Your family has been awarded an MIT Child Care Scholarship in the amount of $996 per month for the months of 09/2018 through 08/2019, a total of $11,952. This award is based on your child’s enrollment at Lincoln Lab Childcare Center in an Infant classroom for 5 days per week.</p>
+
+						<p>
+							<b>You are also responsible throughout the award period for reporting any changes in your status at MIT and/or your child’s status at the child care center that might affect your eligibility for the scholarship.</b> Contact information can be found at the bottom of this page.
+						</p>
+
+						<p>Examples of a change in status include, but are not limited to:</p>
+
+							<ul>
+								<li>discontinuing employment at MIT</li>
+								<li>decreasing the percentage of time you are employed at MIT causing a loss of benefits eligibility</li>
+								<li>change in spouse/partner employment or enrollment status</li>
+								<li>withdrawing your child from the center in which he or she is currently enrolled</li>
+								<li> or reducing the number of days your child is enrolled at LINC</li>
+							</ul>
+
+							<p>This award is subject to all the conditions and requirements of the MIT Child Care Scholarship Programs, as modified by MIT from time to time. MIT also reserves the right to terminate those Scholarship Programs at any time.</p>
+
 
 						<div id="applicationApproved">
 							<button type="submit" class="btn btn-link btn-sm mt-1 pl-0" id="applicationApproved2017"><u>Need to apply for 2017&ThinSpace;&ndash;&ThinSpace;2018?</u></button>
@@ -458,34 +478,45 @@
 
 					</article>
 
-					<article class="content-container d-none" id="reApply">
+					<article class="content-container d-none" id="isCurrent">
 						<div>
 							<h2 class="h6">About the Scholarship</h2>
 
 							<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
 
-							<h2 class="h6">How to Apply</h2>
-							<ol class="pl-3">
+							<h2 class="h6 d-none">How to Apply</h2>
+							<ol class="pl-3 d-none">
 								<li>Read the <a href="https://childcare.mit.edu/sites/default/files/documents/2017-2018%20ScholarshipFactSheet.pdf">Childcare Scholarship Program Fact Sheet</a></li>
 								<li>Check the box below to indicate your child has been offered a space at a TCC. This action will make the <i>Apply for Childcare Scholarship</i> buttons appear.</li>
 								<li>Click an <i>Apply for Childcare Scholarship</i> button to open up the enrollment form.</li>
 							</ol>
-
-
-							<div class="custom-control custom-checkbox mb-4 mt-4">
-								<input type="checkbox" class="custom-control-input statement-understanding" id="reApply2019">
-								<label class="custom-control-label" for="reApply2019">Yes, my child has been offered a space at a TCC.</label>
-							</div>
-
 							</div>
 
 							<div class="d-none statement-understanding-buttons">
 								<button type="submit" class="btn btn-primary btn-sm" id="reApply2019Button">Apply for Childcare Scholarship 2019&ThinSpace;&ndash;&ThinSpace;2020</button>
 							</div>
 
-						<h2 class="h6 mt-4 d-none">Your Scholarship History</h2>
+						<h2 class="h6 mt-4">Current Award</h2>
 
-						<table class="table d-none ">
+						<p>Your family has been awarded an MIT Child Care Scholarship in the amount of $996 per month for the months of 09/2018 through 08/2019, a total of $11,952. This award is based on your child’s enrollment at Lincoln Lab Childcare Center in an Infant classroom for 5 days per week.</p>
+
+						<p>
+							<b>You are also responsible throughout the award period for reporting any changes in your status at MIT and/or your child’s status at the child care center that might affect your eligibility for the scholarship.</b> Contact information can be found at the bottom of this page.
+						</p>
+
+						<p>Examples of a change in status include, but are not limited to:</p>
+
+							<ul>
+								<li>discontinuing employment at MIT</li>
+								<li>decreasing the percentage of time you are employed at MIT causing a loss of benefits eligibility</li>
+								<li>change in spouse/partner employment or enrollment status</li>
+								<li>withdrawing your child from the center in which he or she is currently enrolled</li>
+								<li> or reducing the number of days your child is enrolled at LINC</li>
+							</ul>
+
+							<p>This award is subject to all the conditions and requirements of the MIT Child Care Scholarship Programs, as modified by MIT from time to time. MIT also reserves the right to terminate those Scholarship Programs at any time.</p>
+
+						<table class="table d-none">
 							<thead>
 								<tr>
 									<th scope="col" class="border-top-0 border-bottom">Academic Year</th>
@@ -498,20 +529,6 @@
 							<tbody>
 								<tr>
 									<td>2018-2019</td>
-									<td>09/01/2018</td>
-									<td>31/08/2019</td>
-									<td>Confirmed</td>
-									<td><a href="#">View application</a></td>
-								</tr>
-								<tr>
-									<td>2017-2018</td>
-									<td>09/01/2018</td>
-									<td>31/08/2019</td>
-									<td>Confirmed</td>
-									<td><a href="#">View application</a></td>
-								</tr>
-								<tr>
-									<td>2016-2017</td>
 									<td>09/01/2018</td>
 									<td>31/08/2019</td>
 									<td>Confirmed</td>

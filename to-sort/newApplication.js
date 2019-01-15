@@ -5,6 +5,14 @@
 	//Tabula rasa
 	document.getElementById('newApplicationForm').reset();
 
+  //Impersonating? if so, show info about John Doe on screen
+
+  var urlParams = new URLSearchParams(window.location.search);
+
+  if (urlParams.has('user')) {
+    $('#impersonateJohnDoe').removeClass('d-none');
+  }
+
 	//Toggle additional content on checkbox change
 	$('.additional-entry-toggle input').on('change', function(){
 		$(this).closest('.additional-entry').toggleClass('is-active');

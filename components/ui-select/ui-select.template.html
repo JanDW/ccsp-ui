@@ -1,0 +1,68 @@
+<style>
+	.navbar {
+		display: none;
+	}
+
+	body {
+		overflow: hidden;
+	}
+
+	.slide-up-fade-in{
+    animation: slide-up-fade-in ease-in-out 1s;
+    animation-iteration-count: 1;
+    transform-origin: 50% 50%;
+    animation-fill-mode:forwards; /*when the spec is finished*/
+    opacity:0;
+    opacity: 1\9;
+
+}
+
+@keyframes slide-up-fade-in{
+    0% {
+        opacity:0;
+        transform:  translate(0px,30px)  ;
+    }
+
+		25% {
+				opacity:0;
+		}
+    100% {
+        opacity:1;
+        transform:  translate(0px,0px)  ;
+    }
+}
+
+</style>
+
+
+		<div class="" style="display: flex;
+  align-items: center;
+  justify-content: center; height:100vh; /* background-image: url(https://static1.squarespace.com/static/561531b9e4b05090e8ae0cd0/t/5760118be321408871da85e3/1465913759810/?format=1000w); background-size: cover; */">
+			<div class="slide-up-fade-in">
+				<h2 class="font-weight-light text-center mb-4">
+					<img src="to-sort/mit-logo.svg" class="d-block mb-4" alt="" style="margin: 0 auto;">
+					TCC Childcare Scholarship Prototype</h2>
+				<div class="text-center">
+					<a href="./to-sort/eligible.html" id="employeeNav" class="btn btn-primary">
+						<i class="fas fa-pray"></i>&nbsp;
+						View Employee Interface
+					</a>
+					<button id="adminNav" class="btn btn-primary" ng-click="$ctrl.viewAdminUi()">
+						<i class="far fa-money-bill-alt"></i>&nbsp;
+						View Admin Interface
+					</button>
+				</div>
+
+				<div class="mt-5 text-center text-muted">
+					<i class="fab fa-github"></i> <a href="https://github.mit.edu/jandw/ccsp-experiment" class="text-muted">CCSP Experiment</a> &middot; <i class="fab fa-github d-none"></i> <a href="https://github.mit.edu/jandw/ccsp-api" class="text-muted">CCSP API</a>
+					<p class="mt-2">
+						<small>Admin interface may take ~10 seconds on first page load if the API instance needs to start up.<br>If you experience issues/bugs, please use Google Chrome v.69 or later. Cross-browser testing is not a worthwhile endeavour for prototypes.</small>
+					</p>
+
+					<p class="small text-muted">
+						Questions?&nbsp;
+						<a href="mailto:jandw@mit.edu?subject=Question%20about%20CSSP%20prototype" class="text-muted">jandw@mit.edu</a>
+					</p>
+				</div>
+			</div>
+		</div>

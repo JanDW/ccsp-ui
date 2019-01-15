@@ -7,6 +7,9 @@ angular.module('ccspApp').config([
 		$locationProvider.hashPrefix('!');
 
 		$routeProvider.
+			when('/', {
+				template: '<ui-select></ui-select>'
+			}).
 			when('/applications-inbox', {
 				template: '<application-list></application-list>'
 			}).

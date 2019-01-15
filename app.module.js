@@ -2,6 +2,7 @@ angular.module('ccspApp', [
 	'ngRoute',
   'ngAnimate',
 	'core',
+  'uiSelect',
 	'applicationDetail',
 	'applicationList',
 	'applicationListAll',

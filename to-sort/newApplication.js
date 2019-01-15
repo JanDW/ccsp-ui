@@ -224,7 +224,7 @@
 	});
 
 	function incomeTotal () {
-		let incomeTotalValue = parseInt($('#youIncomeEstimate').val() || 0) + parseInt($('#spouseIncomeEstimate').val() || 0);
+		let incomeTotalValue = parseInt($('#youIncomeEstimate').val() || 0) + parseInt($('#spouseIncomeEstimate').val() || 0) + parseInt($('#youAdditionalEstimate').val() || 0) + parseInt($('#spouseAdditionalIncome').val() || 0) ;
 		$('#incomeTotal').val(incomeTotalValue);
 	};
 

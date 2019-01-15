@@ -697,11 +697,26 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text">$</span>
 								  </div>
-								  <input type="number" class="form-control" name="income" aria-label="Amount (to the nearest dollar)" id="youIncomeEstimate" required>
+								  <input type="number" class="form-control" name="income" aria-label="Amount (to the nearest dollar)" id="youIncomeEstimate" value="65423" readonly required>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-5">
+
+						<div class="row mb-3">
+							<div class="col-8">
+								<label for="youAdditionalEstimate" class="required">Your taxable <b>additional  income</b> for 9/1 - 8/31</label>
+							</div>
+							<div class="col-4">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">$</span>
+								  </div>
+								  <input type="number" class="form-control" name="income" id="youAdditionalEstimate" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row mb-3">
 							<div class="col-8">
 								<label for="spouseIncomeEstimate" class="required">Your spouse's/partner's estimated gross, taxable <b>salary</b> for 9/1 - 8/31</label>
 							</div>
@@ -714,6 +729,21 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="row mb-3">
+							<div class="col-8">
+								<label for="spouseAdditionalIncome" class="required">Your spouse's/partner's taxable <b>additional  income</b> for 9/1 - 8/31</label>
+							</div>
+							<div class="col-4">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">$</span>
+								  </div>
+								  <input type="number" class="form-control" name="income" id="spouseAdditionalIncome" required>
+								</div>
+							</div>
+						</div>
+
 						<div class="row mb-5">
 							<div class="col-8">
 								<p class="text-right">Total</p>

@@ -3,6 +3,7 @@ angular.module('ccspApp', [
   'ngAnimate',
 	'core',
   'uiSelect',
+  'globalNav',
 	'applicationDetail',
 	'applicationList',
 	'applicationListAll',

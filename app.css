@@ -15,7 +15,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 700 !important;
-  border-right: 1px solid #CCC;
+  /* border-right: 1px solid #CCC; */
   padding-right: 30px;
 }
 

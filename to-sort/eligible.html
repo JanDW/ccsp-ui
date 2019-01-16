@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Employee Inbox</title>
@@ -159,6 +160,7 @@
 
 	</style>
 </head>
+
 <body>
 	<!-- ************************************************************ -->
 	<!-- ** This is a protype! Code is NOT intended for production ** -->
@@ -204,10 +206,13 @@
 							<a href="#" class="nav-link" data-target="isCurrent">current award</a>
 						</li>
 					</ul>
-					<small class="text-muted mt-2 d-block"><b>Note</b> This is not the actual sidebar navigation for Atlas. It is merely a convience to navigate different states of the CSSP employee view in this prototype.<br><br>Similarly the <i>home</i> link top left serves for navigating the prototype.</small>
+					<small class="text-muted mt-2 d-block"><b>Note</b> This is not the actual sidebar navigation for Atlas. It is merely a convience to navigate different states of the CSSP employee view in this prototype.<br><br>Similarly the <i>home</i> link top
+						left serves for navigating the prototype.</small>
 
 				</div>
 			</aside>
+
+
 			<main class="col-sm-9">
 				<div class="panel pb-5">
 					<header class="section-heading">
@@ -217,7 +222,8 @@
 						<div>
 							<h2 class="h6">About the Scholarship</h2>
 
-							<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
+							<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers
+									(TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
 
 							<h2 class="h6">How to Apply</h2>
 							<ol class="pl-3">
@@ -243,23 +249,24 @@
 
 					<article class="content-container d-none" id="cantApply">
 						<div class="alert alert-danger mb-4">
-							<h2 class="h6 mb-3">
+							<h2 class="h6">
 								<i class="fas fa-exclamation-triangle"></i>
-								You are unable to apply for this benefit
+								You are ineligible for this benefit.
 							</h2>
-
-							<i>{{reason}}</i>
+							<p class="mt-2 mb-0">If you have any questions, please contact the Benefits Office.</p>
 						</div>
 
 						<h2 class="h6">About the Scholarship</h2>
 
-						<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
+						<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers
+								(TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
 					</article>
 
 					<article class="content-container d-none" id="hasDraft">
 						<h2 class="h6">About the Scholarship</h2>
 
-						<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
+						<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers
+								(TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
 
 						<p>A previously saved application draft for 2018&ThinSpace;&ndash;&ThinSpace;2019 exists.</p>
 
@@ -276,15 +283,18 @@
 								<i class="fas fa-hourglass-half" aria-hidden></i>&nbsp;&nbsp;
 								You have submitted an application for 2018&ThinSpace;&ndash;&ThinSpace;2019 on {{mm/dd/yyyy}}.
 							</h2>
-								Your application currently awaits review by an HR Admin. You will receive an email notification once reviewed.
-							</div>
+							Your application currently awaits review by an HR Admin. You will receive an email notification once reviewed.
+						</div>
 
 						<h2 class="h6">About the Scholarship</h2>
 
-						<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
+						<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers
+								(TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
 
 
 						<div id="applicationApproval">
+							<button type="submit" class="btn btn-primary btn-sm" id="submitApplication2018">View Application for Childcare Scholarship 2018&ThinSpace;&ndash;&ThinSpace;2019</button>
+							<br>
 							<button type="submit" class="btn btn-link btn-sm mt-1 pl-0" id="applicationApproval2017"><u>Need to apply for 2017&ThinSpace;&ndash;&ThinSpace;2018?</u></button>
 						</div>
 					</article>
@@ -301,23 +311,19 @@
 								Please have your financial information documents translated into English before we can make a decision regarding your application.
 							</blockquote>
 
-							<p>Please update your application and resubmit</p>
-
-							<div id="reSubmitApplication">
-								<button type="submit" class="btn btn-warning btn-sm" id="reSubmitApplication2018">Update Application for Childcare Scholarship 2018&ThinSpace;&ndash;&ThinSpace;2019</button>
-							</div>
-
-
-
+							<p>Please click the button below, update your application, and resubmit</p>
 						</div>
 
 						<h2 class="h6">About the Scholarship</h2>
 
-						<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
+						<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers
+								(TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
 
 
-						<div id="applicationApproval">
-							<button type="submit" class="btn btn-link btn-sm mt-1 pl-0" id="applicationApproval2017"><u>Need to apply for 2017&ThinSpace;&ndash;&ThinSpace;2018?</u></button>
+						<div id="applicationReturned">
+							<button type="submit" class="btn btn-warning btn-sm" id="reSubmitApplication2018">Update Application for Childcare Scholarship 2018&ThinSpace;&ndash;&ThinSpace;2019</button>
+							<br>
+							<button type="submit" class="btn btn-link btn-sm mt-1 pl-0" id="return2018"><u>Need to apply for 2017&ThinSpace;&ndash;&ThinSpace;2018?</u></button>
 						</div>
 					</article>
 
@@ -327,57 +333,118 @@
 								<i class="fas fa-thumbs-up"></i>&nbsp;&nbsp;
 								Your application for 2018&ThinSpace;&ndash;&ThinSpace;2019 was approved on {{mm/dd/yyyy}}
 							</h2>
-							MIT will contribute {{amount}}/month to your TCC tuition bills. More details can be found in the email that was sent to you.
-							Please indicate whether you want to receive this benefit or not:
-
-							<form action="" class="mt-2">
-								<fieldset>
-									<div class="form-check">
-											<input class="form-check-input" type="radio" name="awardAcceptance" id="awardAccepted" value="accepted">
-											<label class="form-check-label" for="awardAccepted">
-												I accept this award
-											</label>
-									</div>
-									<div class="form-check">
-										<input class="form-check-input" type="radio" name="maritalStatus" id="awardDeclined" value="declined">
-										<label class="form-check-label" for="awardDeclined">I decline this award
-										</label>
-									</div>
-								</fieldset>
-								<button type="submit" class="btn btn-success btn-sm mt-3">Submit Answer</button>
-							</form>
-
-							<p class="mt-3"><i class="fas fa-exclamation-triangle"></i>&nbsp;&nbsp;Any changes in your or your partner's income that occur during the award period must be reported to the relevant office listed at the bottom of this page.</p>
-
+							<p>Please accept or decline the scholarship at the bottom of this page. Details about the awarded scholarship can be found in the <a href="#currentAward" class="text-success"><u>Current Award</u></a> section below.</p>
 						</div>
 
 						<h2 class="h6">About the Scholarship</h2>
 
-						<p class="mb-0">MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
+						<p class="mb-0">MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology
+								Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
 
-						<h2 class="h6 mt-4">Current Award (Pending Your Confirmation)</h2>
+						<h2 class="h6 mt-4 mb-3" id="currentAward">Current Award (Pending Your Confirmation)</h2>
 
-						<p>Your family has been awarded an MIT Child Care Scholarship in the amount of $996 per month for the months of 09/2018 through 08/2019, a total of $11,952. This award is based on your child’s enrollment at Lincoln Lab Childcare Center in an Infant classroom for 5 days per week.</p>
+						<!-- <p>Your family has been awarded an MIT Child Care Scholarship.</p> -->
 
-						<p>
-							<b>You are also responsible throughout the award period for reporting any changes in your status at MIT and/or your child’s status at the child care center that might affect your eligibility for the scholarship.</b> Contact information can be found at the bottom of this page.
+						<table class="table table-bordered mb-1 mt-2 table-sm">
+							<thead>
+								<tr>
+									<th scope="col">First Name</th>
+									<th scope="col">Last Name</th>
+									<th scope="col">TCC Center</th>
+									<th scope="col">Classroom</th>
+									<th scope="col" class="text-right">Days per Week</th>
+									<th scope="col" class="text-right">Monthly award</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Jane</td>
+									<td>Doe</td>
+									<td>Linc</td>
+									<td>Infant</td>
+									<td class="text-right">5</td>
+									<td class="text-right">$1,092.63</td>
+								</tr>
+								<tr>
+									<td>Mike</td>
+									<td>Doe</td>
+									<td>Linc</td>
+									<td>Preschool</td>
+									<td class="text-right">2</td>
+									<td class="text-right">$191.00</td>
+								</tr>
+							</tbody>
+							<tfoot class="bg-light">
+								<tr>
+									<th scope="row" colspan="5" class="text-right font-weight-normal">Prorated scholarship amount for October <sup>*</sup></td>
+									<td class="text-right">$872.00</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="5" class="text-right font-weight-normal">+ 9 months of full scholarship</td>
+									<td class="text-right">+ 9 ✕ $1,283.63</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="5" class="text-right "><b>Total scholarship amount</b></td>
+									<td class="text-right font-weight-bold"> $12,424.67</td>
+								</tr>
+							</tfoot>
+						</table>
+
+						<p class="mb-4">
+							<sup>*</sup> <i>The amount for this month has been adjusted because the enrollment didn't start at the beginning of the month.</i>
+						</p>
+
+						<h3 class="h6">Reporting Change of Status</h2>
+						<p class="">
+							<i class="fas fa-exclamation-triangle text-danger"></i>&nbsp;&nbsp;You are responsible throughout the award period for reporting any changes in your status at MIT and/or your child’s status at the child care center that might affect your eligibility for the scholarship. Notify the Benefits Office of your changes, contact information can be found at the bottom of this page.
 						</p>
 
 						<p>Examples of a change in status include, but are not limited to:</p>
 
-							<ul>
-								<li>discontinuing employment at MIT</li>
-								<li>decreasing the percentage of time you are employed at MIT causing a loss of benefits eligibility</li>
-								<li>change in spouse/partner employment or enrollment status</li>
-								<li>withdrawing your child from the center in which he or she is currently enrolled</li>
-								<li> or reducing the number of days your child is enrolled at LINC</li>
-							</ul>
+						<ul>
+							<li>discontinuing employment at MIT</li>
+							<li>decreasing the percentage of time you are employed at MIT causing a loss of benefits eligibility</li>
+							<li>change in spouse/partner employment or enrollment status</li>
+							<li>withdrawing your child from the center in which he or she is currently enrolled</li>
+							<li> or reducing the number of days your child is enrolled at LINC</li>
+						</ul>
 
-							<p>This award is subject to all the conditions and requirements of the MIT Child Care Scholarship Programs, as modified by MIT from time to time. MIT also reserves the right to terminate those Scholarship Programs at any time.</p>
+						<p>This award is subject to all the conditions and requirements of the MIT Child Care Scholarship Programs, as modified by MIT from time to time. MIT also reserves the right to terminate those Scholarship Programs at any time.</p>
+
+
+						<div class="card mb-2">
+						  <div class="card-header d-none">
+
+						  </div>
+						  <div class="card-body">
+						    <h4 class="h6">Accept or decline scholarship award</h5>
+						    <div class="card-text">
+									<form action="" class="mt-2">
+										<fieldset>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="awardAcceptance" id="awardAccepted" value="accepted">
+												<label class="form-check-label" for="awardAccepted">
+													I accept this award
+												</label>
+											</div>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="maritalStatus" id="awardDeclined" value="declined">
+												<label class="form-check-label" for="awardDeclined">I decline this award
+												</label>
+											</div>
+										</fieldset>
+									</form>
+						    </div>
+						  </div>
+						  <div class="card-footer">
+						   <button type="submit" class="btn btn-primary btn-sm">Submit Answer</button>
+							 <button type="submit" class="btn btn-secondary btn-sm ml-auto" id="approved2018">View Application for Childcare Scholarship 2018&ThinSpace;&ndash;&ThinSpace;2019</button>
+						  </div>
+						</div>
 
 
 						<div id="applicationApproved">
-							<button type="submit" class="btn btn-link btn-sm mt-1 pl-0" id="applicationApproved2017"><u>Need to apply for 2017&ThinSpace;&ndash;&ThinSpace;2018?</u></button>
+							<button type="submit" class="btn btn-link btn-sm pl-0" id="applicationApproved2017"><u>Need to apply for 2017&ThinSpace;&ndash;&ThinSpace;2018?</u></button>
 						</div>
 
 						<h2 class="h6 mt-4 d-none">Your Scholarship History</h2>
@@ -432,12 +499,9 @@
 
 						<h2 class="h6">About the Scholarship</h2>
 
-						<p class="mb-0">MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
+						<p class="">MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare
+								Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
 
-
-						<div id="applicationDenied">
-							<button type="submit" class="btn btn-link btn-sm mt-1 pl-0" id="applicationDenied2017"><u>Need to apply for 2017&ThinSpace;&ndash;&ThinSpace;2018?</u></button>
-						</div>
 
 						<h2 class="h6 mt-4 d-none">Your Scholarship History</h2>
 
@@ -476,13 +540,21 @@
 							</tbody>
 						</table>
 
+						<div id="applicationDenied">
+							<button type="submit" class="btn btn-secondary btn-sm" id="denied2018">View Application for Childcare Scholarship 2018&ThinSpace;&ndash;&ThinSpace;2019</button>
+							<br>
+							<button type="submit" class="btn btn-link btn-sm mt-1 pl-0" id="applicationDenied2017"><u>Need to apply for 2017&ThinSpace;&ndash;&ThinSpace;2018?</u></button>
+						</div>
+
+
 					</article>
 
 					<article class="content-container d-none" id="isCurrent">
 						<div>
 							<h2 class="h6">About the Scholarship</h2>
 
-							<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers (TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
+							<p>MIT offers a scholarship to eligible Institute employees, including postdoctoral associates and postdoctoral fellows, who have a child or children enrolled in one of <a href="https://childcare.mit.edu/">MIT’s Technology Childcare Centers
+									(TCC).</a> To estimate the potential amount of your scholarship please visit the <a href="https://childcare.mit.edu/tuition-scholarships/scholarship-calculator">Award Calculator webpage.</a></p>
 
 							<h2 class="h6 d-none">How to Apply</h2>
 							<ol class="pl-3 d-none">
@@ -490,95 +562,125 @@
 								<li>Check the box below to indicate your child has been offered a space at a TCC. This action will make the <i>Apply for Childcare Scholarship</i> buttons appear.</li>
 								<li>Click an <i>Apply for Childcare Scholarship</i> button to open up the enrollment form.</li>
 							</ol>
-							</div>
+						</div>
 
-							<div class="d-none statement-understanding-buttons">
-								<button type="submit" class="btn btn-primary btn-sm" id="reApply2019Button">Apply for Childcare Scholarship 2019&ThinSpace;&ndash;&ThinSpace;2020</button>
-							</div>
+						<h2 class="h6 mt-4 mb-3" id="currentAward">Current Award (Pending Your Confirmation)</h2>
 
-						<h2 class="h6 mt-4">Current Award</h2>
+						<!-- <p>Your family has been awarded an MIT Child Care Scholarship.</p> -->
 
-						<p>Your family has been awarded an MIT Child Care Scholarship in the amount of $996 per month for the months of 09/2018 through 08/2019, a total of $11,952. This award is based on your child’s enrollment at Lincoln Lab Childcare Center in an Infant classroom for 5 days per week.</p>
-
-						<p>
-							<b>You are also responsible throughout the award period for reporting any changes in your status at MIT and/or your child’s status at the child care center that might affect your eligibility for the scholarship.</b> Contact information can be found at the bottom of this page.
-						</p>
-
-						<p>Examples of a change in status include, but are not limited to:</p>
-
-							<ul>
-								<li>discontinuing employment at MIT</li>
-								<li>decreasing the percentage of time you are employed at MIT causing a loss of benefits eligibility</li>
-								<li>change in spouse/partner employment or enrollment status</li>
-								<li>withdrawing your child from the center in which he or she is currently enrolled</li>
-								<li> or reducing the number of days your child is enrolled at LINC</li>
-							</ul>
-
-							<p>This award is subject to all the conditions and requirements of the MIT Child Care Scholarship Programs, as modified by MIT from time to time. MIT also reserves the right to terminate those Scholarship Programs at any time.</p>
-
-						<table class="table d-none">
+						<table class="table table-bordered mb-1 mt-2 table-sm">
 							<thead>
 								<tr>
-									<th scope="col" class="border-top-0 border-bottom">Academic Year</th>
-									<th scope="col" class="border-top-0 border-bottom">Award Start Date</th>
-									<th scope="col" class="border-top-0 border-bottom">Award End Date</th>
-									<th scope="col" class="border-top-0 border-bottom">Status</th>
-									<th scope="col" class="border-top-0 border-bottom"><span class="sr-only">Link</span></th>
+									<th scope="col">First Name</th>
+									<th scope="col">Last Name</th>
+									<th scope="col">TCC Center</th>
+									<th scope="col">Classroom</th>
+									<th scope="col" class="text-right">Days per Week</th>
+									<th scope="col" class="text-right">Monthly award</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>2018-2019</td>
-									<td>09/01/2018</td>
-									<td>31/08/2019</td>
-									<td>Confirmed</td>
-									<td><a href="#">View application</a></td>
+									<td>Jane</td>
+									<td>Doe</td>
+									<td>Linc</td>
+									<td>Infant</td>
+									<td class="text-right">5</td>
+									<td class="text-right">$1,092.63</td>
+								</tr>
+								<tr>
+									<td>Mike</td>
+									<td>Doe</td>
+									<td>Linc</td>
+									<td>Preschool</td>
+									<td class="text-right">2</td>
+									<td class="text-right">$191.00</td>
 								</tr>
 							</tbody>
+							<tfoot class="bg-light">
+								<tr>
+									<th scope="row" colspan="5" class="text-right font-weight-normal">Prorated scholarship amount for October <sup>*</sup></td>
+									<td class="text-right">$872.00</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="5" class="text-right font-weight-normal">+ 9 months of full scholarship</td>
+									<td class="text-right">+ 9 ✕ $1,283.63</td>
+								</tr>
+								<tr>
+									<th scope="row" colspan="5" class="text-right "><b>Total scholarship amount</b></td>
+									<td class="text-right font-weight-bold"> $12,424.67</td>
+								</tr>
+							</tfoot>
 						</table>
+
+						<p class="mb-4">
+							<sup>*</sup> <i>The amount for this month has been adjusted because the enrollment didn't start at the beginning of the month.</i>
+						</p>
+
+						<h3 class="h6">Reporting Change of Status</h2>
+						<p class="">
+							<i class="fas fa-exclamation-triangle text-danger"></i>&nbsp;&nbsp;You are responsible throughout the award period for reporting any changes in your status at MIT and/or your child’s status at the child care center that might affect your eligibility for the scholarship. Notify the Benefits Office of your changes, contact information can be found at the bottom of this page.
+						</p>
+
+						<p>Examples of a change in status include, but are not limited to:</p>
+
+						<ul>
+							<li>discontinuing employment at MIT</li>
+							<li>decreasing the percentage of time you are employed at MIT causing a loss of benefits eligibility</li>
+							<li>change in spouse/partner employment or enrollment status</li>
+							<li>withdrawing your child from the center in which he or she is currently enrolled</li>
+							<li> or reducing the number of days your child is enrolled at LINC</li>
+						</ul>
+
+						<p>This award is subject to all the conditions and requirements of the MIT Child Care Scholarship Programs, as modified by MIT from time to time. MIT also reserves the right to terminate those Scholarship Programs at any time.</p>
+
+
+						<div>
+							<button type="submit" class="btn btn-secondary btn-sm" id="current2018">View Application for Childcare Scholarship 2018&ThinSpace;&ndash;&ThinSpace;2019</button>
+						</div>
 
 					</article>
 
 				</div>
 				<footer>
 
-						<div class="container-fluid px-4">
-							<img src="mit-logo.svg" class="d-block pt-5 pb-4" alt="">
-							<span class="d-block pb-3">Human Resources — Benefits Office</span>
+					<div class="container-fluid px-4">
+						<img src="mit-logo.svg" class="d-block pt-5 pb-4" alt="">
+						<span class="d-block pb-3">Human Resources — Benefits Office</span>
 
-							<div class="row pb-5">
-								<div class="col-6">
-									<p class="mb-2">For MIT Employees including Postdoctoral Associates:</p>
-									<div class="row">
-										<div class="col-6">
-											<span class="d-block"><i class="fas fa-building"></i>&nbsp;&nbsp;MIT Benefits</span>
-											<span class="d-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Building NE49–5000</span>
-											<span class="d-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;600 Technology Square</span>
-											<span class="d-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cambridge, MA 02139</span>
-										</div>
-										<div class="col-6">
-											<span class="d-block"><i class="fas fa-user"></i>&nbsp;&nbsp; Kathy Kasabula</span>
-											<span class="d-block"><i class="fas fa-envelope"></i>&nbsp;&nbsp; benefits@mit.edu</span>
-											<span class="d-block"><i class="fas fa-phone"></i>&nbsp;&nbsp;(617)251-6151</span>
-										</div>
+						<div class="row pb-5">
+							<div class="col-6">
+								<p class="mb-2">For MIT Employees including Postdoctoral Associates:</p>
+								<div class="row">
+									<div class="col-6">
+										<span class="d-block"><i class="fas fa-building"></i>&nbsp;&nbsp;MIT Benefits</span>
+										<span class="d-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Building NE49–5000</span>
+										<span class="d-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;600 Technology Square</span>
+										<span class="d-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cambridge, MA 02139</span>
+									</div>
+									<div class="col-6">
+										<span class="d-block"><i class="fas fa-user"></i>&nbsp;&nbsp; Kathy Kasabula</span>
+										<span class="d-block"><i class="fas fa-envelope"></i>&nbsp;&nbsp; benefits@mit.edu</span>
+										<span class="d-block"><i class="fas fa-phone"></i>&nbsp;&nbsp;(617)251-6151</span>
 									</div>
 								</div>
-								<div class="col-6">
-									<p class="mb-2">For MIT Postdoctoral Fellows:</p>
-									<div class="row">
-										<div class="col-6">
-											<span class="d-block"><i class="fas fa-building"></i>&nbsp;&nbsp;Technology Childcare Center</span>
-											<span class="d-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;77 Massachusetts Avenue<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Room 32-100</span>
-											<span class="d-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cambridge, MA 02139</span>
-										</div>
-										<div class="col-6">
-											<span class="d-block"><i class="fas fa-envelope"></i>&nbsp;&nbsp; tccscholarship@mit.edu</span>
-											<span class="d-none"><i class="fas fa-phone"></i>&nbsp;&nbsp;(617)251-6151</span>
-										</div>
+							</div>
+							<div class="col-6">
+								<p class="mb-2">For MIT Postdoctoral Fellows:</p>
+								<div class="row">
+									<div class="col-6">
+										<span class="d-block"><i class="fas fa-building"></i>&nbsp;&nbsp;Technology Childcare Center</span>
+										<span class="d-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;77 Massachusetts Avenue<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Room 32-100</span>
+										<span class="d-block">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cambridge, MA 02139</span>
+									</div>
+									<div class="col-6">
+										<span class="d-block"><i class="fas fa-envelope"></i>&nbsp;&nbsp; tccscholarship@mit.edu</span>
+										<span class="d-none"><i class="fas fa-phone"></i>&nbsp;&nbsp;(617)251-6151</span>
 									</div>
 								</div>
 							</div>
 						</div>
+					</div>
 
 				</footer>
 
@@ -591,7 +693,7 @@
 	<!--<script src="node_modules/easy-toggle-state/dist/easy-toggle-state.js"></script>-->
 	<!-- <script src="newApplication.js"></script> -->
 	<script>
-		$('.statement-understanding').on('change', function(){
+		$('.statement-understanding').on('change', function() {
 			if ($(this).is(':checked')) {
 				$('.statement-understanding-buttons').removeClass('d-none');
 			} else {
@@ -600,7 +702,7 @@
 		});
 
 		$('.statement-understanding-buttons').on('click', function() {
-			if ( /^github/.test(window.location.hostname) ) {
+			if (/^github/.test(window.location.hostname)) {
 				location.pathname = '/pages/jandw/ccsp-experiment/to-sort/new-application.html';
 			} else {
 				location.pathname = '/to-sort/new-application.html';
@@ -609,7 +711,7 @@
 
 
 		// Show content corresponding to  sidebar nav links
-		$('#stateNav a').on('click', function(){
+		$('#stateNav a').on('click', function() {
 			let $this = $(this);
 			let target = $this.data('target');
 			// hide all .content-container
@@ -621,7 +723,7 @@
 
 			// get the .content-container id from the data-target attribute of the clicked link
 			// and show the targetted .content-container
-			$contentContainers.filter('#'+ target).removeClass('d-none');
+			$contentContainers.filter('#' + target).removeClass('d-none');
 
 			// No longer showing year or reApply
 			// if (target === 'reApply') {
@@ -630,7 +732,7 @@
 			// 	$('.section-title').text('TCC Childcare Scholarship: New Enrollment 2018-2019')
 			// }
 		})
-
 	</script>
 </body>
+
 </html>

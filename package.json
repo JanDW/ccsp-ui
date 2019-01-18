@@ -1,5 +1,5 @@
 {
-  "name": "ccsp-experiment",
+  "name": "ccsp-prototype-ui",
   "version": "1.0.0",
   "description": "Prototype for CSSP",
   "main": "",
@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.mit.edu:jandw/ccsp-experiment.git"
+    "url": "git@github.mit.edu:jandw/ccsp-prototype-ui.git"
   },
   "author": "Jan De Wilde",
   "license": ""

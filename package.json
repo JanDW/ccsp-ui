@@ -1,32 +1,41 @@
 {
-  "name": "ccsp-prototype-ui",
-  "version": "1.0.0",
-  "description": "Prototype for CSSP",
-  "main": "",
-  "dependencies": {
-    "angular": "^1.7.5",
-    "angular-animate": "^1.7.5",
-    "angular-datatables": "^0.6.2",
-    "angular-resource": "^1.7.5",
-    "angular-route": "^1.7.5",
-    "faker": "^4.1.0",
-    "lodash": "^4.17.11",
-    "moment": "^2.22.2",
-    "ui-bootstrap4": "^3.0.5"
-  },
-  "devDependencies": {
-    "http-server": "^0.11.1",
-    "json-server": "^0.14.0",
-    "nocache": "^2.0.0",
-    "opn": "^5.4.0"
-  },
-  "scripts": {
-    "start": "http-server . -a localhost -p 8000 -c-1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.mit.edu:jandw/ccsp-prototype-ui.git"
-  },
-  "author": "Jan De Wilde",
-  "license": ""
+	"name": "ccsp-prototype-ui",
+	"version": "1.0.0",
+	"description": "Prototype for CSSP",
+	"main": "",
+	"dependencies": {
+		"angular": "^1.7.5",
+		"angular-animate": "^1.7.5",
+		"angular-datatables": "^0.6.2",
+		"angular-resource": "^1.7.5",
+		"angular-route": "^1.7.5",
+		"faker": "^4.1.0",
+		"lodash": "^4.17.11",
+		"moment": "^2.22.2",
+		"pretty-quick": "^1.10.0",
+		"ui-bootstrap4": "^3.0.5"
+	},
+	"devDependencies": {
+		"http-server": "^0.11.1",
+		"husky": "^1.3.1",
+		"json-server": "^0.14.0",
+		"nocache": "^2.0.0",
+		"opn": "^5.4.0",
+		"prettier": "1.16.1"
+	},
+	"scripts": {
+		"start": "http-server . -a localhost -p 8000 -c-1",
+		"pretty-quick": "pretty-quick --pattern \"**/*.*(js|jsx)\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.mit.edu:jandw/ccsp-prototype-ui.git"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
+	},
+	"author": "Jan De Wilde",
+	"license": ""
 }

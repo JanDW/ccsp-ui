@@ -37,6 +37,11 @@
 			"prettier --write",
 			"git add -A"
 		],
+		"to-sort/**/*.{js,json,html}":[
+			"prettier --write",
+			"git add -A"
+		]
+		,
 		"*.css": [
 			"csscomb --tty-mode --",
 			"git add -A"

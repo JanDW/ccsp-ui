@@ -1,120 +1,130 @@
-
 // Please do not read this code if you have pre-existing health conditions
 
+//Tabula rasa
+document.getElementById('newApplicationForm').reset();
 
-	//Tabula rasa
-	document.getElementById('newApplicationForm').reset();
+//Impersonating? if so, show info about John Doe on screen
 
-  //Impersonating? if so, show info about John Doe on screen
+var urlParams = new URLSearchParams(window.location.search);
 
-  var urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('user')) {
+  $('#impersonateJohnDoe').removeClass('d-none');
+}
 
-  if (urlParams.has('user')) {
-    $('#impersonateJohnDoe').removeClass('d-none');
+//Toggle additional content on checkbox change
+$('.additional-entry-toggle input').on('change', function() {
+  $(this)
+    .closest('.additional-entry')
+    .toggleClass('is-active');
+});
+
+// don't ask for information about spouse if non-existent
+$('input[name=maritalStatus]').on('change', function() {
+  let $this = $(this);
+  if ($this.val() !== 'single') {
+    $('#spouse').show();
+    $('.js-spouse').show();
+  } else {
+    $('#spouse').hide();
+    $('.js-spouse').hide();
+  }
+});
+
+$('#spouseMITAffiliate').on('click', function() {
+  if ($(this).is(':checked')) {
+    $('#payStubsRow').hide();
+  } else {
+    $('#payStubsRow').show();
+  }
+});
+
+// deal with spouse occupation selection
+$('input[name=spouseOccupation]').on('change', function() {
+  let $this = $(this);
+  let val = $this.val();
+
+  //Only ask for student enrollment financial documentation if the spouse is actually a student
+  if (val.toLowerCase() === 'student') {
+    $('#spouseStudentFinancial').removeClass('d-none');
+  } else {
+    $('#spouseStudentFinancial').addClass('d-none');
   }
 
-	//Toggle additional content on checkbox change
-	$('.additional-entry-toggle input').on('change', function(){
-		$(this).closest('.additional-entry').toggleClass('is-active');
-	});
+  // create ID selector for which container to show
+  let valueTarget =
+    '#spouseOccupation' + val.charAt(0).toUpperCase() + val.substr(1) + 'Entry';
 
-	// don't ask for information about spouse if non-existent
-	$('input[name=maritalStatus]').on('change',function(){
-		let $this = $(this);
-		if ($this.val() !== 'single') {
-			$('#spouse').show();
-			$('.js-spouse').show();
-		} else {
-			$('#spouse').hide();
-			$('.js-spouse').hide();
-		}
-	});
+  // make sure we're showing the .additional-entry UI
+  $this.closest('.additional-entry').addClass('is-active');
 
-	$('#spouseMITAffiliate').on('click', function(){
-		if ($(this).is(':checked')){
-			$('#payStubsRow').hide();
-		} else {
-			$('#payStubsRow').show();
-		}
-	});
+  // make sure we hide the container that was showing
+  $(valueTarget)
+    .siblings()
+    .not('.d-none')
+    .addClass('d-none');
 
-	// deal with spouse occupation selection
-	$('input[name=spouseOccupation]').on('change',function(){
-		let $this = $(this);
-		let val = $this.val();
+  // show the container for the new radio button selection
+  $(valueTarget).removeClass('d-none');
+});
 
-		//Only ask for student enrollment financial documentation if the spouse is actually a student
-		if (val.toLowerCase() === 'student') {
-			$('#spouseStudentFinancial').removeClass('d-none');
-		} else {
-			$('#spouseStudentFinancial').addClass('d-none');
-		}
+$('input[name=address]').on('change', function() {
+  let $this = $(this);
+  let $spouseAddress = $('#spouseAddress');
+  let $employeeContact = $('#employeeContact');
+  if ($this.val() === 'spouse') {
+    $spouseAddress.removeClass('d-none');
+    $employeeContact.addClass('d-none');
+  } else {
+    $spouseAddress.addClass('d-none');
+    $employeeContact.removeClass('d-none');
+  }
+});
 
-		// create ID selector for which container to show
-		let valueTarget = '#spouseOccupation' + val.charAt(0).toUpperCase() + val.substr(1) + 'Entry';
+// Select input value on click, so user doesn't have to do it when (s)he wants to change it
+$('#employeeEmail, #employeePhone').on('focus', function() {
+  $(this).select();
+});
 
-		// make sure we're showing the .additional-entry UI
-		$this.closest('.additional-entry').addClass('is-active');
+// Show additional inputs when per diem or irregular options are selected in employment
+$('input[name=spousePaymentSchedule]').on('change', function() {
+  let $this = $(this);
+  let $spousePaymentSchedulePerDiemReasonGroup = $(
+    '#spousePaymentSchedulePerDiemReasonGroup'
+  ).addClass('d-none');
+  let $spousePaymentScheduleIrregularReasonGroup = $(
+    '#spousePaymentScheduleIrregularReasonGroup'
+  ).addClass('d-none');
+  if ($this.val() === 'perdiem') {
+    $spousePaymentSchedulePerDiemReasonGroup.removeClass('d-none');
+  } else if ($this.val() === 'irregular') {
+    console.log('yo');
+    $spousePaymentScheduleIrregularReasonGroup.removeClass('d-none');
+  }
+});
 
-		// make sure we hide the container that was showing
-		$(valueTarget).siblings().not('.d-none').addClass('d-none');
+// Show additional inputs when per diem or irregular options are selected in self employment
+$('input[name=spouseSelfPaymentSchedule]').on('change', function() {
+  let $this = $(this);
+  let $spouseSelfPerDiemReasonGroup = $(
+    '#spouseSelfPerDiemReasonGroup'
+  ).addClass('d-none');
+  let $spouseSelfIrregularReasonGroup = $(
+    '#spouseSelfIrregularReasonGroup'
+  ).addClass('d-none');
+  console.log($this.val());
+  if ($this.val() === 'perdiem') {
+    $spouseSelfPerDiemReasonGroup.removeClass('d-none');
+  } else if ($this.val() === 'irregular') {
+    $spouseSelfIrregularReasonGroup.removeClass('d-none');
+  }
+});
 
-		// show the container for the new radio button selection
-		$(valueTarget).removeClass('d-none');
-	});
+// insert a row for an additional child to the table
 
-
-	$('input[name=address]').on('change',function (){
-		let $this = $(this);
-		let $spouseAddress = $('#spouseAddress');
-		let $employeeContact = $('#employeeContact')
-		if ($this.val() === 'spouse') {
-			$spouseAddress.removeClass('d-none');
-			$employeeContact.addClass('d-none');
-		} else {
-			$spouseAddress.addClass('d-none');
-			$employeeContact.removeClass('d-none');
-		}
-	});
-
-
-	// Select input value on click, so user doesn't have to do it when (s)he wants to change it
-	$('#employeeEmail, #employeePhone').on('focus',function(){
-		$(this).select();
-	});
-
-	// Show additional inputs when per diem or irregular options are selected in employment
-	$('input[name=spousePaymentSchedule]').on('change',function(){
-		let $this = $(this);
-		let $spousePaymentSchedulePerDiemReasonGroup = $('#spousePaymentSchedulePerDiemReasonGroup').addClass('d-none');
-		let $spousePaymentScheduleIrregularReasonGroup = $('#spousePaymentScheduleIrregularReasonGroup').addClass('d-none');
-		if ($this.val() === 'perdiem') {
-		$spousePaymentSchedulePerDiemReasonGroup.removeClass('d-none');
-		} else if ($this.val() === 'irregular') {
-			console.log('yo');
-			$spousePaymentScheduleIrregularReasonGroup.removeClass('d-none');
-		}
-	});
-
-	// Show additional inputs when per diem or irregular options are selected in self employment
-	$('input[name=spouseSelfPaymentSchedule]').on('change',function(){
-		let $this = $(this);
-		let $spouseSelfPerDiemReasonGroup = $('#spouseSelfPerDiemReasonGroup').addClass('d-none');
-		let $spouseSelfIrregularReasonGroup = $('#spouseSelfIrregularReasonGroup').addClass('d-none');
-		console.log($this.val());
-		if ($this.val() === 'perdiem') {
-		$spouseSelfPerDiemReasonGroup.removeClass('d-none');
-		} else if ($this.val() === 'irregular') {
-			$spouseSelfIrregularReasonGroup.removeClass('d-none');
-		}
-	});
-
-	// insert a row for an additional child to the table
-
-	function addChildRow() {
-		let $childrenTable = $('#childrenList');
-		let $childrenTbody = $childrenTable.find('tbody');
-		let childRow = `
+function addChildRow() {
+  let $childrenTable = $('#childrenList');
+  let $childrenTbody = $childrenTable.find('tbody');
+  let childRow = `
 			<tr>
 			<td scope="row">
 				<div>
@@ -186,70 +196,87 @@
 			</td>-->
 			</tr>
 		`;
-		$childrenTbody.append(childRow);
-		$('.js-delete-row').on('click', function(){
-			$(this).closest('tr').remove();
-		});
-		checkWestgate();
-	};
-	//attach click handler for adding more children to button
-	$('#addChild').on('click', function(){ addChildRow() });
+  $childrenTbody.append(childRow);
+  $('.js-delete-row').on('click', function() {
+    $(this)
+      .closest('tr')
+      .remove();
+  });
+  checkWestgate();
+}
+//attach click handler for adding more children to button
+$('#addChild').on('click', function() {
+  addChildRow();
+});
 
-	//show/hide hours column based on Westgate selection (should also check when removing children)
-	function checkWestgate(){
-		let westgateCount = 0;
-		let $childTCCSelects = $('.childTCC');
-		$childTCCSelects.each(function(){
-			if ($(this).find('option').filter(':selected').val().toLowerCase() === 'westgate') { westgateCount++ }
-		});
+//show/hide hours column based on Westgate selection (should also check when removing children)
+function checkWestgate() {
+  let westgateCount = 0;
+  let $childTCCSelects = $('.childTCC');
+  $childTCCSelects.each(function() {
+    if (
+      $(this)
+        .find('option')
+        .filter(':selected')
+        .val()
+        .toLowerCase() === 'westgate'
+    ) {
+      westgateCount++;
+    }
+  });
 
-		(westgateCount === 0) ? $('.js-child-hours').addClass('d-none') : $('.js-child-hours').removeClass('d-none');
-	};
+  westgateCount === 0
+    ? $('.js-child-hours').addClass('d-none')
+    : $('.js-child-hours').removeClass('d-none');
+}
 
-	// attach evemt handler to deal with Westgate logic
-	$('#childrenList').on('change', '.childTCC', function() {
-		let $this = $(this);
-		let $classRoom =  $this.closest('td').siblings('.js-child-classroom');
-		let $notPreschool = $classRoom.find('option').filter(':not([value="preschool"])');
+// attach evemt handler to deal with Westgate logic
+$('#childrenList').on('change', '.childTCC', function() {
+  let $this = $(this);
+  let $classRoom = $this.closest('td').siblings('.js-child-classroom');
+  let $notPreschool = $classRoom
+    .find('option')
+    .filter(':not([value="preschool"])');
 
-		// Only allow preschool selection if westgate
-		if ($this.val().toLowerCase() === "westgate") {
-			$notPreschool.hide();
-			$classRoom.find('select').val('preschool');
-		} else {
-			$notPreschool.show();
-		};
+  // Only allow preschool selection if westgate
+  if ($this.val().toLowerCase() === 'westgate') {
+    $notPreschool.hide();
+    $classRoom.find('select').val('preschool');
+  } else {
+    $notPreschool.show();
+  }
 
-		checkWestgate();
-	});
+  checkWestgate();
+});
 
-	function incomeTotal () {
-		let incomeTotalValue = parseInt($('#youIncomeEstimate').val() || 0) + parseInt($('#spouseIncomeEstimate').val() || 0) + parseInt($('#youAdditionalEstimate').val() || 0) + parseInt($('#spouseAdditionalIncome').val() || 0) ;
-		$('#incomeTotal').val(incomeTotalValue);
-	};
+function incomeTotal() {
+  let incomeTotalValue =
+    parseInt($('#youIncomeEstimate').val() || 0) +
+    parseInt($('#spouseIncomeEstimate').val() || 0) +
+    parseInt($('#youAdditionalEstimate').val() || 0) +
+    parseInt($('#spouseAdditionalIncome').val() || 0);
+  $('#incomeTotal').val(incomeTotalValue);
+}
 
-	$('#youIncomeEstimate').on('keyup', function(){
-		incomeTotal();
-	});
+$('#youIncomeEstimate').on('keyup', function() {
+  incomeTotal();
+});
 
-	$('#spouseIncomeEstimate').on('keyup', function(){
-		incomeTotal();
-	});
+$('#spouseIncomeEstimate').on('keyup', function() {
+  incomeTotal();
+});
 
+// init
+addChildRow();
+$('.js-child-hours').addClass('d-none');
 
+//enable submission if statement of understanding is checked
+//@TODO also depends on validation
 
-	// init
-	addChildRow();
-	$('.js-child-hours').addClass('d-none');
-
-
-	//enable submission if statement of understanding is checked
-	//@TODO also depends on validation
-
-	$('#statementUnderstanding').on('change', function(){
-		if ($(this).is(':checked')) {
-			$('#submitApplication').removeAttr('disabled');
-		} else {
-			$('#submitApplication').attr('disabled','disabled');
-		}
-	});
+$('#statementUnderstanding').on('change', function() {
+  if ($(this).is(':checked')) {
+    $('#submitApplication').removeAttr('disabled');
+  } else {
+    $('#submitApplication').attr('disabled', 'disabled');
+  }
+});

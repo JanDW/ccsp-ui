@@ -4,24 +4,20 @@
 	"description": "Prototype for CSSP",
 	"main": "",
 	"dependencies": {
-		"angular": "^1.7.5",
-		"angular-animate": "^1.7.5",
-		"angular-datatables": "^0.6.2",
-		"angular-resource": "^1.7.5",
-		"angular-route": "^1.7.5",
-		"faker": "^4.1.0",
+		"angular": "^1.7.6",
+		"angular-animate": "^1.7.6",
+		"angular-datatables": "^0.6.4",
+		"angular-resource": "^1.7.6",
+		"angular-route": "^1.7.6",
 		"lodash": "^4.17.11",
-		"moment": "^2.22.2",
-		"ui-bootstrap4": "^3.0.5"
+		"moment": "^2.24.0",
+		"ui-bootstrap4": "^3.0.6"
 	},
 	"devDependencies": {
 		"csscomb": "^4.2.0",
 		"http-server": "^0.11.1",
 		"husky": "^1.3.1",
-		"json-server": "^0.14.0",
 		"lint-staged": "^8.1.1",
-		"nocache": "^2.0.0",
-		"opn": "^5.4.0",
 		"prettier": "1.16.1"
 	},
 	"scripts": {
@@ -37,8 +33,14 @@
 		}
 	},
 	"lint-staged": {
-		"components/**/*.{js,json,html}" : ["prettier --write", "git add -A"],
-		"*.css" : ["csscomb --tty-mode --", "git add -A"]
+		"components/**/*.{js,json,html}": [
+			"prettier --write",
+			"git add -A"
+		],
+		"*.css": [
+			"csscomb --tty-mode --",
+			"git add -A"
+		]
 	},
 	"author": "Jan De Wilde",
 	"license": ""

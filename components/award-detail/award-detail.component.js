@@ -1,4 +1,5 @@
 /* jshint esversion:6 */
+
 angular.module('awardDetail').component('awardDetail', {
   templateUrl: 'components/award-detail/award-detail.template.html',
   bindings: {

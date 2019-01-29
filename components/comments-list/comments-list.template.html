@@ -2,7 +2,8 @@
 <div class="card card-ccsp mt-2">
 	<div class="card-header card-header-ccsp border-0 d-flex">
 		<span class="align-middle"
-			>Comments ({{$ctrl.application.comments.length}})</span
+			>Comments: {{$ctrl.application.comments.length - 2}} Internal &middot; 2
+			external</span
 		>
 
 		<div class="ml-auto">
@@ -37,6 +38,16 @@
 		<div
 			ng-repeat="comment in $ctrl.application.comments | orderBy : '-_timestamp'"
 		>
+			<div ng-if="comment.type === 'internal'">
+				<h2 class="h6 text-center mt-2 text-muted">Internal comments</h2>
+			</div>
+
+			<div
+				ng-if="comment.type === 'external' && comment.author.includes($ctrl.application.employee.lastName) && !$ctrl.isExternalCommentCollapsed"
+			>
+				<h2 class="h6 text-center text-muted mt-3">External comments</h2>
+			</div>
+
 			<article
 				class="mb-2 row"
 				ng-class="{'flex-row-reverse' : comment.author.includes($ctrl.application.employee.lastName), 'd-none' : (!$first && $ctrl.isExternalCommentCollapsed)}"

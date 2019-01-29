@@ -1,6 +1,5 @@
 <div class="card card-ccsp mt-2">
 	<div class="card-header card-header-ccsp border-0 bg-white clearfix d-flex">
-
 		<div>
 			<span class="align-middle">
 				Active appointments
@@ -10,9 +9,21 @@
 		</div>
 
 		<div class="ml-auto">
-			<button type="button" class="btn btn-link align-middle py-0" ng-click="$ctrl.isAppointmentsCollapsed = !$ctrl.isAppointmentsCollapsed">
-				<span ng-if="$ctrl.isAppointmentsCollapsed" class="align-middle"><i class="fas fa-eye align-middle" aria-hidden></i>&nbsp;<span>Show appointments</span></span>
-				<span ng-if="!$ctrl.isAppointmentsCollapsed" class="align-middle"><i class="fas fa-eye-slash align-middle" aria-hidden></i>&nbsp;<span>Hide appointments</span></span>
+			<button
+				type="button"
+				class="btn btn-link align-middle py-0"
+				ng-click="$ctrl.isAppointmentsCollapsed = !$ctrl.isAppointmentsCollapsed"
+			>
+				<span ng-if="$ctrl.isAppointmentsCollapsed" class="align-middle"
+					><i class="fas fa-eye align-middle" aria-hidden></i>&nbsp;<span
+						>Show appointments</span
+					></span
+				>
+				<span ng-if="!$ctrl.isAppointmentsCollapsed" class="align-middle"
+					><i class="fas fa-eye-slash align-middle" aria-hidden></i>&nbsp;<span
+						>Hide appointments</span
+					></span
+				>
 			</button>
 		</div>
 	</div>
@@ -52,8 +63,6 @@
 					</tr>
 				</tbody>
 			</table>
-
-
 
 			<!-- <dl class="row dl-reversed">
 				<div class="col-6">

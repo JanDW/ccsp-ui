@@ -2,32 +2,52 @@
 	<div class="card-header card-header-ccsp border-0 bg-white clearfix">
 		<div class="float-left">
 			<span class="align-middle">
-				{{ $ctrl.employee.lastName }},
-				 {{ $ctrl.employee.firstName }}
-				{{ $ctrl.employee.middleInitial }}
+				{{ $ctrl.employee.lastName }}, {{ $ctrl.employee.firstName }} {{
+				$ctrl.employee.middleInitial }}
 			</span>
 			<!-- &nbsp; -->
 			<span class="text-muted align-middle">(EE)</span>
-			<p class="align-middle mb-0" ng-if="$ctrl.employee.isPrimaryContact">Primary Contact&nbsp;</p>
+			<p class="align-middle mb-0" ng-if="$ctrl.employee.isPrimaryContact">
+				Primary Contact&nbsp;
+			</p>
 		</div>
 
 		<div class="float-right text-nowrap">
 			<span ng-if="$ctrl.employee.mitId">
-				<i class="fas fa-id-card text-primary mr-2" aria-hidden uib-tooltip="MIT ID # {{ $ctrl.employee.mitId }}" tooltip-placement="top"></i>
+				<i
+					class="fas fa-id-card text-primary mr-2"
+					aria-hidden
+					uib-tooltip="MIT ID # {{ $ctrl.employee.mitId }}"
+					tooltip-placement="top"
+				></i>
 				<span class="sr-only">MIT ID #</span>
 			</span>
 
-			<a href="mailto:{{ $ctrl.employee.email }}" title="{{ $ctrl.employee.email }}" uib-tooltip="{{ $ctrl.employee.email }}" tooltip-placement="top">
-					<i class="fas fa-envelope align-middle" aria-hidden></i>
-					<span class="sr-only">email</span>
-				</a>
+			<a
+				href="mailto:{{ $ctrl.employee.email }}"
+				title="{{ $ctrl.employee.email }}"
+				uib-tooltip="{{ $ctrl.employee.email }}"
+				tooltip-placement="top"
+			>
+				<i class="fas fa-envelope align-middle" aria-hidden></i>
+				<span class="sr-only">email</span>
+			</a>
 			&nbsp;
-			<a href="tel:{{ $ctrl.employee.phone }}" title="{{ $ctrl.employee.phone }}" uib-tooltip="{{ $ctrl.employee.phone }}" tooltip-placement="top">
+			<a
+				href="tel:{{ $ctrl.employee.phone }}"
+				title="{{ $ctrl.employee.phone }}"
+				uib-tooltip="{{ $ctrl.employee.phone }}"
+				tooltip-placement="top"
+			>
 				<i class="fas fa-phone align-middle" aria-hidden></i>
 				<span class="sr-only">phone</span>
 			</a>
 			&nbsp;&nbsp;
-			<button type="button" class="btn btn-link align-middle py-0 pr-0 float-right" ng-click="$ctrl.editEmployee()">
+			<button
+				type="button"
+				class="btn btn-link align-middle py-0 pr-0 float-right"
+				ng-click="$ctrl.editEmployee()"
+			>
 				<i class="fas fa-pencil-alt text-primary" aria-hidden></i>
 				<span class="sr-only">edit</span>
 			</button>
@@ -39,7 +59,7 @@
 			<dl class="row dl-reversed">
 				<div class="col-6">
 					<dt>MIT affiliation</dt>
-					<dd>{{ $ctrl.employee.affiliation  | createLabelFromKey }}</dd>
+					<dd>{{ $ctrl.employee.affiliation | createLabelFromKey }}</dd>
 				</div>
 				<div class="col-6 d-none">
 					<dt>Appointments</dt>

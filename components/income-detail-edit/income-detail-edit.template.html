@@ -2,31 +2,45 @@
 <div class="modal-content">
 	<div class="modal-header">
 		<h5 class="modal-title">Income</h5>
-		<button type="button" class="close" ng-click="$ctrl.handleDismiss()" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
+		<button
+			type="button"
+			class="close"
+			ng-click="$ctrl.handleDismiss()"
+			aria-label="Close"
+		>
+			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
 	<div class="modal-body">
-
 		<form action="#">
 			<fieldset id="incomeDetailEdit">
-				<div class="form-group" ng-if="$ctrl.employee.salaryHistory[0].amount !== $ctrl.employee.salary">
+				<div
+					class="form-group"
+					ng-if="$ctrl.employee.salaryHistory[0].amount !== $ctrl.employee.salary"
+				>
 					<label for="salaryChange" class="required">Salary change</label>
 					<div ng-repeat="salary in $ctrl.employee.salaryHistory">
 						{{salary.amount}}
 					</div>
-
 				</div>
 
 				<div class="form-group">
-					<label for="employeeAdditionalIncome" class="required">Employee additional income</label>
+					<label for="employeeAdditionalIncome" class="required"
+						>Employee additional income</label
+					>
 
 					<div class="input-group mb-3">
-					  <div class="input-group-prepend">
-					    <span class="input-group-text">$</span>
-					  </div>
-					  <input type="number" class="form-control" id="employeeAdditionalIncome" ng-model="$ctrl.employee.additionalIncome" required>
-					  <!-- <div class="input-group-append">
+						<div class="input-group-prepend">
+							<span class="input-group-text">$</span>
+						</div>
+						<input
+							type="number"
+							class="form-control"
+							id="employeeAdditionalIncome"
+							ng-model="$ctrl.employee.additionalIncome"
+							required
+						/>
+						<!-- <div class="input-group-append">
 					    <span class="input-group-text">.00</span>
 					  </div> -->
 					</div>
@@ -37,19 +51,33 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text">$</span>
 						</div>
-						<input type="number" class="form-control" id="spouseSalary" ng-model="$ctrl.spouse.salary" required>
+						<input
+							type="number"
+							class="form-control"
+							id="spouseSalary"
+							ng-model="$ctrl.spouse.salary"
+							required
+						/>
 						<!-- <div class="input-group-append">
 							<span class="input-group-text">.00</span>
 						</div> -->
 					</div>
 				</div>
 				<div class="form-group" ng-if="$ctrl.spouse">
-					<label for="spouseAdditionalIncome" class="required">Spouse additional income</label>
+					<label for="spouseAdditionalIncome" class="required"
+						>Spouse additional income</label
+					>
 					<div class="input-group mb-3">
 						<div class="input-group-prepend">
 							<span class="input-group-text">$</span>
 						</div>
-						<input type="number" class="form-control" id="spouseAdditionalIncome" ng-model="$ctrl.spouse.additionalIncome" required>
+						<input
+							type="number"
+							class="form-control"
+							id="spouseAdditionalIncome"
+							ng-model="$ctrl.spouse.additionalIncome"
+							required
+						/>
 						<!-- <div class="input-group-append">
 							<span class="input-group-text">.00</span>
 						</div> -->
@@ -59,7 +87,19 @@
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-secondary" ng-click="$ctrl.handleDismiss()">Cancel</button>
-		<button type="button" class="btn btn-primary" ng-click="$ctrl.handleClose()">Save Award</button>
+		<button
+			type="button"
+			class="btn btn-secondary"
+			ng-click="$ctrl.handleDismiss()"
+		>
+			Cancel
+		</button>
+		<button
+			type="button"
+			class="btn btn-primary"
+			ng-click="$ctrl.handleClose()"
+		>
+			Save Award
+		</button>
 	</div>
 </div>

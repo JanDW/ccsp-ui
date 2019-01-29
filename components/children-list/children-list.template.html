@@ -2,7 +2,11 @@
 	<div class="card-header card-header-ccsp  border-0 bg-white">
 		<div class="float-left">Children</div>
 		<div class="float-right">
-			<button type="button" class="btn btn-link align-middle py-0 float-right pr-0" ng-click="$ctrl.editChildrenList()">
+			<button
+				type="button"
+				class="btn btn-link align-middle py-0 float-right pr-0"
+				ng-click="$ctrl.editChildrenList()"
+			>
 				<i class="fas fa-pencil-alt text-primary" aria-hidden></i>
 				<span class="sr-only">edit</span>
 			</button>
@@ -21,8 +25,13 @@
 						<th scope="col" class="pt-4">TCC Center</th>
 						<th scope="col" class="pt-4">Classroom</th>
 						<th scope="col" class="pt-4">Days per Week</th>
-						<th scope="col" class="pt-4" ng-if="$ctrl.children[0].tccCenter.toLowerCase() === 'westgate'">Schedule</th>
-
+						<th
+							scope="col"
+							class="pt-4"
+							ng-if="$ctrl.children[0].tccCenter.toLowerCase() === 'westgate'"
+						>
+							Schedule
+						</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -48,7 +57,9 @@
 						<td>
 							{{ child.daysPerWeek }}
 						</td>
-						<td ng-if="$ctrl.children[0].tccCenter.toLowerCase() === 'westgate'">
+						<td
+							ng-if="$ctrl.children[0].tccCenter.toLowerCase() === 'westgate'"
+						>
 							{{ child.schedule | createLabelFromKey }}
 						</td>
 					</tr>

@@ -2,8 +2,13 @@
 <div class="modal-content">
 	<div class="modal-header">
 		<h5 class="modal-title">Create new application</h5>
-		<button type="button" class="close" ng-click="$ctrl.handleDismiss()" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
+		<button
+			type="button"
+			class="close"
+			ng-click="$ctrl.handleDismiss()"
+			aria-label="Close"
+		>
+			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
 	<div class="modal-body">
@@ -11,18 +16,35 @@
 			<fieldset id="mitNumberLookup">
 				<label for="mitNumber" class="required">MIT ID #</label>
 				<div class="input-group">
-					<input type="number" class="form-control" id="mitNumber" required>
+					<input type="number" class="form-control" id="mitNumber" required />
 					<div class="input-group-append">
-						<button type="button" class="btn btn-secondary" ng-click="$ctrl.isEmployeeVisible = true">Lookup</button>
+						<button
+							type="button"
+							class="btn btn-secondary"
+							ng-click="$ctrl.isEmployeeVisible = true"
+						>
+							Lookup
+						</button>
 					</div>
 				</div>
 			</fieldset>
 		</form>
-		<p ng-show="$ctrl.isEmployeeVisible" class="mt-3">Application will be created for <b>Doe, John M</b>.</p>
+		<p ng-show="$ctrl.isEmployeeVisible" class="mt-3">
+			Application will be created for <b>Doe, John M</b>.
+		</p>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-secondary" ng-click="$ctrl.handleDismiss()">Cancel</button>
-		<button id="newApplication" class="btn btn-primary align-middle float-right mt-2">
+		<button
+			type="button"
+			class="btn btn-secondary"
+			ng-click="$ctrl.handleDismiss()"
+		>
+			Cancel
+		</button>
+		<button
+			id="newApplication"
+			class="btn btn-primary align-middle float-right mt-2"
+		>
 			<i class="fas fa-plus"></i> Create new application
 		</button>
 	</div>

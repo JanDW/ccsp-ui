@@ -4,7 +4,12 @@
 	</div>
 	<div class="card-body px-0">
 		<div class="card-text">
-			<table id="inboxTable" class="table table-striped" datatable="ng" dt-options="$ctrl.dtOptions">
+			<table
+				id="inboxTable"
+				class="table table-striped"
+				datatable="ng"
+				dt-options="$ctrl.dtOptions"
+			>
 				<thead>
 					<tr>
 						<th scope="col" class="list-table-head">Submitted on</th>
@@ -17,8 +22,14 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="application in $ctrl.applications">
-						<td data-sort="{{application.lastSubmissionDate}}" class="align-middle">
-							<span ng-repeat="submissionDate in application.submissionDates" ng-if="$last">
+						<td
+							data-sort="{{application.lastSubmissionDate}}"
+							class="align-middle"
+						>
+							<span
+								ng-repeat="submissionDate in application.submissionDates"
+								ng-if="$last"
+							>
 								{{submissionDate | date : 'mediumDate'}}
 							</span>
 						</td>

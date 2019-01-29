@@ -1,27 +1,34 @@
 <main class="pt-4">
-
 	<!-- APLICATION DETAILS -->
 	<!-- @TODO move app details to component -->
 	<div class="clearfix border-bottom">
 		<p class="text-muted float-left">
-			<span ng-class="$ctrl.application.badgeClass"
-			      class="badge align-middle"
-			      uib-popover-template="'popover.html'"
-			      popover-placement="bottom-left"
-			      popover-trigger="click"
-			      popover-class="popover-xl">
-			{{$ctrl.application.statusMessage}}&nbsp;
-			<i class="fas fa-pencil-alt text-white" aria-hidden=""></i>
-		 </span> &middot;
+			<span
+				ng-class="$ctrl.application.badgeClass"
+				class="badge align-middle"
+				uib-popover-template="'popover.html'"
+				popover-placement="bottom-left"
+				popover-trigger="click"
+				popover-class="popover-xl"
+			>
+				{{$ctrl.application.statusMessage}}&nbsp;
+				<i class="fas fa-pencil-alt text-white" aria-hidden=""></i>
+			</span>
+			&middot;
 			<span class="align-middle">
 				Academic Year {{$ctrl.application.academicYear}}
-			</span> &middot;
+			</span>
+			&middot;
 			<span class="align-middle">
-		 		Submitted on
-				 <span ng-repeat="submissionDate in $ctrl.application.submissionDates" ng-if="$last">
-						{{submissionDate | date : 'mediumDate'}}
-					</span>
-			</span> &middot;
+				Submitted on
+				<span
+					ng-repeat="submissionDate in $ctrl.application.submissionDates"
+					ng-if="$last"
+				>
+					{{submissionDate | date : 'mediumDate'}}
+				</span>
+			</span>
+			&middot;
 			<span class="align-middle">
 				Funding source: {{$ctrl.application.employee.fundingSource}}
 			</span>
@@ -31,10 +38,19 @@
 		<!-- @TODO move to component -->
 		<!-- @TODO disable buttons when at end of range -->
 		<div class="float-right" ng-if="$ctrl.isApplicationsInbox()">
-			<button ng-click="$ctrl.prev()" ng-disabled="$ctrl.application.orderIndex === 0" type="button" class="btn btn-white text-primary btn-sm align-middle">
+			<button
+				ng-click="$ctrl.prev()"
+				ng-disabled="$ctrl.application.orderIndex === 0"
+				type="button"
+				class="btn btn-white text-primary btn-sm align-middle"
+			>
 				Prev
 			</button>
-			<button ng-click="$ctrl.next()" type="button" class="btn btn-white text-primary btn-sm align-middle">
+			<button
+				ng-click="$ctrl.next()"
+				type="button"
+				class="btn btn-white text-primary btn-sm align-middle"
+			>
 				Next
 			</button>
 		</div>
@@ -42,22 +58,40 @@
 	<div class="d-flex mt-3">
 		<!-- EMPLOYEE NAME TITLE -->
 		<h1 class="h4 mb-4" style="font-weight: 300">
-			{{$ctrl.application.employee.lastName}}, {{$ctrl.application.employee.firstName}} {{$ctrl.application.employee.middleInitial}}
+			{{$ctrl.application.employee.lastName}},
+			{{$ctrl.application.employee.firstName}}
+			{{$ctrl.application.employee.middleInitial}}
 		</h1>
 		<!-- PREVIOUS / NEXT AWARD NAVIGATION CONTROLS -->
 		<div ng-if="$ctrl.application.awards.length > 1" class="ml-auto">
 			{{ $ctrl.application.awards[0].status }}
-			<button ng-click="$ctrl.prev()" ng-disabled="$ctrl.application.orderIndex === 0" type="button" class="btn btn-white text-primary btn-sm align-middle">
+			<button
+				ng-click="$ctrl.prev()"
+				ng-disabled="$ctrl.application.orderIndex === 0"
+				type="button"
+				class="btn btn-white text-primary btn-sm align-middle"
+			>
 				Previous Award
 			</button>
-			<button ng-click="$ctrl.next()" type="button" class="btn btn-white text-primary btn-sm align-middle">
+			<button
+				ng-click="$ctrl.next()"
+				type="button"
+				class="btn btn-white text-primary btn-sm align-middle"
+			>
 				Next Award
 			</button>
 		</div>
 	</div>
 
 	<!-- AWARD -->
-	<award-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" children="$ctrl.children" tcc-tuition="$ctrl.tccTuition" awards="$ctrl.application.awards" total-income="$ctrl.application.totalIncome"></award-detail>
+	<award-detail
+		spouse="$ctrl.spouse"
+		employee="$ctrl.application.employee"
+		children="$ctrl.children"
+		tcc-tuition="$ctrl.tccTuition"
+		awards="$ctrl.application.awards"
+		total-income="$ctrl.application.totalIncome"
+	></award-detail>
 
 	<!-- COMMENTS -->
 	<comments-list application="$ctrl.application"></comments-list>
@@ -66,33 +100,50 @@
 		<!-- ugh, need to put the .card classes on the custom element as .card-deck expects them as children -->
 
 		<!-- EMPLOYEE -->
-		<employee-detail class="card card-ccsp" employee="$ctrl.application.employee" ng-class="{ 'mr-1' : $ctrl.application.employee.spouseId }"></employee-detail>
+		<employee-detail
+			class="card card-ccsp"
+			employee="$ctrl.application.employee"
+			ng-class="{ 'mr-1' : $ctrl.application.employee.spouseId }"
+		></employee-detail>
 
 		<!-- SPOUSE -->
-		<spouse-detail class="card card-ccsp ml-1" spouse="$ctrl.spouse" employee="$ctrl.application.employee" ng-if="$ctrl.application.employee.maritalStatus !== 'singleOrWidowed'"></spouse-detail>
+		<spouse-detail
+			class="card card-ccsp ml-1"
+			spouse="$ctrl.spouse"
+			employee="$ctrl.application.employee"
+			ng-if="$ctrl.application.employee.maritalStatus !== 'singleOrWidowed'"
+		></spouse-detail>
 	</div>
 
 	<!-- APPOINTMENT DETAIL -->
-	<appointment-detail employee="$ctrl.application.employee"></appointment-detail>
-
+	<appointment-detail
+		employee="$ctrl.application.employee"
+	></appointment-detail>
 
 	<!-- CHILDREN -->
 	<children-list children="$ctrl.children"></children-list>
 
 	<!-- GROSS ESTIMATED INCOME -->
-  <income-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee" total-income="$ctrl.application.totalIncome"></income-detail>
-
+	<income-detail
+		spouse="$ctrl.spouse"
+		employee="$ctrl.application.employee"
+		total-income="$ctrl.application.totalIncome"
+	></income-detail>
 
 	<!-- FINANCIAL DOCUMENTS -->
-	<financial-documents-detail spouse="$ctrl.spouse" employee="$ctrl.application.employee"></financial-documents-detail>
-
+	<financial-documents-detail
+		spouse="$ctrl.spouse"
+		employee="$ctrl.application.employee"
+	></financial-documents-detail>
 </main>
 
 <!-- @TODO move footer to component -->
 
-
 <!-- PENDING APPROVAL FOOTER-->
-<div class="bg-dark-transparent border-top w-100 position-fixed fixed-bottom" ng-if="$ctrl.application.statusCode === 0">
+<div
+	class="bg-dark-transparent border-top w-100 position-fixed fixed-bottom"
+	ng-if="$ctrl.application.statusCode === 0"
+>
 	<footer class="container clearfix p-3">
 		<div class="float-left">
 			<button type="button" class="btn btn-warning font-weight-bold">
@@ -114,14 +165,23 @@
 </div>
 
 <!-- SAP DATA CHANGE FOOTER-->
-<div class="bg-warning w-100 position-fixed fixed-bottom" ng-if="$ctrl.application.hasSalaryChanged && !($ctrl.application.awards[$ctrl.application.awards.length -1].status === 'draft')">
+<div
+	class="bg-warning w-100 position-fixed fixed-bottom"
+	ng-if="$ctrl.application.hasSalaryChanged && !($ctrl.application.awards[$ctrl.application.awards.length -1].status === 'draft')"
+>
 	<footer class="container clearfix p-3">
 		<div class="float-right">
-	    <span class="d-inline-block">
+			<span class="d-inline-block">
 				<i class="fas fa-exclamation-triangle d-inline-block mr-2"></i>
-				Employee salary change on {{ $ctrl.application.employee.salaryHistory[0].startDate | date }}. Please draft an Award and edit the Gross Estimated Income.
+				Employee salary change on {{
+				$ctrl.application.employee.salaryHistory[0].startDate | date }}. Please
+				draft an Award and edit the Gross Estimated Income.
 			</span>
-			<button type="button" class="btn btn-warning font-weight-bold align-middle ml-3 border-dark" ng-click="$ctrl.reviewAward()">
+			<button
+				type="button"
+				class="btn btn-warning font-weight-bold align-middle ml-3 border-dark"
+				ng-click="$ctrl.reviewAward()"
+			>
 				<i class="fas fa-plus" aria-hidden=""></i> Draft new award
 			</button>
 			<!-- <button type="button" class="btn btn-light">
@@ -131,9 +191,11 @@
 	</footer>
 </div>
 
-
 <!-- SAVE AWARD FOOTER-->
-<div class="bg-dark-transparent border-top w-100 position-fixed fixed-bottom" ng-if="$ctrl.application.awards[$ctrl.application.awards.length -1].status === 'draft'">
+<div
+	class="bg-dark-transparent border-top w-100 position-fixed fixed-bottom"
+	ng-if="$ctrl.application.awards[$ctrl.application.awards.length -1].status === 'draft'"
+>
 	<footer class="container clearfix p-3">
 		<div class="float-left">
 			<button type="button" class="btn btn-danger font-weight-bold">
@@ -152,37 +214,31 @@
 	</footer>
 </div>
 
-
-
-
-
-
-
 <script type="text/ng-template" id="popover.html">
-  <div>
-  <dl class="dl-reversed small text-nowrap mb-0">
-  	<div class="row">
-  		<dt class="col-4 text-right align-middle">Aug 1, 2018</dt>
+	 <div>
+	 <dl class="dl-reversed small text-nowrap mb-0">
+	 	<div class="row">
+	 		<dt class="col-4 text-right align-middle">Aug 1, 2018</dt>
 			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-primary" ng-class="application.badgeClass">&nbsp;</i> Pending approval</dd>
-  	</div>
-  	<div class="row">
-  		<dt class="col-4 text-right align-middle">Aug 3, 2018</dt>
+	 	</div>
+	 	<div class="row">
+	 		<dt class="col-4 text-right align-middle">Aug 3, 2018</dt>
 			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-warning" ng-class="application.badgeClass">&nbsp;</i> Returned</dd>
-  	</div>
-  	<div class="row">
-  		<dt class="col-4 text-right align-middle">Aug 6, 2018</dt>
+	 	</div>
+	 	<div class="row">
+	 		<dt class="col-4 text-right align-middle">Aug 6, 2018</dt>
 			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-primary" ng-class="application.badgeClass">&nbsp;</i> Pending approval</dd>
-  	</div>
-  	<div class="row">
-  		<dt class="col-4 text-right align-middle">Aug 7, 2018</dt>
+	 	</div>
+	 	<div class="row">
+	 		<dt class="col-4 text-right align-middle">Aug 7, 2018</dt>
 			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-info" ng-class="application.badgeClass">&nbsp;</i> Approved</dd>
-  	</div>
-  	<div class="row">
-  		<dt class="col-4 text-right align-middle">Aug 7, 2018</dt>
+	 	</div>
+	 	<div class="row">
+	 		<dt class="col-4 text-right align-middle">Aug 7, 2018</dt>
 			<dd class="col-8 align-middle"><i class="badge badge-chiclet align-middle badge-success" ng-class="application.badgeClass">&nbsp;</i> Confirmed</dd>
-  	</div>
-  </dl>
+	 	</div>
+	 </dl>
 	<button type="button" class="btn btn-sm btn-danger w-100 mt-2 small" ng-if="$ctrl.application.statusCode !== 3 && $ctrl.application.statusCode !== 5">Change status to Denied</button>
 	<button type="button" class="btn btn-sm btn-primary w-100 mt-2 small" ng-if="$ctrl.application.statusCode === 3 || $ctrl.application.statusCode === 5">Change status to Pending Approval</button>
-  </div>
+	 </div>
 </script>

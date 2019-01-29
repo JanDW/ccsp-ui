@@ -2,9 +2,21 @@
 <div class="modal-content">
 	<div class="modal-header align-middle">
 		<h5 class="modal-title align-middle">Award</h5>
-		<button type="button" class="btn btn-link text-danger align-middle p-1" ng-click=""><i class="far fa-trash-alt text-danger" aria-hidden></i><span class="sr-only">Delete Award</span></button>
-		<button type="button" class="close" ng-click="$ctrl.handleDismiss()" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
+		<button
+			type="button"
+			class="btn btn-link text-danger align-middle p-1"
+			ng-click=""
+		>
+			<i class="far fa-trash-alt text-danger" aria-hidden></i
+			><span class="sr-only">Delete Award</span>
+		</button>
+		<button
+			type="button"
+			class="close"
+			ng-click="$ctrl.handleDismiss()"
+			aria-label="Close"
+		>
+			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
 	<div class="modal-body">
@@ -12,19 +24,45 @@
 			<fieldset id="awardDetailEdit">
 				<div class="form-row">
 					<div class="form-group col-6">
-						<label for="awardStartDate" class="required">Award start date</label>
-						<input type="date" class="form-control" id="awardStartDate" ng-model="$ctrl.award.awardStartDate" required>
+						<label for="awardStartDate" class="required"
+							>Award start date</label
+						>
+						<input
+							type="date"
+							class="form-control"
+							id="awardStartDate"
+							ng-model="$ctrl.award.awardStartDate"
+							required
+						/>
 					</div>
 					<div class="form-group col-6">
 						<label for="awardEndDate" class="required">Award end date</label>
-						<input type="date" class="form-control" id="awardEndDate" ng-model="$ctrl.award.awardEndDate" required>
+						<input
+							type="date"
+							class="form-control"
+							id="awardEndDate"
+							ng-model="$ctrl.award.awardEndDate"
+							required
+						/>
 					</div>
 				</div>
 			</fieldset>
 		</form>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-secondary" ng-click="$ctrl.handleDismiss()">Cancel</button>
-		<button type="button" class="btn btn-primary" ng-click="$ctrl.handleClose()">Save Award</button>
+		<button
+			type="button"
+			class="btn btn-secondary"
+			ng-click="$ctrl.handleDismiss()"
+		>
+			Cancel
+		</button>
+		<button
+			type="button"
+			class="btn btn-primary"
+			ng-click="$ctrl.handleClose()"
+		>
+			Save Award
+		</button>
 	</div>
 </div>

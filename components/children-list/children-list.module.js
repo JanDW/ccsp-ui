@@ -1,7 +1,5 @@
-(function () {
-   'use strict';
-}());
+(function() {
+  'use strict';
+})();
 
-angular.module('childrenList', [
-  'ui.bootstrap'
-]);
+angular.module('childrenList', ['ui.bootstrap']);

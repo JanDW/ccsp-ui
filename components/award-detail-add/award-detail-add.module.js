@@ -1,7 +1,5 @@
-(function () {
-   'use strict';
-}());
+(function() {
+  'use strict';
+})();
 
-angular.module('awardDetailAdd', [
-  'ui.bootstrap'
-]);
+angular.module('awardDetailAdd', ['ui.bootstrap']);

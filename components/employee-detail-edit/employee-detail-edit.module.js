@@ -1,7 +1,5 @@
-(function () {
-   'use strict';
-}());
+(function() {
+  'use strict';
+})();
 
-angular.module('employeeDetailEdit', [
-  'ui.bootstrap'
-]);
+angular.module('employeeDetailEdit', ['ui.bootstrap']);

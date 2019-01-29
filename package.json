@@ -25,7 +25,7 @@
 	},
 	"scripts": {
 		"start": "http-server . -a localhost -p 8000 -c-1",
-		"pretty-quick": "pretty-quick --pattern \"**/*.*(js|jsx)\""
+		"pretty-quick": "pretty-quick --pattern \"**/*.*(js|html|css)\""
 	},
 	"repository": {
 		"type": "git",

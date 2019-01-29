@@ -1,1 +1,1 @@
-angular.module('applicationList',['datatables','ui.bootstrap']);
+angular.module('applicationList', ['datatables', 'ui.bootstrap']);

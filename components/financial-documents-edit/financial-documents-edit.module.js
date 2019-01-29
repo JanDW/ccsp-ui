@@ -1,7 +1,5 @@
-(function () {
-   'use strict';
-}());
+(function() {
+  'use strict';
+})();
 
-angular.module('financialDocumentsEdit', [
-  'ui.bootstrap'
-]);
+angular.module('financialDocumentsEdit', ['ui.bootstrap']);

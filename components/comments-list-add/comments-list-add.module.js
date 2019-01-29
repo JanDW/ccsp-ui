@@ -1,7 +1,5 @@
-(function () {
-   'use strict';
-}());
+(function() {
+  'use strict';
+})();
 
-angular.module('commentsListAdd', [
-  'ui.bootstrap'
-]);
+angular.module('commentsListAdd', ['ui.bootstrap']);

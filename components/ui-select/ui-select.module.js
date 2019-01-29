@@ -1,8 +1,5 @@
-(function () {
-   'use strict';
-}());
+(function() {
+  'use strict';
+})();
 
-angular.module('uiSelect', [
-  'ui.bootstrap',
-  'ngRoute'
-]);
+angular.module('uiSelect', ['ui.bootstrap', 'ngRoute']);

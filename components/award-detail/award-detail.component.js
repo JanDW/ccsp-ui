@@ -1,7 +1,5 @@
 /* jshint esversion:6 */
-angular.
-module('awardDetail').
-component('awardDetail', {
+angular.module('awardDetail').component('awardDetail', {
   templateUrl: 'components/award-detail/award-detail.template.html',
   bindings: {
     employee: '<', //data gets passed in as an input on an employee attribute on the custom element
@@ -9,9 +7,11 @@ component('awardDetail', {
     children: '<',
     tccTuition: '<',
     awards: '=',
-    totalIncome: '<' //One-way binding required for $onChanges to trigger when totalIncome has updated
+    totalIncome: '<', //One-way binding required for $onChanges to trigger when totalIncome has updated
   },
-  controller: ['$uibModal', '$rootScope',
+  controller: [
+    '$uibModal',
+    '$rootScope',
     function AwardDetailController($uibModal, $rootScope) {
       var $ctrl = this;
 
@@ -31,12 +31,13 @@ component('awardDetail', {
         // before checking if object exists
         // Note: $onChanges works for one-way databinding only
         // @TODO There has to be a better solution that this kludgy mess
-        if ( typeof $ctrl.employee   === 'object' &&
-             typeof $ctrl.children   === 'object' &&
-             typeof $ctrl.tccTuition === 'object' &&
-             typeof $ctrl.awards     === 'object' &&
-             typeof $ctrl.totalIncome === 'number'
-           ) {
+        if (
+          typeof $ctrl.employee === 'object' &&
+          typeof $ctrl.children === 'object' &&
+          typeof $ctrl.tccTuition === 'object' &&
+          typeof $ctrl.awards === 'object' &&
+          typeof $ctrl.totalIncome === 'number'
+        ) {
           if (typeof $ctrl.employee.spouseId === 'undefined') {
             $ctrl.spouse = {}; // checking properties on this object later on, so it needs to exist
             isDataLoaded = true;
@@ -52,7 +53,6 @@ component('awardDetail', {
           // $ctrl.totalIncome = ($ctrl.employee.salary || 0) +
           //                ($ctrl.employee.additionalIncome || 0) + ($ctrl.spouse.salary || 0) +
           //                ($ctrl.spouse.additionalIncome || 0);
-
 
           $ctrl.numberOfChildren = $ctrl.children.length;
 
@@ -74,9 +74,11 @@ component('awardDetail', {
 
           $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION = 0.73; // Max percentage of total tuition cost MIT award can amount to.
 
-
           // Vars
-          $ctrl.incomeMaxAdjusted = $ctrl.INCOME_MAX + ($ctrl.numberOfChildren - 1) * $ctrl.INCOME_MAX_CAP_INCREASE_PER_CHILD; // adjust INCOME_MAX to include cap increase for additional children
+          $ctrl.incomeMaxAdjusted =
+            $ctrl.INCOME_MAX +
+            ($ctrl.numberOfChildren - 1) *
+              $ctrl.INCOME_MAX_CAP_INCREASE_PER_CHILD; // adjust INCOME_MAX to include cap increase for additional children
 
           $ctrl.monthlyTuitionTotal = 0;
           $ctrl.employeeTuitionContributionTotal = 0;
@@ -87,118 +89,150 @@ component('awardDetail', {
           $ctrl.eligible = $ctrl.totalIncome <= $ctrl.incomeMaxAdjusted; // boolean
 
           if ($ctrl.eligible) {
-
             /* INCOME */
 
             //@TODO account for incomeOverIncomeMin being negative (income is lower than $ctrl.INCOME_LOWEST_STEP = 40000; )
-            $ctrl.incomeOverIncomeMin = $ctrl.totalIncome - $ctrl.INCOME_LOWEST_STEP; // How much more income than minimum threshold is there?
+            $ctrl.incomeOverIncomeMin =
+              $ctrl.totalIncome - $ctrl.INCOME_LOWEST_STEP; // How much more income than minimum threshold is there?
 
-            if ($ctrl.incomeOverIncomeMin < 0) {$ctrl.incomeOverIncomeMin = 0;}
+            if ($ctrl.incomeOverIncomeMin < 0) {
+              $ctrl.incomeOverIncomeMin = 0;
+            }
 
             /* Expected 5-day family contribution percentage adjusted for income*/
-            $ctrl.calculatedFiveDayIncomeContributionPercentage = $ctrl.INCOME_LOWEST_STEP_CONTRIBUTION_PERCENTAGE  + Math.floor($ctrl.incomeOverIncomeMin / $ctrl.INCOME_INCREASE_STEP_AMOUNT) * $ctrl.INCOME_INCREASE_STEP_PERCENTAGE; // Raise the INCOME_LOWEST_STEP_CONTRIBUTION_PERCENTAGE by exceeded income step amount %
+            $ctrl.calculatedFiveDayIncomeContributionPercentage =
+              $ctrl.INCOME_LOWEST_STEP_CONTRIBUTION_PERCENTAGE +
+              Math.floor(
+                $ctrl.incomeOverIncomeMin / $ctrl.INCOME_INCREASE_STEP_AMOUNT
+              ) *
+                $ctrl.INCOME_INCREASE_STEP_PERCENTAGE; // Raise the INCOME_LOWEST_STEP_CONTRIBUTION_PERCENTAGE by exceeded income step amount %
 
             /* CHILDREN */
             // For each additional child, contribution percentage reduces to 85% of its original value
-            $ctrl.calculatedIncomeContributionPercentage = $ctrl.calculatedFiveDayIncomeContributionPercentage * Math.pow($ctrl.CONTRIBUTION_FACTOR_MULTIPLE_CHILDREN, ($ctrl.numberOfChildren - 1));
+            $ctrl.calculatedIncomeContributionPercentage =
+              $ctrl.calculatedFiveDayIncomeContributionPercentage *
+              Math.pow(
+                $ctrl.CONTRIBUTION_FACTOR_MULTIPLE_CHILDREN,
+                $ctrl.numberOfChildren - 1
+              );
 
-
-
-
-            $ctrl.children.forEach(function(child){
-
+            $ctrl.children.forEach(function(child) {
               // Lookup tuition if child was added in UI or changes were made
-                if (child.tccCenter.toLowerCase() === 'westgate') {
-                  if (child.schedule.toLowerCase() === 'half-time') {
-                   child.monthlyTuition = $ctrl.tccTuition.westgate.preschool.fiveDayMornings;
-                  } else {
-                   child.monthlyTuition = $ctrl.tccTuition.westgate.preschool.fiveDay;
-                 }
-                } else if (child.tccCenter.toLowerCase() === 'linc') {
-                 if (child.classRoom.toLowerCase() === 'infant') {
-                   if (child.daysPerWeek === 2) {
-                     child.monthlyTuition = $ctrl.tccTuition.linc.infant.twoDay;
-                   }
-                   if (child.daysPerWeek === 3) {
-                     child.monthlyTuition = $ctrl.tccTuition.linc.infant.threeDay;
-                   }
-                   if (child.daysPerWeek === 5) {
-                     child.monthlyTuition = $ctrl.tccTuition.linc.infant.fiveDay;
-                   }
-                 }
-                 if (child.classRoom.toLowerCase() === 'toddler') {
-                   if (child.daysPerWeek === 2) {
-                     child.monthlyTuition = $ctrl.tccTuition.linc.toddler.twoDay;
-                   }
-                   if (child.daysPerWeek === 3) {
-                     child.monthlyTuition = $ctrl.tccTuition.linc.toddler.threeDay;
-                   }
-                   if (child.daysPerWeek === 5) {
-                     child.monthlyTuition = $ctrl.tccTuition.linc.toddler.fiveDay;
-                   }
-                 }
-                 if (child.classRoom.toLowerCase() === 'preschool') {
-                   if (child.daysPerWeek === 2) {
-                     child.monthlyTuition = $ctrl.tccTuition.linc.preschool.twoDay;
-                   }
-                   if (child.daysPerWeek === 3) {
-                     child.monthlyTuition = $ctrl.tccTuition.linc.preschool.threeDay;
-                   }
-                   if (child.daysPerWeek === 5) {
-                     child.monthlyTuition = $ctrl.tccTuition.linc.preschool.fiveDay;
-                   }
-                 }
+              if (child.tccCenter.toLowerCase() === 'westgate') {
+                if (child.schedule.toLowerCase() === 'half-time') {
+                  child.monthlyTuition =
+                    $ctrl.tccTuition.westgate.preschool.fiveDayMornings;
                 } else {
-                 // default: stata, eastgate, koch
-                 if (child.classRoom.toLowerCase() === 'infant') {
-                   if (child.daysPerWeek === 2) {
-                     child.monthlyTuition = $ctrl.tccTuition.default.infant.twoDay;
-                   }
-                   if (child.daysPerWeek === 3) {
-                     child.monthlyTuition = $ctrl.tccTuition.default.infant.threeDay;
-                   }
-                   if (child.daysPerWeek === 5) {
-                     child.monthlyTuition = $ctrl.tccTuition.default.infant.fiveDay;
-                   }
-                 }
-                 if (child.classRoom.toLowerCase() === 'toddler') {
-                   if (child.daysPerWeek === 2) {
-                     child.monthlyTuition = $ctrl.tccTuition.default.toddler.twoDay;
-                   }
-                   if (child.daysPerWeek === 3) {
-                     child.monthlyTuition = $ctrl.tccTuition.default.toddler.threeDay;
-                   }
-                   if (child.daysPerWeek === 5) {
-                     child.monthlyTuition = $ctrl.tccTuition.default.toddler.fiveDay;
-                   }
-                 }
-                 if (child.classRoom.toLowerCase() === 'preschool') {
-                   if (child.daysPerWeek === 2) {
-                     child.monthlyTuition = $ctrl.tccTuition.default.preschool.twoDay;
-                   }
-                   if (child.daysPerWeek === 3) {
-                     child.monthlyTuition = $ctrl.tccTuition.default.preschool.threeDay;
-                   }
-                   if (child.daysPerWeek === 5) {
-                     child.monthlyTuition = $ctrl.tccTuition.default.preschool.fiveDay;
-                   }
-                 }
+                  child.monthlyTuition =
+                    $ctrl.tccTuition.westgate.preschool.fiveDay;
                 }
-
+              } else if (child.tccCenter.toLowerCase() === 'linc') {
+                if (child.classRoom.toLowerCase() === 'infant') {
+                  if (child.daysPerWeek === 2) {
+                    child.monthlyTuition = $ctrl.tccTuition.linc.infant.twoDay;
+                  }
+                  if (child.daysPerWeek === 3) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.linc.infant.threeDay;
+                  }
+                  if (child.daysPerWeek === 5) {
+                    child.monthlyTuition = $ctrl.tccTuition.linc.infant.fiveDay;
+                  }
+                }
+                if (child.classRoom.toLowerCase() === 'toddler') {
+                  if (child.daysPerWeek === 2) {
+                    child.monthlyTuition = $ctrl.tccTuition.linc.toddler.twoDay;
+                  }
+                  if (child.daysPerWeek === 3) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.linc.toddler.threeDay;
+                  }
+                  if (child.daysPerWeek === 5) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.linc.toddler.fiveDay;
+                  }
+                }
+                if (child.classRoom.toLowerCase() === 'preschool') {
+                  if (child.daysPerWeek === 2) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.linc.preschool.twoDay;
+                  }
+                  if (child.daysPerWeek === 3) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.linc.preschool.threeDay;
+                  }
+                  if (child.daysPerWeek === 5) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.linc.preschool.fiveDay;
+                  }
+                }
+              } else {
+                // default: stata, eastgate, koch
+                if (child.classRoom.toLowerCase() === 'infant') {
+                  if (child.daysPerWeek === 2) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.default.infant.twoDay;
+                  }
+                  if (child.daysPerWeek === 3) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.default.infant.threeDay;
+                  }
+                  if (child.daysPerWeek === 5) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.default.infant.fiveDay;
+                  }
+                }
+                if (child.classRoom.toLowerCase() === 'toddler') {
+                  if (child.daysPerWeek === 2) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.default.toddler.twoDay;
+                  }
+                  if (child.daysPerWeek === 3) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.default.toddler.threeDay;
+                  }
+                  if (child.daysPerWeek === 5) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.default.toddler.fiveDay;
+                  }
+                }
+                if (child.classRoom.toLowerCase() === 'preschool') {
+                  if (child.daysPerWeek === 2) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.default.preschool.twoDay;
+                  }
+                  if (child.daysPerWeek === 3) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.default.preschool.threeDay;
+                  }
+                  if (child.daysPerWeek === 5) {
+                    child.monthlyTuition =
+                      $ctrl.tccTuition.default.preschool.fiveDay;
+                  }
+                }
+              }
 
               /* adjust expected contribution per child based on schedule */
               if (child.daysPerWeek === 2) {
-                child.employeeTuitionContributionPercentage = $ctrl.calculatedIncomeContributionPercentage * $ctrl.TWO_DAY_SLOT_ADJUSTMENT;
+                child.employeeTuitionContributionPercentage =
+                  $ctrl.calculatedIncomeContributionPercentage *
+                  $ctrl.TWO_DAY_SLOT_ADJUSTMENT;
               }
               if (child.daysPerWeek === 3) {
-                child.employeeTuitionContributionPercentage = $ctrl.calculatedIncomeContributionPercentage * $ctrl.THREE_DAY_SLOT_ADJUSTMENT;
+                child.employeeTuitionContributionPercentage =
+                  $ctrl.calculatedIncomeContributionPercentage *
+                  $ctrl.THREE_DAY_SLOT_ADJUSTMENT;
               }
               if (child.daysPerWeek === 5) {
-                child.employeeTuitionContributionPercentage = $ctrl.calculatedIncomeContributionPercentage;
+                child.employeeTuitionContributionPercentage =
+                  $ctrl.calculatedIncomeContributionPercentage;
               }
-              child.employeeTuitionContribution = ($ctrl.totalIncome/12) * child.employeeTuitionContributionPercentage;
+              child.employeeTuitionContribution =
+                ($ctrl.totalIncome / 12) *
+                child.employeeTuitionContributionPercentage;
 
-              child.monthlyAward = child.monthlyTuition - child.employeeTuitionContribution;
+              child.monthlyAward =
+                child.monthlyTuition - child.employeeTuitionContribution;
 
               // Employee pays full tuition
               if (child.monthlyAward <= 0) {
@@ -207,8 +241,13 @@ component('awardDetail', {
               }
 
               // Make sure award doesn't exceed 73% of tuition
-              if (child.monthlyAward > child.monthlyTuition * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION) {
-                child.monthlyAwardLimited = child.monthlyTuition * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION;
+              if (
+                child.monthlyAward >
+                child.monthlyTuition * $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION
+              ) {
+                child.monthlyAwardLimited =
+                  child.monthlyTuition *
+                  $ctrl.AWARD_LIMIT_PERCENTAGE_OF_TUITION;
               } else {
                 child.monthlyAwardLimited = child.monthlyAward;
               }
@@ -217,30 +256,31 @@ component('awardDetail', {
               $ctrl.monthlyTuitionTotal += child.monthlyTuition;
 
               /* add monthly calculated employee contribution to total */
-              $ctrl.employeeTuitionContributionTotal += child.employeeTuitionContribution;
+              $ctrl.employeeTuitionContributionTotal +=
+                child.employeeTuitionContribution;
 
               /* add monthly limited award to total */
               $ctrl.monthlyAwardTotal += child.monthlyAwardLimited;
             });
 
             // $injector.invoke(['$rootScope', function($rootScope){
-              // $rootScope.$watch('$ctrl.monthlyAwardTotal', function(newValue, oldValue) {
-              //   $parent.$ctrl.isAwardChanged = true;
-              // });
+            // $rootScope.$watch('$ctrl.monthlyAwardTotal', function(newValue, oldValue) {
+            //   $parent.$ctrl.isAwardChanged = true;
+            // });
             // }]);
-
 
             //@TODO check where to round and were not to round up values!
             // Also in template
 
             if ($ctrl.employee.fundingSource === 'Combined') {
               $ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount =
-              $ctrl.monthlyAwardTotal * ($ctrl.employee.fundingSourceEmployeePercentage / 100);
+                $ctrl.monthlyAwardTotal *
+                ($ctrl.employee.fundingSourceEmployeePercentage / 100);
 
               $ctrl.employee.fundingSourceFellowAwardMonthlyAmount =
-              $ctrl.monthlyAwardTotal * ($ctrl.employee.fundingSourceFellowPercentage / 100);
+                $ctrl.monthlyAwardTotal *
+                ($ctrl.employee.fundingSourceFellowPercentage / 100);
             }
-
           }
         }
       };
@@ -251,28 +291,38 @@ component('awardDetail', {
       // $ctrl.award.awardStartDate = new Date('2018-09-01T00:00:00');
       // $ctrl.award.awardEndDate = new Date('2019-08-31T00:00:00');
 
-      $ctrl.editAward = function(){
-       $uibModal.open({
-        template: '<award-detail-edit award="$ctrl.award" $close="$close(result)" $dismiss="$dismiss(reason)"></award-detail-edit>',
-        controller: ['award', function(award) {
-          let $ctrl = this;
-          $ctrl.award = award;
-        }],
-        controllerAs: '$ctrl',
-        resolve: {
-          award: function(){
-           return angular.copy($ctrl.award);
-           }
-        }
-      }).result.then(function(result){
-        // modal saved - update $ctrl.employee $ctrl.spouse with returned object
-        console.info("saved ->"+ result);
-        $ctrl.award = result.award;
+      $ctrl.editAward = function() {
+        $uibModal
+          .open({
+            template:
+              '<award-detail-edit award="$ctrl.award" $close="$close(result)" $dismiss="$dismiss(reason)"></award-detail-edit>',
+            controller: [
+              'award',
+              function(award) {
+                let $ctrl = this;
+                $ctrl.award = award;
+              },
+            ],
+            controllerAs: '$ctrl',
+            resolve: {
+              award: function() {
+                return angular.copy($ctrl.award);
+              },
+            },
+          })
+          .result.then(
+            function(result) {
+              // modal saved - update $ctrl.employee $ctrl.spouse with returned object
+              console.info('saved ->' + result);
+              $ctrl.award = result.award;
 
-        // modal dismissed
-      }, function(reason) {
-        console.info("dismissed ->"+ reason);
-      });
-    };
-  }]
+              // modal dismissed
+            },
+            function(reason) {
+              console.info('dismissed ->' + reason);
+            }
+          );
+      };
+    },
+  ],
 });

@@ -1,6 +1,5 @@
-(function () {
-   'use strict';
-}());
+(function() {
+  'use strict';
+})();
 
-angular.module('globalNav', [
-]);
+angular.module('globalNav', []);

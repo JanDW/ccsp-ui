@@ -1,8 +1,5 @@
-(function () {
-   'use strict';
-}());
+(function() {
+  'use strict';
+})();
 
-angular.module('awardDetail', [
-  'ui.bootstrap',
-  'ngAnimate'
-]);
+angular.module('awardDetail', ['ui.bootstrap', 'ngAnimate']);

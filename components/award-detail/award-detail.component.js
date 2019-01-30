@@ -286,11 +286,10 @@ angular.module('awardDetail').component('awardDetail', {
         }
       };
 
-      // $ctrl.award = {};
-      //
       // //@TODO hardcoded dates
-      // $ctrl.award.awardStartDate = new Date('2018-09-01T00:00:00');
-      // $ctrl.award.awardEndDate = new Date('2019-08-31T00:00:00');
+      $ctrl.award = {};
+      $ctrl.award.awardStartDate = new Date('2018-10-14T00:00:00');
+      $ctrl.award.awardEndDate = new Date('2019-08-31T00:00:00');
 
       $ctrl.editAward = function() {
         $uibModal

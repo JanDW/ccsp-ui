@@ -127,13 +127,13 @@
 						<!-- @TODO Hook up to API values -->
 						<dt>Award start date</dt>
 						<!-- <dd>{{$ctrl.awards[$ctrl.awards.length - 1]._startDate | date}}</dd> -->
-						<dd>Oct 14, 2018</dd>
+						<dd>{{$ctrl.award.awardStartDate | date}}</dd>
 					</div>
 					<div class="col-3">
 						<!-- @TODO Hook up to API values -->
 						<dt>Award end date</dt>
 						<!-- <dd>{{$ctrl.awards[$ctrl.awards.length - 1]._endDate | date}}</dd> -->
-						<dd>Aug 31, 2018</dd>
+						<dd>{{$ctrl.award.awardEndDate | date}}</dd>
 					</div>
 					<div class="col-3">
 						<!-- @TODO Hook up to API values -->
@@ -149,7 +149,7 @@
 							{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount * 10 |
 							currency : '$' : 2 }} (E)
 						</dd>
-						<dd ng-if="$ctrl.employee.fundingSourceF ellowAwardMonthlyAmount">
+						<dd ng-if="$ctrl.employee.fundingSourceFellowAwardMonthlyAmount">
 							{{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount * 10 |
 							currency : '$' : 2 }} (F)
 						</dd>

@@ -139,19 +139,20 @@
 						<!-- @TODO Hook up to API values -->
 						<dt>Award total duration</dt>
 						<dd ng-if="$ctrl.monthlyAwardTotal > 0" class="mb-0">
-							{{$ctrl.monthlyAwardTotal * 10 | currency : '$' : 2 }}
+							{{$ctrl.monthlyAwardTotal * 10 + $ctrl.proratedOctober | currency
+							: '$' : 2 }}
 						</dd>
 						<dd ng-if="$ctrl.monthlyAwardTotal <= 0" class="mb-0">$0</dd>
 						<dd
 							ng-if="$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount"
 							class="mb-0"
 						>
-							{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount * 10 |
-							currency : '$' : 2 }} (E)
+							{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount * 10 +
+							$ctrl.proratedOctober | currency : '$' : 2 }} (E)
 						</dd>
 						<dd ng-if="$ctrl.employee.fundingSourceFellowAwardMonthlyAmount">
-							{{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount * 10 |
-							currency : '$' : 2 }} (F)
+							{{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount * 10 +
+							$ctrl.proratedOctober | currency : '$' : 2 }} (F)
 						</dd>
 					</div>
 					<div class="col-3">
@@ -185,6 +186,15 @@
 						<dd>
 							{{$ctrl.employeeTuitionContributionTotal | currency : '$' : 2 }}
 						</dd>
+					</div>
+				</dl>
+				<dl class="row dl-reversed">
+					<div class="col-3"></div>
+					<div class="col-3"></div>
+					<div class="col-3"></div>
+					<div class="col-3">
+						<dt>Proration October</dt>
+						<dd>{{$ctrl.proratedOctober | currency : '$' : 2}}</dd>
 					</div>
 				</dl>
 

@@ -282,6 +282,12 @@ angular.module('awardDetail').component('awardDetail', {
                 $ctrl.monthlyAwardTotal *
                 ($ctrl.employee.fundingSourceFellowPercentage / 100);
             }
+
+            // PRORATION
+            // Assuming above start and end dates
+            // (monthlyAwardLimited / total business days Oct) * remaining businessdays
+            // from awardStartDate
+            $ctrl.proratedOctober = ($ctrl.monthlyAwardTotal / 23) * 13;
           }
         }
       };

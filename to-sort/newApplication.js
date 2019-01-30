@@ -22,11 +22,15 @@ $('.additional-entry-toggle input').on('change', function() {
 $('input[name=maritalStatus]').on('change', function() {
   let $this = $(this);
   if ($this.val() !== 'single') {
+    $('#address-1').prop('checked', false);
     $('#spouse').show();
     $('.js-spouse').show();
   } else {
+    // Correspondence will be sent to employee
+    $('#address-1').prop('checked', true);
     $('#spouse').hide();
     $('.js-spouse').hide();
+    $('#employeeContact').removeClass('d-none');
   }
 });
 

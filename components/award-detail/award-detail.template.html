@@ -126,29 +126,31 @@
 					<div class="col-3">
 						<!-- @TODO Hook up to API values -->
 						<dt>Award start date</dt>
-						<dd>{{$ctrl.awards[$ctrl.awards.length - 1]._startDate | date}}</dd>
+						<!-- <dd>{{$ctrl.awards[$ctrl.awards.length - 1]._startDate | date}}</dd> -->
+						<dd>Oct 14, 2018</dd>
 					</div>
 					<div class="col-3">
 						<!-- @TODO Hook up to API values -->
 						<dt>Award end date</dt>
-						<dd>{{$ctrl.awards[$ctrl.awards.length - 1]._endDate | date}}</dd>
+						<!-- <dd>{{$ctrl.awards[$ctrl.awards.length - 1]._endDate | date}}</dd> -->
+						<dd>Aug 31, 2018</dd>
 					</div>
 					<div class="col-3">
 						<!-- @TODO Hook up to API values -->
 						<dt>Award total duration</dt>
 						<dd ng-if="$ctrl.monthlyAwardTotal > 0" class="mb-0">
-							{{$ctrl.monthlyAwardTotal * 9 | currency : '$' : 2 }}
+							{{$ctrl.monthlyAwardTotal * 10 | currency : '$' : 2 }}
 						</dd>
 						<dd ng-if="$ctrl.monthlyAwardTotal <= 0" class="mb-0">$0</dd>
 						<dd
 							ng-if="$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount"
 							class="mb-0"
 						>
-							{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount * 9 |
+							{{$ctrl.employee.fundingSourceEmployeeAwardMonthlyAmount * 10 |
 							currency : '$' : 2 }} (E)
 						</dd>
-						<dd ng-if="$ctrl.employee.fundingSourceFellowAwardMonthlyAmount">
-							{{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount * 9 |
+						<dd ng-if="$ctrl.employee.fundingSourceF ellowAwardMonthlyAmount">
+							{{$ctrl.employee.fundingSourceFellowAwardMonthlyAmount * 10 |
 							currency : '$' : 2 }} (F)
 						</dd>
 					</div>

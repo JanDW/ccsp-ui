@@ -223,6 +223,12 @@
 									>denied award</a
 								>
 							</li>
+
+							<li class="nav-item">
+								<a href="#" class="nav-link" data-target="isDeclined"
+									>declined award</a
+								>
+							</li>
 							<li class="nav-item">
 								<a href="#" class="nav-link" data-target="isCurrent"
 									>current award</a
@@ -765,7 +771,8 @@
 								<h2 class="h6 mb-3">
 									<i class="fas fa-exclamation-triangle"></i>
 									Your application for 2018&#8201;&ndash;&#8201;2019 was denied
-									on {{mm/dd/yyyy}}
+									on {{mm/dd/yyyy}}. If your circumstances change during the
+									year you may be eligible to reapply.
 								</h2>
 
 								<i>{{reason}}</i>
@@ -788,53 +795,6 @@
 								>
 							</p>
 
-							<h2 class="h6 mt-4 d-none">Your Scholarship History</h2>
-
-							<table class="table d-none ">
-								<thead>
-									<tr>
-										<th scope="col" class="border-top-0 border-bottom">
-											Academic Year
-										</th>
-										<th scope="col" class="border-top-0 border-bottom">
-											Award Start Date
-										</th>
-										<th scope="col" class="border-top-0 border-bottom">
-											Award End Date
-										</th>
-										<th scope="col" class="border-top-0 border-bottom">
-											Status
-										</th>
-										<th scope="col" class="border-top-0 border-bottom">
-											<span class="sr-only">Link</span>
-										</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>2018-2019</td>
-										<td>09/01/2018</td>
-										<td>31/08/2019</td>
-										<td>Denied</td>
-										<td><a href="#">View application</a></td>
-									</tr>
-									<tr>
-										<td>2017-2018</td>
-										<td>09/01/2018</td>
-										<td>31/08/2019</td>
-										<td>Confirmed</td>
-										<td><a href="#">View application</a></td>
-									</tr>
-									<tr>
-										<td>2016-2017</td>
-										<td>09/01/2018</td>
-										<td>31/08/2019</td>
-										<td>Confirmed</td>
-										<td><a href="#">View application</a></td>
-									</tr>
-								</tbody>
-							</table>
-
 							<div id="applicationDenied">
 								<button
 									type="submit"
@@ -844,13 +804,13 @@
 									View Application for Childcare Scholarship
 									2018&#8201;&ndash;&#8201;2019
 								</button>
-								<br />
 								<button
 									type="submit"
-									class="btn btn-link btn-sm mt-1 pl-0"
-									id="applicationDenied2017"
+									class="btn btn-primary btn-sm"
+									id="reApply2018"
 								>
-									<u>Need to apply for 2017&#8201;&ndash;&#8201;2018?</u>
+									Reapply for Childcare Scholarship
+									2018&#8201;&ndash;&#8201;2019
 								</button>
 							</div>
 						</article>

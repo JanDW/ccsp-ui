@@ -117,10 +117,17 @@ angular.module('applicationDetail').component('applicationDetail', {
       ) {
         if (newValue !== oldValue) {
           $ctrl.isAwardChanged = true;
+          console.log('Award changed!');
         }
       });
 
       /* METHODS */
+
+      $ctrl.approveApplication = () => {
+        $ctrl.application.statusCode = 1;
+        $ctrl.application.statusMessage = 'Approved';
+        $ctrl.application.badgeClass = 'badge-info';
+      };
 
       // Review Award handler
       $ctrl.reviewAward = function() {

@@ -17,16 +17,21 @@ angular.module('awardCreate').component('awardCreate', {
 
       // Create new award on close
       $ctrl.handleClose = function() {
-        $ctrl.application.awards.push({
-          id: $ctrl.application.awards.length + 1,
-          startDate: $ctrl.newAwardStartDate.toISOString(),
-          endDate: $ctrl.newAwardEndDate.toISOString(),
-          _startDate: $ctrl.newAwardStartDate,
-          _endDate: $ctrl.newAwardEndDate,
-          amount: null,
-          applicationId: $ctrl.application.id,
-          status: 'draft',
-        });
+        // $ctrl.application.awards.push({
+        //   id: $ctrl.application.awards.length + 1,
+        //   startDate: $ctrl.newAwardStartDate.toISOString(),
+        //   endDate: $ctrl.newAwardEndDate.toISOString(),
+        //   // _startDate: $ctrl.newAwardStartDate,
+        //   _endDate: $ctrl.newAwardEndDate,
+        //   amount: null,
+        //   applicationId: $ctrl.application.id,
+        //   status: 'draft',
+        // });
+        angular
+          .element(document)
+          .find('footer')
+          .hide();
+
         $ctrl.$close({
           result: $ctrl,
         });

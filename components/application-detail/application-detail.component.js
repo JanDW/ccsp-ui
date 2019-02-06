@@ -110,17 +110,6 @@ angular.module('applicationDetail').component('applicationDetail', {
 
       $ctrl.isAwardChanged = false;
 
-      $scope.$watch('$ctrl.application.monthlyAwardLimited', function(
-        newValue,
-        oldValue,
-        scope
-      ) {
-        if (newValue !== oldValue) {
-          $ctrl.isAwardChanged = true;
-          console.log('Award changed!');
-        }
-      });
-
       /* METHODS */
 
       $ctrl.approveApplication = () => {

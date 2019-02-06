@@ -11,9 +11,10 @@ angular.module('awardDetail').component('awardDetail', {
     totalIncome: '<', //One-way binding required for $onChanges to trigger when totalIncome has updated
   },
   controller: [
+    '$scope',
     '$uibModal',
     '$rootScope',
-    function AwardDetailController($uibModal, $rootScope) {
+    function AwardDetailController($scope, $uibModal, $rootScope) {
       var $ctrl = this;
 
       // @TODO break this up in small functions
@@ -296,6 +297,28 @@ angular.module('awardDetail').component('awardDetail', {
       $ctrl.award = {};
       $ctrl.award.awardStartDate = new Date('2018-10-14T00:00:00');
       $ctrl.award.awardEndDate = new Date('2019-08-31T00:00:00');
+
+      // If the award changes we need to show the "Draft Award" toolbar
+      // In order to do so, subscribe to the award and set a flag on the parent
+      $scope.$watch('$ctrl.monthlyAwardTotal', function(
+        newValue,
+        oldValue,
+        scope
+      ) {
+        // Check that application has confirmed status
+        if (
+          $scope.$parent &&
+          $scope.$parent.$ctrl &&
+          $scope.$parent.$ctrl.application &&
+          $scope.$parent.$ctrl.application.statusCode === 4
+        ) {
+          // Make sure it's not initial databinding
+          if (oldValue !== undefined && newValue !== oldValue) {
+            $scope.$parent.$ctrl.isAwardChanged = true;
+            console.log('Award changed!');
+          }
+        }
+      });
 
       $ctrl.editAward = function() {
         $uibModal

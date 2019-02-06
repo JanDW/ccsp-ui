@@ -176,18 +176,24 @@
 	</footer>
 </div>
 
-<!-- SAP DATA CHANGE FOOTER-->
+<!-- ADMIN CHANGE + SAP DATA CHANGE FOOTER-->
 <div
 	class="bg-warning w-100 position-fixed fixed-bottom"
-	ng-if="$ctrl.application.hasSalaryChanged && !($ctrl.application.awards[$ctrl.application.awards.length -1].status === 'draft')"
+	ng-if="$ctrl.isAwardChanged || ($ctrl.application.hasSalaryChanged && !($ctrl.application.awards[$ctrl.application.awards.length -1].status === 'draft'))"
 >
 	<footer class="container clearfix p-3">
 		<div class="float-right">
 			<span class="d-inline-block">
 				<i class="fas fa-exclamation-triangle d-inline-block mr-2"></i>
-				Employee salary change on {{
-				$ctrl.application.employee.salaryHistory[0].startDate | date }}. Please
-				draft an Award and edit the Gross Estimated Income.
+				<span ng-if="!$ctrl.isAwardChanged"
+					>Employee salary change on {{
+					$ctrl.application.employee.salaryHistory[0].startDate | date }}.
+					Please draft an Award and edit the Gross Estimated Income.</span
+				>
+				<span ng-if="$ctrl.isAwardChanged"
+					>Your change has affected the award calculation. Please draft a new
+					award.</span
+				>
 			</span>
 			<button
 				type="button"

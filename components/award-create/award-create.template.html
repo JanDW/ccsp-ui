@@ -1,7 +1,7 @@
 <!-- AWARD DETAIL EDIT MODAL-->
 <div class="modal-content">
 	<div class="modal-header align-middle">
-		<h5 class="modal-title align-middle">Draft Award Dates</h5>
+		<h5 class="modal-title align-middle">Create Award Reason Code</h5>
 		<button
 			type="button"
 			class="close"
@@ -12,43 +12,26 @@
 		</button>
 	</div>
 	<div class="modal-body">
-		<p>Enter the date range to see how the award will be affected.</p>
+		<p>Select the reason code for this award change.</p>
 		<form action="#">
 			<fieldset id="awardDetailEdit">
 				<div class="form-row">
-					<div class="form-group col-6">
-						<label for="awardStartDate" class="required"
-							>Award start date</label
-						>
-						<input
-							type="date"
-							class="form-control"
-							id="awardStartDate"
-							ng-model="$ctrl.newAwardStartDate"
-							required
-						/>
-						<small class="line-height-13 d-inline-block pt-2 text-muted"
+					<div class="form-group col-12">
+						<select class="custom-select" name="" id="">
+							<option value="1">reason 1</option>
+							<option value="2">reason 2</option>
+							<option value="3">reason 3</option>
+						</select>
+
+						<!-- <small class="line-height-13 d-inline-block pt-2 text-muted"
 							>Defaults to salary change start date. Terminates the currently
 							active award on the day before this date upon save.</small
-						>
+						> -->
 					</div>
 					<!-- <pre>test {{$ctrl.application.employee.salaryHistory[0].startDate}}
 					–
 					{{$ctrl.application.awards[0]._startDate | date }}
 					</pre> -->
-					<div class="form-group col-6">
-						<label for="awardEndDate" class="required">Award end date</label>
-						<input
-							type="date"
-							class="form-control"
-							id="awardEndDate"
-							ng-model="$ctrl.newAwardEndDate"
-							required
-						/>
-						<small class="line-height-13 d-inline-block pt-2 text-muted"
-							>Defaults to appointment end date or end of academic year
-						</small>
-					</div>
 				</div>
 			</fieldset>
 		</form>
@@ -63,10 +46,10 @@
 		</button>
 		<button
 			type="button"
-			class="btn btn-primary"
+			class="btn btn-success"
 			ng-click="$ctrl.handleClose()"
 		>
-			Draft Award
+			<i class="fas fa-plus" aria-hidden=""></i> Create Award
 		</button>
 	</div>
 </div>

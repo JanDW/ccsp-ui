@@ -1,0 +1,62 @@
+<!-- AWARD DETAIL EDIT MODAL-->
+<div class="modal-content">
+	<div class="modal-header align-middle">
+		<h5 class="modal-title align-middle">
+			Return Application External Comment
+		</h5>
+		<button
+			type="button"
+			class="close"
+			ng-click="$ctrl.handleDismiss()"
+			aria-label="Close"
+		>
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<form action="#">
+			<fieldset id="awardDetailEdit">
+				<div class="form-row">
+					<div class="form-group">
+						<label for="addComment" class="required"
+							>Comment for {{$ctrl.application.employee.lastName}},
+							{{$ctrl.application.employee.firstName}}
+							{{$ctrl.application.employee.middleInitial}}</label
+						>
+						<!-- @TODO Databinding to position in array, obviously prototype only	 -->
+						<textarea
+							id="addComment"
+							ng-model="$ctrl.application.comments[2].message"
+							name="comments"
+							class="form-control"
+							rows="8"
+							cols="80"
+							required
+						></textarea>
+					</div>
+					<!-- <pre>test {{$ctrl.application.employee.salaryHistory[0].startDate}}
+					–
+					{{$ctrl.application.awards[0]._startDate | date }}
+					</pre> -->
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button
+			type="button"
+			class="btn btn-secondary"
+			ng-click="$ctrl.handleDismiss()"
+		>
+			Cancel
+		</button>
+		<button
+			type="button"
+			class="btn btn-warning"
+			ng-click="$ctrl.handleClose()"
+		>
+			<i class="fas fa-reply" aria-hidden></i>
+			Return Application
+		</button>
+	</div>
+</div>

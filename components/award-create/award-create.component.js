@@ -1,12 +1,12 @@
-angular.module('awardDetailAdd').component('awardDetailAdd', {
-  templateUrl: 'components/award-detail-add/award-detail-add.template.html',
+angular.module('awardCreate').component('awardCreate', {
+  templateUrl: 'components/award-create/award-create.template.html',
   bindings: {
     $close: '&',
     $dismiss: '&',
     application: '=', //data gets passed in as an input on an application attribute on the custom element
   },
   controller: [
-    function AwardDetailAddController() {
+    function AwardCreateController() {
       let $ctrl = this;
 
       $ctrl.$onChanges = function(changes) {

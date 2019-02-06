@@ -1,0 +1,51 @@
+<!-- AWARD DETAIL EDIT MODAL-->
+<div class="modal-content">
+	<div class="modal-header align-middle">
+		<h5 class="modal-title align-middle">Terminate Application Reason Code</h5>
+		<button
+			type="button"
+			class="close"
+			ng-click="$ctrl.handleDismiss()"
+			aria-label="Close"
+		>
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+		<p>Select the reason code for terminating this application.</p>
+		<form action="#">
+			<fieldset id="awardDetailEdit">
+				<div class="form-row">
+					<div class="form-group col-12">
+						<select class="custom-select" name="" id="">
+							<option value="1">reason 1</option>
+							<option value="2">reason 2</option>
+							<option value="3">reason 3</option>
+						</select>
+
+						<!-- <small class="line-height-13 d-inline-block pt-2 text-muted"
+							>Defaults to salary change start date. Terminates the currently
+							active award on the day before this date upon save.</small
+						> -->
+					</div>
+					<!-- <pre>test {{$ctrl.application.employee.salaryHistory[0].startDate}}
+					–
+					{{$ctrl.application.awards[0]._startDate | date }}
+					</pre> -->
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button
+			type="button"
+			class="btn btn-secondary"
+			ng-click="$ctrl.handleDismiss()"
+		>
+			Cancel
+		</button>
+		<button type="button" class="btn btn-danger" ng-click="$ctrl.handleClose()">
+			<i class="fas fa-ban" aria-hidden></i> Terminate Application
+		</button>
+	</div>
+</div>

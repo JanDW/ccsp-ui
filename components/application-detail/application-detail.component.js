@@ -129,6 +129,90 @@ angular.module('applicationDetail').component('applicationDetail', {
         $ctrl.application.badgeClass = 'badge-info';
       };
 
+      $ctrl.returnApplication = function() {
+        $uibModal
+          .open({
+            template:
+              '<application-return application="$ctrl.application" $close="$close(result)" $dismiss="$dismiss(reason)"></application-return>',
+            controller: [
+              'application',
+              function(application) {
+                let $ctrl = this;
+                $ctrl.application = application;
+              },
+            ],
+            controllerAs: '$ctrl',
+            resolve: {
+              application: function() {
+                return angular.copy($ctrl.application);
+              },
+            },
+          })
+          .result.then(
+            function(result) {
+              // modal saved - update $ctrl.employee $ctrl.spouse with returned object
+              console.info('saved ->' + result);
+              $ctrl.application = result.application;
+              $ctrl.application.statusCode = 2;
+              $ctrl.application.statusMessage = 'Returned';
+              $ctrl.application.badgeClass = 'badge-warning';
+
+              // In a prototype, we just do this :)
+              angular
+                .element(document)
+                .find('footer')
+                .hide();
+
+              // modal dismissed
+            },
+            function(reason) {
+              console.info('dismissed ->' + reason);
+            }
+          );
+      };
+
+      $ctrl.denyApplication = function() {
+        $uibModal
+          .open({
+            template:
+              '<application-deny application="$ctrl.application" $close="$close(result)" $dismiss="$dismiss(reason)"></application-deny>',
+            controller: [
+              'application',
+              function(application) {
+                let $ctrl = this;
+                $ctrl.application = application;
+              },
+            ],
+            controllerAs: '$ctrl',
+            resolve: {
+              application: function() {
+                return angular.copy($ctrl.application);
+              },
+            },
+          })
+          .result.then(
+            function(result) {
+              // modal saved - update $ctrl.employee $ctrl.spouse with returned object
+              console.info('saved ->' + result);
+              $ctrl.application = result.application;
+              $ctrl.application.statusCode = 3;
+              $ctrl.application.statusMessage = 'Denied';
+              $ctrl.application.badgeClass = 'badge-danger';
+
+              // In a prototype, we just do this :)
+              angular
+                .element(document)
+                .find('footer')
+                .hide();
+
+              // modal dismissed
+            },
+            function(reason) {
+              console.info('dismissed ->' + reason);
+            }
+          );
+      };
+
       // Review Award handler
       $ctrl.reviewAward = function() {
         $uibModal
@@ -154,6 +238,81 @@ angular.module('applicationDetail').component('applicationDetail', {
               // modal saved - update $ctrl.employee $ctrl.spouse with returned object
               console.info('saved ->' + result);
               $ctrl.application = result.application;
+
+              // modal dismissed
+            },
+            function(reason) {
+              console.info('dismissed ->' + reason);
+            }
+          );
+      };
+
+      $ctrl.createAward = function() {
+        $uibModal
+          .open({
+            template:
+              '<award-create application="$ctrl.application" $close="$close(result)" $dismiss="$dismiss(reason)"></award-create>',
+            controller: [
+              'application',
+              function(application) {
+                let $ctrl = this;
+                $ctrl.application = application;
+              },
+            ],
+            controllerAs: '$ctrl',
+            resolve: {
+              application: function() {
+                return angular.copy($ctrl.application);
+              },
+            },
+          })
+          .result.then(
+            function(result) {
+              // modal saved - update $ctrl.employee $ctrl.spouse with returned object
+              console.info('saved ->' + result);
+              $ctrl.application = result.application;
+
+              // modal dismissed
+            },
+            function(reason) {
+              console.info('dismissed ->' + reason);
+            }
+          );
+      };
+
+      $ctrl.terminateApplication = function() {
+        $uibModal
+          .open({
+            template:
+              '<application-terminate application="$ctrl.application" $close="$close(result)" $dismiss="$dismiss(reason)"></application-terminate>',
+            controller: [
+              'application',
+              function(application) {
+                let $ctrl = this;
+                $ctrl.application = application;
+              },
+            ],
+            controllerAs: '$ctrl',
+            resolve: {
+              application: function() {
+                return angular.copy($ctrl.application);
+              },
+            },
+          })
+          .result.then(
+            function(result) {
+              // modal saved - update $ctrl.employee $ctrl.spouse with returned object
+              console.info('saved ->' + result);
+              $ctrl.application = result.application;
+              $ctrl.application.statusCode = 3;
+              $ctrl.application.statusMessage = 'Denied';
+              $ctrl.application.badgeClass = 'badge-danger';
+
+              // In a prototype, we just do this :)
+              angular
+                .element(document)
+                .find('footer')
+                .hide();
 
               // modal dismissed
             },

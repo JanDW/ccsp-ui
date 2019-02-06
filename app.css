@@ -291,3 +291,8 @@ mark {
   border-left-color: #F0F0F0;
   margin-right: -.625em;
 }
+
+.required::after {
+  content: "*";
+  color: red;
+}

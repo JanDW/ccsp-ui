@@ -25,7 +25,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git@github.mit.edu:jandw/ccsp-prototype-ui.git"
+		"url": "git@github.com:JanDW/ccsp-ui.git"
 	},
 	"husky": {
 		"hooks": {
@@ -37,11 +37,10 @@
 			"prettier --write",
 			"git add -A"
 		],
-		"to-sort/**/*.{js,json,html}":[
+		"employee-ui/**/*.{js,json,html}": [
 			"prettier --write",
 			"git add -A"
-		]
-		,
+		],
 		"*.css": [
 			"csscomb --tty-mode --",
 			"git add -A"

@@ -15,11 +15,11 @@ angular.module('applicationCreate').component('applicationCreate', {
         .on('click', function() {
           if (/^github/.test(window.location.hostname)) {
             location.replace(
-              'https://github.mit.edu/pages/jandw/ccsp-prototype-ui/to-sort/new-application.html?user=johndoe'
+              'https://jandw.github.io/ccsp-ui/employee-ui/new-application.html?user=johndoe'
             );
           } else {
             location.replace(
-              'http://localhost:8000/to-sort/new-application.html?user=johndoe'
+              'http://localhost:8000/employee-ui/new-application.html?user=johndoe'
             );
           }
         });

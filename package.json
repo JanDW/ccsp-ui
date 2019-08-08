@@ -41,7 +41,7 @@
 			"prettier --write",
 			"git add -A"
 		],
-		"*.css": [
+		"components/**/*.css, employee-ui/**/*.css": [
 			"csscomb --tty-mode --",
 			"git add -A"
 		]

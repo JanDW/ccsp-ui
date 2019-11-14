@@ -13,13 +13,13 @@ angular.module('applicationCreate').component('applicationCreate', {
         .element(document)
         .find('#newApplication')
         .on('click', function() {
-          if (/^github/.test(window.location.hostname)) {
+          if (/^localhost/.test(window.location.hostname)) {
             location.replace(
-              'https://jandw.github.io/ccsp-ui/employee-ui/new-application.html?user=johndoe'
+              'http://localhost:8000/employee-ui/new-application.html?user=johndoe'
             );
           } else {
             location.replace(
-              'http://localhost:8000/employee-ui/new-application.html?user=johndoe'
+              'https://jandw.github.io/ccsp-ui/employee-ui/new-application.html?user=johndoe'
             );
           }
         });

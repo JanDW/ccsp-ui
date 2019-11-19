@@ -16,12 +16,19 @@
 			<fieldset id="incomeDetailEdit">
 				<div
 					class="form-group"
-					ng-if="$ctrl.employee.salaryHistory[0].amount !== $ctrl.employee.salary"
+					ng-if="$ctrl.employee.salaryHistory.length !== 0"
 				>
-					<label for="salaryChange" class="required">Salary change</label>
-					<div ng-repeat="salary in $ctrl.employee.salaryHistory">
-						{{salary.amount}}
+					<label for="salaryChange">Salary change reported by SAP</label>
+					<div name="salaryChange">
+						<!-- should be a filter, quick reversal, because prototype-->
+						<span
+							ng-repeat="salary in $ctrl.employee.salaryHistory.slice().reverse()"
+						>
+							{{ salary.amount | currency : '$' : 0 }}
+							<span ng-if="!$last">→&nbsp;</span>
+						</span>
 					</div>
+					<div></div>
 				</div>
 
 				<div class="form-group">

@@ -4,7 +4,7 @@
 	"description": "Prototype for CSSP",
 	"main": "",
 	"dependencies": {
-		"angular": "^1.7.6",
+		"angular": "^1.7.9",
 		"angular-animate": "^1.7.6",
 		"angular-datatables": "^0.6.4",
 		"angular-resource": "^1.7.6",

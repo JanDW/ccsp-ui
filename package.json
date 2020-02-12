@@ -4,12 +4,12 @@
 	"description": "Prototype for CSSP",
 	"main": "",
 	"dependencies": {
-		"angular": "^1.7.6",
+		"angular": "^1.7.9",
 		"angular-animate": "^1.7.6",
 		"angular-datatables": "^0.6.4",
 		"angular-resource": "^1.7.6",
 		"angular-route": "^1.7.6",
-		"lodash": "^4.17.11",
+		"lodash": "^4.17.15",
 		"moment": "^2.24.0",
 		"ui-bootstrap4": "^3.0.6"
 	},

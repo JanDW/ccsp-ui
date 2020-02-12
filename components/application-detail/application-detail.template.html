@@ -148,14 +148,7 @@
 		<div class="float-left">
 			<button
 				type="button"
-				class="btn btn-warning font-weight-bold"
-				ng-click="$ctrl.returnApplication()"
-			>
-				<i class="fas fa-reply" aria-hidden></i> Return
-			</button>
-			<button
-				type="button"
-				class="btn btn-danger font-weight-bold"
+				class="btn btn-danger btn-deny-application font-weight-bold"
 				ng-click="$ctrl.denyApplication()"
 			>
 				<i class="fas fa-ban" aria-hidden></i> Deny
@@ -167,7 +160,14 @@
 			</button> -->
 			<button
 				type="button"
-				class="btn btn-success font-weight-bold"
+				class="btn btn-secondary font-weight-bold"
+				ng-click="$ctrl.returnApplication()"
+			>
+				<i class="fas fa-reply" aria-hidden></i> Return
+			</button>
+			<button
+				type="button"
+				class="btn btn-info font-weight-bold"
 				ng-click="$ctrl.approveApplication()"
 			>
 				<i class="fas fa-thumbs-up" aria-hidden></i> Approve
@@ -218,7 +218,7 @@
 		<div class="float-left">
 			<button
 				type="button"
-				class="btn btn-danger font-weight-bold"
+				class="btn btn-danger btn-deny-application font-weight-bold"
 				ng-click="$ctrl.terminateApplication()"
 			>
 				<i class="fas fa-ban" aria-hidden></i> Terminate application

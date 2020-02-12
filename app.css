@@ -180,6 +180,17 @@ a:hover,
   color: #007BFF;
 }
 
+.btn-deny-application {
+  color: #FFF;
+  background: none;
+  border: 0;
+}
+
+.btn-approve-application {
+  background-color: #17a2b8;
+}
+
+
 a[target="_blank"]::after {
   display: inline-block;
   font-style: normal;

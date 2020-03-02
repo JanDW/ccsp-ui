@@ -15,7 +15,7 @@ angular.module('commentsListAdd').component('commentsListAdd', {
       $ctrl.handleClose = function() {
         $ctrl.comment.timestamp = new Date().toISOString();
         $ctrl.comment._timestamp = new Date();
-        $ctrl.comment.author = 'Kathy Kasabula';
+        $ctrl.comment.author = 'Alex Admin';
         $ctrl.comment.type = 'internal';
         $ctrl.$close({
           result: $ctrl.comment,

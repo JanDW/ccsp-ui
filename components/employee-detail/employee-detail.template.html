@@ -12,16 +12,16 @@
 			</p>
 		</div>
 
-		<div class="float-right text-nowrap">
-			<span ng-if="$ctrl.employee.mitId">
+		<div class="float-right text-nowrap align-middle">
+			<button class="btn btn-link p-0 mr-2" ng-if="$ctrl.employee.mitId">
 				<i
-					class="fas fa-id-card text-primary mr-2"
+					class="fas fa-id-card"
 					aria-hidden
 					uib-tooltip="MIT ID # {{ $ctrl.employee.mitId }}"
 					tooltip-placement="top"
 				></i>
 				<span class="sr-only">MIT ID #</span>
-			</span>
+			</button>
 
 			<a
 				href="mailto:{{ $ctrl.employee.email }}"
@@ -29,7 +29,7 @@
 				uib-tooltip="{{ $ctrl.employee.email }}"
 				tooltip-placement="top"
 			>
-				<i class="fas fa-envelope align-middle" aria-hidden></i>
+				<i class="fas fa-envelope" aria-hidden></i>
 				<span class="sr-only">email</span>
 			</a>
 			&nbsp;
@@ -39,16 +39,16 @@
 				uib-tooltip="{{ $ctrl.employee.phone }}"
 				tooltip-placement="top"
 			>
-				<i class="fas fa-phone align-middle" aria-hidden></i>
+				<i class="fas fa-phone" aria-hidden></i>
 				<span class="sr-only">phone</span>
 			</a>
 			&nbsp;&nbsp;
 			<button
 				type="button"
-				class="btn btn-link align-middle py-0 pr-0 float-right"
+				class="btn btn-link py-0 pr-0 float-right"
 				ng-click="$ctrl.editEmployee()"
 			>
-				<i class="fas fa-pencil-alt text-primary" aria-hidden></i>
+				<i class="fas fa-pencil-alt" aria-hidden></i>
 				<span class="sr-only">edit</span>
 			</button>
 		</div>

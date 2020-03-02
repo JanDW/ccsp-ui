@@ -1,6 +1,7 @@
 /* A messy collection  of CSS Bootstrap overrides and extensions */
 body {
-  background-color: #F6F6F6;
+  background-color: #EDF2F7;
+  color: #2d3748;
   padding-bottom: 100px;
 }
 
@@ -29,10 +30,10 @@ body {
 
 .dl-reversed > div > dt {
   font-weight: 400;
-  color: var(--gray);
+  color: #718096;
 }
 .dl-reversed > div > dd {
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .card-ccsp {
@@ -47,8 +48,11 @@ body {
 .card-header-ccsp {
   /* background-color: var(--gray-dark) !important; */
   background-color: #FFF !important;
-  font-weight: 700;
-  color: #000;
+  font-weight: 500;
+  font-size: 1.1em;
+  color: #2d3748;
+
+
   /* border: 1px solid #cae4f2 !important; */
 }
 
@@ -58,14 +62,14 @@ body {
 
 .table thead th {
   border-bottom: 0;
-  color: var(--gray);
+  color: #a0aec0;
   font-weight: 400;
   border-top: 0;
 }
 
 .table tbody td,
 .table tbody th {
-  font-weight: 500;
+  font-weight: 400;
   border-color: #F1F1F1;
 }
 
@@ -172,12 +176,12 @@ a,
 .btn-link {
   /* color: #0e70d8; */
   /* color: #498ed8; */
-  color: #007BFF;
+  color:#3182ce !important;
 }
 
 a:hover,
 .btn-link:hover {
-  color: #007BFF;
+  color:#4299e1 !important;
 }
 
 .btn-deny-application {
@@ -211,8 +215,8 @@ label {
 input,
 select,
 textarea {
-  color: #444;
-  font-weight: 500;
+  color: #4a5568;
+  font-weight: 400;
 }
 
 mark {  
@@ -221,8 +225,12 @@ mark {
 }
 
 
+.bg-light {
+  background-color: #F7FAFC !important;
+}
+
 .bg-dark-transparent {
-  background-color: rgba(0, 0, 0, .8);
+  background-color:  #2d3748;
 }
 
 .badge-chiclet {
@@ -232,7 +240,7 @@ mark {
 }
 
 .text-muted {
-  color: #999 !important;
+  color: #6b7280 !important;
 }
 
 .text-medium {
@@ -273,7 +281,7 @@ mark {
 /* SPEECH BUBBLES */
 .speech-bubble {
   position: relative;
-  background: #F0F0F0;
+  background: #EDF2F7;
   border-radius: .4em;
   font-size: .9rem;
 }
@@ -293,7 +301,7 @@ mark {
 .speech-bubble-left:after {
   left: 0;
   border-left: 0;
-  border-right-color: #F0F0F0;
+  border-right-color: #EDF2F7;
   margin-left: -.625em;
 }
 
@@ -301,7 +309,7 @@ mark {
 .speech-bubble-right:after {
   right: 0;
   border-right: 0;
-  border-left-color: #F0F0F0;
+  border-left-color: #EDF2F7;
   margin-right: -.625em;
 }
 

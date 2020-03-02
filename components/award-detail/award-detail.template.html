@@ -3,12 +3,12 @@
 		<div>
 			<span class="align-middle">
 				<i
-					class="fas fa-check-circle text-success align-middle"
+					class="fas fa-check-circle text-success"
 					ng-if="$ctrl.eligible && $ctrl.monthlyAwardTotal > 0"
 					aria-label="eligible"
 				></i>
 				<i
-					class="fas fa-times-circle text-danger align-middle"
+					class="fas fa-times-circle text-danger"
 					ng-if="!$ctrl.eligible || $ctrl.monthlyAwardTotal <= 0"
 					aria-label="not eligible"
 				></i>
@@ -26,12 +26,12 @@
 				ng-if="$ctrl.eligible"
 			>
 				<span ng-if="$ctrl.isCalculationCollapsed" class="align-middle"
-					><i class="fas fa-eye align-middle" aria-hidden></i>&nbsp;<span
+					><i class="fas fa-eye" aria-hidden></i>&nbsp;<span
 						>Show award calculation</span
 					></span
 				>
 				<span ng-if="!$ctrl.isCalculationCollapsed" class="align-middle"
-					><i class="fas fa-eye-slash align-middle" aria-hidden></i>&nbsp;<span
+					><i class="fas fa-eye-slash" aria-hidden></i>&nbsp;<span
 						>Hide award calculation</span
 					></span
 				>
@@ -41,7 +41,7 @@
 				class="btn btn-link align-middle py-0 pr-0"
 				ng-click="$ctrl.editAward()"
 			>
-				<i class="fas fa-pencil-alt text-primary" aria-hidden></i>
+				<i class="fas fa-pencil-alt" aria-hidden></i>
 				<span class="sr-only">edit</span>
 			</button>
 		</div>

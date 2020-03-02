@@ -57,7 +57,7 @@
 	</div>
 	<div class="d-flex mt-3">
 		<!-- EMPLOYEE NAME TITLE -->
-		<h1 class="h4 mb-4" style="font-weight: 300">
+		<h1 class="h4 mb-4" style="font-weight: 500">
 			{{$ctrl.application.employee.lastName}},
 			{{$ctrl.application.employee.firstName}}
 			{{$ctrl.application.employee.middleInitial}}
@@ -148,7 +148,7 @@
 		<div class="float-left">
 			<button
 				type="button"
-				class="btn btn-danger btn-deny-application font-weight-bold"
+				class="btn btn-danger btn-deny-application font-weight-semibold"
 				ng-click="$ctrl.denyApplication()"
 			>
 				<i class="fas fa-ban" aria-hidden></i> Deny
@@ -160,14 +160,14 @@
 			</button> -->
 			<button
 				type="button"
-				class="btn btn-secondary font-weight-bold"
+				class="btn btn-secondary font-weight-semibold"
 				ng-click="$ctrl.returnApplication()"
 			>
 				<i class="fas fa-reply" aria-hidden></i> Return
 			</button>
 			<button
 				type="button"
-				class="btn btn-info font-weight-bold"
+				class="btn btn-info font-weight-semibold"
 				ng-click="$ctrl.approveApplication()"
 			>
 				<i class="fas fa-thumbs-up" aria-hidden></i> Approve
@@ -197,7 +197,7 @@
 			</span>
 			<button
 				type="button"
-				class="btn btn-warning font-weight-bold align-middle ml-3 border-dark"
+				class="btn btn-warning font-weight-semibold align-middle ml-3 border-dark"
 				ng-click="$ctrl.reviewAward()"
 			>
 				<i class="fas fa-plus" aria-hidden=""></i> Draft new award
@@ -218,7 +218,7 @@
 		<div class="float-left">
 			<button
 				type="button"
-				class="btn btn-danger btn-deny-application font-weight-bold"
+				class="btn btn-danger btn-deny-application font-weight-semibold"
 				ng-click="$ctrl.terminateApplication()"
 			>
 				<i class="fas fa-ban" aria-hidden></i> Terminate application
@@ -230,7 +230,7 @@
 			</button> -->
 			<button
 				type="button"
-				class="btn btn-success font-weight-bold"
+				class="btn btn-success font-weight-semibold"
 				ng-click="$ctrl.createAward()"
 			>
 				<i class="fas fa-plus" aria-hidden></i>

@@ -1,4 +1,6 @@
 /* A messy collection  of CSS Bootstrap overrides and extensions */
+
+
 body {
   background-color: #EDF2F7;
   color: #2d3748;
@@ -14,7 +16,7 @@ body {
 .navbar-brand {
   font-size: .8rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: .075em;
   font-weight: 700 !important;
   /* border-right: 1px solid #CCC; */
   padding-right: 30px;

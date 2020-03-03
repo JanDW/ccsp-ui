@@ -2,8 +2,8 @@
 <div class="card card-ccsp mt-2">
 	<div class="card-header card-header-ccsp border-0 d-flex">
 		<span class="align-middle"
-			>Comments: {{$ctrl.application.comments.length - 2}} Internal &middot; 2
-			external</span
+			>Comments <span class="text-muted ml-2">{{$ctrl.application.comments.length - 2}} Internal &middot; 2
+			external</span></span
 		>
 
 		<div class="ml-auto">
@@ -13,12 +13,14 @@
 				ng-click="$ctrl.isExternalCommentCollapsed = !$ctrl.isExternalCommentCollapsed"
 			>
 				<span ng-if="$ctrl.isExternalCommentCollapsed" class="align-middle"
-					><i class="fas fa-eye" aria-hidden></i>&nbsp;<span
+					>
+					<i class="fas fa-eye" aria-hidden></i>&nbsp;<span
 						>Show all comments</span
 					></span
 				>
 				<span ng-if="!$ctrl.isExternalCommentCollapsed" class="align-middle"
-					><i class="fas fa-eye-slash" aria-hidden></i>&nbsp;<span
+					>
+					<i class="fas fa-eye-slash" aria-hidden></i>&nbsp;<span
 						>Collapse comments</span
 					></span
 				>

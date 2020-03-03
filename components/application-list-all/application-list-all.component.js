@@ -94,7 +94,7 @@ angular.module('applicationListAll').component('applicationListAll', {
             switch (application.statusCode) {
               case 0:
                 application.badgeClass = 'badge-primary';
-                application.textClass = 'text-primary';
+                application.textClass = '';
                 break;
               case 1:
                 application.badgeClass = 'badge-info';

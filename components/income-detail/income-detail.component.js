@@ -1,6 +1,7 @@
 angular.module('incomeDetail').component('incomeDetail', {
   templateUrl: 'components/income-detail/income-detail.template.html',
   bindings: {
+    application: '<',
     employee: '<', //data gets passed in as an input on an employee attribute on the custom element
     spouse: '<',
     totalIncome: '=',

@@ -3,17 +3,18 @@
 	<!-- @TODO move app details to component -->
 	<div class="clearfix">
 		<p class="text-muted float-left">
-			<span
+			<button
 				ng-class="$ctrl.application.badgeClass"
-				class="badge align-middle"
+				class="badge align-middle border-0"
 				uib-popover-template="'popover.html'"
 				popover-placement="bottom-left"
 				popover-trigger="click"
 				popover-class="popover-xl"
+				style="cursor: pointer;"
 			>
 				{{$ctrl.application.statusMessage}}&nbsp;
 				<i class="fas fa-pencil-alt text-white" aria-hidden=""></i>
-			</span>
+			</button>
 			&middot;
 			<span class="align-middle">
 				Academic Year {{$ctrl.application.academicYear}}

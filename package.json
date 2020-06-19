@@ -4,13 +4,13 @@
 	"description": "Prototype for CSSP",
 	"main": "",
 	"dependencies": {
-		"angular": "^1.7.9",
-		"angular-animate": "^1.7.9",
+		"angular": "^1.8.0",
+		"angular-animate": "^1.8.0",
 		"angular-datatables": "^0.6.4",
-		"angular-resource": "^1.7.9",
-		"angular-route": "^1.7.9",
+		"angular-resource": "^1.8.0",
+		"angular-route": "^1.8.0",
 		"lodash": "^4.17.15",
-		"moment": "^2.26.0",
+		"moment": "^2.27.0",
 		"ui-bootstrap4": "^3.0.6"
 	},
 	"devDependencies": {
@@ -18,7 +18,7 @@
 		"husky": "^1.3.1",
 		"lint-staged": "^8.2.1",
 		"prettier": "1.16.1",
-		"serve": "^11.3.1"
+		"serve": "^11.3.2"
 	},
 	"scripts": {
 		"start": "npx serve"

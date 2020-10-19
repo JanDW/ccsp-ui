@@ -9,7 +9,7 @@
 		"angular-datatables": "^0.6.4",
 		"angular-resource": "^1.8.0",
 		"angular-route": "^1.8.0",
-		"lodash": "^4.17.15",
+		"lodash": "^4.17.19",
 		"moment": "^2.27.0",
 		"ui-bootstrap4": "^3.0.6"
 	},

@@ -10,7 +10,7 @@
 		"angular-resource": "^1.8.0",
 		"angular-route": "^1.8.0",
 		"lodash": "^4.17.19",
-		"moment": "^2.27.0",
+		"moment": "^2.29.2",
 		"ui-bootstrap4": "^3.0.6"
 	},
 	"devDependencies": {

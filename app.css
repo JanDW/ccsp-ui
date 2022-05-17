@@ -166,6 +166,10 @@ body {
   cursor: pointer;
 }
 
+.border-width-2 {
+  border-width: 2px !important;
+}
+
 .border-gray {
   border-color: var(--gray);
 }

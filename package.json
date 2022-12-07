@@ -16,7 +16,7 @@
 	"devDependencies": {
 		"csscomb": "^4.3.0",
 		"husky": "^1.3.1",
-		"lint-staged": "^8.2.1",
+		"lint-staged": "^13.1.0",
 		"prettier": "1.16.1",
 		"serve": "^11.3.2"
 	},

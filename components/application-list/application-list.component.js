@@ -20,7 +20,7 @@ angular.module('applicationList').component('applicationList', {
       // Get all applications with statusCode 0 corresponds to (statusMessage:'Pending approval')
       $http
         .get(
-          'https://ccsp-api.herokuapp.com/applications?_expand=employee&statusCode=0&_sort=lastSubmissionDate&_order=desc'
+          'https://ccsp-api.onrender.com/applications?_expand=employee&statusCode=0&_sort=lastSubmissionDate&_order=desc'
         )
         .then(function(response) {
           $ctrl.applications = response.data;

@@ -22,7 +22,7 @@ angular.module('applicationDetail').component('applicationDetail', {
       // Get application and embed the employee
       $http
         .get(
-          'https://ccsp-api.herokuapp.com/applications/' +
+          'https://ccsp-api.onrender.com/applications/' +
             $routeParams.applicationId +
             '?_expand=employee&_embed=awards'
         )
@@ -78,7 +78,7 @@ angular.module('applicationDetail').component('applicationDetail', {
           if (typeof $ctrl.application.employee.spouseId !== 'undefined') {
             $http
               .get(
-                'https://ccsp-api.herokuapp.com/spouses/' +
+                'https://ccsp-api.onrender.com/spouses/' +
                   $ctrl.application.employee.spouseId
               )
               .then(function(response) {
@@ -93,7 +93,7 @@ angular.module('applicationDetail').component('applicationDetail', {
 
           $http
             .get(
-              'https://ccsp-api.herokuapp.com/children/' +
+              'https://ccsp-api.onrender.com/children/' +
                 childrenQueryParameter
             )
             .then(function(response) {
@@ -103,7 +103,7 @@ angular.module('applicationDetail').component('applicationDetail', {
 
       // Get TCC tuition costs
       $http
-        .get('https://ccsp-api.herokuapp.com/tccTuition/')
+        .get('https://ccsp-api.onrender.com/tccTuition/')
         .then(function(response) {
           $ctrl.tccTuition = response.data;
         });
@@ -325,7 +325,7 @@ angular.module('applicationDetail').component('applicationDetail', {
         // request id match to previousOrderIndex and go there
         $http
           .get(
-            'https://ccsp-api.herokuapp.com/applications?orderIndex=' +
+            'https://ccsp-api.onrender.com/applications?orderIndex=' +
               previousOrderIndex
           )
           .then(function(response) {
@@ -336,13 +336,13 @@ angular.module('applicationDetail').component('applicationDetail', {
       // Navigate to next 'pending approval' application
       $ctrl.next = function() {
         $http
-          .get('https://ccsp-api.herokuapp.com/applications?statusCode=0')
+          .get('https://ccsp-api.onrender.com/applications?statusCode=0')
           .then(function(response) {
             const nextOrderIndex = $ctrl.application.orderIndex + 1;
             // request id match to nextOrderIndex and go there
             $http
               .get(
-                'https://ccsp-api.herokuapp.com/applications?orderIndex=' +
+                'https://ccsp-api.onrender.com/applications?orderIndex=' +
                   nextOrderIndex
               )
               .then(function(response) {
